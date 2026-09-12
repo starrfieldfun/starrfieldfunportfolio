@@ -19,7 +19,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=20260912-unifiedmenu3"
+        href="style.css?v=20260913-directform1"
     >
 
 </head>
@@ -473,7 +473,17 @@
             <form
                 class="contact-form-editorial"
                 id="contact-form"
+                method="POST"
             >
+
+                <input
+                    type="text"
+                    name="_honey"
+                    class="contact-honeypot"
+                    tabindex="-1"
+                    autocomplete="off"
+                    aria-hidden="true"
+                >
 
 
                 <div class="contact-form-row">
@@ -567,8 +577,10 @@
                 <p
                     class="contact-form-note"
                     id="form-note"
+                    role="status"
+                    aria-live="polite"
                 >
-                    Clicking send will open your email app with the message ready.
+                    Your message will be sent directly to my inbox.
                 </p>
 
             </form>
@@ -636,7 +648,7 @@
     </footer>
 
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260913-directform1"></script>
 
 </body>
 

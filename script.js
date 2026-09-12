@@ -614,6 +614,7 @@ if (
 
 // ========================================
 // CONTACT FORM
+// Direct submission for GitHub Pages via FormSubmit
 // ========================================
 
 const contactForm =
@@ -624,68 +625,250 @@ const contactForm =
 
 if (contactForm) {
 
+    const formNote =
+        document.querySelector(
+            "#form-note"
+        );
+
+
+    const sendButton =
+        contactForm.querySelector(
+            ".contact-send-button"
+        );
+
+
+    const sendButtonText =
+        sendButton
+            ? sendButton.querySelector(
+                "span:first-child"
+            )
+            : null;
+
+
     contactForm.addEventListener(
         "submit",
-        function (event) {
+        async function (event) {
 
             event.preventDefault();
+
+
+            if (!contactForm.checkValidity()) {
+
+                contactForm.reportValidity();
+
+                return;
+
+            }
+
+
+            const honeypot =
+                contactForm.querySelector(
+                    'input[name="_honey"]'
+                );
+
+
+            // Silently ignore likely bot submissions.
+            if (
+                honeypot &&
+                honeypot.value.trim() !== ""
+            ) {
+
+                contactForm.reset();
+
+                return;
+
+            }
 
 
             const name =
                 document.querySelector(
                     "#contact-name"
-                ).value;
+                ).value.trim();
 
 
             const email =
                 document.querySelector(
                     "#contact-email"
-                ).value;
+                ).value.trim();
 
 
             const subject =
                 document.querySelector(
                     "#contact-subject"
-                ).value;
+                ).value.trim();
 
 
             const message =
                 document.querySelector(
                     "#contact-message"
-                ).value;
+                ).value.trim();
 
 
-            const emailSubject =
-                encodeURIComponent(
-                    subject +
-                    " — Website enquiry from " +
-                    name
+            if (sendButton) {
+
+                sendButton.disabled = true;
+
+                sendButton.classList.add(
+                    "is-sending"
+                );
+
+            }
+
+
+            if (sendButtonText) {
+
+                sendButtonText.textContent =
+                    "SENDING…";
+
+            }
+
+
+            if (formNote) {
+
+                formNote.textContent =
+                    "Sending your message…";
+
+                formNote.classList.remove(
+                    "is-success",
+                    "is-error"
+                );
+
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "https://formsubmit.co/ajax/starrfieldfunwork@gmail.com",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json",
+
+                                "Accept":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify({
+                                    name: name,
+                                    email: email,
+                                    subject: subject,
+                                    message: message,
+
+                                    _subject:
+                                        subject +
+                                        " — Portfolio enquiry from " +
+                                        name,
+
+                                    _template:
+                                        "table",
+
+                                    _url:
+                                        window.location.href
+                                })
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to send message."
+                    );
+
+                }
+
+
+                contactForm.reset();
+
+
+                if (sendButtonText) {
+
+                    sendButtonText.textContent =
+                        "MESSAGE SENT";
+
+                }
+
+
+                if (formNote) {
+
+                    formNote.textContent =
+                        "Message sent successfully. Thank you — I’ll get back to you soon.";
+
+                    formNote.classList.add(
+                        "is-success"
+                    );
+
+                }
+
+
+                window.setTimeout(
+                    function () {
+
+                        if (sendButtonText) {
+
+                            sendButtonText.textContent =
+                                "SEND MESSAGE";
+
+                        }
+
+                    },
+                    3200
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Contact form error:",
+                    error
                 );
 
 
-            const emailBody =
-                encodeURIComponent(
-                    "Hi Starrfield Fun,\n\n" +
-                    message +
-                    "\n\n" +
-                    "From: " +
-                    name +
-                    "\n" +
-                    "Email: " +
-                    email
-                );
+                if (sendButtonText) {
+
+                    sendButtonText.textContent =
+                        "TRY AGAIN";
+
+                }
 
 
-            const mailLink =
-                "mailto:starrfieldfunwork@gmail.com" +
-                "?subject=" +
-                emailSubject +
-                "&body=" +
-                emailBody;
+                if (formNote) {
 
+                    formNote.textContent =
+                        "Something went wrong. Please try again, or email starrfieldfunwork@gmail.com directly.";
 
-            window.location.href =
-                mailLink;
+                    formNote.classList.add(
+                        "is-error"
+                    );
+
+                }
+
+            }
+
+            finally {
+
+                if (sendButton) {
+
+                    sendButton.disabled = false;
+
+                    sendButton.classList.remove(
+                        "is-sending"
+                    );
+
+                }
+
+            }
 
         }
     );

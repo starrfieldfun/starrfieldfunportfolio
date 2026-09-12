@@ -14041,3 +14041,78 @@ and
     }
 
 }
+
+
+
+
+/* =========================================================
+   CONTACT FORM — DIRECT SUBMISSION STATES
+========================================================= */
+
+.contact-page .contact-honeypot {
+    position: absolute !important;
+
+    width: 1px !important;
+    height: 1px !important;
+
+    padding: 0 !important;
+    margin: -1px !important;
+
+    overflow: hidden !important;
+
+    clip: rect(0, 0, 0, 0) !important;
+
+    white-space: nowrap !important;
+
+    border: 0 !important;
+
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+}
+
+
+.contact-page .contact-send-button:disabled {
+    cursor: wait;
+
+    opacity: 0.68;
+}
+
+
+.contact-page .contact-send-button.is-sending {
+    background:
+        #303238;
+
+    color:
+        var(--contact-paper);
+}
+
+
+.contact-page .contact-form-note {
+    min-height: 1.5em;
+
+    transition:
+        color
+        0.25s
+        ease;
+}
+
+
+.contact-page .contact-form-note.is-success {
+    color:
+        var(--contact-lime);
+}
+
+
+.contact-page .contact-form-note.is-error {
+    color:
+        #FF8D76;
+}
+
+
+/* Keep form feedback static — no movement. */
+.contact-page .contact-send-button,
+.contact-page .contact-form-note {
+    transform: none !important;
+}
+
