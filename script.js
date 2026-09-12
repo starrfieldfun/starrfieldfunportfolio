@@ -60,7 +60,7 @@ if (menuButton && mobileMenu) {
             if (menuIsOpen) {
 
                 menuButton.textContent =
-                    "Close";
+                    "Close ×";
 
             } else {
 

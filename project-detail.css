@@ -6304,3 +6304,1194 @@
         content: "SWIPE PREVIEW ↕";
     }
 }
+
+
+
+
+/* ================================================================
+   CASE STUDY POLISH — MOBILE GALLERY + INTEGRATED FOURTH CARDS
+   2026-09-12
+================================================================ */
+
+
+/* =========================================================
+   FOURTH / FEATURE CARDS
+   Keep the emphasis, remove the pasted-on colour block.
+========================================================= */
+
+/* MyBusFinder — Product Thinking */
+.portfolio-case-study .compact-flow-grid .compact-flow-accent {
+    margin: 0 !important;
+    padding: 38px 30px 30px 34px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(89, 101, 255, 0.11),
+            rgba(89, 101, 255, 0.025) 48%,
+            transparent 82%
+        ),
+        transparent !important;
+
+    color: var(--pf-paper) !important;
+
+    border: 0 !important;
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.18) !important;
+
+    border-left:
+        3px solid
+        rgba(89,101,255,0.90) !important;
+
+    box-shadow:
+        inset 20px 0 48px
+        rgba(89,101,255,0.045) !important;
+}
+
+.portfolio-case-study .compact-flow-accent p {
+    color: #A8A9AD !important;
+}
+
+
+/* MyBusFinder — Design → Build */
+.portfolio-case-study .compact-build-grid .compact-build-accent {
+    margin: 0 !important;
+    padding: 38px 30px 30px 34px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(216,255,104,0.095),
+            rgba(216,255,104,0.022) 48%,
+            transparent 82%
+        ),
+        transparent !important;
+
+    color: var(--pf-paper) !important;
+
+    border: 0 !important;
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.17) !important;
+
+    border-left:
+        3px solid
+        rgba(216,255,104,0.90) !important;
+
+    box-shadow:
+        inset 20px 0 48px
+        rgba(216,255,104,0.04) !important;
+}
+
+.portfolio-case-study .compact-build-accent small {
+    color: var(--pf-lime) !important;
+}
+
+.portfolio-case-study .compact-build-accent p {
+    color: #A8A9AD !important;
+}
+
+
+/* SNPC — fourth system/thinking card */
+.project-snpc .compact-thinking-accent {
+    margin: 0 !important;
+    padding: 32px 30px 30px 34px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(89,101,255,0.11),
+            rgba(89,101,255,0.025) 48%,
+            transparent 82%
+        ),
+        transparent !important;
+
+    color: var(--project-paper) !important;
+
+    border: 0 !important;
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.16) !important;
+
+    border-left:
+        3px solid
+        rgba(89,101,255,0.90) !important;
+
+    box-shadow:
+        inset 20px 0 48px
+        rgba(89,101,255,0.045) !important;
+}
+
+.project-snpc .compact-thinking-accent p {
+    color: #A6A6A6 !important;
+}
+
+
+/* Eternal Shutterwave — fourth brand-direction card */
+.project-eternal .eternal-thinking-accent {
+    margin: 0 !important;
+    padding: 32px 30px 30px 34px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,118,87,0.115),
+            rgba(255,118,87,0.025) 48%,
+            transparent 82%
+        ),
+        transparent !important;
+
+    color: var(--project-paper) !important;
+
+    border: 0 !important;
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.16) !important;
+
+    border-left:
+        3px solid
+        rgba(255,118,87,0.92) !important;
+
+    box-shadow:
+        inset 20px 0 48px
+        rgba(255,118,87,0.045) !important;
+}
+
+.project-eternal .eternal-thinking-accent p {
+    color: #A6A6A6 !important;
+}
+
+
+/* PromptChecker — Advanced mode */
+.project-promptchecker .prompt-mode-active {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(89,101,255,0.12),
+            rgba(89,101,255,0.035)
+        ) !important;
+
+    border-color:
+        rgba(89,101,255,0.55) !important;
+
+    box-shadow:
+        inset 0 3px 0
+        rgba(216,255,104,0.88);
+}
+
+.project-promptchecker .prompt-mode-active::before {
+    opacity: 0.42 !important;
+}
+
+
+/* PromptChecker — AI Product Thinking fourth card */
+.project-promptchecker .prompt-ai-accent {
+    margin: 0 !important;
+    padding: 32px 30px 30px 34px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(216,255,104,0.095),
+            rgba(216,255,104,0.022) 48%,
+            transparent 82%
+        ),
+        transparent !important;
+
+    color: var(--project-paper) !important;
+
+    border: 0 !important;
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.16) !important;
+
+    border-left:
+        3px solid
+        rgba(216,255,104,0.92) !important;
+
+    box-shadow:
+        inset 20px 0 48px
+        rgba(216,255,104,0.04) !important;
+}
+
+.project-promptchecker .prompt-ai-accent small {
+    color: var(--project-lime) !important;
+}
+
+.project-promptchecker .prompt-ai-accent p {
+    color: #A6A6A6 !important;
+}
+
+
+/* Feature-card hover stays editorial rather than jumping like a tile */
+@media (hover: hover) and (pointer: fine) {
+
+    .portfolio-case-study .compact-flow-accent:hover,
+    .portfolio-case-study .compact-build-accent:hover,
+    .project-snpc .compact-thinking-accent:hover,
+    .project-eternal .eternal-thinking-accent:hover,
+    .project-promptchecker .prompt-ai-accent:hover {
+        transform: translateX(6px) !important;
+        box-shadow:
+            inset 24px 0 58px
+            rgba(255,255,255,0.025) !important;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE-SCREEN SHOWCASES
+   Desktop: keep the full interactive 9:16 previews.
+   Touch/small screen: behave as visual devices, not nested pages.
+========================================================= */
+
+/* A cleaner heading cue before phone galleries */
+.portfolio-case-study .compact-mobile-strip,
+.project-snpc .compact-project-mobile-strip {
+    position: relative;
+}
+
+.portfolio-case-study .compact-mobile-strip::before,
+.project-snpc .compact-project-mobile-strip::before {
+    content: "MOBILE EXPERIENCE";
+
+    position: absolute;
+
+    left: 0;
+    top: 18px;
+
+    color: var(--pf-blue);
+
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.project-snpc .compact-project-mobile-strip::before {
+    color: #5965FF;
+}
+
+
+/* Tablets keep the swipe gallery, but with cleaner spacing. */
+@media (max-width: 1050px) and (min-width: 701px) {
+
+    .portfolio-case-study .compact-mobile-strip,
+    .compact-project-mobile-strip {
+        padding-top: 62px;
+        gap: 22px;
+
+        scroll-padding-inline:
+            8vw;
+    }
+
+    .portfolio-case-study .compact-mobile-card,
+    .portfolio-case-study .compact-mobile-card:nth-child(n),
+    .compact-project-phone,
+    .compact-project-phone:nth-child(n) {
+        flex-basis:
+            min(48vw, 285px);
+    }
+
+}
+
+
+/* Actual phone layouts: two-column device gallery.
+   This removes the sideways carousel feeling from the case study. */
+@media (max-width: 700px) {
+
+    .portfolio-case-study .compact-mobile-strip,
+    .compact-project-mobile-strip {
+        display: grid !important;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        gap:
+            34px
+            18px !important;
+
+        overflow: visible !important;
+
+        scroll-snap-type: none !important;
+
+        padding:
+            62px
+            0
+            0 !important;
+
+        margin-top:
+            78px !important;
+    }
+
+
+    .portfolio-case-study .compact-mobile-card,
+    .portfolio-case-study .compact-mobile-card:nth-child(n),
+    .compact-project-phone,
+    .compact-project-phone:nth-child(n) {
+        width: 100% !important;
+
+        min-width: 0 !important;
+
+        flex: none !important;
+
+        margin: 0 !important;
+
+        scroll-snap-align: unset !important;
+    }
+
+
+    .portfolio-case-study .compact-mobile-card > .mobile-showcase-frame,
+    .compact-project-phone > .mobile-showcase-frame {
+        width: 100% !important;
+
+        max-width: 190px !important;
+
+        margin:
+            0
+            auto !important;
+
+        border-width: 6px !important;
+
+        border-radius: 29px !important;
+
+        box-shadow:
+            0
+            20px
+            54px
+            rgba(21,22,25,0.15) !important;
+    }
+
+
+    .portfolio-case-study .compact-mobile-card figcaption,
+    .compact-project-phone figcaption {
+        margin-top: 11px !important;
+
+        text-align: center !important;
+
+        font-size: 11px !important;
+
+        font-weight: 750 !important;
+
+        line-height: 1.3 !important;
+    }
+
+
+    /* No nested vertical scrolling on actual touch-sized layouts.
+       The page itself should always remain easy to scroll. */
+    .mobile-showcase-frame.is-scrollable
+    .mobile-showcase-viewport {
+        overflow: hidden !important;
+
+        cursor: default !important;
+
+        touch-action: auto !important;
+
+        scrollbar-width: none !important;
+    }
+
+
+    .mobile-showcase-frame.is-scrollable
+    .mobile-showcase-viewport::-webkit-scrollbar {
+        display: none !important;
+    }
+
+
+    .mobile-showcase-frame.is-scrollable
+    .mobile-showcase-viewport > img {
+        width: 100% !important;
+        height: 100% !important;
+
+        min-height: 0 !important;
+
+        object-fit: cover !important;
+        object-position: top center !important;
+    }
+
+
+    /* Remove the inner-scroll instruction because mobile previews
+       are now deliberately static. */
+    .mobile-showcase-frame.is-scrollable::after {
+        content: none !important;
+    }
+
+
+    /* Hover transforms should never leak into touch layouts. */
+    .compact-mobile-card:hover > .mobile-showcase-frame,
+    .compact-mobile-card:nth-child(even):hover > .mobile-showcase-frame,
+    .compact-project-phone:hover > .mobile-showcase-frame,
+    .compact-project-phone:nth-child(even):hover > .mobile-showcase-frame {
+        transform: none !important;
+    }
+
+}
+
+
+/* Very narrow screens still keep two devices visible without crowding. */
+@media (max-width: 390px) {
+
+    .portfolio-case-study .compact-mobile-strip,
+    .compact-project-mobile-strip {
+        gap:
+            28px
+            13px !important;
+    }
+
+
+    .portfolio-case-study .compact-mobile-card > .mobile-showcase-frame,
+    .compact-project-phone > .mobile-showcase-frame {
+        max-width: 158px !important;
+
+        border-width: 5px !important;
+
+        border-radius: 25px !important;
+    }
+
+
+    .mobile-showcase-viewport,
+    .mobile-showcase-frame::before {
+        border-radius: 20px !important;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL-SCREEN CARD ALIGNMENT
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .portfolio-case-study .compact-flow-grid .compact-flow-accent,
+    .portfolio-case-study .compact-build-grid .compact-build-accent,
+    .project-snpc .compact-thinking-accent,
+    .project-eternal .eternal-thinking-accent,
+    .project-promptchecker .prompt-ai-accent {
+        margin: 0 !important;
+
+        padding:
+            30px
+            0
+            30px
+            18px !important;
+    }
+
+
+    .project-promptchecker .prompt-mode-active {
+        box-shadow:
+            inset 3px 0 0
+            rgba(216,255,104,0.88) !important;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .portfolio-case-study .compact-flow-accent,
+    .portfolio-case-study .compact-build-accent,
+    .project-snpc .compact-thinking-accent,
+    .project-eternal .eternal-thinking-accent,
+    .project-promptchecker .prompt-mode-active,
+    .project-promptchecker .prompt-ai-accent {
+        transition: none !important;
+        transform: none !important;
+    }
+
+}
+
+
+/* ================================================================
+   CASE STUDY PHONE PREVIEW — OVERLAY COLLISION FIX
+   Restores the phone ::after layer to bezel-only and places the
+   scroll hint on the figure instead of inside the screen.
+================================================================ */
+
+/* The phone shell's ::after must NEVER become the instruction pill. */
+.mobile-showcase-frame.is-scrollable::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: -1px !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255,255,255,0.09) !important;
+    border-radius: inherit !important;
+    background: transparent !important;
+    color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+}
+
+/* Figures become the positioning context for the tiny interaction hint. */
+.portfolio-case-study .compact-mobile-card,
+.compact-project-phone {
+    position: relative;
+}
+
+/* Desktop/tablet cue lives OUTSIDE the phone screen. */
+@media (hover: hover) and (pointer: fine) {
+    .portfolio-case-study .compact-mobile-card:has(.mobile-showcase-frame.is-scrollable)::before,
+    .compact-project-phone:has(.mobile-showcase-frame.is-scrollable)::before {
+        content: "SCROLL PHONE ↕";
+        position: absolute;
+        z-index: 12;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        padding: 6px 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(89,101,255,0.18);
+        background: rgba(245,242,234,0.92);
+        color: #5965FF;
+        font-size: 6px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.12em;
+        pointer-events: none;
+        box-shadow: 0 8px 22px rgba(21,22,25,0.07);
+    }
+}
+
+/* Touch-sized layouts are deliberately static, so no scroll cue. */
+@media (max-width: 700px), (hover: none), (pointer: coarse) {
+    .portfolio-case-study .compact-mobile-card::before,
+    .compact-project-phone::before {
+        content: none !important;
+        display: none !important;
+    }
+}
+
+/* Ensure no legacy interaction-cue declaration can re-stretch the phone overlay. */
+.mobile-showcase-frame.is-scrollable {
+    isolation: isolate;
+}
+
+
+
+
+/* ================================================================
+   CASE STUDY DESKTOP PREVIEW — OVERLAY COLLISION FIX
+   The MacBook ::after layer is reserved ONLY for the aluminium base.
+   No interaction label may render inside that pseudo-element.
+================================================================ */
+
+/* Restore the permanent MacBook lower deck for scrollable screens. */
+.desktop-showcase-laptop.is-scrollable::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: auto !important;
+
+    left: -5.5% !important;
+    right: -5.5% !important;
+    bottom: -15px !important;
+
+    width: auto !important;
+    height: 15px !important;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+    border-radius: 2px 2px 11px 11px !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #D7D8DB 0%,
+            #B9BBC0 42%,
+            #9C9EA4 100%
+        ) !important;
+
+    color: transparent !important;
+
+    box-shadow:
+        0 8px 16px rgba(21, 22, 25, 0.18),
+        0 1px 0 rgba(255, 255, 255, 0.75) inset !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    pointer-events: none !important;
+
+    z-index: 7 !important;
+}
+
+
+/* Remove the legacy in-device scroll-preview instruction entirely.
+   The screenshot itself remains scrollable on desktop. */
+@media (hover: hover) and (pointer: fine) {
+
+    .desktop-showcase-laptop.is-scrollable::after {
+        content: "" !important;
+    }
+
+}
+
+
+/* Touch devices: same rule — never turn the MacBook base into a label. */
+@media (hover: none), (pointer: coarse) {
+
+    .desktop-showcase-laptop.is-scrollable::after {
+        content: "" !important;
+    }
+
+}
+
+
+/* Match the original MacBook base dimensions at responsive breakpoints. */
+@media (max-width: 900px) {
+
+    .desktop-showcase-laptop.is-scrollable::after {
+        left: -4% !important;
+        right: -4% !important;
+        bottom: -12px !important;
+
+        height: 12px !important;
+
+        border-radius: 2px 2px 9px 9px !important;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .desktop-showcase-laptop.is-scrollable::after {
+        bottom: -10px !important;
+
+        height: 10px !important;
+    }
+
+}
+
+
+/* Defensive rule: interaction text should never appear inside either
+   phone or laptop device shell again. */
+.mobile-showcase-frame.is-scrollable::after,
+.desktop-showcase-laptop.is-scrollable::after {
+    font-size: 0 !important;
+    letter-spacing: 0 !important;
+    line-height: 0 !important;
+}
+
+
+
+
+
+/* ================================================================
+   FINAL CASE-STUDY SCALE POLISH
+   01. Eternal Shutterwave collateral keeps natural proportions.
+   02. Desktop MacBook mockups are slightly smaller and calmer.
+================================================================ */
+
+
+/* =========================================================
+   ETERNAL SHUTTERWAVE — COLLATERAL / SOCIAL ASSET FIDELITY
+========================================================= */
+
+/* Name cards should never be stretched or needlessly upscaled. */
+.project-eternal .eternal-collateral-compact figure {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.project-eternal .eternal-collateral-compact img {
+    width: auto !important;
+    height: auto !important;
+
+    max-width: 100% !important;
+
+    aspect-ratio: 7 / 4;
+    object-fit: contain !important;
+
+    display: block;
+
+    image-rendering: auto;
+}
+
+
+/* Keep the two cards editorial/asymmetrical, but closer to their
+   source size so the 700×400 artwork stays crisp. */
+.project-eternal .eternal-collateral-compact figure:nth-child(1) img {
+    width: min(100%, 650px) !important;
+}
+
+.project-eternal .eternal-collateral-compact figure:nth-child(2) img {
+    width: min(100%, 600px) !important;
+}
+
+
+/* Social templates are square 1080×1080 assets.
+   Explicitly lock them to a square natural presentation. */
+.project-eternal .eternal-social-compact figure {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.project-eternal .eternal-social-compact img {
+    width: min(100%, 380px) !important;
+    height: auto !important;
+
+    max-width: 100% !important;
+
+    aspect-ratio: 1 / 1 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+
+    display: block;
+
+    image-rendering: auto;
+}
+
+
+/* Prevent inherited/global image rules from warping these assets. */
+.project-eternal .eternal-collateral-compact img,
+.project-eternal .eternal-social-compact img {
+    min-height: 0 !important;
+    max-height: none !important;
+}
+
+
+/* =========================================================
+   ALL CASE STUDIES — SMALLER DESKTOP MACBOOK MOCKUPS
+========================================================= */
+
+/* The card/grid composition stays the same.
+   Only the device itself becomes slightly smaller and centered. */
+@media (min-width: 901px) {
+
+    .portfolio-case-study .desktop-showcase-laptop,
+    .project-snpc .desktop-showcase-laptop,
+    .project-eternal .desktop-showcase-laptop,
+    .project-promptchecker .desktop-showcase-laptop {
+        width: 88% !important;
+
+        max-width: 980px;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 32px;
+    }
+
+
+    /* Captions align visually with the smaller laptop instead of
+       stretching to the full parent card width. */
+    .portfolio-case-study .compact-screen-card > figcaption,
+    .project-snpc .compact-project-screen > figcaption,
+    .project-eternal .compact-project-screen > figcaption,
+    .project-promptchecker .compact-project-screen > figcaption {
+        width: 88%;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+
+/* Laptop-scale hover remains subtle after shrinking. */
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+
+    .compact-screen-card:hover > .desktop-showcase-laptop,
+    .compact-project-screen:hover > .desktop-showcase-laptop {
+        transform: translateY(-7px) !important;
+    }
+
+}
+
+
+/* On tablets and phones, keep the available width.
+   Shrinking again there would make screenshots hard to read. */
+@media (max-width: 900px) {
+
+    .portfolio-case-study .desktop-showcase-laptop,
+    .project-snpc .desktop-showcase-laptop,
+    .project-eternal .desktop-showcase-laptop,
+    .project-promptchecker .desktop-showcase-laptop {
+        width: 100% !important;
+
+        max-width: none;
+    }
+
+
+    .portfolio-case-study .compact-screen-card > figcaption,
+    .project-snpc .compact-project-screen > figcaption,
+    .project-eternal .compact-project-screen > figcaption,
+    .project-promptchecker .compact-project-screen > figcaption {
+        width: 100%;
+    }
+
+
+    .project-eternal .eternal-collateral-compact img,
+    .project-eternal .eternal-social-compact img {
+        width: 100% !important;
+    }
+
+}
+
+
+
+
+
+/* ================================================================
+   ETERNAL SHUTTERWAVE — CRISP COLLATERAL PRESENTATION
+   Show raster assets near their natural display size rather than
+   enlarging them into oversized portfolio blocks.
+================================================================ */
+
+
+/* ---------------------------------------------------------
+   NAME CARDS
+   Source: 700 × 400
+   Desktop display is deliberately capped so the artwork remains
+   visually crisp on high-DPI screens.
+--------------------------------------------------------- */
+
+.project-eternal .eternal-collateral-compact {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr)) !important;
+
+    gap:
+        clamp(28px, 4vw, 64px) !important;
+
+    align-items: start !important;
+
+    max-width: 900px;
+
+    margin:
+        0
+        auto !important;
+}
+
+
+.project-eternal .eternal-collateral-compact figure,
+.project-eternal .eternal-collateral-compact figure:nth-child(n) {
+    grid-column: auto !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+.project-eternal .eternal-collateral-compact img,
+.project-eternal .eternal-collateral-compact figure:nth-child(n) img {
+    /* 340 CSS px keeps the 700px source close to 2× density */
+    width: min(100%, 340px) !important;
+
+    height: auto !important;
+
+    max-width: 340px !important;
+    max-height: none !important;
+
+    aspect-ratio: 7 / 4 !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    display: block;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0
+        22px
+        55px
+        rgba(0,0,0,0.28);
+
+    image-rendering: auto;
+
+    transform: translateZ(0);
+}
+
+
+.project-eternal .eternal-collateral-compact figcaption {
+    width: min(100%, 340px);
+
+    margin-top: 13px !important;
+
+    color:
+        rgba(244,241,233,0.70);
+
+    text-align: left;
+
+    font-size: 11px !important;
+
+    font-weight: 700;
+
+    letter-spacing: 0.02em;
+}
+
+
+/* Add a restrained "print table" behind the cards so they read as
+   physical collateral rather than floating low-resolution images. */
+.project-eternal .eternal-collateral-compact::before {
+    content: "";
+
+    position: absolute;
+
+    inset:
+        -32px
+        -4vw;
+
+    z-index: -1;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.025),
+            rgba(255,255,255,0)
+        );
+
+    pointer-events: none;
+}
+
+
+.project-eternal .eternal-collateral-compact {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ---------------------------------------------------------
+   SOCIAL MEDIA TEMPLATES
+   Source: 1080 × 1080
+   Keep each post comfortably below its native resolution and
+   remove the old stagger that made the set feel uneven.
+--------------------------------------------------------- */
+
+.project-eternal .eternal-social-compact {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr)) !important;
+
+    gap:
+        clamp(22px, 3vw, 42px) !important;
+
+    align-items: start !important;
+
+    max-width: 1040px;
+
+    margin:
+        95px
+        auto
+        0 !important;
+
+    padding-top: 55px;
+}
+
+
+.project-eternal .eternal-social-compact figure,
+.project-eternal .eternal-social-compact figure:nth-child(n) {
+    grid-column: auto !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+}
+
+
+.project-eternal .eternal-social-compact img,
+.project-eternal .eternal-social-compact figure:nth-child(n) img {
+    width: min(100%, 300px) !important;
+
+    height: auto !important;
+
+    max-width: 300px !important;
+    max-height: none !important;
+
+    aspect-ratio: 1 / 1 !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    display: block;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0
+        22px
+        55px
+        rgba(0,0,0,0.25);
+
+    image-rendering: auto;
+
+    transform: translateZ(0);
+
+    transition:
+        transform
+        0.55s
+        cubic-bezier(0.16,1,0.3,1),
+        box-shadow
+        0.4s
+        ease;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+
+    .project-eternal .eternal-social-compact figure:hover img {
+        transform:
+            translateY(-6px)
+            translateZ(0) !important;
+
+        box-shadow:
+            0
+            28px
+            70px
+            rgba(0,0,0,0.31);
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .project-eternal .eternal-collateral-compact {
+        max-width: 760px;
+
+        gap: 24px !important;
+    }
+
+
+    .project-eternal .eternal-collateral-compact img,
+    .project-eternal .eternal-collateral-compact figure:nth-child(n) img {
+        width: 100% !important;
+
+        max-width: 340px !important;
+    }
+
+
+    .project-eternal .eternal-social-compact {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr)) !important;
+
+        gap: 18px !important;
+    }
+
+
+    .project-eternal .eternal-social-compact img,
+    .project-eternal .eternal-social-compact figure:nth-child(n) img {
+        width: 100% !important;
+
+        max-width: 280px !important;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+    .project-eternal .eternal-collateral-compact {
+        grid-template-columns: 1fr !important;
+
+        gap: 36px !important;
+
+        max-width: 360px;
+    }
+
+
+    .project-eternal .eternal-collateral-compact::before {
+        inset:
+            -24px
+            -14px;
+    }
+
+
+    .project-eternal .eternal-collateral-compact img,
+    .project-eternal .eternal-collateral-compact figure:nth-child(n) img {
+        width: min(100%, 340px) !important;
+    }
+
+
+    .project-eternal .eternal-social-compact {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        gap:
+            18px
+            14px !important;
+
+        max-width: 620px;
+    }
+
+
+    .project-eternal .eternal-social-compact figure:nth-child(3) {
+        grid-column: 1 / -1 !important;
+
+        justify-self: center;
+
+        width: calc(50% - 7px) !important;
+    }
+
+
+    .project-eternal .eternal-social-compact img,
+    .project-eternal .eternal-social-compact figure:nth-child(n) img {
+        width: 100% !important;
+
+        max-width: 260px !important;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   VERY SMALL MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 420px) {
+
+    .project-eternal .eternal-social-compact {
+        grid-template-columns: 1fr !important;
+
+        max-width: 300px;
+    }
+
+
+    .project-eternal .eternal-social-compact figure:nth-child(3) {
+        grid-column: auto !important;
+
+        width: 100% !important;
+    }
+
+}
