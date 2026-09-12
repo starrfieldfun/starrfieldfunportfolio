@@ -1,0 +1,1477 @@
+/* =========================================
+   STARRFIELD FUN
+   CONTACT EXPERIENCE
+
+   Concept:
+   Communication signal × editorial interface
+========================================= */
+
+
+/* =========================================
+   CONTACT HERO
+========================================= */
+
+.contact-living-hero {
+    background-color: #F5F2EA;
+}
+
+
+/* =========================================
+   HERO STAGE
+========================================= */
+
+.contact-living-hero
+.living-hero-stage {
+    grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(420px, 0.92fr);
+
+    gap: 7vw;
+}
+
+
+/* =========================================
+   CONTACT HERO TITLE
+========================================= */
+
+.contact-living-hero
+.living-hero-title span {
+    color: #FF7657;
+}
+
+
+/* =========================================
+   SIGNAL CONSOLE
+========================================= */
+
+.contact-signal-console {
+    width: 100%;
+
+    max-width: 650px;
+
+    justify-self: end;
+
+    padding: 22px;
+
+    border:
+        1px solid
+        rgba(21, 22, 25, 0.2);
+
+    border-radius: 30px;
+
+    background:
+        rgba(245, 242, 234, 0.72);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0
+        24px
+        70px
+        rgba(21, 22, 25, 0.08);
+}
+
+
+/* =========================================
+   SIGNAL HEADER
+========================================= */
+
+.contact-signal-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        2px
+        3px
+        18px;
+
+    border-bottom:
+        1px solid
+        rgba(21, 22, 25, 0.14);
+
+    color: #67696E;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+
+.contact-signal-live {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.contact-signal-live::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #D8FF68;
+
+    border:
+        1px solid
+        #151619;
+
+    animation:
+        contactLivePulse
+        2s
+        ease-out
+        infinite;
+}
+
+
+/* =========================================
+   SIGNAL FIELD
+========================================= */
+
+.contact-signal-field {
+    position: relative;
+
+    min-height: 330px;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background-color: #151619;
+
+    background-image:
+        linear-gradient(
+            rgba(245, 242, 234, 0.055) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(245, 242, 234, 0.055) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        42px
+        42px;
+
+    isolation: isolate;
+}
+
+
+/* =========================================
+   SUBTLE RADAR CIRCLES
+========================================= */
+
+.contact-signal-field::before,
+.contact-signal-field::after {
+    content: "";
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(245, 242, 234, 0.07);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.contact-signal-field::before {
+    width: 360px;
+    height: 360px;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+}
+
+
+.contact-signal-field::after {
+    width: 210px;
+    height: 210px;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+}
+
+
+/* =========================================
+   SIGNAL NODES
+========================================= */
+
+.contact-node {
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 4;
+
+    transform:
+        translateY(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.contact-node-you {
+    left: 10%;
+}
+
+
+.contact-node-me {
+    right: 10%;
+}
+
+
+.contact-node-point {
+    position: relative;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #F5F2EA;
+
+    border:
+        5px solid
+        #5965FF;
+
+    box-shadow:
+        0
+        0
+        0
+        0
+        rgba(89, 101, 255, 0.3);
+}
+
+
+.contact-node-me
+.contact-node-point {
+    border-color: #D8FF68;
+
+    animation:
+        contactDestinationLock
+        6s
+        ease
+        infinite;
+}
+
+
+.contact-node-point::after {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #151619;
+}
+
+
+.contact-node-label {
+    color: #F5F2EA;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+
+.contact-node-sub {
+    margin-top: -7px;
+
+    color: #777A80;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================
+   CONNECTION TRACK
+========================================= */
+
+.contact-signal-track {
+    position: absolute;
+
+    top: 50%;
+    left: 18%;
+    right: 18%;
+
+    height: 2px;
+
+    z-index: 2;
+
+    transform:
+        translateY(-50%);
+
+    background:
+        rgba(245, 242, 234, 0.14);
+
+    overflow: visible;
+}
+
+
+/* =========================================
+   GROWING CONNECTION
+========================================= */
+
+.contact-signal-track::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transform:
+        scaleX(0);
+
+    transform-origin:
+        left center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5965FF,
+            #D8FF68
+        );
+
+    box-shadow:
+        0
+        0
+        16px
+        rgba(216, 255, 104, 0.28);
+
+    animation:
+        contactConnectionBuild
+        6s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        )
+        infinite;
+}
+
+
+/* =========================================
+   MOVING SIGNAL PACKET
+========================================= */
+
+.contact-signal-packet {
+    position: absolute;
+
+    top: 50%;
+    left: 18%;
+
+    z-index: 5;
+
+    width: 12px;
+    height: 12px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 4px;
+
+    background: #D8FF68;
+
+    border:
+        2px solid
+        #151619;
+
+    box-shadow:
+        0
+        0
+        0
+        5px
+        rgba(216, 255, 104, 0.09),
+        0
+        0
+        24px
+        rgba(216, 255, 104, 0.26);
+
+    opacity: 0;
+
+    animation:
+        contactPacketTravel
+        6s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        )
+        infinite;
+}
+
+
+/* =========================================
+   CONNECTION STATUS
+========================================= */
+
+.contact-signal-status {
+    position: absolute;
+
+    left: 50%;
+    bottom: 26px;
+
+    z-index: 6;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        10px
+        14px;
+
+    border:
+        1px solid
+        rgba(245, 242, 234, 0.18);
+
+    border-radius: 999px;
+
+    background:
+        rgba(21, 22, 25, 0.82);
+
+    color:
+        rgba(245, 242, 234, 0.56);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+
+    white-space: nowrap;
+
+    animation:
+        contactStatusLock
+        6s
+        ease
+        infinite;
+}
+
+
+/* =========================================
+   CORNER SYSTEM MARKS
+========================================= */
+
+.contact-corner {
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+
+    z-index: 3;
+
+    opacity: 0.6;
+}
+
+
+.contact-corner::before,
+.contact-corner::after {
+    content: "";
+
+    position: absolute;
+
+    background:
+        rgba(245, 242, 234, 0.7);
+}
+
+
+.contact-corner::before {
+    width: 35px;
+    height: 1px;
+}
+
+
+.contact-corner::after {
+    width: 1px;
+    height: 35px;
+}
+
+
+.contact-corner-tl {
+    top: 18px;
+    left: 18px;
+}
+
+
+.contact-corner-tl::before,
+.contact-corner-tl::after {
+    top: 0;
+    left: 0;
+}
+
+
+.contact-corner-tr {
+    top: 18px;
+    right: 18px;
+}
+
+
+.contact-corner-tr::before {
+    top: 0;
+    right: 0;
+}
+
+
+.contact-corner-tr::after {
+    top: 0;
+    right: 0;
+}
+
+
+.contact-corner-bl {
+    left: 18px;
+    bottom: 18px;
+}
+
+
+.contact-corner-bl::before {
+    bottom: 0;
+    left: 0;
+}
+
+
+.contact-corner-bl::after {
+    bottom: 0;
+    left: 0;
+}
+
+
+.contact-corner-br {
+    right: 18px;
+    bottom: 18px;
+}
+
+
+.contact-corner-br::before {
+    right: 0;
+    bottom: 0;
+}
+
+
+.contact-corner-br::after {
+    right: 0;
+    bottom: 0;
+}
+
+
+/* =========================================
+   CHANNEL FOOTER
+========================================= */
+
+.contact-signal-footer {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 7px;
+
+    margin-top: 15px;
+}
+
+
+.contact-channel {
+    padding:
+        10px
+        8px;
+
+    border:
+        1px solid
+        rgba(21, 22, 25, 0.14);
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    color: #65676C;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================
+   CONTACT FORM AREA
+========================================= */
+
+.contact-channel-section {
+    padding:
+        150px
+        4vw;
+
+    display: grid;
+
+    grid-template-columns:
+        0.7fr
+        1.3fr;
+
+    gap: 8vw;
+
+    align-items: start;
+
+    background: #151619;
+
+    color: #F5F2EA;
+}
+
+
+/* =========================================
+   CONTACT SIDE
+========================================= */
+
+.contact-channel-side {
+    position: sticky;
+
+    top: 130px;
+}
+
+
+.contact-channel-number {
+    margin-bottom: 34px;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-size:
+        clamp(
+            90px,
+            10vw,
+            160px
+        );
+
+    line-height: 0.75;
+
+    color: #5965FF;
+}
+
+
+.contact-channel-side h2 {
+    max-width: 580px;
+
+    font-size:
+        clamp(
+            44px,
+            5vw,
+            78px
+        );
+
+    line-height: 0.92;
+
+    letter-spacing: -0.05em;
+
+    font-weight: 600;
+}
+
+
+.contact-channel-side h2 span {
+    display: block;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: #FF7657;
+}
+
+
+.contact-channel-side > p {
+    max-width: 500px;
+
+    margin-top: 32px;
+
+    color: #9D9FA3;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   DIRECT EMAIL
+========================================= */
+
+.contact-direct-block {
+    margin-top: 50px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid
+        rgba(245, 242, 234, 0.15);
+}
+
+
+.contact-direct-block > span {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: #D8FF68;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+
+.contact-direct-block a {
+    display: inline-block;
+
+    color: #F5F2EA;
+
+    font-size:
+        clamp(
+            15px,
+            1.6vw,
+            21px
+        );
+
+    font-weight: 600;
+
+    padding-bottom: 5px;
+
+    border-bottom:
+        1px solid
+        rgba(245, 242, 234, 0.3);
+
+    transition:
+        color
+        0.3s
+        ease,
+        border-color
+        0.3s
+        ease;
+}
+
+
+.contact-direct-block a:hover {
+    color: #D8FF68;
+
+    border-color: #D8FF68;
+}
+
+
+/* =========================================
+   AVAILABILITY
+========================================= */
+
+.contact-open-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 30px;
+
+    color: #A5A6A9;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+}
+
+
+.contact-open-status::before {
+    content: "";
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #D8FF68;
+
+    animation:
+        contactLivePulse
+        2s
+        ease-out
+        infinite;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.contact-channel-form {
+    padding:
+        15px
+        0;
+
+    border-top:
+        1px solid
+        rgba(245, 242, 234, 0.2);
+}
+
+
+/* override existing contact styles safely */
+
+.contact-channel-form
+.form-field {
+    margin: 0;
+
+    padding:
+        32px
+        0;
+
+    border-bottom:
+        1px solid
+        rgba(245, 242, 234, 0.15);
+}
+
+
+.contact-channel-form
+.form-field label {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #D8FF68;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+.contact-channel-form
+.form-field input,
+.contact-channel-form
+.form-field textarea {
+    width: 100%;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    resize: vertical;
+
+    background: transparent;
+
+    color: #F5F2EA;
+
+    font-family:
+        "Manrope",
+        sans-serif;
+
+    font-size:
+        clamp(
+            22px,
+            2.4vw,
+            36px
+        );
+
+    line-height: 1.35;
+
+    letter-spacing: -0.035em;
+}
+
+
+.contact-channel-form
+.form-field textarea {
+    min-height: 180px;
+}
+
+
+.contact-channel-form
+.form-field input::placeholder,
+.contact-channel-form
+.form-field textarea::placeholder {
+    color:
+        rgba(245, 242, 234, 0.28);
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.contact-channel-form
+.form-field:focus-within {
+    border-color: #5965FF;
+}
+
+
+.contact-channel-form
+.form-field:focus-within label {
+    color: #5965FF;
+}
+
+
+/* =========================================
+   SEND BUTTON
+========================================= */
+
+.contact-channel-form
+.send-button {
+    width: 100%;
+
+    margin-top: 45px;
+
+    padding:
+        22px
+        26px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border: 0;
+
+    border-radius: 18px;
+
+    background: #D8FF68;
+
+    color: #151619;
+
+    font-family:
+        "Manrope",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+
+    cursor: pointer;
+
+    transition:
+        transform
+        0.45s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        background
+        0.3s
+        ease;
+}
+
+
+.contact-channel-form
+.send-button:hover {
+    transform:
+        translateY(-5px);
+
+    background: #F5F2EA;
+}
+
+
+.contact-channel-form
+.send-arrow {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #151619;
+
+    color: #D8FF68;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   FORM NOTE
+========================================= */
+
+.contact-channel-form
+.form-note {
+    margin-top: 18px;
+
+    color: #74767B;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   SIGNAL ANIMATIONS
+========================================= */
+
+@keyframes contactConnectionBuild {
+
+    0%,
+    12% {
+        transform:
+            scaleX(0);
+
+        opacity: 0;
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    48%,
+    78% {
+        transform:
+            scaleX(1);
+
+        opacity: 1;
+    }
+
+    92%,
+    100% {
+        transform:
+            scaleX(0);
+
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes contactPacketTravel {
+
+    0%,
+    12% {
+        left: 18%;
+
+        opacity: 0;
+    }
+
+    17% {
+        left: 18%;
+
+        opacity: 1;
+    }
+
+    48% {
+        left: 82%;
+
+        opacity: 1;
+    }
+
+    55%,
+    78% {
+        left: 82%;
+
+        opacity: 0;
+    }
+
+    100% {
+        left: 18%;
+
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes contactDestinationLock {
+
+    0%,
+    43% {
+        box-shadow:
+            0
+            0
+            0
+            0
+            rgba(216, 255, 104, 0);
+    }
+
+    50%,
+    76% {
+        box-shadow:
+            0
+            0
+            0
+            12px
+            rgba(216, 255, 104, 0.1),
+            0
+            0
+            32px
+            rgba(216, 255, 104, 0.3);
+    }
+
+    90%,
+    100% {
+        box-shadow:
+            0
+            0
+            0
+            0
+            rgba(216, 255, 104, 0);
+    }
+
+}
+
+
+@keyframes contactStatusLock {
+
+    0%,
+    43% {
+        color:
+            rgba(245, 242, 234, 0.5);
+
+        border-color:
+            rgba(245, 242, 234, 0.18);
+
+        background:
+            rgba(21, 22, 25, 0.82);
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    50%,
+    78% {
+        color: #151619;
+
+        border-color: #D8FF68;
+
+        background: #D8FF68;
+
+        transform:
+            translateX(-50%)
+            scale(1.04);
+    }
+
+    90%,
+    100% {
+        color:
+            rgba(245, 242, 234, 0.5);
+
+        border-color:
+            rgba(245, 242, 234, 0.18);
+
+        background:
+            rgba(21, 22, 25, 0.82);
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+}
+
+
+@keyframes contactLivePulse {
+
+    0% {
+        box-shadow:
+            0
+            0
+            0
+            0
+            rgba(216, 255, 104, 0.65);
+    }
+
+    70% {
+        box-shadow:
+            0
+            0
+            0
+            9px
+            rgba(216, 255, 104, 0);
+    }
+
+    100% {
+        box-shadow:
+            0
+            0
+            0
+            0
+            rgba(216, 255, 104, 0);
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .contact-living-hero
+    .living-hero-stage {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(360px, 0.9fr);
+
+        gap: 4vw;
+    }
+
+
+    .contact-channel-section {
+        grid-template-columns:
+            0.8fr
+            1.2fr;
+
+        gap: 6vw;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .contact-living-hero
+    .living-hero-stage {
+        grid-template-columns: 1fr;
+
+        gap: 65px;
+    }
+
+
+    .contact-signal-console {
+        justify-self: start;
+
+        max-width: 650px;
+    }
+
+
+    .contact-channel-section {
+        padding:
+            100px
+            20px;
+
+        grid-template-columns: 1fr;
+
+        gap: 80px;
+    }
+
+
+    .contact-channel-side {
+        position: static;
+    }
+
+
+    .contact-channel-number {
+        font-size: 110px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 560px) {
+
+    .contact-signal-console {
+        padding: 12px;
+
+        border-radius: 21px;
+    }
+
+
+    .contact-signal-field {
+        min-height: 270px;
+
+        border-radius: 15px;
+    }
+
+
+    .contact-node-you {
+        left: 7%;
+    }
+
+
+    .contact-node-me {
+        right: 7%;
+    }
+
+
+    .contact-node-point {
+        width: 27px;
+        height: 27px;
+
+        border-width: 4px;
+    }
+
+
+    .contact-node-label {
+        font-size: 7px;
+    }
+
+
+    .contact-node-sub {
+        display: none;
+    }
+
+
+    .contact-signal-track {
+        left: 17%;
+        right: 17%;
+    }
+
+
+    .contact-signal-packet {
+        left: 17%;
+    }
+
+
+    .contact-signal-status {
+        bottom: 20px;
+
+        font-size: 6px;
+    }
+
+
+    .contact-signal-footer {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .contact-channel-form
+    .form-field input,
+    .contact-channel-form
+    .form-field textarea {
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .contact-signal-live::before,
+    .contact-open-status::before,
+    .contact-signal-track::before,
+    .contact-signal-packet,
+    .contact-node-me .contact-node-point,
+    .contact-signal-status {
+        animation: none;
+    }
+
+
+    .contact-signal-track::before {
+        transform:
+            scaleX(1);
+
+        opacity: 1;
+    }
+
+
+    .contact-signal-packet {
+        display: none;
+    }
+
+
+    .contact-signal-status {
+        color: #151619;
+
+        border-color: #D8FF68;
+
+        background: #D8FF68;
+    }
+
+}

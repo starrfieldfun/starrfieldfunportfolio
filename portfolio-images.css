@@ -1,0 +1,235 @@
+/* =========================================
+   REAL PROJECT COVER IMAGES
+========================================= */
+
+.real-project-cover {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    min-height: 0 !important;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background: #E9EAF0;
+
+    border-radius: 26px;
+}
+
+
+.project-cover-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: top center;
+
+    border-radius: 26px;
+
+    transition:
+        transform
+        0.8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+}
+
+
+.project-preview:hover
+.project-cover-image {
+    transform:
+        scale(1.025);
+}
+
+
+.work-card:hover
+.project-cover-image {
+    transform:
+        scale(1.02);
+}
+
+
+/* =========================================
+   FEATURED PROJECT BADGES
+========================================= */
+
+.real-project-cover
+.project-badge {
+    z-index: 6;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        0
+        8px
+        25px
+        rgba(0, 0, 0, 0.16);
+
+    backdrop-filter:
+        blur(4px);
+
+    -webkit-backdrop-filter:
+        blur(4px);
+}
+
+
+/* =========================================
+   PROJECT 01
+   MYBUSFINDER
+========================================= */
+
+.project-preview-grid
+.project-preview:nth-child(1)
+.project-badge {
+    background: #FF7657;
+
+    color: #151619;
+}
+
+
+/* =========================================
+   PROJECT 02
+   SINGAPORE NATIONAL PARALYMPICS COUNCIL
+========================================= */
+
+.project-preview-grid
+.project-preview:nth-child(2)
+.project-badge {
+    background: #D8FF68;
+
+    color: #151619;
+}
+
+
+/* =========================================
+   PROJECT 03
+   ETERNAL SHUTTERWAVE
+========================================= */
+
+.project-preview-grid
+.project-preview:nth-child(3)
+.project-badge {
+    background: #5965FF;
+
+    color: #FFFFFF;
+}
+
+
+/* =========================================
+   PROJECT 04
+   PROMPTCHECKER
+========================================= */
+
+.project-preview-grid
+.project-preview:nth-child(4)
+.project-badge {
+    background: #151619;
+
+    color: #F5F2EA;
+}
+
+
+/* =========================================
+   HOVER LABELS
+========================================= */
+
+.real-project-cover
+.project-hover-label {
+    z-index: 6;
+}
+
+
+/* =========================================
+   SUBTLE IMAGE OVERLAY
+========================================= */
+
+.real-project-cover::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.025),
+            transparent 25%,
+            transparent 75%,
+            rgba(0, 0, 0, 0.07)
+        );
+}
+
+
+/* =========================================
+   WORK PAGE
+========================================= */
+
+.work-card-visual.real-project-cover {
+    aspect-ratio: 16 / 9;
+
+    min-height: 0;
+
+    border-radius: 26px;
+}
+
+
+/* =========================================
+   HOME PROJECTS
+========================================= */
+
+.project-preview
+.real-project-cover {
+    border-radius: 26px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .real-project-cover {
+        aspect-ratio: 16 / 9;
+
+        border-radius: 20px;
+    }
+
+
+    .project-cover-image {
+        border-radius: 20px;
+    }
+
+
+    .work-card-visual.real-project-cover {
+        min-height: 0;
+
+        border-radius: 20px;
+    }
+
+
+    .real-project-cover
+    .project-badge {
+        box-shadow:
+            0
+            6px
+            18px
+            rgba(0, 0, 0, 0.15);
+    }
+
+}

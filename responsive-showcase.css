@@ -1,0 +1,850 @@
+/* =========================================
+   STARRFIELD FUN
+   RESPONSIVE SHOWCASE
+========================================= */
+
+
+/* =========================================
+   MAIN SECTION
+========================================= */
+
+.responsive-showcase {
+    margin: 30px 0 60px;
+
+    padding:
+        90px
+        4vw;
+
+    background: #151619;
+
+    color: #F5F2EA;
+
+    border-radius: 35px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.responsive-heading {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        0.8fr;
+
+    gap: 8vw;
+
+    align-items: end;
+
+    margin-bottom: 100px;
+}
+
+
+.responsive-label {
+    margin-bottom: 25px;
+
+    color: #D8FF68;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.17em;
+}
+
+
+.responsive-heading h2 {
+    font-size:
+        clamp(
+            55px,
+            7vw,
+            115px
+        );
+
+    line-height: 0.88;
+
+    letter-spacing: -0.06em;
+
+    font-weight: 600;
+}
+
+
+.responsive-heading h2 span {
+    display: block;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: #5965FF;
+}
+
+
+.responsive-description {
+    max-width: 480px;
+
+    font-size: 17px;
+
+    line-height: 1.75;
+
+    color: #C4C4C4;
+}
+
+
+/* =========================================
+   DEVICE LABELS
+========================================= */
+
+.responsive-device-labels {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(210px, 0.35fr);
+
+    gap:
+        clamp(
+            45px,
+            6vw,
+            100px
+        );
+
+    padding:
+        18px
+        0;
+
+    margin-bottom: 35px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.17);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.17);
+
+    color: #A0A0A0;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================================
+   DEVICE STAGE
+========================================= */
+
+.device-stage {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(210px, 0.35fr);
+
+    gap:
+        clamp(
+            45px,
+            6vw,
+            100px
+        );
+
+    align-items: center;
+
+    padding:
+        70px
+        0
+        40px;
+}
+
+
+.device-column {
+    min-width: 0;
+}
+
+
+/* =========================================
+   DESKTOP DEVICE
+   1920 × 1080 / 16:9
+========================================= */
+
+.desktop-device {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    padding: 9px;
+
+    border-radius: 24px;
+
+    background: #050506;
+
+    box-shadow:
+        0
+        40px
+        120px
+        rgba(0, 0, 0, 0.45);
+
+    overflow: hidden;
+
+    transition:
+        transform
+        0.8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+}
+
+
+.desktop-column:hover
+.desktop-device {
+    transform:
+        translateY(-10px)
+        rotate(-0.4deg);
+}
+
+
+.desktop-camera {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 4px;
+    left: 50%;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #555555;
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* =========================================
+   IMPORTANT FIX:
+   NO WHITE PADDING AROUND DESKTOP IMAGE
+========================================= */
+
+.desktop-screen {
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+
+    border-radius: 16px;
+
+    background: #050506;
+
+    overflow: hidden;
+}
+
+
+.responsive-real-desktop {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: top center;
+
+    border-radius: 16px;
+}
+
+
+/* =========================================
+   PHONE
+========================================= */
+
+.mobile-column {
+    align-self: center;
+}
+
+
+.phone-device {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 270px;
+
+    margin: 0 auto;
+
+    padding: 8px;
+
+    border-radius: 42px;
+
+    background: #050506;
+
+    box-shadow:
+        0
+        35px
+        90px
+        rgba(0, 0, 0, 0.45);
+
+    overflow: hidden;
+
+    transition:
+        transform
+        0.8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+}
+
+
+.mobile-column:hover
+.phone-device {
+    transform:
+        translateY(-12px)
+        rotate(-2deg);
+}
+
+
+.phone-speaker {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 14px;
+    left: 50%;
+
+    width: 48px;
+    height: 13px;
+
+    border-radius: 100px;
+
+    background: #050506;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.responsive-showcase
+.responsive-phone-screen {
+    width: 100%;
+
+    min-height: 0;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border-radius: 34px;
+
+    background: white;
+}
+
+
+.responsive-real-mobile {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    border-radius: 34px;
+}
+
+
+/* =========================================
+   DEVICE CAPTIONS
+========================================= */
+
+.device-caption {
+    display: grid;
+
+    grid-template-columns:
+        36px
+        1fr;
+
+    gap: 14px;
+
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.17);
+}
+
+
+.device-caption > span {
+    color: #D8FF68;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+.device-caption strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 16px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+}
+
+
+.device-caption p {
+    color: #B0B0B0;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   RESPONSIVE ENDING
+========================================= */
+
+.responsive-ending {
+    margin-top: 120px;
+
+    padding-top: 40px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.2);
+}
+
+
+.responsive-ending > p:first-child {
+    margin-bottom: 22px;
+
+    color: #D8FF68;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+.responsive-ending h3 {
+    max-width: 850px;
+
+    font-size:
+        clamp(
+            50px,
+            7vw,
+            110px
+        );
+
+    line-height: 0.88;
+
+    letter-spacing: -0.06em;
+}
+
+
+.responsive-ending h3 span {
+    display: block;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: #FF7657;
+}
+
+
+.responsive-ending > p:last-child {
+    max-width: 540px;
+
+    margin-top: 35px;
+
+    margin-left: auto;
+
+    color: #B5B5B5;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   VIEW FULL PROJECT
+========================================= */
+
+.view-more-button {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin:
+        35px
+        0
+        120px;
+
+    padding:
+        32px
+        30px;
+
+    border: 0;
+
+    border-radius: 24px;
+
+    background: #D8FF68;
+
+    color: #151619;
+
+    overflow: hidden;
+
+    transition:
+        transform
+        0.45s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        padding
+        0.45s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        background
+        0.3s
+        ease;
+}
+
+
+.view-more-copy {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 9px;
+}
+
+
+.view-more-small {
+    color:
+        rgba(21, 22, 25, 0.58);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+
+.view-more-copy strong {
+    font-size:
+        clamp(
+            32px,
+            4vw,
+            65px
+        );
+
+    line-height: 0.95;
+
+    letter-spacing: -0.05em;
+
+    font-weight: 600;
+}
+
+
+.view-more-arrow {
+    flex:
+        0
+        0
+        auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    background: #5965FF;
+
+    color: white;
+
+    font-size: 21px;
+
+    transition:
+        transform
+        0.45s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        background
+        0.3s
+        ease;
+}
+
+
+.view-more-button:hover {
+    padding-left: 42px;
+    padding-right: 42px;
+
+    background: #E3FF8B;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.view-more-button:hover
+.view-more-arrow {
+    transform:
+        translate(5px, -5px)
+        rotate(8deg)
+        scale(1.06);
+
+    background: #FF7657;
+}
+
+
+.bus-view-more {
+    margin:
+        35px
+        0
+        120px;
+
+    padding:
+        32px
+        30px;
+}
+
+
+/* =========================================
+   SMALL DESKTOP
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .device-stage {
+        grid-template-columns:
+            minmax(0, 1.35fr)
+            minmax(200px, 0.45fr);
+
+        gap: 45px;
+    }
+
+
+    .responsive-device-labels {
+        grid-template-columns:
+            minmax(0, 1.35fr)
+            minmax(200px, 0.45fr);
+
+        gap: 45px;
+    }
+
+}
+
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .responsive-showcase {
+        padding:
+            70px
+            25px;
+
+        border-radius: 26px;
+    }
+
+
+    .responsive-heading {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        margin-bottom: 70px;
+    }
+
+
+    .responsive-device-labels {
+        display: none;
+    }
+
+
+    .device-stage {
+        grid-template-columns: 1fr;
+
+        gap: 80px;
+
+        padding:
+            30px
+            0;
+    }
+
+
+    .desktop-device {
+        width: 100%;
+
+        aspect-ratio: 16 / 9;
+    }
+
+
+    .phone-device {
+        max-width: 300px;
+    }
+
+
+    .responsive-ending {
+        margin-top: 90px;
+    }
+
+
+    .responsive-ending > p:last-child {
+        margin-left: 0;
+    }
+
+
+    .view-more-button,
+    .bus-view-more {
+        margin-bottom: 100px;
+
+        padding:
+            27px
+            22px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media (max-width: 520px) {
+
+    .responsive-showcase {
+        padding:
+            55px
+            18px;
+
+        border-radius: 20px;
+    }
+
+
+    .responsive-heading h2 {
+        font-size: 14vw;
+    }
+
+
+    .responsive-description {
+        font-size: 15px;
+    }
+
+
+    .desktop-device {
+        padding: 5px;
+
+        border-radius: 14px;
+    }
+
+
+    .desktop-screen,
+    .responsive-real-desktop {
+        border-radius: 9px;
+    }
+
+
+    .device-caption strong {
+        font-size: 15px;
+    }
+
+
+    .device-caption p {
+        font-size: 12px;
+    }
+
+
+    .responsive-ending h3 {
+        font-size: 13vw;
+    }
+
+
+    .view-more-button,
+    .bus-view-more {
+        margin-top: 25px;
+
+        margin-bottom: 80px;
+
+        padding:
+            24px
+            18px;
+
+        border-radius: 18px;
+    }
+
+
+    .view-more-copy strong {
+        font-size: 28px;
+    }
+
+
+    .view-more-arrow {
+        width: 48px;
+        height: 48px;
+
+        font-size: 17px;
+    }
+
+}

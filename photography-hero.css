@@ -1,0 +1,2269 @@
+/* =========================================
+   STARRFIELD FUN
+   PHOTOGRAPHY EXPERIENCE
+
+   LIVING VIEWFINDER
+   +
+   CONTINUOUS EDITORIAL PHOTO STORY
+========================================= */
+
+
+/* =========================================
+   PHOTOGRAPHY HERO
+========================================= */
+
+.photography-living-hero {
+    background-color: #F5F2EA;
+}
+
+
+/* =========================================
+   HERO STAGE
+========================================= */
+
+.photography-living-hero
+.living-hero-stage {
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(420px, 0.85fr);
+
+    gap: 7vw;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.photography-living-hero
+.living-hero-title span {
+    color: #FF7657;
+}
+
+
+/* =========================================
+   VIEWFINDER
+========================================= */
+
+.photo-viewfinder {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 650px;
+
+    justify-self: end;
+
+    padding: 18px;
+
+    border:
+        1px solid
+        rgba(21, 22, 25, 0.22);
+
+    border-radius: 28px;
+
+    background:
+        rgba(245, 242, 234, 0.68);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0
+        24px
+        70px
+        rgba(21, 22, 25, 0.08);
+}
+
+
+/* =========================================
+   VIEWFINDER TOP BAR
+========================================= */
+
+.photo-viewfinder-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        2px
+        3px
+        15px;
+
+    color: #64666B;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+
+.photo-recording {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.photo-recording::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #FF7657;
+
+    animation:
+        photographyRecordPulse
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================
+   VIEWFINDER STAGE
+========================================= */
+
+.photo-viewfinder-stage {
+    position: relative;
+
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background-color: #151619;
+
+    background-image:
+        linear-gradient(
+            rgba(245, 242, 234, 0.07) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(245, 242, 234, 0.07) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(89, 101, 255, 0.16),
+            transparent 42%
+        );
+
+    background-size:
+        33.333% 33.333%,
+        33.333% 33.333%,
+        100% 100%;
+
+    isolation: isolate;
+}
+
+
+/* =========================================
+   CENTRAL APERTURE
+========================================= */
+
+.photo-aperture {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width:
+        clamp(
+            145px,
+            17vw,
+            240px
+        );
+
+    aspect-ratio: 1;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(0.9);
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            from 0deg,
+
+            #5965FF 0deg 40deg,
+            rgba(245, 242, 234, 0.08) 40deg 80deg,
+
+            #FF7657 80deg 120deg,
+            rgba(245, 242, 234, 0.08) 120deg 160deg,
+
+            #D8FF68 160deg 200deg,
+            rgba(245, 242, 234, 0.08) 200deg 240deg,
+
+            #5965FF 240deg 280deg,
+            rgba(245, 242, 234, 0.08) 280deg 320deg,
+
+            #FF7657 320deg 360deg
+        );
+
+    opacity: 0.78;
+
+    animation:
+        photographyAperture
+        8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        )
+        infinite;
+}
+
+
+.photo-aperture::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 18%;
+
+    border-radius: 50%;
+
+    background: #151619;
+
+    border:
+        1px solid
+        rgba(245, 242, 234, 0.16);
+}
+
+
+.photo-aperture::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 34%;
+
+    border-radius: 50%;
+
+    background: #F5F2EA;
+
+    opacity: 0.9;
+
+    box-shadow:
+        0
+        0
+        0
+        7px
+        rgba(245, 242, 234, 0.07);
+}
+
+
+/* =========================================
+   MOVING FOCUS BOX
+========================================= */
+
+.photo-focus-box {
+    position: absolute;
+
+    top: 25%;
+    left: 18%;
+
+    width:
+        clamp(
+            90px,
+            9vw,
+            140px
+        );
+
+    aspect-ratio: 1;
+
+    z-index: 5;
+
+    animation:
+        photographyFocusSearch
+        8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        )
+        infinite;
+}
+
+
+/* =========================================
+   FOCUS CORNERS
+========================================= */
+
+.photo-focus-corner {
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+}
+
+
+.photo-focus-corner::before,
+.photo-focus-corner::after {
+    content: "";
+
+    position: absolute;
+
+    background: #F5F2EA;
+}
+
+
+.photo-focus-corner::before {
+    width: 24px;
+    height: 2px;
+}
+
+
+.photo-focus-corner::after {
+    width: 2px;
+    height: 24px;
+}
+
+
+.photo-focus-corner-top-left {
+    top: 0;
+    left: 0;
+}
+
+
+.photo-focus-corner-top-left::before,
+.photo-focus-corner-top-left::after {
+    top: 0;
+    left: 0;
+}
+
+
+.photo-focus-corner-top-right {
+    top: 0;
+    right: 0;
+}
+
+
+.photo-focus-corner-top-right::before {
+    top: 0;
+    right: 0;
+}
+
+
+.photo-focus-corner-top-right::after {
+    top: 0;
+    right: 0;
+}
+
+
+.photo-focus-corner-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+
+.photo-focus-corner-bottom-left::before {
+    bottom: 0;
+    left: 0;
+}
+
+
+.photo-focus-corner-bottom-left::after {
+    bottom: 0;
+    left: 0;
+}
+
+
+.photo-focus-corner-bottom-right {
+    right: 0;
+    bottom: 0;
+}
+
+
+.photo-focus-corner-bottom-right::before {
+    right: 0;
+    bottom: 0;
+}
+
+
+.photo-focus-corner-bottom-right::after {
+    right: 0;
+    bottom: 0;
+}
+
+
+/* =========================================
+   CENTRE CROSSHAIR
+========================================= */
+
+.photo-crosshair {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 11px;
+    height: 11px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(245, 242, 234, 0.55);
+
+    z-index: 4;
+}
+
+
+.photo-crosshair::before,
+.photo-crosshair::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    background:
+        rgba(245, 242, 234, 0.45);
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+}
+
+
+.photo-crosshair::before {
+    width: 28px;
+    height: 1px;
+}
+
+
+.photo-crosshair::after {
+    width: 1px;
+    height: 28px;
+}
+
+
+/* =========================================
+   EXPOSURE SCAN
+========================================= */
+
+.photo-exposure-line {
+    position: absolute;
+
+    top: -5%;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    z-index: 6;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #5965FF,
+            #D8FF68,
+            #FF7657,
+            transparent
+        );
+
+    box-shadow:
+        0
+        0
+        20px
+        rgba(216, 255, 104, 0.22);
+
+    opacity: 0;
+
+    animation:
+        photographyExposureScan
+        8s
+        ease
+        infinite;
+}
+
+
+/* =========================================
+   VIEWFINDER OUTER CORNERS
+========================================= */
+
+.photo-frame-corner {
+    position: absolute;
+
+    width: 46px;
+    height: 46px;
+
+    z-index: 7;
+
+    pointer-events: none;
+}
+
+
+.photo-frame-corner::before,
+.photo-frame-corner::after {
+    content: "";
+
+    position: absolute;
+
+    background:
+        rgba(245, 242, 234, 0.85);
+}
+
+
+.photo-frame-corner::before {
+    width: 46px;
+    height: 2px;
+}
+
+
+.photo-frame-corner::after {
+    width: 2px;
+    height: 46px;
+}
+
+
+.photo-frame-corner-tl {
+    top: 18px;
+    left: 18px;
+}
+
+
+.photo-frame-corner-tl::before,
+.photo-frame-corner-tl::after {
+    top: 0;
+    left: 0;
+}
+
+
+.photo-frame-corner-tr {
+    top: 18px;
+    right: 18px;
+}
+
+
+.photo-frame-corner-tr::before {
+    top: 0;
+    right: 0;
+}
+
+
+.photo-frame-corner-tr::after {
+    top: 0;
+    right: 0;
+}
+
+
+.photo-frame-corner-bl {
+    left: 18px;
+    bottom: 18px;
+}
+
+
+.photo-frame-corner-bl::before {
+    bottom: 0;
+    left: 0;
+}
+
+
+.photo-frame-corner-bl::after {
+    bottom: 0;
+    left: 0;
+}
+
+
+.photo-frame-corner-br {
+    right: 18px;
+    bottom: 18px;
+}
+
+
+.photo-frame-corner-br::before {
+    right: 0;
+    bottom: 0;
+}
+
+
+.photo-frame-corner-br::after {
+    right: 0;
+    bottom: 0;
+}
+
+
+/* =========================================
+   FOCUS LOCK BADGE
+========================================= */
+
+.photo-focus-label {
+    position: absolute;
+
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 8;
+
+    padding:
+        9px
+        12px;
+
+    border:
+        1px solid
+        rgba(245, 242, 234, 0.24);
+
+    border-radius: 999px;
+
+    background:
+        rgba(21, 22, 25, 0.65);
+
+    color:
+        rgba(245, 242, 234, 0.6);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+    animation:
+        photographyFocusStatus
+        8s
+        ease
+        infinite;
+}
+
+
+/* =========================================
+   CAMERA DATA
+========================================= */
+
+.photo-viewfinder-bottom {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 10px;
+
+    padding:
+        16px
+        3px
+        1px;
+}
+
+
+.photo-viewfinder-bottom span {
+    color: #151619;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+
+.photo-viewfinder-bottom span:nth-child(2) {
+    text-align: center;
+}
+
+
+.photo-viewfinder-bottom span:last-child {
+    text-align: right;
+}
+
+
+/* =========================================
+   HERO BOTTOM
+========================================= */
+
+.photography-living-hero
+.living-hero-bottom-copy strong {
+    color: #151619;
+}
+
+
+/* =========================================
+   HERO ANIMATIONS
+========================================= */
+
+@keyframes photographyFocusSearch {
+
+    0% {
+        top: 23%;
+        left: 16%;
+
+        transform:
+            scale(0.86);
+    }
+
+    20% {
+        top: 20%;
+        left: 63%;
+
+        transform:
+            scale(0.86);
+    }
+
+    38% {
+        top: 58%;
+        left: 59%;
+
+        transform:
+            scale(0.92);
+    }
+
+    55%,
+    78% {
+        top: 50%;
+        left: 50%;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(1);
+
+        filter:
+            drop-shadow(
+                0
+                0
+                10px
+                rgba(216, 255, 104, 0.35)
+            );
+    }
+
+    90% {
+        top: 50%;
+        left: 50%;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(0.92);
+    }
+
+    100% {
+        top: 23%;
+        left: 16%;
+
+        transform:
+            scale(0.86);
+    }
+
+}
+
+
+@keyframes photographyAperture {
+
+    0% {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(0deg)
+            scale(0.88);
+
+        opacity: 0.5;
+    }
+
+    40% {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(50deg)
+            scale(0.94);
+
+        opacity: 0.7;
+    }
+
+    55%,
+    78% {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(90deg)
+            scale(1);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(140deg)
+            scale(0.88);
+
+        opacity: 0.5;
+    }
+
+}
+
+
+@keyframes photographyExposureScan {
+
+    0%,
+    43% {
+        top: -5%;
+
+        opacity: 0;
+    }
+
+    48% {
+        opacity: 1;
+    }
+
+    64% {
+        top: 105%;
+
+        opacity: 1;
+    }
+
+    69%,
+    100% {
+        top: 105%;
+
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes photographyFocusStatus {
+
+    0%,
+    45% {
+        color:
+            rgba(245, 242, 234, 0.5);
+
+        border-color:
+            rgba(245, 242, 234, 0.2);
+
+        background:
+            rgba(21, 22, 25, 0.65);
+    }
+
+    55%,
+    78% {
+        color: #151619;
+
+        border-color: #D8FF68;
+
+        background: #D8FF68;
+
+        box-shadow:
+            0
+            0
+            0
+            5px
+            rgba(216, 255, 104, 0.08);
+    }
+
+    88%,
+    100% {
+        color:
+            rgba(245, 242, 234, 0.5);
+
+        border-color:
+            rgba(245, 242, 234, 0.2);
+
+        background:
+            rgba(21, 22, 25, 0.65);
+
+        box-shadow: none;
+    }
+
+}
+
+
+@keyframes photographyRecordPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.28;
+    }
+
+}
+
+
+/* =========================================
+   CONTINUOUS PHOTO STORY
+========================================= */
+
+.photo-story {
+    padding:
+        150px
+        4vw
+        180px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            12,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        130px
+        24px;
+
+    overflow: hidden;
+
+    background: #151619;
+
+    color: #F5F2EA;
+}
+
+
+/* =========================================
+   STORY INTRO
+========================================= */
+
+.photo-story-intro {
+    grid-column:
+        1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        0.4fr
+        1.6fr;
+
+    gap: 6vw;
+
+    padding-bottom: 90px;
+
+    border-bottom:
+        1px solid
+        rgba(245, 242, 234, 0.18);
+}
+
+
+.photo-story-index {
+    color: #D8FF68;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+.photo-story-intro h2 {
+    max-width: 1150px;
+
+    font-size:
+        clamp(
+            55px,
+            7vw,
+            110px
+        );
+
+    line-height: 0.9;
+
+    letter-spacing: -0.055em;
+
+    font-weight: 600;
+}
+
+
+.photo-story-intro h2 span {
+    display: block;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: #FF7657;
+}
+
+
+.photo-story-intro
+div > p {
+    max-width: 620px;
+
+    margin:
+        40px
+        0
+        0
+        auto;
+
+    color: #A6A7A9;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   PHOTO SHOT BASE
+========================================= */
+
+.photo-shot {
+    margin: 0;
+}
+
+
+.photo-image-shell {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 26px;
+
+    background: #232427;
+}
+
+
+.photo-image-shell img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    transition:
+        transform
+        1.1s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+}
+
+
+.photo-shot:hover
+.photo-image-shell img {
+    transform:
+        scale(1.018);
+}
+
+
+/* =========================================
+   PHOTO CAPTION
+========================================= */
+
+.photo-shot figcaption {
+    display: grid;
+
+    grid-template-columns:
+        45px
+        1fr;
+
+    gap: 16px;
+
+    padding:
+        18px
+        3px
+        0;
+}
+
+
+.photo-shot figcaption > span {
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    color: #D8FF68;
+
+    font-size: 22px;
+
+    line-height: 1;
+}
+
+
+.photo-shot figcaption strong {
+    display: block;
+
+    color: #F5F2EA;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+
+.photo-shot figcaption p {
+    margin-top: 5px;
+
+    color: #777A80;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* =========================================
+   PHOTO PLACEMENTS
+========================================= */
+
+.photo-shot-hero-portrait {
+    grid-column:
+        1 / span 7;
+}
+
+
+.photo-shot-wide-right {
+    grid-column:
+        5 / -1;
+
+    margin-top: 80px;
+}
+
+
+.photo-shot-portrait-right {
+    grid-column:
+        8 / -1;
+}
+
+
+.photo-shot-cinematic {
+    grid-column:
+        1 / -1;
+
+    margin-top: 20px;
+}
+
+
+.photo-shot-street {
+    grid-column:
+        1 / span 5;
+}
+
+
+.photo-shot-building {
+    grid-column:
+        2 / span 5;
+}
+
+
+.photo-shot-corridor {
+    grid-column:
+        8 / -1;
+
+    margin-top: 120px;
+}
+
+
+.photo-shot-beach {
+    grid-column:
+        1 / span 6;
+}
+
+
+.photo-shot-flower {
+    grid-column:
+        8 / -1;
+
+    margin-top: 150px;
+}
+
+
+.photo-shot-plants {
+    grid-column:
+        2 / span 5;
+}
+
+
+.photo-shot-detail {
+    grid-column:
+        8 / span 4;
+
+    margin-top: 150px;
+}
+
+
+/* =========================================
+   EDITING STORY
+========================================= */
+
+.photo-edit-story {
+    grid-column:
+        1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        0.72fr
+        1.28fr;
+
+    gap: 6vw;
+
+    align-items: center;
+
+    padding:
+        70px;
+
+    border-radius: 36px;
+
+    background: #F5F2EA;
+
+    color: #151619;
+}
+
+
+/* =========================================
+   EDIT COPY
+========================================= */
+
+.photo-edit-index {
+    margin-bottom: 28px;
+
+    color: #5965FF;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+.photo-edit-copy h2 {
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            80px
+        );
+
+    line-height: 0.92;
+
+    letter-spacing: -0.055em;
+
+    font-weight: 600;
+}
+
+
+.photo-edit-copy h2 span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: #FF7657;
+}
+
+
+.photo-edit-copy > p {
+    max-width: 510px;
+
+    margin-top: 35px;
+
+    color: #64666B;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+.photo-edit-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 38px;
+}
+
+
+.photo-edit-meta span {
+    padding:
+        9px
+        12px;
+
+    border:
+        1px solid
+        rgba(21, 22, 25, 0.18);
+
+    border-radius: 999px;
+
+    color: #55575D;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* =========================================
+   BEFORE / AFTER COMPARISON
+========================================= */
+
+.edit-compare {
+    --position: 50%;
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio:
+        9 / 16;
+
+    max-height: 760px;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    background: #D9D6CF;
+
+    box-shadow:
+        0
+        25px
+        60px
+        rgba(21, 22, 25, 0.12);
+}
+
+
+.edit-compare-final,
+.edit-compare-original img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* ORIGINAL IS REVEALED ON LEFT */
+
+.edit-compare-original {
+    position: absolute;
+
+    inset: 0;
+
+    clip-path:
+        inset(
+            0
+            calc(
+                100% - var(--position)
+            )
+            0
+            0
+        );
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   COMPARISON LABELS
+========================================= */
+
+.edit-label {
+    position: absolute;
+
+    top: 18px;
+
+    z-index: 5;
+
+    padding:
+        9px
+        12px;
+
+    border-radius: 999px;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+
+.edit-label-original {
+    left: 18px;
+
+    background:
+        rgba(245, 242, 234, 0.9);
+
+    color: #151619;
+}
+
+
+.edit-label-final {
+    right: 18px;
+
+    background:
+        rgba(21, 22, 25, 0.86);
+
+    color: #F5F2EA;
+}
+
+
+/* =========================================
+   COMPARISON DIVIDER
+========================================= */
+
+.edit-compare-divider {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: var(--position);
+
+    width: 2px;
+
+    z-index: 4;
+
+    transform:
+        translateX(-50%);
+
+    background: #D8FF68;
+
+    pointer-events: none;
+}
+
+
+.edit-compare-divider span {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background: #D8FF68;
+
+    color: #151619;
+
+    border:
+        4px solid
+        rgba(245, 242, 234, 0.9);
+
+    box-shadow:
+        0
+        8px
+        25px
+        rgba(21, 22, 25, 0.18);
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   INVISIBLE RANGE INPUT
+========================================= */
+
+.edit-compare-range {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 8;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+    cursor: ew-resize;
+
+    opacity: 0;
+}
+
+
+/* =========================================
+   CAMERA / PERSPECTIVE NOTE
+========================================= */
+
+.photo-perspective-note {
+    grid-column:
+        1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        0.5fr
+        1.1fr
+        1fr;
+
+    gap: 5vw;
+
+    align-items: start;
+
+    padding:
+        45px
+        0;
+
+    border-top:
+        1px solid
+        rgba(245, 242, 234, 0.2);
+
+    border-bottom:
+        1px solid
+        rgba(245, 242, 234, 0.2);
+}
+
+
+.photo-perspective-note > p:first-child {
+    color: #D8FF68;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+.photo-perspective-note h2 {
+    font-size:
+        clamp(
+            35px,
+            4vw,
+            64px
+        );
+
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+
+    font-weight: 600;
+}
+
+
+.photo-perspective-note h2 span {
+    display: block;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: #FF7657;
+}
+
+
+/* =========================================
+   CAMERA LIST
+========================================= */
+
+.photo-camera-list {
+    display: grid;
+
+    gap: 22px;
+}
+
+
+.photo-camera-list > div {
+    display: grid;
+
+    grid-template-columns:
+        35px
+        1fr;
+
+    gap: 15px;
+
+    padding-bottom: 20px;
+
+    border-bottom:
+        1px solid
+        rgba(245, 242, 234, 0.14);
+}
+
+
+.photo-camera-list > div:last-child {
+    padding-bottom: 0;
+
+    border-bottom: 0;
+}
+
+
+.photo-camera-list > div > span {
+    color: #5965FF;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+.photo-camera-list strong {
+    display: block;
+
+    color: #F5F2EA;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+}
+
+
+.photo-camera-list p {
+    margin-top: 7px;
+
+    color: #7F8185;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.photo-perspective-copy {
+    max-width: 430px;
+
+    color: #A3A4A7;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   INSTAGRAM CTA
+========================================= */
+
+.photo-instagram-section {
+    position: relative;
+
+    min-height: 75vh;
+
+    padding:
+        130px
+        4vw;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background: #5965FF;
+
+    color: #F5F2EA;
+}
+
+
+/* =========================================
+   GIANT MOVING STARRSTASH
+========================================= */
+
+.photo-instagram-marquee {
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+
+    transform:
+        translateY(
+            -50%
+        );
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.photo-instagram-marquee div {
+    width: max-content;
+
+    font-size:
+        clamp(
+            120px,
+            19vw,
+            330px
+        );
+
+    line-height: 0.8;
+
+    letter-spacing: -0.07em;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    color:
+        rgba(245, 242, 234, 0.06);
+
+    animation:
+        photoInstagramMarquee
+        32s
+        linear
+        infinite;
+}
+
+
+/* =========================================
+   INSTAGRAM CONTENT
+========================================= */
+
+.photo-instagram-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+}
+
+
+.photo-instagram-content > p:first-child {
+    margin-bottom: 35px;
+
+    color: #D8FF68;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+.photo-instagram-content h2 {
+    max-width: 1300px;
+
+    font-size:
+        clamp(
+            60px,
+            9vw,
+            145px
+        );
+
+    line-height: 0.86;
+
+    letter-spacing: -0.065em;
+
+    font-weight: 600;
+}
+
+
+.photo-instagram-content h2 a {
+    display: block;
+
+    width: fit-content;
+
+    margin-top: 12px;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: #D8FF68;
+
+    transition:
+        transform
+        0.5s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        color
+        0.3s
+        ease;
+}
+
+
+.photo-instagram-content h2 a:hover {
+    transform:
+        translateX(12px);
+
+    color: #F5F2EA;
+}
+
+
+.photo-instagram-copy {
+    max-width: 550px;
+
+    margin:
+        55px
+        0
+        0
+        auto;
+
+    color:
+        rgba(245, 242, 234, 0.72);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   INSTAGRAM ANIMATION
+========================================= */
+
+@keyframes photoInstagramMarquee {
+
+    from {
+        transform:
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(-50%);
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .photography-living-hero
+    .living-hero-stage {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(350px, 0.85fr);
+
+        gap: 4vw;
+    }
+
+
+    .photo-viewfinder {
+        padding: 15px;
+    }
+
+
+    .photo-story {
+        gap:
+            95px
+            20px;
+    }
+
+
+    .photo-edit-story {
+        padding: 50px;
+    }
+
+
+    .photo-perspective-note {
+        grid-template-columns:
+            0.35fr
+            1fr
+            1fr;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .photography-living-hero
+    .living-hero-stage {
+        grid-template-columns: 1fr;
+
+        gap: 65px;
+    }
+
+
+    .photo-viewfinder {
+        justify-self: start;
+
+        max-width: 620px;
+    }
+
+
+    .photo-aperture {
+        width:
+            clamp(
+                130px,
+                34vw,
+                220px
+            );
+    }
+
+
+    /* STORY */
+
+    .photo-story {
+        padding:
+            100px
+            20px
+            120px;
+
+        grid-template-columns: 1fr;
+
+        gap: 80px;
+    }
+
+
+    .photo-story-intro,
+    .photo-shot,
+    .photo-edit-story,
+    .photo-perspective-note {
+        grid-column:
+            1 !important;
+
+        margin-top: 0 !important;
+    }
+
+
+    .photo-story-intro {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding-bottom: 65px;
+    }
+
+
+    .photo-story-intro
+    div > p {
+        margin-left: 0;
+    }
+
+
+    .photo-image-shell {
+        border-radius: 22px;
+    }
+
+
+    /* EDIT */
+
+    .photo-edit-story {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+        padding: 35px;
+
+        border-radius: 28px;
+    }
+
+
+    .edit-compare {
+        max-width: 620px;
+
+        justify-self: center;
+    }
+
+
+    /* PERSPECTIVE */
+
+    .photo-perspective-note {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding:
+            40px
+            0;
+    }
+
+
+    .photo-perspective-copy {
+        max-width: 600px;
+    }
+
+
+    /* INSTAGRAM */
+
+    .photo-instagram-section {
+        min-height: 70vh;
+
+        padding:
+            100px
+            20px;
+    }
+
+
+    .photo-instagram-copy {
+        margin-left: 0;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 560px) {
+
+    .photo-viewfinder {
+        padding: 11px;
+
+        border-radius: 20px;
+    }
+
+
+    .photo-viewfinder-stage {
+        border-radius: 14px;
+    }
+
+
+    .photo-frame-corner {
+        width: 32px;
+        height: 32px;
+    }
+
+
+    .photo-frame-corner::before {
+        width: 32px;
+    }
+
+
+    .photo-frame-corner::after {
+        height: 32px;
+    }
+
+
+    .photo-frame-corner-tl {
+        top: 12px;
+        left: 12px;
+    }
+
+
+    .photo-frame-corner-tr {
+        top: 12px;
+        right: 12px;
+    }
+
+
+    .photo-frame-corner-bl {
+        left: 12px;
+        bottom: 12px;
+    }
+
+
+    .photo-frame-corner-br {
+        right: 12px;
+        bottom: 12px;
+    }
+
+
+    .photo-focus-label {
+        right: 12px;
+        bottom: 12px;
+
+        font-size: 7px;
+    }
+
+
+    .photo-viewfinder-bottom span {
+        font-size: 7px;
+    }
+
+
+    .photo-story {
+        gap: 65px;
+    }
+
+
+    .photo-shot figcaption {
+        grid-template-columns:
+            35px
+            1fr;
+    }
+
+
+    .photo-shot figcaption > span {
+        font-size: 19px;
+    }
+
+
+    .photo-edit-story {
+        padding:
+            28px
+            20px;
+    }
+
+
+    .edit-compare {
+        border-radius: 20px;
+    }
+
+
+    .edit-compare-divider span {
+        width: 44px;
+        height: 44px;
+
+        font-size: 15px;
+    }
+
+
+    .edit-label {
+        top: 12px;
+
+        padding:
+            7px
+            9px;
+
+        font-size: 6px;
+    }
+
+
+    .edit-label-original {
+        left: 12px;
+    }
+
+
+    .edit-label-final {
+        right: 12px;
+    }
+
+
+    .photo-instagram-content h2 {
+        font-size: 14vw;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .photo-recording::before,
+    .photo-aperture,
+    .photo-focus-box,
+    .photo-exposure-line,
+    .photo-focus-label,
+    .photo-instagram-marquee div {
+        animation: none;
+    }
+
+
+    .photo-focus-box {
+        top: 50%;
+        left: 50%;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            );
+    }
+
+
+    .photo-focus-label {
+        color: #151619;
+
+        border-color: #D8FF68;
+
+        background: #D8FF68;
+    }
+
+}
