@@ -6266,3 +6266,41 @@
         transform: none !important;
     }
 }
+
+
+/* =========================================================
+   FINAL CASE-STUDY INTERACTION CUES
+========================================================= */
+
+.mobile-showcase-frame.is-scrollable,
+.desktop-showcase-laptop.is-scrollable {
+    position: relative;
+}
+
+.mobile-showcase-frame.is-scrollable::after,
+.desktop-showcase-laptop.is-scrollable::after {
+    content: "SCROLL PREVIEW ↕";
+    position: absolute;
+    z-index: 30;
+    top: 12px;
+    right: 12px;
+    padding: 7px 9px;
+    border-radius: 999px;
+    background: rgba(21, 22, 25, 0.78);
+    color: #D8FF68;
+    border: 1px solid rgba(216, 255, 104, 0.18);
+    font-size: 6px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+@media (hover: none), (pointer: coarse) {
+    .mobile-showcase-frame.is-scrollable::after,
+    .desktop-showcase-laptop.is-scrollable::after {
+        content: "SWIPE PREVIEW ↕";
+    }
+}

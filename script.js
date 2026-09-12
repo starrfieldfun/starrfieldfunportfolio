@@ -745,3 +745,84 @@ updateScrollProgress();
 updateNavbar();
 
 updateHeroScroll();
+
+// ========================================
+// FINAL PORTFOLIO POLISH
+// ========================================
+
+(function () {
+
+    // Mark the current section in desktop + mobile navigation.
+    const currentFile =
+        window.location.pathname.split("/").pop() || "index.html";
+
+    const projectFiles = new Set([
+        "bus-finder.html",
+        "promptchecker.html",
+        "snpc.html",
+        "eternal-shutterwave.html"
+    ]);
+
+    let activeFile = currentFile;
+
+    if (projectFiles.has(currentFile)) {
+        activeFile = "work.html";
+    }
+
+    document.querySelectorAll(
+        ".desktop-nav a, .mobile-menu a"
+    ).forEach(function (link) {
+
+        const href = (link.getAttribute("href") || "").split("#")[0];
+
+        if (href === activeFile) {
+            link.classList.add("is-active");
+            link.setAttribute("aria-current", "page");
+        }
+
+    });
+
+
+    // Close the mobile menu cleanly after selecting a destination.
+    function closeMobileMenu() {
+
+        if (!mobileMenu || !menuButton) {
+            return;
+        }
+
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "Menu";
+
+    }
+
+    if (mobileMenu) {
+
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", closeMobileMenu);
+        });
+
+    }
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+            closeMobileMenu();
+        }
+
+    });
+
+
+    // Respect reduced-motion preferences even before reveal observers run.
+    if (
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+
+        document.querySelectorAll(".reveal").forEach(function (element) {
+            element.classList.add("visible");
+        });
+
+    }
+
+})();

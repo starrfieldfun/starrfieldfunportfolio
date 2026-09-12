@@ -11748,3 +11748,161 @@ span:last-child {
     animation: none !important;
 }
 
+
+
+/* =========================================================
+   FINAL LAUNCH POLISH — 2026-09-12
+   Shared navigation, accessibility and interaction finishing.
+========================================================= */
+
+/* Active navigation state */
+.desktop-nav a,
+.mobile-menu a {
+    position: relative;
+}
+
+.desktop-nav a.is-active {
+    color: var(--blue);
+}
+
+.desktop-nav a.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -7px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--blue);
+    transform: scaleX(1);
+}
+
+.mobile-menu a.is-active {
+    color: var(--blue);
+}
+
+/* Keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+input[type="range"]:focus-visible {
+    outline: 3px solid var(--lime);
+    outline-offset: 4px;
+}
+
+/* Photography — connect the page to the interaction language used elsewhere */
+.photography-page .photo-viewfinder {
+    transition:
+        transform 0.65s var(--ease),
+        box-shadow 0.45s ease,
+        border-color 0.35s ease;
+}
+
+.photo-hover-cue,
+.edit-interaction-cue {
+    position: absolute;
+    z-index: 30;
+    width: max-content;
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: 7px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    pointer-events: none;
+}
+
+.photo-hover-cue {
+    top: 58px;
+    right: 30px;
+    color: var(--lime);
+    background: rgba(21, 22, 25, 0.80);
+    border: 1px solid rgba(216,255,104,0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.edit-interaction-cue {
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--ivory);
+    background: rgba(21, 22, 25, 0.78);
+    border: 1px solid rgba(245,242,234,0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.photography-page .photo-image-shell {
+    overflow: hidden;
+}
+
+.photography-page .photo-image-shell img {
+    transition:
+        transform 0.9s var(--ease),
+        filter 0.55s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .photography-page .photo-viewfinder:hover {
+        transform: translateY(-7px);
+        border-color: rgba(89,101,255,0.40);
+        box-shadow: 0 34px 90px rgba(21,22,25,0.13);
+    }
+
+    .photography-page .photo-viewfinder:hover .photo-aperture {
+        animation-duration: 4.8s;
+    }
+
+    .photography-page .photo-viewfinder:hover .photo-focus-box {
+        animation-duration: 4.8s;
+    }
+
+    .photography-page .photo-shot:hover .photo-image-shell img {
+        transform: scale(1.025);
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .photo-hover-cue {
+        display: none;
+    }
+}
+
+/* Keep touch-friendly compare guidance; it works by drag on touch too. */
+@media (max-width: 560px) {
+    .edit-interaction-cue {
+        top: 10px;
+        font-size: 6px;
+    }
+}
+
+/* Make generic reveal motion consistent and calm. */
+.js .reveal {
+    will-change: opacity, transform;
+}
+
+/* Global reduced-motion guarantee, including page fade and smooth scrolling. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    body {
+        animation: none !important;
+    }
+
+    .reveal,
+    .reveal.visible {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+    }
+}
