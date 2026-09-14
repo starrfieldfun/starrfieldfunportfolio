@@ -15194,3 +15194,118 @@ and
 
 }
 
+
+
+
+
+/* =========================================================
+   WORK PAGE — MONITOR CONTROL REAL APPLICATION PREVIEW
+========================================================= */
+
+.work-page .monitor-work-visual {
+    background:
+        linear-gradient(
+            145deg,
+            #E9EDF2,
+            #DDE4EC
+        ) !important;
+}
+
+
+.work-page .monitor-work-screenshot {
+    position: absolute;
+
+    inset:
+        clamp(30px, 4vw, 58px)
+        clamp(24px, 3.4vw, 50px)
+        clamp(42px, 5vw, 70px);
+
+    z-index: 1;
+
+    display: grid;
+
+    place-items: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(21, 22, 25, 0.14);
+
+    border-radius:
+        12px;
+
+    background:
+        #F5F7FA;
+
+    box-shadow:
+        0
+        22px
+        54px
+        rgba(21, 22, 25, 0.16);
+
+    transition:
+        transform
+        0.7s
+        var(--ease),
+        box-shadow
+        0.45s
+        ease;
+}
+
+
+.work-page .monitor-work-screenshot img {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    background:
+        #F3F5F8;
+
+    transform: none !important;
+}
+
+
+.work-page .monitor-work-visual::before {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,12,16,0) 48%,
+            rgba(10,12,16,0.04) 68%,
+            rgba(10,12,16,0.66) 100%
+        ) !important;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+
+    .work-page .monitor-work-visual:hover
+    .monitor-work-screenshot {
+        transform:
+            translateY(-5px);
+
+        box-shadow:
+            0
+            28px
+            68px
+            rgba(21, 22, 25, 0.20);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .work-page .monitor-work-screenshot {
+        inset:
+            24px
+            16px
+            42px;
+    }
+
+}
+
