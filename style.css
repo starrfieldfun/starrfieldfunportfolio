@@ -15097,3 +15097,100 @@ and
 
 }
 
+
+
+
+
+/* =========================================================
+   HOME FEATURED PROJECTS — FULL IMAGE FIT
+   Keep the compact card size, but show the entire screenshot.
+========================================================= */
+
+.home-page .home-work-compact
+.preview-image {
+    display: grid;
+
+    place-items: center;
+
+    padding:
+        clamp(8px, 1vw, 14px);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ECEDE9,
+            #E3E5E8
+        );
+}
+
+
+.home-page .home-work-compact
+.project-cover-image {
+    position: relative !important;
+
+    inset: auto !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    border-radius:
+        8px;
+
+    background:
+        #F6F7F8;
+
+    box-shadow:
+        0
+        14px
+        34px
+        rgba(21, 22, 25, 0.12);
+
+    transform:
+        none !important;
+}
+
+
+.home-page .home-work-compact
+.monitor-home-cover
+.project-cover-image {
+    object-position:
+        center !important;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+
+    .home-page .home-work-compact
+    .project-preview:hover
+    .project-cover-image {
+        transform:
+            scale(1.012) !important;
+    }
+
+}
+
+
+/* Keep badges above the framed screenshot. */
+.home-page .home-work-compact
+.project-badge,
+.home-page .home-work-compact
+.project-hover-label {
+    z-index: 4;
+}
+
+
+@media (max-width: 620px) {
+
+    .home-page .home-work-compact
+    .preview-image {
+        padding:
+            7px;
+    }
+
+}
+
