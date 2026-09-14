@@ -7495,3 +7495,1385 @@
     }
 
 }
+
+
+
+
+/* =========================================================
+   MONITOR CONTROL — APPLICATION DESIGN CASE STUDY
+========================================================= */
+
+.monitor-control-case-study {
+    --monitor-blue: #5965FF;
+    --monitor-lime: #D8FF68;
+    --monitor-coral: #FF7657;
+    --monitor-ink: #151619;
+    --monitor-paper: #F5F2EA;
+    --monitor-panel: #202228;
+}
+
+
+.monitor-control-case-study
+.monitor-detail-hero {
+    padding-bottom:
+        clamp(80px, 9vw, 150px);
+}
+
+
+.monitor-control-case-study
+.monitor-hero-system {
+    max-width:
+        1180px;
+
+    margin:
+        clamp(70px, 8vw, 120px)
+        auto
+        0;
+}
+
+
+.monitor-control-case-study
+.monitor-app-window {
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+    border-radius:
+        18px;
+
+    background:
+        #101115;
+
+    box-shadow:
+        0
+        50px
+        120px
+        rgba(0,0,0,0.34);
+}
+
+
+.monitor-control-case-study
+.monitor-app-bar {
+    min-height:
+        56px;
+
+    padding:
+        0
+        22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap:
+        20px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    color:
+        var(--monitor-paper);
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.14em;
+}
+
+
+.monitor-control-case-study
+.monitor-app-bar small {
+    color:
+        var(--monitor-lime);
+
+    font-size:
+        inherit;
+}
+
+
+.monitor-control-case-study
+.monitor-app-body {
+    min-height:
+        520px;
+
+    padding:
+        24px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.7fr)
+        minmax(250px, 0.62fr);
+
+    gap:
+        22px;
+}
+
+
+.monitor-control-case-study
+.monitor-layout-stage,
+.monitor-control-case-study
+.monitor-control-panel {
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius:
+        12px;
+}
+
+
+.monitor-control-case-study
+.monitor-layout-stage {
+    min-height:
+        0;
+
+    padding:
+        22px;
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        1fr;
+
+    gap:
+        18px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        #131419;
+
+    background-size:
+        34px
+        34px;
+}
+
+
+.monitor-control-case-study
+.monitor-layout-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap:
+        20px;
+
+    color:
+        #777B86;
+
+    font-size:
+        7px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.12em;
+}
+
+
+.monitor-control-case-study
+.monitor-layout-map {
+    position: relative;
+
+    min-height:
+        390px;
+}
+
+
+.monitor-control-case-study
+.monitor-tile {
+    position: absolute;
+
+    padding:
+        16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    border-radius:
+        10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2B2E36,
+            #1E2026
+        );
+
+    box-shadow:
+        0
+        22px
+        55px
+        rgba(0,0,0,0.28);
+
+    color:
+        var(--monitor-paper);
+}
+
+
+.monitor-control-case-study
+.monitor-tile span {
+    color:
+        #838793;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    font-size:
+        clamp(28px, 3vw, 46px);
+
+    line-height:
+        1;
+}
+
+
+.monitor-control-case-study
+.monitor-tile strong {
+    margin-top:
+        auto;
+
+    font-size:
+        clamp(12px, 1.3vw, 18px);
+
+    letter-spacing:
+        -0.02em;
+}
+
+
+.monitor-control-case-study
+.monitor-tile small {
+    margin-top:
+        7px;
+
+    color:
+        #8A8E99;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.monitor-control-case-study
+.monitor-tile-one {
+    width: 46%;
+    height: 48%;
+
+    left: 6%;
+    top: 13%;
+
+    border-color:
+        rgba(216,255,104,0.45);
+
+    box-shadow:
+        0
+        22px
+        65px
+        rgba(216,255,104,0.08);
+}
+
+
+.monitor-control-case-study
+.monitor-tile-one small {
+    color:
+        var(--monitor-lime);
+}
+
+
+.monitor-control-case-study
+.monitor-tile-two {
+    width: 38%;
+    height: 41%;
+
+    right: 5%;
+    top: 7%;
+}
+
+
+.monitor-control-case-study
+.monitor-tile-three {
+    width: 35%;
+    height: 37%;
+
+    right: 18%;
+    bottom: 6%;
+}
+
+
+.monitor-control-case-study
+.monitor-control-panel {
+    padding:
+        20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        0;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    color:
+        var(--monitor-paper);
+}
+
+
+.monitor-control-case-study
+.monitor-panel-head {
+    padding-bottom:
+        22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        8px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.09);
+}
+
+
+.monitor-control-case-study
+.monitor-panel-head span,
+.monitor-control-case-study
+.monitor-control-row span {
+    color:
+        #7F838D;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.12em;
+}
+
+
+.monitor-control-case-study
+.monitor-panel-head strong {
+    font-size:
+        clamp(20px, 2.1vw, 30px);
+
+    letter-spacing:
+        -0.04em;
+}
+
+
+.monitor-control-case-study
+.monitor-control-row {
+    min-height:
+        72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap:
+        14px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+}
+
+
+.monitor-control-case-study
+.monitor-control-row strong {
+    color:
+        var(--monitor-lime);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        0.08em;
+}
+
+
+.monitor-control-case-study
+.monitor-preset-row {
+    padding:
+        16px
+        22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap:
+        10px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.10);
+}
+
+
+.monitor-control-case-study
+.monitor-preset-row > span {
+    margin-right:
+        auto;
+
+    color:
+        #777B86;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.monitor-control-case-study
+.monitor-preset-row button {
+    min-height:
+        35px;
+
+    padding:
+        0
+        14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.14);
+
+    border-radius:
+        999px;
+
+    background:
+        transparent;
+
+    color:
+        var(--monitor-paper);
+
+    font:
+        inherit;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.10em;
+}
+
+
+.monitor-control-case-study
+.monitor-preset-row button:last-child {
+    border-color:
+        rgba(216,255,104,0.35);
+
+    color:
+        var(--monitor-lime);
+}
+
+
+/* ---------------------------------------------------------
+   THINKING
+--------------------------------------------------------- */
+
+.monitor-control-case-study
+.monitor-flow-accent {
+    border-left-color:
+        var(--monitor-lime) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(216,255,104,0.09),
+            rgba(216,255,104,0.015)
+        ),
+        #191B20 !important;
+}
+
+
+/* ---------------------------------------------------------
+   APPLICATION EXPERIENCE
+--------------------------------------------------------- */
+
+.monitor-control-case-study
+.monitor-feature-grid {
+    max-width:
+        1220px;
+
+    margin:
+        clamp(55px, 7vw, 100px)
+        auto
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap:
+        clamp(18px, 2.6vw, 34px);
+}
+
+
+.monitor-control-case-study
+.monitor-feature-card {
+    min-height:
+        540px;
+
+    padding:
+        clamp(22px, 3vw, 34px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    border:
+        1px solid
+        rgba(21,22,25,0.14);
+
+    border-radius:
+        18px;
+
+    background:
+        rgba(255,255,255,0.22);
+}
+
+
+.monitor-control-case-study
+.monitor-feature-kicker {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap:
+        20px;
+}
+
+
+.monitor-control-case-study
+.monitor-feature-kicker span {
+    color:
+        var(--monitor-blue);
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    font-size:
+        34px;
+}
+
+
+.monitor-control-case-study
+.monitor-feature-kicker small {
+    padding-top:
+        7px;
+
+    color:
+        #777980;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.monitor-control-case-study
+.monitor-feature-card h3 {
+    margin-top:
+        auto;
+
+    font-size:
+        clamp(25px, 2.3vw, 35px);
+
+    line-height:
+        1.03;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.monitor-control-case-study
+.monitor-feature-card > p {
+    margin-top:
+        18px;
+
+    color:
+        #5F6166;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.75;
+}
+
+
+.monitor-control-case-study
+.monitor-mini-screens {
+    min-height:
+        210px;
+
+    margin:
+        30px
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    align-items: end;
+
+    gap:
+        8px;
+}
+
+
+.monitor-control-case-study
+.monitor-mini-screens > div {
+    min-height:
+        112px;
+
+    padding:
+        12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.14);
+
+    border-radius:
+        8px;
+
+    background:
+        #1A1C21;
+
+    color:
+        var(--monitor-paper);
+}
+
+
+.monitor-control-case-study
+.monitor-mini-screens > div:nth-child(1) {
+    min-height:
+        158px;
+
+    border-color:
+        rgba(216,255,104,0.42);
+}
+
+
+.monitor-control-case-study
+.monitor-mini-screens span {
+    color:
+        #747783;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    font-size:
+        24px;
+}
+
+
+.monitor-control-case-study
+.monitor-mini-screens strong {
+    overflow:
+        hidden;
+
+    font-size:
+        6px;
+
+    text-overflow:
+        ellipsis;
+}
+
+
+.monitor-control-case-study
+.monitor-position-demo {
+    position: relative;
+
+    min-height:
+        210px;
+
+    margin:
+        30px
+        0;
+
+    border:
+        1px solid
+        rgba(21,22,25,0.11);
+
+    border-radius:
+        10px;
+
+    background:
+        linear-gradient(
+            rgba(21,22,25,0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(21,22,25,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        23px
+        23px;
+}
+
+
+.monitor-control-case-study
+.position-screen {
+    position: absolute;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(21,22,25,0.20);
+
+    border-radius:
+        5px;
+
+    background:
+        var(--monitor-ink);
+
+    color:
+        var(--monitor-paper);
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+}
+
+
+.monitor-control-case-study
+.position-screen.p1 {
+    width: 36%;
+    height: 42%;
+
+    left: 9%;
+    top: 15%;
+}
+
+
+.monitor-control-case-study
+.position-screen.p2 {
+    width: 32%;
+    height: 36%;
+
+    right: 9%;
+    top: 9%;
+}
+
+
+.monitor-control-case-study
+.position-screen.p3 {
+    width: 30%;
+    height: 34%;
+
+    right: 22%;
+    bottom: 12%;
+}
+
+
+.monitor-control-case-study
+.monitor-position-demo > span {
+    position: absolute;
+
+    left: 12px;
+    bottom: 11px;
+
+    color:
+        #6D7077;
+
+    font-size:
+        5px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.12em;
+}
+
+
+.monitor-control-case-study
+.monitor-resolution-demo {
+    min-height:
+        210px;
+
+    margin:
+        30px
+        0;
+
+    padding:
+        20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border-radius:
+        10px;
+
+    background:
+        #17191E;
+
+    color:
+        var(--monitor-paper);
+}
+
+
+.monitor-control-case-study
+.monitor-resolution-demo > span {
+    color:
+        #797D87;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.monitor-control-case-study
+.monitor-resolution-demo > strong {
+    margin:
+        auto
+        0;
+
+    font-size:
+        clamp(24px, 2.5vw, 34px);
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.monitor-control-case-study
+.monitor-resolution-demo > div {
+    min-height:
+        42px;
+
+    margin-top:
+        18px;
+
+    padding:
+        0
+        12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius:
+        7px;
+}
+
+
+.monitor-control-case-study
+.monitor-resolution-demo small {
+    color:
+        #8B8F98;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.12em;
+}
+
+
+.monitor-control-case-study
+.monitor-resolution-demo b {
+    color:
+        var(--monitor-lime);
+}
+
+
+/* ---------------------------------------------------------
+   DEBUGGING STORY
+--------------------------------------------------------- */
+
+.monitor-control-case-study
+.monitor-debug-timeline {
+    max-width:
+        1220px;
+
+    margin:
+        clamp(60px, 7vw, 105px)
+        auto
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        1px;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+}
+
+
+.monitor-control-case-study
+.monitor-debug-timeline article {
+    min-height:
+        340px;
+
+    padding:
+        clamp(25px, 3vw, 42px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        #181A1F;
+
+    color:
+        var(--monitor-paper);
+}
+
+
+.monitor-control-case-study
+.monitor-debug-timeline article > span {
+    color:
+        #70747F;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    font-size:
+        38px;
+}
+
+
+.monitor-control-case-study
+.monitor-debug-timeline article > small {
+    margin-top:
+        22px;
+
+    color:
+        #777B86;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.monitor-control-case-study
+.monitor-debug-timeline h3 {
+    margin-top:
+        auto;
+
+    font-size:
+        clamp(26px, 2.7vw, 39px);
+
+    line-height:
+        1.02;
+
+    letter-spacing:
+        -0.05em;
+}
+
+
+.monitor-control-case-study
+.monitor-debug-timeline p {
+    margin-top:
+        18px;
+
+    color:
+        #A2A5AD;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.72;
+}
+
+
+.monitor-control-case-study
+.monitor-debug-critical {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,118,87,0.11),
+            rgba(255,118,87,0.015)
+        ),
+        #181A1F !important;
+
+    box-shadow:
+        inset
+        3px
+        0
+        0
+        var(--monitor-coral);
+}
+
+
+.monitor-control-case-study
+.monitor-debug-critical > small {
+    color:
+        var(--monitor-coral) !important;
+}
+
+
+.monitor-control-case-study
+.monitor-debug-critical > strong {
+    margin-top:
+        22px;
+
+    padding-top:
+        20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    color:
+        var(--monitor-paper);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.6;
+}
+
+
+/* ---------------------------------------------------------
+   OUTCOME
+--------------------------------------------------------- */
+
+.monitor-control-case-study
+.monitor-outcome-tags {
+    margin-top:
+        42px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap:
+        8px;
+}
+
+
+.monitor-control-case-study
+.monitor-outcome-tags span {
+    padding:
+        9px
+        12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.14);
+
+    border-radius:
+        999px;
+
+    color:
+        #D2D4D8;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.11em;
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .monitor-control-case-study
+    .monitor-app-body {
+        min-height:
+            620px;
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-control-panel {
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            0
+            20px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-panel-head {
+        grid-column:
+            1 / -1;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-feature-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-feature-card {
+        min-height:
+            480px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .monitor-control-case-study
+    .monitor-hero-system {
+        margin-top:
+            55px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-app-window {
+        border-radius:
+            12px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-app-bar {
+        min-height:
+            45px;
+
+        padding:
+            0
+            13px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-app-bar small {
+        display:
+            none;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-app-body {
+        min-height:
+            500px;
+
+        padding:
+            12px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-layout-stage {
+        padding:
+            12px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-layout-label small {
+        display:
+            none;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-layout-map {
+        min-height:
+            310px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-control-panel {
+        display:
+            none;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-preset-row {
+        padding:
+            12px;
+
+        overflow-x:
+            auto;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-preset-row > span {
+        display:
+            none;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-preset-row button {
+        flex:
+            0
+            0
+            auto;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-feature-card {
+        min-height:
+            auto;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-mini-screens,
+    .monitor-control-case-study
+    .monitor-position-demo,
+    .monitor-control-case-study
+    .monitor-resolution-demo {
+        min-height:
+            190px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-debug-timeline {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-debug-timeline article {
+        min-height:
+            300px;
+    }
+
+}
+

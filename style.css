@@ -14116,3 +14116,447 @@ and
     transform: none !important;
 }
 
+
+
+
+
+/* =========================================================
+   MONITOR CONTROL — WORK PAGE PROJECT
+========================================================= */
+
+@media (min-width: 1051px) {
+    .work-page .work-index-strip {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+
+@media (min-width: 561px) and (max-width: 1050px) {
+
+    .work-page .work-index-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .work-page .work-index-strip a {
+        border-left: 0 !important;
+        border-top:
+            1px solid
+            rgba(21, 22, 25, 0.16);
+    }
+
+    .work-page .work-index-strip a:nth-child(-n + 2) {
+        border-top: 0;
+    }
+
+    .work-page .work-index-strip a:nth-child(even) {
+        border-left:
+            1px solid
+            rgba(21, 22, 25, 0.16) !important;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .work-page .work-index-strip a:nth-child(5) {
+        border-left: 0;
+
+        border-top:
+            1px solid
+            rgba(21, 22, 25, 0.16);
+    }
+
+}
+
+
+.work-page .monitor-work-visual {
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 16% 18%,
+            rgba(89, 101, 255, 0.22),
+            transparent 29%
+        ),
+        linear-gradient(
+            145deg,
+            #16181D 0%,
+            #0E0F12 100%
+        );
+}
+
+
+.work-page .monitor-work-visual::before {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7, 8, 10, 0.02) 0%,
+            rgba(7, 8, 10, 0.10) 56%,
+            rgba(7, 8, 10, 0.72) 100%
+        ) !important;
+}
+
+
+.work-page .monitor-cover-ui {
+    position: absolute;
+
+    inset:
+        clamp(38px, 5vw, 72px)
+        clamp(30px, 4vw, 60px)
+        clamp(52px, 6vw, 82px);
+
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        1fr;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius:
+        12px;
+
+    overflow: hidden;
+
+    background:
+        rgba(16, 17, 21, 0.88);
+
+    box-shadow:
+        0
+        28px
+        80px
+        rgba(0, 0, 0, 0.36);
+
+    transition:
+        transform
+        0.8s
+        var(--ease);
+}
+
+
+.work-page .monitor-cover-bar {
+    min-height: 38px;
+
+    padding:
+        0
+        14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.11);
+
+    color:
+        #F5F2EA;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.work-page .monitor-cover-bar small {
+    color:
+        #D8FF68;
+
+    font-size: inherit;
+}
+
+
+.work-page .monitor-cover-stage {
+    min-height: 0;
+
+    padding:
+        clamp(14px, 2vw, 24px);
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(120px, 0.72fr);
+
+    gap:
+        clamp(12px, 2vw, 20px);
+}
+
+
+.work-page .monitor-cover-layout {
+    position: relative;
+
+    min-height: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius:
+        9px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        #111216;
+
+    background-size:
+        22px
+        22px;
+}
+
+
+.work-page .monitor-cover-screen {
+    position: absolute;
+
+    padding:
+        8px
+        9px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.20);
+
+    border-radius:
+        6px;
+
+    background:
+        #23262D;
+
+    box-shadow:
+        0
+        15px
+        30px
+        rgba(0,0,0,0.24);
+
+    color:
+        #F5F2EA;
+}
+
+
+.work-page .monitor-cover-screen span {
+    color:
+        #8C91A0;
+
+    font-family:
+        "Instrument Serif",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    font-size:
+        clamp(13px, 1.5vw, 20px);
+}
+
+
+.work-page .monitor-cover-screen strong {
+    font-size:
+        clamp(6px, 0.7vw, 9px);
+
+    letter-spacing:
+        0.06em;
+}
+
+
+.work-page .monitor-cover-screen small {
+    color:
+        #D8FF68;
+
+    font-size:
+        clamp(4px, 0.45vw, 6px);
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.12em;
+}
+
+
+.work-page .monitor-cover-screen.screen-a {
+    width: 43%;
+    height: 43%;
+
+    left: 9%;
+    top: 15%;
+
+    border-color:
+        rgba(216,255,104,0.48);
+}
+
+
+.work-page .monitor-cover-screen.screen-b {
+    width: 38%;
+    height: 38%;
+
+    right: 7%;
+    top: 8%;
+}
+
+
+.work-page .monitor-cover-screen.screen-c {
+    width: 34%;
+    height: 34%;
+
+    right: 18%;
+    bottom: 10%;
+}
+
+
+.work-page .monitor-cover-controls {
+    padding:
+        14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        10px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius:
+        9px;
+
+    background:
+        rgba(255,255,255,0.03);
+
+    color:
+        #F5F2EA;
+}
+
+
+.work-page .monitor-cover-controls > span {
+    color:
+        #737783;
+
+    font-size:
+        5px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.work-page .monitor-cover-controls > strong {
+    padding-bottom:
+        10px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    font-size:
+        clamp(10px, 1.15vw, 15px);
+}
+
+
+.work-page .monitor-cover-controls > div {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    padding-top:
+        8px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.work-page .monitor-cover-controls small {
+    color:
+        #797D87;
+
+    font-size:
+        5px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.08em;
+}
+
+
+.work-page .monitor-cover-controls b {
+    color:
+        #D8FF68;
+
+    font-size:
+        5px;
+
+    letter-spacing:
+        0.08em;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+
+    .work-page .monitor-work-visual:hover
+    .monitor-cover-ui {
+        transform:
+            scale(1.025);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .work-page .monitor-cover-ui {
+        inset:
+            32px
+            20px
+            48px;
+    }
+
+
+    .work-page .monitor-cover-stage {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .work-page .monitor-cover-controls {
+        display: none;
+    }
+
+}
+

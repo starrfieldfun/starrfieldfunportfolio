@@ -941,6 +941,7 @@ updateHeroScroll();
 
     const projectFiles = new Set([
         "bus-finder.html",
+        "monitor-control.html",
         "promptchecker.html",
         "snpc.html",
         "eternal-shutterwave.html"
