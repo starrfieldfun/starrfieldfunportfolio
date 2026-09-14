@@ -15309,3 +15309,22 @@ and
 
 }
 
+
+
+/* =========================================================
+   HOME — PROMPTCHECKER FEATURED COVER BALANCE
+   Dedicated 16:10 crop so the interface reads at the same
+   visual scale as MyBusFinder and Monitor Control.
+========================================================= */
+
+.home-page .home-work-compact
+.promptchecker-home-cover
+.project-cover-image {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    background: #171A20;
+}
