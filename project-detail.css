@@ -8877,3 +8877,448 @@
 
 }
 
+
+
+
+
+/* =========================================================
+   MONITOR CONTROL — REAL APPLICATION COLLATERAL
+========================================================= */
+
+.monitor-control-case-study
+.monitor-real-hero {
+    max-width:
+        1180px;
+
+    margin:
+        clamp(70px, 8vw, 120px)
+        auto
+        0;
+}
+
+
+.monitor-control-case-study
+.monitor-real-frame {
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.14);
+
+    border-radius:
+        16px;
+
+    background:
+        #111216;
+
+    box-shadow:
+        0
+        44px
+        110px
+        rgba(0,0,0,0.34);
+}
+
+
+.monitor-control-case-study
+.monitor-real-frame-top,
+.monitor-control-case-study
+.monitor-interface-meta {
+    min-height:
+        42px;
+
+    padding:
+        0
+        15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background:
+        #15171C;
+
+    color:
+        #F5F2EA;
+
+    font-size:
+        6px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+.monitor-control-case-study
+.monitor-real-frame-top small,
+.monitor-control-case-study
+.monitor-interface-meta small {
+    color:
+        var(--monitor-lime);
+
+    font-size:
+        inherit;
+}
+
+
+.monitor-control-case-study
+.monitor-real-frame img {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    background:
+        #F3F5F8;
+}
+
+
+.monitor-control-case-study
+.monitor-real-hero figcaption {
+    margin-top:
+        18px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(100px, 0.28fr)
+        minmax(0, 1fr);
+
+    gap:
+        clamp(20px, 4vw, 58px);
+
+    align-items: start;
+}
+
+
+.monitor-control-case-study
+.monitor-real-hero figcaption > span {
+    color:
+        var(--monitor-lime);
+
+    font-size:
+        7px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.14em;
+}
+
+
+.monitor-control-case-study
+.monitor-real-hero figcaption p {
+    max-width:
+        760px;
+
+    margin:
+        0;
+
+    color:
+        #A9ABB1;
+
+    font-size:
+        clamp(13px, 1.2vw, 16px);
+
+    line-height:
+        1.7;
+}
+
+
+/* Application experience */
+.monitor-control-case-study
+.monitor-interface-story {
+    max-width:
+        1220px;
+
+    margin:
+        clamp(65px, 8vw, 110px)
+        auto
+        0;
+
+    display: grid;
+
+    gap:
+        clamp(70px, 9vw, 130px);
+}
+
+
+.monitor-control-case-study
+.monitor-interface-panel {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.52fr)
+        minmax(270px, 0.48fr);
+
+    gap:
+        clamp(30px, 5vw, 72px);
+
+    align-items: center;
+
+    margin: 0;
+}
+
+
+.monitor-control-case-study
+.monitor-interface-panel-reverse {
+    grid-template-columns:
+        minmax(270px, 0.48fr)
+        minmax(0, 1.52fr);
+}
+
+
+.monitor-control-case-study
+.monitor-interface-panel-reverse
+.monitor-interface-media {
+    grid-column: 2;
+}
+
+
+.monitor-control-case-study
+.monitor-interface-panel-reverse
+figcaption {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+
+.monitor-control-case-study
+.monitor-interface-media,
+.monitor-control-case-study
+.monitor-settings-proof-media {
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(21, 22, 25, 0.13);
+
+    border-radius:
+        14px;
+
+    background:
+        #F0F2F6;
+
+    box-shadow:
+        0
+        28px
+        70px
+        rgba(21,22,25,0.12);
+}
+
+
+.monitor-control-case-study
+.monitor-interface-media img,
+.monitor-control-case-study
+.monitor-settings-proof-media img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+}
+
+
+.monitor-control-case-study
+.monitor-interface-panel
+.monitor-interface-meta,
+.monitor-control-case-study
+.monitor-settings-proof
+.monitor-interface-meta {
+    background:
+        var(--monitor-ink);
+}
+
+
+.monitor-control-case-study
+.monitor-interface-panel figcaption > span,
+.monitor-control-case-study
+.monitor-settings-proof figcaption > span {
+    color:
+        var(--monitor-blue);
+
+    font-size:
+        7px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.14em;
+}
+
+
+.monitor-control-case-study
+.monitor-interface-panel figcaption h3,
+.monitor-control-case-study
+.monitor-settings-proof figcaption h3 {
+    margin-top:
+        18px;
+
+    font-size:
+        clamp(30px, 3vw, 48px);
+
+    line-height:
+        1.02;
+
+    letter-spacing:
+        -0.05em;
+}
+
+
+.monitor-control-case-study
+.monitor-interface-panel figcaption p,
+.monitor-control-case-study
+.monitor-settings-proof figcaption p {
+    margin-top:
+        20px;
+
+    color:
+        #65686E;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.75;
+}
+
+
+/* Settings / debugging proof */
+.monitor-control-case-study
+.monitor-settings-proof {
+    max-width:
+        1220px;
+
+    margin:
+        clamp(60px, 7vw, 100px)
+        auto
+        clamp(65px, 8vw, 110px);
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.45fr)
+        minmax(280px, 0.55fr);
+
+    gap:
+        clamp(30px, 5vw, 70px);
+
+    align-items: center;
+}
+
+
+.monitor-control-case-study
+.monitor-settings-proof figcaption > span {
+    color:
+        var(--monitor-lime);
+}
+
+
+.monitor-control-case-study
+.monitor-settings-proof figcaption h3 {
+    color:
+        var(--monitor-paper);
+}
+
+
+.monitor-control-case-study
+.monitor-settings-proof figcaption p {
+    color:
+        #A4A7AF;
+}
+
+
+@media (max-width: 900px) {
+
+    .monitor-control-case-study
+    .monitor-interface-panel,
+    .monitor-control-case-study
+    .monitor-interface-panel-reverse,
+    .monitor-control-case-study
+    .monitor-settings-proof {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            28px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-interface-panel-reverse
+    .monitor-interface-media,
+    .monitor-control-case-study
+    .monitor-interface-panel-reverse
+    figcaption {
+        grid-column:
+            auto;
+
+        grid-row:
+            auto;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-interface-panel-reverse
+    figcaption {
+        order:
+            2;
+    }
+
+}
+
+
+@media (max-width: 620px) {
+
+    .monitor-control-case-study
+    .monitor-real-frame,
+    .monitor-control-case-study
+    .monitor-interface-media,
+    .monitor-control-case-study
+    .monitor-settings-proof-media {
+        border-radius:
+            9px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-real-frame-top,
+    .monitor-control-case-study
+    .monitor-interface-meta {
+        min-height:
+            34px;
+
+        padding:
+            0
+            10px;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-real-frame-top small,
+    .monitor-control-case-study
+    .monitor-interface-meta small {
+        display:
+            none;
+    }
+
+
+    .monitor-control-case-study
+    .monitor-real-hero figcaption {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            10px;
+    }
+
+}
+
