@@ -940,7 +940,7 @@ updateHeroScroll();
     const currentPage = cleanPath.split("/").pop().replace(/\.html$/, "") || "index";
 
     const projectPages = new Set([
-        "bus-finder", "monitor-control", "promptchecker", "snpc", "eternal-shutterwave"
+        "bus-finder", "busfinder", "monitor-control", "promptchecker", "snpc", "eternal-shutterwave"
     ]);
 
     const activePage = projectPages.has(currentPage) ? "work" : currentPage;

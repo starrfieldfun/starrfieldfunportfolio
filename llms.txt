@@ -10,8 +10,8 @@ Starrfield Fun is a portfolio of Starr, a UI/UX designer and developer.
 - [Contact](https://starrfieldfun.com/contact/): contact form.
 
 ## Case studies
-- [MyBusFinder](https://starrfieldfun.com/bus-finder/)
-- [Monitor Control](https://starrfieldfun.com/monitor-control/)
-- [PromptChecker](https://starrfieldfun.com/promptchecker/)
-- [Singapore National Paralympics Council](https://starrfieldfun.com/snpc/)
-- [Eternal Shutterwave](https://starrfieldfun.com/eternal-shutterwave/)
+- [MyBusFinder](https://starrfieldfun.com/work/busfinder/)
+- [Monitor Control](https://starrfieldfun.com/work/monitor-control/)
+- [PromptChecker](https://starrfieldfun.com/work/promptchecker/)
+- [Singapore National Paralympics Council](https://starrfieldfun.com/work/snpc/)
+- [Eternal Shutterwave](https://starrfieldfun.com/work/eternal-shutterwave/)
