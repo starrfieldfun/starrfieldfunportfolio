@@ -2267,3 +2267,233 @@ div > p {
     }
 
 }
+
+/* ================================================================
+   PHOTOGRAPHY — BALANCED EDITORIAL GALLERY / 2026-09-20
+   A single, centred two-column system replaces the old masonry and
+   per-photo offsets. All photographs remain uncropped and in order.
+================================================================ */
+.photography-page .photo-story {
+    display: block !important;
+    width: 100%;
+    max-width: none !important;
+    padding: clamp(70px, 7vw, 112px) clamp(20px, 5vw, 88px) clamp(80px, 8vw, 128px) !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: #151619;
+    color: #F5F2EA;
+}
+.photography-page .photo-story-intro,
+.photography-page .photo-story > .photo-wall,
+.photography-page .photo-story > .photo-edit-story,
+.photography-page .photo-story > .photo-perspective-note {
+    width: 100% !important;
+    max-width: 1240px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
+}
+.photography-page .photo-story-intro {
+    margin-bottom: clamp(38px, 5vw, 68px) !important;
+    padding-bottom: clamp(24px, 3vw, 42px) !important;
+}
+/* The grid has explicit tracks, unlike column-count, so portraits and
+   landscape photographs always align to the same card widths. */
+.photography-page .photo-story > .photo-wall {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(24px, 3vw, 42px) !important;
+    align-items: stretch;
+    justify-items: stretch;
+    column-count: auto !important;
+    column-gap: normal !important;
+    column-fill: auto !important;
+    text-align: left !important;
+}
+.photography-page .photo-wall > .photo-shot {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    position: relative;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    break-inside: auto;
+    transform: none;
+}
+/* A restrained dark print mount makes the space beside a portrait
+   intentional, not a large unused white gutter. */
+.photography-page .photo-wall .photo-image-shell {
+    display: grid !important;
+    place-items: center !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: clamp(260px, 28vw, 380px) !important;
+    max-height: none !important;
+    min-height: 0;
+    padding: clamp(13px, 1.65vw, 24px) !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    border: 1px solid rgba(245,242,234,.10);
+    border-radius: 14px !important;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 40%, #292b30, #1c1e22 74%);
+}
+.photography-page .photo-wall .photo-image-shell img {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    margin: auto !important;
+    border-radius: 4px;
+    box-shadow: 0 12px 26px rgba(0,0,0,.22);
+    transform: none !important;
+}
+.photography-page .photo-wall .photo-shot figcaption {
+    display: grid !important;
+    width: 100% !important;
+    max-width: none !important;
+    grid-template-columns: 34px minmax(0,1fr);
+    gap: 10px;
+    padding: 13px 3px 0 !important;
+    margin: 0 !important;
+    text-align: left;
+    box-sizing: border-box;
+}
+/* A group of five ends with one intentional editorial feature.
+   It occupies both grid tracks, but the image remains height-limited. */
+.photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: none !important;
+}
+.photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) .photo-image-shell {
+    height: clamp(280px, 34vw, 440px) !important;
+}
+.photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) figcaption {
+    max-width: none !important;
+}
+/* The narrative interludes are separate full-width beats, with a
+   measured interval rather than arbitrary photo-position offsets. */
+.photography-page .photo-story > .photo-edit-story,
+.photography-page .photo-story > .photo-perspective-note {
+    margin-top: clamp(48px, 6vw, 90px) !important;
+    margin-bottom: clamp(48px, 6vw, 90px) !important;
+    grid-column: auto !important;
+}
+.photography-page .photo-edit-story { gap: clamp(22px, 4vw, 52px); }
+@media (min-width: 1500px) {
+    .photography-page .photo-story { padding-inline: max(5vw, calc((100vw - 1400px) / 2)) !important; }
+}
+@media (max-width: 850px) {
+    .photography-page .photo-story > .photo-wall { gap: 22px !important; }
+    .photography-page .photo-wall .photo-image-shell { height: clamp(225px, 35vw, 310px) !important; padding: 12px !important; }
+    .photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) .photo-image-shell { height: 340px !important; }
+}
+@media (max-width: 580px) {
+    .photography-page .photo-story { padding: 62px 16px 80px !important; }
+    .photography-page .photo-story > .photo-wall {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 30px !important;
+    }
+    .photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) { grid-column: auto !important; }
+    .photography-page .photo-wall .photo-image-shell,
+    .photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) .photo-image-shell {
+        height: min(72vw, 350px) !important;
+        padding: 12px !important;
+    }
+    .photography-page .photo-story > .photo-edit-story,
+    .photography-page .photo-story > .photo-perspective-note {
+        margin-top: 45px !important;
+        margin-bottom: 45px !important;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .photography-page .photo-wall .photo-image-shell img { transition: none !important; }
+}
+
+
+/* ================================================================
+   PHOTOGRAPHY / ORIGINAL PROPORTIONS — NATURAL-RATIO FINAL PASS
+   Retains the approved balanced two-column editorial layout while
+   removing the fixed-height image mounts that boxed in photographs.
+================================================================ */
+.photography-page .photo-story > .photo-wall {
+    align-items: start !important;
+}
+.photography-page .photo-wall > .photo-shot {
+    align-self: start !important;
+    height: auto !important;
+}
+.photography-page .photo-wall .photo-image-shell,
+.photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) .photo-image-shell {
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+.photography-page .photo-wall .photo-image-shell img,
+.photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) .photo-image-shell img {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: min(70vh, 680px) !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    transform: none !important;
+}
+/* In the wide fifth-photo feature, never stretch a portrait to fill
+   both columns; its actual proportions determine the visible size. */
+.photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) img {
+    max-height: min(75vh, 720px) !important;
+}
+@media (max-width: 850px) {
+    .photography-page .photo-wall .photo-image-shell,
+    .photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) .photo-image-shell {
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+    }
+    .photography-page .photo-wall .photo-image-shell img {
+        max-height: min(62vh, 560px) !important;
+    }
+}
+@media (max-width: 580px) {
+    .photography-page .photo-wall .photo-image-shell,
+    .photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) .photo-image-shell {
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+    }
+    .photography-page .photo-wall .photo-image-shell img,
+    .photography-page .photo-wall > .photo-shot:last-child:nth-child(odd) .photo-image-shell img {
+        max-height: min(75svh, 620px) !important;
+    }
+}

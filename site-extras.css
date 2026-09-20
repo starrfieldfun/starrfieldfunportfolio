@@ -1,0 +1,9 @@
+/* Lightweight navigation and accessibility enhancements. */
+.site-breadcrumbs { max-width:1320px; margin:105px auto 0; padding:0 clamp(20px,5vw,72px); font:700 11px/1.6 Manrope,Arial,sans-serif; letter-spacing:.06em; color:#777b85; }
+.site-breadcrumbs a { color:inherit; text-underline-offset:4px; }
+.site-breadcrumbs a:hover,.site-breadcrumbs a:focus-visible { color:#5965ff; }
+.site-breadcrumbs span { margin:0 9px; }
+.site-breadcrumbs [aria-current=page] { color:inherit; }
+.site-extra-footer { display:flex;flex-wrap:wrap;gap:14px;align-items:center; }
+.site-extra-footer a { color:inherit; text-underline-offset:4px; }
+@media(max-width:700px){.site-breadcrumbs{margin-top:82px;padding-inline:20px;font-size:10px;} }
