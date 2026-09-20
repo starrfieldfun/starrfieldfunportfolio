@@ -936,22 +936,15 @@ updateHeroScroll();
 (function () {
 
     // Mark the current section in desktop + mobile navigation.
-    const currentFile =
-        window.location.pathname.split("/").pop() || "index.html";
+    const cleanPath = window.location.pathname.replace(/\/+$/, "");
+    const currentPage = cleanPath.split("/").pop().replace(/\.html$/, "") || "index";
 
-    const projectFiles = new Set([
-        "bus-finder.html",
-        "monitor-control.html",
-        "promptchecker.html",
-        "snpc.html",
-        "eternal-shutterwave.html"
+    const projectPages = new Set([
+        "bus-finder", "monitor-control", "promptchecker", "snpc", "eternal-shutterwave"
     ]);
 
-    let activeFile = currentFile;
-
-    if (projectFiles.has(currentFile)) {
-        activeFile = "work.html";
-    }
+    const activePage = projectPages.has(currentPage) ? "work" : currentPage;
+    const activeFile = activePage === "index" ? "/" : "/" + activePage + "/";
 
     document.querySelectorAll(
         ".desktop-nav a, .mobile-menu a"
