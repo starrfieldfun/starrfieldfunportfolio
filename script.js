@@ -618,6 +618,7 @@ if (
 // Provider acknowledgement means accepted for processing, not inbox delivery.
 // ========================================
 
+// CONTACT FORM VERSION: 20260921-CONFIRMATION-VERIFIED-2 (no 15s abort)
 const contactForm = document.querySelector("#contact-form");
 
 if (contactForm) {
@@ -688,10 +689,10 @@ if (contactForm) {
         // accept and deliver the email before its acknowledgement reaches the browser.
         // Aborting at 15 seconds caused a false "Try again" even for delivered mail.
         const slowNoticeTimer = window.setTimeout(function () {
-            showFormNote("Still sending — please keep this page open and do not submit again.", null);
+            showFormNote("Waiting for email-service confirmation. Your enquiry may already be delivered — please do not send it again.", null);
         }, 6000);
         const lateNoticeTimer = window.setTimeout(function () {
-            showFormNote("The email service is taking longer than expected to confirm your message. Please do not resend it while we wait.", null);
+            showFormNote("Still waiting for confirmation. Please avoid resubmitting: the email may already have arrived.", null);
         }, 15000);
 
         try {
@@ -735,7 +736,7 @@ if (contactForm) {
             }, 3200);
         } catch (error) {
             console.error("Contact form submission error:", error);
-            if (error && (error.providerRejected || error.message.startsWith("Too many enquiries"))) {
+            if (error && (error.providerRejected || (typeof error.message === "string" && error.message.startsWith("Too many enquiries")))) {
                 if (sendButtonText) sendButtonText.textContent = "SEND MESSAGE";
                 showFormNote("The email service declined this request. Your details are still here; please wait before trying again.", "is-error");
             } else {
