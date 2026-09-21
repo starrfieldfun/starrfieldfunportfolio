@@ -614,17 +614,13 @@ if (
 
 // ========================================
 // CONTACT FORM
-// Direct submission for GitHub Pages via FormSubmit
+// FormSubmit AJAX with bounded waiting and honest delivery feedback.
+// The provider controls actual submission time and email delivery.
 // ========================================
 
-const contactForm =
-    document.querySelector(
-        "#contact-form"
-    );
-
+const contactForm = document.querySelector("#contact-form");
 
 if (contactForm) {
-
     const serviceField = contactForm.querySelector("#contact-service");
     if (serviceField) {
         const requestedService = new URLSearchParams(window.location.search).get("service");
@@ -638,260 +634,119 @@ if (contactForm) {
         }
     }
 
-    const formNote =
-        document.querySelector(
-            "#form-note"
-        );
-
-
-    const sendButton =
-        contactForm.querySelector(
-            ".contact-send-button"
-        );
-
-
-    const sendButtonText =
-        sendButton
-            ? sendButton.querySelector(
-                "span:first-child"
-            )
-            : null;
-
-
-    contactForm.addEventListener(
-        "submit",
-        async function (event) {
-
-            event.preventDefault();
-
-
-            if (!contactForm.checkValidity()) {
-
-                contactForm.reportValidity();
-
-                return;
-
-            }
-
-
-            const honeypot =
-                contactForm.querySelector(
-                    'input[name="_honey"]'
-                );
-
-
-            // Silently ignore likely bot submissions.
-            if (
-                honeypot &&
-                honeypot.value.trim() !== ""
-            ) {
-
-                contactForm.reset();
-
-                return;
-
-            }
-
-
-            const name =
-                document.querySelector(
-                    "#contact-name"
-                ).value.trim();
-
-
-            const email =
-                document.querySelector(
-                    "#contact-email"
-                ).value.trim();
-
-
-            const subject =
-                document.querySelector(
-                    "#contact-subject"
-                ).value.trim();
-
-
-            const message =
-                document.querySelector(
-                    "#contact-message"
-                ).value.trim();
-
-            const service =
-                document.querySelector(
-                    "#contact-service"
-                )?.value || "";
-
-
-            if (sendButton) {
-
-                sendButton.disabled = true;
-
-                sendButton.classList.add(
-                    "is-sending"
-                );
-
-            }
-
-
-            if (sendButtonText) {
-
-                sendButtonText.textContent =
-                    "SENDING…";
-
-            }
-
-
-            if (formNote) {
-
-                formNote.textContent =
-                    "Sending your message…";
-
-                formNote.classList.remove(
-                    "is-success",
-                    "is-error"
-                );
-
-            }
-
-
-            try {
-
-                const response =
-                    await fetch(
-                        "https://formsubmit.co/ajax/starrfieldfunwork@gmail.com",
-                        {
-                            method: "POST",
-
-                            headers: {
-                                "Content-Type":
-                                    "application/json",
-
-                                "Accept":
-                                    "application/json"
-                            },
-
-                            body:
-                                JSON.stringify({
-                                    name: name,
-                                    email: email,
-                                    subject: subject,
-                                    service: service || "Not specified",
-                                    message: message,
-
-                                    _subject:
-                                        subject +
-                                        " — Portfolio enquiry from " +
-                                        name,
-
-                                    _template:
-                                        "table",
-
-                                    _url:
-                                        window.location.href
-                                })
-                        }
-                    );
-
-
-                const data =
-                    await response.json();
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        data.message ||
-                        "Unable to send message."
-                    );
-
-                }
-
-
-                contactForm.reset();
-
-
-                if (sendButtonText) {
-
-                    sendButtonText.textContent =
-                        "MESSAGE SENT";
-
-                }
-
-
-                if (formNote) {
-
-                    formNote.textContent =
-                        "Message sent successfully. Thank you — I’ll get back to you soon.";
-
-                    formNote.classList.add(
-                        "is-success"
-                    );
-
-                }
-
-
-                window.setTimeout(
-                    function () {
-
-                        if (sendButtonText) {
-
-                            sendButtonText.textContent =
-                                "SEND MESSAGE";
-
-                        }
-
-                    },
-                    3200
-                );
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Contact form error:",
-                    error
-                );
-
-
-                if (sendButtonText) {
-
-                    sendButtonText.textContent =
-                        "TRY AGAIN";
-
-                }
-
-
-                if (formNote) {
-
-                    formNote.textContent =
-                        "Something went wrong. Please try again, or email starrfieldfunwork@gmail.com directly.";
-
-                    formNote.classList.add(
-                        "is-error"
-                    );
-
-                }
-
-            }
-
-            finally {
-
-                if (sendButton) {
-
-                    sendButton.disabled = false;
-
-                    sendButton.classList.remove(
-                        "is-sending"
-                    );
-
-                }
-
-            }
-
+    const formNote = document.querySelector("#form-note");
+    const sendButton = contactForm.querySelector(".contact-send-button");
+    const sendButtonText = sendButton ? sendButton.querySelector("span:first-child") : null;
+    const CONTACT_EMAIL = "starrfieldfunwork@gmail.com";
+    const MAX_WAIT_MS = 12000;
+    let isSubmitting = false;
+    let resetButtonTimer;
+
+    function showFormNote(message, state, offerEmail) {
+        if (!formNote) return;
+        formNote.textContent = message;
+        formNote.classList.remove("is-success", "is-error");
+        if (state) formNote.classList.add(state);
+        if (offerEmail) {
+            const link = document.createElement("a");
+            link.href = "mailto:" + CONTACT_EMAIL;
+            link.textContent = " Email me directly ↗";
+            link.style.textDecoration = "underline";
+            link.style.textUnderlineOffset = "3px";
+            formNote.appendChild(link);
         }
-    );
+    }
 
+    contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        if (isSubmitting) return;
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+        }
+
+        const honeypot = contactForm.querySelector('input[name="_honey"]');
+        if (honeypot && honeypot.value.trim() !== "") {
+            // Avoid submitting suspected spam. Do not show a success confirmation.
+            showFormNote("Please use the direct email link if you cannot submit this form.", "is-error", true);
+            return;
+        }
+
+        const name = contactForm.querySelector("#contact-name").value.trim();
+        const email = contactForm.querySelector("#contact-email").value.trim();
+        const subject = contactForm.querySelector("#contact-subject").value.trim();
+        const service = serviceField ? serviceField.value : "";
+        const message = contactForm.querySelector("#contact-message").value.trim();
+
+        isSubmitting = true;
+        window.clearTimeout(resetButtonTimer);
+        if (sendButton) {
+            sendButton.disabled = true;
+            sendButton.classList.add("is-sending");
+        }
+        if (sendButtonText) sendButtonText.textContent = "SENDING…";
+        showFormNote("Sending your message. Please keep this page open…", null, false);
+
+        const controller = new AbortController();
+        let timedOut = false;
+        const slowNoticeTimer = window.setTimeout(function () {
+            showFormNote("The email service is responding slowly. Still waiting for confirmation…", null, false);
+        }, 5000);
+        const timeoutTimer = window.setTimeout(function () {
+            timedOut = true;
+            controller.abort();
+        }, MAX_WAIT_MS);
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/" + CONTACT_EMAIL, {
+                method: "POST",
+                headers: {"Content-Type": "application/json", "Accept": "application/json"},
+                signal: controller.signal,
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    service: service || "Not specified",
+                    message: message,
+                    _subject: subject + " — Portfolio enquiry from " + name,
+                    _template: "table",
+                    _url: window.location.href
+                })
+            });
+
+            // FormSubmit can send an HTTP 200 even when its response says success:false.
+            // Only show success when FormSubmit explicitly confirms acceptance.
+            const data = await response.json();
+            const accepted = data && (data.success === true || data.success === "true");
+            if (!response.ok || !accepted) {
+                throw new Error("FormSubmit did not confirm this submission.");
+            }
+
+            contactForm.reset();
+            if (sendButtonText) sendButtonText.textContent = "MESSAGE SENT";
+            showFormNote("The email service accepted your message. Thanks — I’ll get back to you soon.", "is-success", false);
+            resetButtonTimer = window.setTimeout(function () {
+                if (sendButtonText && !isSubmitting) sendButtonText.textContent = "SEND MESSAGE";
+            }, 3200);
+        } catch (error) {
+            console.error("Contact form error:", error);
+            if (sendButtonText) sendButtonText.textContent = "TRY AGAIN";
+            if (timedOut || (error && error.name === "AbortError")) {
+                // Aborting a browser request cannot undo a submission the provider received.
+                showFormNote("This is taking too long, so delivery could not be confirmed. Your message may still arrive. Please avoid sending it again immediately; use email instead.", "is-error", true);
+            } else {
+                showFormNote("The email service could not confirm your message. Your details are still here. Please email me directly or try again later.", "is-error", true);
+            }
+        } finally {
+            window.clearTimeout(slowNoticeTimer);
+            window.clearTimeout(timeoutTimer);
+            isSubmitting = false;
+            if (sendButton) {
+                sendButton.disabled = false;
+                sendButton.classList.remove("is-sending");
+            }
+        }
+    });
 }
 
 
