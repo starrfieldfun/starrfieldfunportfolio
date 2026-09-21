@@ -638,7 +638,6 @@ if (contactForm) {
     const sendButton = contactForm.querySelector(".contact-send-button");
     const sendButtonText = sendButton ? sendButton.querySelector("span:first-child") : null;
     const accessKeyField = contactForm.querySelector('input[name="access_key"]');
-    const MAX_WAIT_MS = 15000;
     let isSubmitting = false;
     let resetButtonTimer;
 
@@ -685,15 +684,15 @@ if (contactForm) {
         if (sendButtonText) sendButtonText.textContent = "SENDING…";
         showFormNote("Sending your message…", null);
 
-        const controller = new AbortController();
-        let timedOut = false;
+        // Do NOT abort this request after an arbitrary deadline. The provider can
+        // accept and deliver the email before its acknowledgement reaches the browser.
+        // Aborting at 15 seconds caused a false "Try again" even for delivered mail.
         const slowNoticeTimer = window.setTimeout(function () {
-            showFormNote("The email service is taking longer than expected. Please keep this page open…", null);
+            showFormNote("Still sending — please keep this page open and do not submit again.", null);
         }, 6000);
-        const timeoutTimer = window.setTimeout(function () {
-            timedOut = true;
-            controller.abort();
-        }, MAX_WAIT_MS);
+        const lateNoticeTimer = window.setTimeout(function () {
+            showFormNote("The email service is taking longer than expected to confirm your message. Please do not resend it while we wait.", null);
+        }, 15000);
 
         try {
             const response = await fetch("https://api.web3forms.com/submit", {
@@ -702,7 +701,6 @@ if (contactForm) {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                signal: controller.signal,
                 body: JSON.stringify({
                     access_key: accessKey,
                     name: name,
@@ -721,7 +719,9 @@ if (contactForm) {
                 if (response.status === 429) {
                     throw new Error("Too many enquiries in a short time. Please wait before trying again.");
                 }
-                throw new Error(providerMessage || "The email service did not accept this enquiry.");
+                const rejection = new Error(providerMessage || "The email service did not accept this enquiry.");
+                rejection.providerRejected = true;
+                throw rejection;
             }
 
             contactForm.reset();
@@ -735,18 +735,17 @@ if (contactForm) {
             }, 3200);
         } catch (error) {
             console.error("Contact form submission error:", error);
-            if (sendButtonText) sendButtonText.textContent = "TRY AGAIN";
-            if (timedOut || (error && error.name === "AbortError")) {
-                showFormNote("The service did not confirm whether your message was accepted. It may still arrive; please check before sending again.", "is-error");
+            if (error && (error.providerRejected || error.message.startsWith("Too many enquiries"))) {
+                if (sendButtonText) sendButtonText.textContent = "SEND MESSAGE";
+                showFormNote("The email service declined this request. Your details are still here; please wait before trying again.", "is-error");
             } else {
-                const safeMessage = error && error.message && error.message.startsWith("Too many enquiries")
-                    ? error.message
-                    : "We could not confirm that your message was sent. Your details are still here; please try again later.";
-                showFormNote(safeMessage, "is-error");
+                // A network error or unreadable acknowledgement does not prove non-delivery.
+                if (sendButtonText) sendButtonText.textContent = "STATUS UNCONFIRMED";
+                showFormNote("We did not receive a confirmation, but your message may already have arrived. Please check before submitting again.", "is-error");
             }
         } finally {
             window.clearTimeout(slowNoticeTimer);
-            window.clearTimeout(timeoutTimer);
+            window.clearTimeout(lateNoticeTimer);
             isSubmitting = false;
             if (sendButton) {
                 sendButton.disabled = false;
