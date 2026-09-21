@@ -618,31 +618,30 @@ if (
 // Provider acknowledgement means accepted for processing, not inbox delivery.
 // ========================================
 
-// CONTACT FORM VERSION: 20260921-CONFIRMATION-VERIFIED-2 (no 15s abort)
+// CONTACT FORM VERSION: 20260921-RELIABLE-3
+// Configuration is in contact/form-config.js so replacing this script or the
+// contact page does not erase the visitor-facing access key configuration.
 const contactForm = document.querySelector("#contact-form");
 
 if (contactForm) {
     const serviceField = contactForm.querySelector("#contact-service");
-    if (serviceField) {
-        const requestedService = new URLSearchParams(window.location.search).get("service");
-        const choices = {
-            consultancy: "UI/UX Consultancy",
-            figma: "UI/UX Design in Figma",
-            development: "Full Website Design & Development"
-        };
-        if (Object.prototype.hasOwnProperty.call(choices, requestedService)) {
-            serviceField.value = choices[requestedService];
-        }
+    const serviceChoices = {
+        consultancy: "UI/UX Consultancy",
+        figma: "UI/UX Design in Figma",
+        development: "Full Website Design & Development"
+    };
+    const serviceRequested = new URLSearchParams(window.location.search).get("service");
+    if (serviceField && Object.prototype.hasOwnProperty.call(serviceChoices, serviceRequested)) {
+        serviceField.value = serviceChoices[serviceRequested];
     }
 
     const formNote = contactForm.querySelector("#form-note");
     const sendButton = contactForm.querySelector(".contact-send-button");
     const sendButtonText = sendButton ? sendButton.querySelector("span:first-child") : null;
-    const accessKeyField = contactForm.querySelector('input[name="access_key"]');
     let isSubmitting = false;
-    let resetButtonTimer;
+    let buttonResetTimer = null;
 
-    function showFormNote(message, state) {
+    function setFormNote(message, state) {
         if (!formNote) return;
         formNote.textContent = message;
         formNote.classList.remove("is-success", "is-error");
@@ -653,47 +652,45 @@ if (contactForm) {
         event.preventDefault();
         if (isSubmitting) return;
 
-        const accessKey = accessKeyField ? accessKeyField.value.trim() : "";
-        if (!accessKey || accessKey.includes("PASTE_YOUR_") || accessKey.includes("YOUR_ACCESS_KEY")) {
-            showFormNote("The contact form is not configured yet. Please try again later.", "is-error");
+        const configuredKey = window.STARR_CONTACT_CONFIG && window.STARR_CONTACT_CONFIG.accessKey;
+        const accessKey = typeof configuredKey === "string" ? configuredKey.trim() : "";
+        if (!accessKey || accessKey.includes("PASTE_") || accessKey.includes("ADD_YOUR_") || accessKey.includes("YOUR_ACCESS_KEY")) {
+            setFormNote("This form is not set up yet. Please try again later.", "is-error");
             return;
         }
-
         if (!contactForm.checkValidity()) {
             contactForm.reportValidity();
             return;
         }
-
         const botcheck = contactForm.querySelector('input[name="botcheck"]');
-        if (botcheck && botcheck.checked) {
-            showFormNote("Unable to submit this message.", "is-error");
-            return;
-        }
+        if (botcheck && botcheck.checked) return;
 
-        const name = contactForm.querySelector("#contact-name").value.trim();
-        const email = contactForm.querySelector("#contact-email").value.trim();
-        const subject = contactForm.querySelector("#contact-subject").value.trim();
-        const service = serviceField ? serviceField.value : "";
-        const message = contactForm.querySelector("#contact-message").value.trim();
+        const submission = {
+            access_key: accessKey,
+            name: contactForm.querySelector("#contact-name").value.trim(),
+            email: contactForm.querySelector("#contact-email").value.trim(),
+            subject: contactForm.querySelector("#contact-subject").value.trim(),
+            service: serviceField && serviceField.value ? serviceField.value : "Not specified",
+            message: contactForm.querySelector("#contact-message").value.trim(),
+            from_name: "Starrfield Fun portfolio",
+            botcheck: false
+        };
 
         isSubmitting = true;
-        window.clearTimeout(resetButtonTimer);
+        window.clearTimeout(buttonResetTimer);
         if (sendButton) {
             sendButton.disabled = true;
             sendButton.classList.add("is-sending");
+            sendButton.setAttribute("aria-busy", "true");
         }
         if (sendButtonText) sendButtonText.textContent = "SENDING…";
-        showFormNote("Sending your message…", null);
+        setFormNote("Sending your enquiry. Please wait for confirmation.", null);
 
-        // Do NOT abort this request after an arbitrary deadline. The provider can
-        // accept and deliver the email before its acknowledgement reaches the browser.
-        // Aborting at 15 seconds caused a false "Try again" even for delivered mail.
+        // A slow provider response is not proof of failed delivery. Do not
+        // cancel the request, auto-retry, or tell visitors their email failed.
         const slowNoticeTimer = window.setTimeout(function () {
-            showFormNote("Waiting for email-service confirmation. Your enquiry may already be delivered — please do not send it again.", null);
-        }, 6000);
-        const lateNoticeTimer = window.setTimeout(function () {
-            showFormNote("Still waiting for confirmation. Please avoid resubmitting: the email may already have arrived.", null);
-        }, 15000);
+            setFormNote("Still waiting for confirmation. Your enquiry may already have arrived; please don't submit again yet.", null);
+        }, 10000);
 
         try {
             const response = await fetch("https://api.web3forms.com/submit", {
@@ -702,55 +699,42 @@ if (contactForm) {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                body: JSON.stringify({
-                    access_key: accessKey,
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    service: service || "Not specified",
-                    message: message,
-                    from_name: "Starrfield Fun portfolio",
-                    botcheck: false
-                })
+                body: JSON.stringify(submission)
             });
-            // Web3Forms may reply with HTTP 200 even if its JSON contains success:false.
+            // Both HTTP status AND provider success must confirm acceptance.
             const result = await response.json();
             if (!response.ok || !result || result.success !== true) {
-                const providerMessage = result && typeof result.message === "string" ? result.message : "";
                 if (response.status === 429) {
-                    throw new Error("Too many enquiries in a short time. Please wait before trying again.");
+                    setFormNote("Too many requests were sent. Please wait before trying again.", "is-error");
+                } else {
+                    setFormNote("The email service did not accept this enquiry. Please check your details and try again later.", "is-error");
                 }
-                const rejection = new Error(providerMessage || "The email service did not accept this enquiry.");
-                rejection.providerRejected = true;
-                throw rejection;
+                if (sendButtonText) sendButtonText.textContent = "SEND MESSAGE";
+                return;
             }
 
             contactForm.reset();
-            if (serviceField && Object.prototype.hasOwnProperty.call(choices, new URLSearchParams(window.location.search).get("service"))) {
-                serviceField.value = choices[new URLSearchParams(window.location.search).get("service")];
+            if (serviceField && Object.prototype.hasOwnProperty.call(serviceChoices, serviceRequested)) {
+                serviceField.value = serviceChoices[serviceRequested];
             }
             if (sendButtonText) sendButtonText.textContent = "MESSAGE SENT";
-            showFormNote("Your message was accepted. Thank you — I’ll get back to you soon.", "is-success");
-            resetButtonTimer = window.setTimeout(function () {
+            setFormNote("Your enquiry was accepted. Thanks — I’ll be in touch soon.", "is-success");
+            buttonResetTimer = window.setTimeout(function () {
                 if (sendButtonText && !isSubmitting) sendButtonText.textContent = "SEND MESSAGE";
-            }, 3200);
+            }, 4000);
         } catch (error) {
-            console.error("Contact form submission error:", error);
-            if (error && (error.providerRejected || (typeof error.message === "string" && error.message.startsWith("Too many enquiries")))) {
-                if (sendButtonText) sendButtonText.textContent = "SEND MESSAGE";
-                showFormNote("The email service declined this request. Your details are still here; please wait before trying again.", "is-error");
-            } else {
-                // A network error or unreadable acknowledgement does not prove non-delivery.
-                if (sendButtonText) sendButtonText.textContent = "STATUS UNCONFIRMED";
-                showFormNote("We did not receive a confirmation, but your message may already have arrived. Please check before submitting again.", "is-error");
-            }
+            // A network error or an unreadable acknowledgement cannot prove
+            // whether the provider accepted a message. Avoid false failures.
+            console.error("Contact form: confirmation unavailable", error);
+            if (sendButtonText) sendButtonText.textContent = "STATUS UNCONFIRMED";
+            setFormNote("We couldn't confirm delivery. Your message may still arrive. Please check your inbox before resending.", "is-error");
         } finally {
             window.clearTimeout(slowNoticeTimer);
-            window.clearTimeout(lateNoticeTimer);
             isSubmitting = false;
             if (sendButton) {
                 sendButton.disabled = false;
                 sendButton.classList.remove("is-sending");
+                sendButton.removeAttribute("aria-busy");
             }
         }
     });
