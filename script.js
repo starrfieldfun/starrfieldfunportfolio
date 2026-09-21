@@ -613,9 +613,9 @@ if (
 
 
 // ========================================
-// CONTACT FORM
-// FormSubmit AJAX with bounded waiting and honest delivery feedback.
-// The provider controls actual submission time and email delivery.
+// CONTACT FORM — WEB3FORMS
+// Access key is configured by the site owner in contact/index.html.
+// Provider acknowledgement means accepted for processing, not inbox delivery.
 // ========================================
 
 const contactForm = document.querySelector("#contact-form");
@@ -634,41 +634,39 @@ if (contactForm) {
         }
     }
 
-    const formNote = document.querySelector("#form-note");
+    const formNote = contactForm.querySelector("#form-note");
     const sendButton = contactForm.querySelector(".contact-send-button");
     const sendButtonText = sendButton ? sendButton.querySelector("span:first-child") : null;
-    const CONTACT_EMAIL = "starrfieldfunwork@gmail.com";
-    const MAX_WAIT_MS = 12000;
+    const accessKeyField = contactForm.querySelector('input[name="access_key"]');
+    const MAX_WAIT_MS = 15000;
     let isSubmitting = false;
     let resetButtonTimer;
 
-    function showFormNote(message, state, offerEmail) {
+    function showFormNote(message, state) {
         if (!formNote) return;
         formNote.textContent = message;
         formNote.classList.remove("is-success", "is-error");
         if (state) formNote.classList.add(state);
-        if (offerEmail) {
-            const link = document.createElement("a");
-            link.href = "mailto:" + CONTACT_EMAIL;
-            link.textContent = " Email me directly ↗";
-            link.style.textDecoration = "underline";
-            link.style.textUnderlineOffset = "3px";
-            formNote.appendChild(link);
-        }
     }
 
     contactForm.addEventListener("submit", async function (event) {
         event.preventDefault();
         if (isSubmitting) return;
+
+        const accessKey = accessKeyField ? accessKeyField.value.trim() : "";
+        if (!accessKey || accessKey.includes("PASTE_YOUR_") || accessKey.includes("YOUR_ACCESS_KEY")) {
+            showFormNote("The contact form is not configured yet. Please try again later.", "is-error");
+            return;
+        }
+
         if (!contactForm.checkValidity()) {
             contactForm.reportValidity();
             return;
         }
 
-        const honeypot = contactForm.querySelector('input[name="_honey"]');
-        if (honeypot && honeypot.value.trim() !== "") {
-            // Avoid submitting suspected spam. Do not show a success confirmation.
-            showFormNote("Please use the direct email link if you cannot submit this form.", "is-error", true);
+        const botcheck = contactForm.querySelector('input[name="botcheck"]');
+        if (botcheck && botcheck.checked) {
+            showFormNote("Unable to submit this message.", "is-error");
             return;
         }
 
@@ -685,57 +683,66 @@ if (contactForm) {
             sendButton.classList.add("is-sending");
         }
         if (sendButtonText) sendButtonText.textContent = "SENDING…";
-        showFormNote("Sending your message. Please keep this page open…", null, false);
+        showFormNote("Sending your message…", null);
 
         const controller = new AbortController();
         let timedOut = false;
         const slowNoticeTimer = window.setTimeout(function () {
-            showFormNote("The email service is responding slowly. Still waiting for confirmation…", null, false);
-        }, 5000);
+            showFormNote("The email service is taking longer than expected. Please keep this page open…", null);
+        }, 6000);
         const timeoutTimer = window.setTimeout(function () {
             timedOut = true;
             controller.abort();
         }, MAX_WAIT_MS);
 
         try {
-            const response = await fetch("https://formsubmit.co/ajax/" + CONTACT_EMAIL, {
+            const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: {"Content-Type": "application/json", "Accept": "application/json"},
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
                 signal: controller.signal,
                 body: JSON.stringify({
+                    access_key: accessKey,
                     name: name,
                     email: email,
                     subject: subject,
                     service: service || "Not specified",
                     message: message,
-                    _subject: subject + " — Portfolio enquiry from " + name,
-                    _template: "table",
-                    _url: window.location.href
+                    from_name: "Starrfield Fun portfolio",
+                    botcheck: false
                 })
             });
-
-            // FormSubmit can send an HTTP 200 even when its response says success:false.
-            // Only show success when FormSubmit explicitly confirms acceptance.
-            const data = await response.json();
-            const accepted = data && (data.success === true || data.success === "true");
-            if (!response.ok || !accepted) {
-                throw new Error("FormSubmit did not confirm this submission.");
+            // Web3Forms may reply with HTTP 200 even if its JSON contains success:false.
+            const result = await response.json();
+            if (!response.ok || !result || result.success !== true) {
+                const providerMessage = result && typeof result.message === "string" ? result.message : "";
+                if (response.status === 429) {
+                    throw new Error("Too many enquiries in a short time. Please wait before trying again.");
+                }
+                throw new Error(providerMessage || "The email service did not accept this enquiry.");
             }
 
             contactForm.reset();
+            if (serviceField && Object.prototype.hasOwnProperty.call(choices, new URLSearchParams(window.location.search).get("service"))) {
+                serviceField.value = choices[new URLSearchParams(window.location.search).get("service")];
+            }
             if (sendButtonText) sendButtonText.textContent = "MESSAGE SENT";
-            showFormNote("The email service accepted your message. Thanks — I’ll get back to you soon.", "is-success", false);
+            showFormNote("Your message was accepted. Thank you — I’ll get back to you soon.", "is-success");
             resetButtonTimer = window.setTimeout(function () {
                 if (sendButtonText && !isSubmitting) sendButtonText.textContent = "SEND MESSAGE";
             }, 3200);
         } catch (error) {
-            console.error("Contact form error:", error);
+            console.error("Contact form submission error:", error);
             if (sendButtonText) sendButtonText.textContent = "TRY AGAIN";
             if (timedOut || (error && error.name === "AbortError")) {
-                // Aborting a browser request cannot undo a submission the provider received.
-                showFormNote("This is taking too long, so delivery could not be confirmed. Your message may still arrive. Please avoid sending it again immediately; use email instead.", "is-error", true);
+                showFormNote("The service did not confirm whether your message was accepted. It may still arrive; please check before sending again.", "is-error");
             } else {
-                showFormNote("The email service could not confirm your message. Your details are still here. Please email me directly or try again later.", "is-error", true);
+                const safeMessage = error && error.message && error.message.startsWith("Too many enquiries")
+                    ? error.message
+                    : "We could not confirm that your message was sent. Your details are still here; please try again later.";
+                showFormNote(safeMessage, "is-error");
             }
         } finally {
             window.clearTimeout(slowNoticeTimer);
