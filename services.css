@@ -1,0 +1,63 @@
+/* Starrfield Fun / Services — separate, scoped stylesheet. */
+.sf-home-services, .sf-services-page { --sf-ivory:#F5F2EA;--sf-ink:#151619;--sf-blue:#5965FF;--sf-coral:#FF7657;--sf-lime:#D8FF68; }
+.sf-home-services {background:#151619;color:#F5F2EA;padding:clamp(92px,10vw,160px) clamp(20px,5vw,90px);overflow:hidden}
+.sf-home-services-inner{max-width:1420px;margin-inline:auto}
+.sf-home-services-top,.sf-home-services-lead,.sf-home-service-no,.sf-home-service-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.sf-home-services-top{padding-bottom:27px;border-bottom:1px solid rgba(245,242,234,.25)}
+.sf-section-counter,.sf-small-eyebrow,.sf-home-service-bottom,.sf-services-link,.sf-service-id,.sf-services-meta,.sf-service-contact-link,.sf-services-hero-meta,.sf-services-end-note{font-size:11px;letter-spacing:.13em;font-weight:800}
+.sf-section-counter,.sf-small-eyebrow{color:#D8FF68}.sf-section-asterisk{font-size:36px;color:#FF7657;line-height:1}
+.sf-home-services-lead{align-items:end;padding:60px 0 76px}
+.sf-home-services-lead h2{font-size:clamp(44px,6.2vw,108px);letter-spacing:-.075em;line-height:1.05;font-weight:600;margin-top:19px}
+.sf-home-services-lead h2 em,.sf-home-service h3 em,.sf-services-hero h1 em,.sf-service-title em,.sf-services-end h2 em{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:#D8FF68}
+.sf-home-services-lead>p{max-width:305px;line-height:1.9;color:#B9BAC0;font-size:14px;padding-bottom:9px}
+.sf-home-services-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sf-home-service{min-width:0;min-height:388px;display:flex;flex-direction:column;align-items:stretch;background:#232429;border:1px solid rgba(245,242,234,.13);padding:clamp(22px,3vw,36px);transition:background .28s ease,transform .4s cubic-bezier(.16,1,.3,1);border-radius:3px}
+.sf-home-service:nth-child(2){background:#292B31}.sf-home-service:nth-child(3){background:#303138}
+.sf-home-service:hover,.sf-home-service:focus-visible{background:#373944;transform:translateY(-5px)}
+.sf-home-service:focus-visible,.sf-services-link:focus-visible,.sf-service-contact-link:focus-visible{outline:3px solid #D8FF68;outline-offset:5px}
+.sf-home-service-no{color:#D8FF68;font-size:12px;font-weight:800}.sf-home-service-no span{font-size:20px}
+.sf-home-service h3{font-size:clamp(27px,2.5vw,43px);line-height:1.11;letter-spacing:-.05em;margin:56px 0 20px;font-weight:650}
+.sf-home-service p{font-size:13px;line-height:1.85;color:#CBCBD0;max-width:315px;margin-bottom:38px}
+.sf-home-service-bottom{border-top:1px solid rgba(245,242,234,.22);padding-top:22px;margin-top:auto;color:#D8FF68;font-size:10px}
+.sf-home-service-bottom span{font-size:17px}
+.sf-services-link{display:inline-flex;align-items:center;justify-content:space-between;gap:42px;padding:18px 24px;background:#D8FF68;color:#151619;margin-top:34px;transition:background .2s ease}
+.sf-services-link:hover{background:#F5F2EA}.sf-services-link span{font-size:18px}
+/* Dedicated page */
+.sf-services-page{background:#F5F2EA;color:#151619}
+.sf-services-hero{position:relative;overflow:hidden;padding:clamp(95px,12vw,185px) clamp(20px,5vw,90px) clamp(65px,8vw,110px);background:#F5F2EA}
+.sf-services-container{max-width:1420px;margin-inline:auto}
+.sf-services-hero-meta{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid rgba(21,22,25,.24);padding-bottom:19px;color:#5965FF}
+.sf-services-hero-grid{display:grid;grid-template-columns:1.7fr .55fr;gap:5vw;align-items:end;margin-top:68px}
+.sf-services-hero h1{font-size:clamp(65px,9.5vw,170px);font-weight:600;line-height:.91;letter-spacing:-.082em}
+.sf-services-hero h1 em{color:#5965FF}.sf-services-hero-sub{font-size:clamp(15px,1.5vw,19px);line-height:1.8;max-width:340px;color:#50535A;padding-bottom:12px}
+.sf-services-hero-rail{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;margin-top:82px;border-top:1px solid rgba(21,22,25,.22);padding-top:19px;font-size:11px;font-weight:800;letter-spacing:.1em}
+.sf-services-hero-rail a{border-bottom:1px solid #151619;padding-bottom:5px}
+.sf-services-hero-rail a:hover{color:#5965FF;border-color:#5965FF}
+.sf-services-list{background:#151619;color:#F5F2EA;padding:clamp(45px,6vw,85px) clamp(20px,5vw,90px) clamp(100px,10vw,170px)}
+.sf-services-list-top{color:#D8FF68;font-size:11px;font-weight:800;letter-spacing:.14em;padding-bottom:34px;border-bottom:1px solid rgba(245,242,234,.2)}
+.sf-service-detail{scroll-margin-top:105px;display:grid;grid-template-columns:minmax(135px,.47fr) minmax(0,1.5fr);gap:clamp(24px,5vw,100px);padding:clamp(65px,8vw,122px) 0;border-bottom:1px solid rgba(245,242,234,.23)}
+.sf-service-id{position:sticky;top:125px;align-self:start;display:flex;gap:20px;color:#D8FF68}.sf-service-id span{color:#FF7657}
+.sf-service-title{font-size:clamp(42px,5.3vw,92px);letter-spacing:-.07em;line-height:1.02;font-weight:600}
+.sf-service-blurb{max-width:740px;font-size:clamp(16px,1.65vw,22px);line-height:1.65;color:#C8C8CC;margin-top:28px}
+.sf-service-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;margin-top:59px}
+.sf-service-content h3{font-size:11px;color:#D8FF68;letter-spacing:.12em;margin-bottom:19px}
+.sf-service-content ul{list-style:none;padding:0;margin:0}
+.sf-service-content li{border-top:1px solid rgba(245,242,234,.2);padding:13px 0;font-size:14px;line-height:1.6;color:#DFDFE0}
+.sf-service-output{margin-top:42px;padding:22px 25px;background:#24262A;border-left:3px solid #5965FF;line-height:1.6;font-size:14px}
+.sf-service-output strong{color:#D8FF68}
+.sf-service-contact-link{display:inline-flex;align-items:center;gap:28px;background:#D8FF68;color:#151619;padding:19px 24px;margin-top:27px;transition:background .2s ease}
+.sf-service-contact-link:hover{background:#F5F2EA}.sf-service-contact-link span{font-size:17px}
+.sf-services-end{padding:clamp(85px,10vw,160px) clamp(20px,5vw,90px);background:#D8FF68;color:#151619}
+.sf-services-end-note{border-bottom:1px solid rgba(21,22,25,.3);padding-bottom:24px}
+.sf-services-end h2{font-size:clamp(55px,8vw,135px);letter-spacing:-.077em;line-height:.95;max-width:1100px;margin:50px 0 40px}
+.sf-services-end h2 em{color:#5965FF}.sf-services-end p{line-height:1.8;max-width:580px;color:#373A39;font-size:15px}
+.sf-services-end a{display:inline-block;background:#151619;color:#F5F2EA;padding:19px 27px;margin-top:29px;font-size:12px;font-weight:800;letter-spacing:.08em}
+.sf-services-end a:hover{background:#5965FF}
+/* Keep contact form's dark design and allow blank selection for general enquiries. */
+.contact-page .contact-form-editorial .sf-service-form-field select{width:100%;min-height:53px;border:0;border-bottom:1px solid rgba(255,255,255,.2);border-radius:0;color:#F5F2EA;background:#18191D;font:inherit;font-size:14px;padding:13px 28px 13px 0;cursor:pointer}
+.contact-page .contact-form-editorial .sf-service-form-field select:focus-visible{outline:2px solid #D8FF68;outline-offset:4px;border-bottom-color:#5965FF}
+.contact-page .contact-form-editorial .sf-service-form-field select option{color:#F5F2EA;background:#18191D}
+.contact-page .contact-form-editorial .sf-service-form-hint{font-size:11px;line-height:1.7;color:#9E9FA4;margin-top:10px}
+@media(max-width:900px){.sf-home-services-lead{display:block}.sf-home-services-lead>p{padding-top:26px;max-width:590px}.sf-home-services-grid{grid-template-columns:1fr}.sf-home-service{min-height:275px}.sf-home-service h3{margin:27px 0 14px}.sf-home-service p{margin-bottom:25px}.sf-services-hero-grid{grid-template-columns:1fr}.sf-services-hero-sub{max-width:620px}.sf-service-detail{grid-template-columns:1fr;gap:27px}.sf-service-id{position:static}.sf-services-hero-rail{margin-top:53px}}
+@media(max-width:540px){.sf-home-services{padding-inline:20px}.sf-home-services-lead{padding:40px 0}.sf-home-services-lead h2{font-size:clamp(42px,11vw,61px)}.sf-home-service{padding:25px}.sf-services-hero h1{font-size:clamp(56px,16vw,89px)}.sf-services-hero-meta{font-size:9px}.sf-services-hero-rail{font-size:10px}.sf-service-content{grid-template-columns:1fr;gap:34px;margin-top:36px}.sf-service-detail{padding-block:62px}.sf-service-title{font-size:clamp(42px,11vw,62px)}}
+@media(prefers-reduced-motion:reduce){.sf-home-service,.sf-services-link,.sf-service-contact-link{transition:none}.sf-home-service:hover{transform:none}}

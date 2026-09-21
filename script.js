@@ -625,6 +625,19 @@ const contactForm =
 
 if (contactForm) {
 
+    const serviceField = contactForm.querySelector("#contact-service");
+    if (serviceField) {
+        const requestedService = new URLSearchParams(window.location.search).get("service");
+        const choices = {
+            consultancy: "UI/UX Consultancy",
+            figma: "UI/UX Design in Figma",
+            development: "Full Website Design & Development"
+        };
+        if (Object.prototype.hasOwnProperty.call(choices, requestedService)) {
+            serviceField.value = choices[requestedService];
+        }
+    }
+
     const formNote =
         document.querySelector(
             "#form-note"
@@ -703,6 +716,11 @@ if (contactForm) {
                     "#contact-message"
                 ).value.trim();
 
+            const service =
+                document.querySelector(
+                    "#contact-service"
+                )?.value || "";
+
 
             if (sendButton) {
 
@@ -757,6 +775,7 @@ if (contactForm) {
                                     name: name,
                                     email: email,
                                     subject: subject,
+                                    service: service || "Not specified",
                                     message: message,
 
                                     _subject:
