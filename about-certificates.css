@@ -1,0 +1,92 @@
+/* About / Certificates. Scoped to prevent changes to approved portfolio pages. */
+.about-page .sf-certifications {
+    background: #151619;
+    color: #F5F2EA;
+    padding: clamp(88px, 9vw, 148px) clamp(20px, 5.2vw, 90px);
+    overflow: hidden;
+}
+.about-page .sf-certifications-container { max-width: 1390px; margin: 0 auto; }
+.about-page .sf-certifications-intro { max-width: 850px; margin: 0 0 clamp(38px, 5vw, 76px); }
+.about-page .sf-certifications-kicker {
+    color: #D8FF68; font: 800 11px/1.5 Manrope, Arial, sans-serif;
+    letter-spacing: .19em; margin: 0 0 23px;
+}
+.about-page .sf-certifications-intro h2 {
+    color: #F5F2EA; font: 800 clamp(46px, 6.2vw, 94px)/1.05 Manrope, Arial, sans-serif;
+    letter-spacing: -.067em; margin: 0 0 25px;
+}
+.about-page .sf-certifications-intro h2 em {
+    color: #D8FF68; font: 400 1.08em/1 Instrument Serif, Georgia, serif;
+}
+.about-page .sf-certifications-description {
+    color: #B8B9BD; font: 500 clamp(15px, 1.5vw, 19px)/1.8 Manrope, Arial, sans-serif;
+    max-width: 620px; margin: 0;
+}
+.about-page .sf-certifications-grid {
+    display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(15px, 2vw, 30px);
+}
+.about-page .sf-certificate-card {
+    display: flex; flex-direction: column; min-width: 0;
+    border: 1px solid #393A3F; background: #1D1F23; border-radius: 18px;
+    overflow: hidden; transition: transform .35s ease, border-color .35s ease;
+}
+.about-page .sf-certificate-card:hover,
+.about-page .sf-certificate-card:focus-within { transform: translateY(-5px); border-color: #7376A8; }
+.about-page .sf-certificate-preview {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    min-height: 0; padding: 26px 36px 22px; background: #E8E7E2;
+    text-decoration: none; outline-offset: -5px;
+}
+.about-page .sf-certificate-preview img {
+    display: block; width: auto; height: auto; max-width: 100%; max-height: 390px;
+    aspect-ratio: 595 / 842; object-fit: contain; border: 1px solid #DEDCD5;
+    box-shadow: 0 14px 30px rgba(0,0,0,.09);
+}
+.about-page .sf-certificate-preview-badge {
+    position: absolute; right: 19px; bottom: 19px; display: flex; gap: 12px; align-items: center;
+    color: #F5F2EA; background: #151619; border-radius: 30px; padding: 12px 15px;
+    font: 800 10px/1 Manrope, Arial, sans-serif; letter-spacing: .11em;
+}
+.about-page .sf-certificate-preview-badge span { font-size: 17px; }
+.about-page .sf-certificate-card-content {
+    display: flex; flex: 1; flex-direction: column; align-items: flex-start;
+    gap: 13px; padding: clamp(22px,2.2vw,32px);
+}
+.about-page .sf-certificate-index {
+    font: 800 10px/1.4 Manrope, Arial, sans-serif; letter-spacing: .13em; color: #D8FF68;
+}
+.about-page .sf-certificate-index span { margin: 0 7px; opacity: .6; }
+.about-page .sf-certificate-card h3 {
+    margin: 0; color: #F5F2EA;
+    font: 700 clamp(21px, 2vw, 29px)/1.22 Manrope, Arial, sans-serif;
+    letter-spacing: -.038em;
+}
+.about-page .sf-certificate-card-content p {
+    margin: 0 0 10px; color: #B8B9BD;
+    font: 500 13px/1.6 Manrope, Arial, sans-serif;
+}
+.about-page .sf-certificate-link {
+    display: inline-flex; align-items: center; gap: 13px; margin-top: auto;
+    color: #F5F2EA; border-bottom: 1px solid #D8FF68;
+    font: 800 11px/1.35 Manrope, Arial, sans-serif; letter-spacing: .11em;
+    text-decoration: none; padding-bottom: 9px;
+}
+.about-page .sf-certificate-link span { font-size: 19px; line-height: 1; color: #D8FF68; }
+.about-page .sf-certificate-link:hover,
+.about-page .sf-certificate-link:focus-visible { color: #D8FF68; }
+@media(max-width:1050px) {
+    .about-page .sf-certifications-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .about-page .sf-certificate-preview img { max-height: 330px; }
+}
+@media(max-width:640px) {
+    .about-page .sf-certifications { padding: 76px 20px 86px; }
+    .about-page .sf-certifications-intro h2 { font-size: clamp(43px,11vw,70px); }
+    .about-page .sf-certifications-grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+    .about-page .sf-certificate-preview { padding: 24px 45px; }
+    .about-page .sf-certificate-preview img { max-height: 340px; }
+    .about-page .sf-certificate-card-content { padding: 26px; }
+}
+@media(prefers-reduced-motion:reduce) {
+    .about-page .sf-certificate-card { transition: none; }
+    .about-page .sf-certificate-card:hover { transform: none; }
+}
