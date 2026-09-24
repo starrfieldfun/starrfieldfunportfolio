@@ -81,6 +81,9 @@
 }
 
 .about-page .sf-certificate-card {
+    --cert-accent: rgba(216, 255, 104, 0.92);
+    --cert-soft: rgba(216, 255, 104, 0.18);
+    --cert-glow: rgba(216, 255, 104, 0.28);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -89,14 +92,67 @@
     background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
     border-radius: 22px;
     overflow: hidden;
+    isolation: isolate;
     transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.about-page .sf-certificate-card:nth-child(2) {
+    --cert-accent: rgba(117, 159, 255, 0.95);
+    --cert-soft: rgba(117, 159, 255, 0.16);
+    --cert-glow: rgba(117, 159, 255, 0.24);
+}
+
+.about-page .sf-certificate-card:nth-child(3) {
+    --cert-accent: rgba(255, 188, 116, 0.95);
+    --cert-soft: rgba(255, 188, 116, 0.16);
+    --cert-glow: rgba(255, 188, 116, 0.22);
+}
+
+.about-page .sf-certificate-card::before,
+.about-page .sf-certificate-card::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.about-page .sf-certificate-card::before {
+    inset: auto -18% -28% auto;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--cert-glow) 0%, rgba(255, 255, 255, 0) 68%);
+    opacity: 0.55;
+    transform: translate3d(0, 0, 0) scale(0.94);
+    z-index: 0;
+}
+
+.about-page .sf-certificate-card::after {
+    top: 0;
+    left: 18px;
+    right: 18px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--cert-accent) 22%, rgba(255,255,255,0.85) 50%, var(--cert-accent) 78%, transparent 100%);
+    opacity: 0.4;
+    z-index: 1;
 }
 
 .about-page .sf-certificate-card:hover,
 .about-page .sf-certificate-card:focus-within {
-    transform: translateY(-6px);
-    border-color: rgba(216, 255, 104, 0.45);
+    transform: translateY(-8px);
+    border-color: color-mix(in srgb, var(--cert-accent) 45%, white 10%);
     box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+}
+
+.about-page .sf-certificate-card:hover::before,
+.about-page .sf-certificate-card:focus-within::before {
+    opacity: 0.9;
+    transform: translate3d(-12px, -12px, 0) scale(1.06);
+}
+
+.about-page .sf-certificate-card:hover::after,
+.about-page .sf-certificate-card:focus-within::after {
+    opacity: 0.8;
 }
 
 .about-page .sf-certificate-preview {
@@ -105,33 +161,55 @@
     align-items: center;
     justify-content: center;
     padding: 28px 34px 24px;
-    background: linear-gradient(180deg, #ECEAE4 0%, #E3E0D8 100%);
+    background:
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 18%),
+        radial-gradient(circle at 82% 84%, var(--cert-soft) 0%, rgba(255,255,255,0) 28%),
+        linear-gradient(180deg, #ECEAE4 0%, #E3E0D8 100%);
     text-decoration: none;
     outline-offset: -5px;
     overflow: hidden;
+    z-index: 1;
+}
+
+.about-page .sf-certificate-preview::before,
+.about-page .sf-certificate-preview::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
 }
 
 .about-page .sf-certificate-preview::before {
-    content: "";
-    position: absolute;
+    inset: -12% -38%;
+    background:
+        linear-gradient(118deg,
+            rgba(255, 255, 255, 0) 22%,
+            rgba(255, 255, 255, 0.08) 36%,
+            rgba(255, 255, 255, 0.68) 49%,
+            rgba(255, 255, 255, 0.16) 58%,
+            rgba(255, 255, 255, 0) 72%);
+    transform: translateX(-185%) skewX(-16deg);
+    animation: sfCertificateShineSweep 4.8s cubic-bezier(.25,.1,.18,1) infinite;
+    mix-blend-mode: screen;
+}
+
+.about-page .sf-certificate-preview::after {
     inset: 0;
     background:
-        linear-gradient(125deg,
-            transparent 0%,
-            transparent 35%,
-            rgba(255, 255, 255, 0.06) 44%,
-            rgba(255, 255, 255, 0.34) 50%,
-            rgba(255, 255, 255, 0.08) 56%,
-            transparent 66%,
-            transparent 100%);
-    transform: translateX(-160%);
-    animation: sfCertificateShine 5.6s ease-in-out infinite;
-    pointer-events: none;
+        radial-gradient(circle at 24% 24%, rgba(255,255,255,0.58) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 80% 26%, rgba(255,255,255,0.42) 0 1.2px, transparent 1.8px),
+        radial-gradient(circle at 68% 72%, rgba(255,255,255,0.38) 0 1.4px, transparent 2px);
+    opacity: 0.45;
+    animation: sfCertificateSparkle 3.8s ease-in-out infinite;
 }
 
 .about-page .sf-certificate-card:hover .sf-certificate-preview::before,
 .about-page .sf-certificate-card:focus-within .sf-certificate-preview::before {
-    animation-duration: 1.8s;
+    animation-duration: 1.45s;
+}
+
+.about-page .sf-certificate-card:hover .sf-certificate-preview::after,
+.about-page .sf-certificate-card:focus-within .sf-certificate-preview::after {
+    opacity: 0.82;
 }
 
 .about-page .sf-certificate-preview img {
@@ -146,6 +224,13 @@
     object-fit: contain;
     border: 1px solid #DAD6CC;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+    transition: transform 0.42s ease, box-shadow 0.42s ease;
+}
+
+.about-page .sf-certificate-card:hover .sf-certificate-preview img,
+.about-page .sf-certificate-card:focus-within .sf-certificate-preview img {
+    transform: scale(1.025);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.16);
 }
 
 .about-page .sf-certificate-preview-badge {
@@ -165,6 +250,14 @@
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.11em;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-page .sf-certificate-card:hover .sf-certificate-preview-badge,
+.about-page .sf-certificate-card:focus-within .sf-certificate-preview-badge {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--cert-accent) 46%, white 8%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
 }
 
 .about-page .sf-certificate-preview-badge span {
@@ -172,6 +265,8 @@
 }
 
 .about-page .sf-certificate-card-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -181,7 +276,7 @@
 }
 
 .about-page .sf-certificate-index {
-    color: #D8FF68;
+    color: var(--cert-accent);
     font-size: 10px;
     font-weight: 800;
     line-height: 1.4;
@@ -216,7 +311,7 @@
     margin-top: auto;
     padding-bottom: 10px;
     color: #F5F2EA;
-    border-bottom: 1px solid #D8FF68;
+    border-bottom: 1px solid color-mix(in srgb, var(--cert-accent) 82%, white 6%);
     font-size: 11px;
     font-weight: 800;
     line-height: 1.35;
@@ -228,21 +323,40 @@
 .about-page .sf-certificate-link span {
     font-size: 18px;
     line-height: 1;
-    color: #D8FF68;
+    color: var(--cert-accent);
 }
 
 .about-page .sf-certificate-link:hover,
 .about-page .sf-certificate-link:focus-visible {
-    color: #D8FF68;
-    border-color: rgba(216, 255, 104, 0.72);
+    color: var(--cert-accent);
+    border-color: color-mix(in srgb, var(--cert-accent) 88%, white 4%);
 }
 
-@keyframes sfCertificateShine {
-    0%, 14% {
-        transform: translateX(-160%);
+@keyframes sfCertificateShineSweep {
+    0%, 18% {
+        transform: translateX(-185%) skewX(-16deg);
+        opacity: 0;
     }
-    26%, 100% {
-        transform: translateX(175%);
+    26% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 1;
+    }
+    58%, 100% {
+        transform: translateX(185%) skewX(-16deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sfCertificateSparkle {
+    0%, 100% {
+        opacity: 0.32;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.68;
+        transform: scale(1.03);
     }
 }
 
@@ -290,7 +404,9 @@
 
 @media (prefers-reduced-motion: reduce) {
     .about-page .sf-certificate-card,
-    .about-page .sf-certificate-link {
+    .about-page .sf-certificate-link,
+    .about-page .sf-certificate-preview img,
+    .about-page .sf-certificate-preview-badge {
         transition: none;
     }
 
@@ -298,7 +414,8 @@
         transform: none;
     }
 
-    .about-page .sf-certificate-preview::before {
+    .about-page .sf-certificate-preview::before,
+    .about-page .sf-certificate-preview::after {
         animation: none;
     }
 }
