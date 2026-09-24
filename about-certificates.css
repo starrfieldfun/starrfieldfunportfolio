@@ -211,12 +211,9 @@
     transition: opacity .45s ease;
 }
 
-.about-page .sf-certificate-card:nth-child(2) .sf-certificate-preview::before {
-    animation-delay: -2.25s;
-}
-
-.about-page .sf-certificate-card:nth-child(3) .sf-certificate-preview::before {
-    animation-delay: -4.5s;
+/* Keep all certificate shines in sync for a calmer, more premium rhythm. */
+.about-page .sf-certificate-card .sf-certificate-preview::before {
+    animation-delay: 0s;
 }
 
 .about-page .sf-certificate-card:hover .sf-certificate-preview::before,
