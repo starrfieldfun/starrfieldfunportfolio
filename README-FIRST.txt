@@ -1,30 +1,36 @@
-STARRFIELD FUN — WORK AREA + CASE STUDY RECOVERY
+STARRFIELD FUN — PHOTOGRAPHY PAGE RECOVERY
 
-This recovery pack restores the Work section without touching your current Absolute Cinema homepage.
+This restores the approved natural-aspect-ratio Photography page and all of its image assets.
 
 RESTORES:
-- /work/index.html
-- /work/busfinder/index.html
-- /work/monitor-control/index.html
-- /work/promptchecker/index.html
-- /work/snpc/index.html
-- /work/eternal-shutterwave/index.html
-- all Work cover images
-- all case-study image folders used by those pages
-- the improved Monitor Control Work cover
-- site-extras.css from the approved Work-cover/cinematic continuity baseline
+- /photography/index.html
+- /photography-hero.css
+- /images/photography/01-sculpture.jpg
+- /images/photography/02-spiral-stairs.jpg
+- /images/photography/03-lanterns.jpg
+- /images/photography/04-rain.jpg
+- /images/photography/05-street.jpg
+- /images/photography/06-building.jpg
+- /images/photography/07-corridor.jpg
+- /images/photography/08-beach.jpg
+- /images/photography/09-purple-flowers.jpg
+- /images/photography/10-plants.jpg
+- /images/photography/11-porsche-badge.jpg
+- /images/photography/edit-before.jpg
+- /images/photography/edit-after.jpg
+- /images/site/share-photography.jpg
 
-COPY EVERYTHING IN THIS ZIP INTO YOUR EXISTING PORTFOLIO ROOT.
-ALLOW THE FOLDERS TO MERGE.
+COPY EVERYTHING IN THIS ZIP INTO YOUR EXISTING PORTFOLIO ROOT AND MERGE FOLDERS.
 
 DO NOT DELETE YOUR EXISTING PORTFOLIO FIRST.
 
 This pack intentionally does NOT include:
 - root index.html
-- home-cinematic.css/js
-- About page
+- home-cinematic.css / home-cinematic.js
+- Work pages
 - Contact page
+- About page
 - Services page
-- Photography page
+- site-extras.css
 
-So your current Absolute Cinema homepage and working Contact form remain untouched.
+So your current Absolute Cinema homepage and other restored sections remain untouched.
