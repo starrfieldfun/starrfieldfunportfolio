@@ -1,22 +1,14 @@
-STARRFIELD FUN — OPERATION PROJECT IMPROVEMENT / CINEMATIC HOMEPAGE
+STARRFIELD FUN — OPERATION PROJECT IMPROVEMENT / ABSOLUTE CINEMA
 
-Replace these files in the root of your existing portfolio:
+Replace these files in the root of your portfolio:
 1. index.html
-2. home-landing-refresh.css
-3. home-cinematic.css   (new)
-4. home-cinematic.js    (new)
+2. home-cinematic.css
+3. home-cinematic.js
+4. home-landing-refresh.css
 5. site-extras.css
 
-This update changes the HOMEPAGE presentation only.
-It does not replace your Contact page, About page, certificates, Work case studies, or contact-form JavaScript.
+No Contact page files are included or changed.
+No About / certificates files are included or changed.
 
-What changed:
-- Ivory cinematic opening; no black opening screen.
-- "I DESIGN / experiences / THAT MOVE." stays as the hero.
-- No project screenshots or photography are used in the opening.
-- Original CSS-built abstract object, subtle cursor response and scroll motion.
-- New THINK / DESIGN / BUILD cinematic chapter before the normal portfolio content.
-- Existing homepage Work, Services, Process, AI, Photography and Contact content remains further down.
-- Existing Work overlap correction retained.
-- Shared button system retained through site-extras.css.
-- Reduced-motion accessibility respected.
+This version keeps your existing homepage content after the opening title sequence.
+The new opening is a scroll-driven cinematic prologue: ivory hero → title fracture → THINK → DESIGN → BUILD → final title card → portfolio.
