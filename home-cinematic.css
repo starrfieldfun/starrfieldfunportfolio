@@ -160,7 +160,11 @@
   color: color-mix(in srgb, var(--cinema-ink) calc((1 - var(--cinema-dark))*100%), var(--cinema-ivory));
 }
 .home-page .cinema-meta-top { top: clamp(92px,8.3vw,126px); }
-.home-page .cinema-meta-bottom { bottom: clamp(26px,3vw,48px); }
+.home-page .cinema-meta-bottom {
+  /* Stay above the animated lower letterbox instead of being covered by it. */
+  bottom: calc(clamp(26px,3vw,48px) + (var(--cinema-bars) * 8.5svh));
+  transition: bottom .12s linear, color .35s ease;
+}
 
 .home-page .cinema-opening-title {
   position: absolute;
@@ -435,6 +439,22 @@
   }
   .home-page .cinema-meta-top { top: 92px; }
   .home-page .cinema-meta-top span:last-child { display: none; }
+  .home-page .cinema-meta-bottom {
+    left: 16px;
+    right: 16px;
+    bottom: calc(18px + env(safe-area-inset-bottom) + (var(--cinema-bars) * 8.5svh));
+    gap: 10px;
+  }
+  .home-page .cinema-scroll-copy {
+    min-width: 150px;
+    padding: 12px 15px;
+    gap: 10px;
+    font-size: 8px;
+  }
+  .home-page .cinema-scroll-copy::after {
+    width: 19px;
+    height: 19px;
+  }
   .home-page .cinema-opening-title {
     left: 20px;
     right: 20px;

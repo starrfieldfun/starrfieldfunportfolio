@@ -15,3 +15,9 @@ The new opening is a scroll-driven cinematic prologue: ivory hero → title frac
 
 
 UPDATE: SCROLL TO PLAY has been made more prominent while preserving the approved Absolute Cinema design.
+
+
+CINEMA UI FIX
+- PLAYING / SCROLL TO PLAY now rises with the animated lower letterbox.
+- Mobile gets safe-area bottom spacing and a tighter playback control.
+- No cinematic scene design or portfolio content changed.
