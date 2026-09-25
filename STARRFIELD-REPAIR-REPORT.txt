@@ -1,0 +1,126 @@
+STARRFIELD FUN — WEBSITE REPAIR REPORT
+25 September 2026
+
+SOURCE OF TRUTH
+===============
+This repair was made directly from the uploaded:
+starrfieldfunportfolio.zip
+
+NO EXISTING FILES WERE DELETED OR RENAMED.
+
+WHAT WAS ACTUALLY MISSING
+=========================
+The uploaded project was missing 62 website files:
+- 5 canonical /work/ route HTML files
+- 57 image assets
+
+Missing canonical routes:
+- work/index.html
+- work/busfinder/index.html
+- work/promptchecker/index.html
+- work/snpc/index.html
+- work/eternal-shutterwave/index.html
+
+This is the direct cause of the /work/ 404 and the four missing case-study routes.
+
+Missing image groups included:
+- images/work-covers/
+- images/bus-finder/
+- images/photography/
+- images/promptchecker/
+- images/snpc/
+- images/eternal-shutterwave/
+- several images/site/ social-share images
+- images/home-covers/promptchecker-home.png
+
+The missing files were recovered from the Git history already contained
+inside the user's uploaded repository. No replacement images were invented.
+
+FOUR LANDING PAGE ISSUE
+=======================
+page-intro-polish.css was present in the project, but the four pages were not
+loading it. That is why previous copies of that stylesheet made no visible change.
+
+Affected pages:
+- About
+- Services
+- Photography
+- Contact
+
+To avoid touching Contact HTML or the working form, the existing first-screen
+rules were copied into site-extras.css. All four affected pages already load
+site-extras.css.
+
+The rules are scoped only to:
+- .about-page
+- .sf-services-page
+- .photography-page
+- .contact-page
+
+The Absolute Cinema homepage is not targeted by these rules.
+
+MONITOR CONTROL
+===============
+The uploaded project already contained:
+- work/monitor-control/index.html
+- images/monitor-control/monitors.png
+- images/monitor-control/arrange.png
+- images/monitor-control/presets.png
+- images/monitor-control/settings.png
+
+All four images are valid PNG files.
+The main image is 2048 × 1106.
+
+The repair pack includes those existing files again, unchanged, together with
+the current case-study-polish.css so they can be deployed as one complete set.
+The current stylesheet contains the Monitor Control image size lock:
+- natural aspect ratio
+- object-fit: contain
+- maximum hero width of 1080px
+
+FINAL STATIC AUDIT
+==================
+Local HTML/CSS references checked: 486
+Missing local references after repair: 0
+
+Images checked: 63
+Corrupt/unreadable images: 0
+
+Canonical routes verified:
+- /work/
+- /work/busfinder/
+- /work/monitor-control/
+- /work/promptchecker/
+- /work/snpc/
+- /work/eternal-shutterwave/
+- /about/
+- /services/
+- /photography/
+- /contact/
+
+Missing canonical routes after repair: 0
+Missing sitemap routes after repair: 0
+
+INSTALL
+=======
+Do NOT delete the existing project.
+
+Extract this repair ZIP and copy its contents into the root of the existing
+starrfieldfunportfolio folder.
+
+Choose MERGE / REPLACE only for matching files.
+
+This patch does not include or replace:
+- contact/index.html
+- contact/form-config.js
+- root index.html
+- home-cinematic.css
+- home-cinematic.js
+- about/index.html
+- services/index.html
+- photography/index.html
+
+So the working Contact form and Absolute Cinema homepage are not overwritten.
+
+After committing/pushing, hard-refresh Safari once so the updated
+site-extras.css is fetched.
