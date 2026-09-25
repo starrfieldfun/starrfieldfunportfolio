@@ -1,16 +1,35 @@
-STARRFIELD FUN — FINAL MICRO FIX
-
-FIXES ONLY:
-1. Removes the blur effect from scroll reveal animations sitewide.
-   - Fade/slide reveal remains.
-   - Absolute Cinema homepage animation files are not touched.
-
-2. Restores Monitor Control's opening header/title visibility.
-   - Navbar forced visible.
-   - APPLICATION DESIGN label, Monitor Control title and intro/meta forced visible immediately.
-   - No Monitor Control image or case-study content is removed or changed.
+STARRFIELD FUN — MONITOR STANDARDISATION + CINEMA ENRICHMENT
 
 REPLACE ONLY:
-- site-extras.css
+- index.html
+- home-cinematic.css
+- case-study-unified.css
+- work/monitor-control/index.html
 
-Nothing else needs to be replaced.
+WHAT CHANGED
+============
+1. MONITOR CONTROL
+- Removed the one-off Control Language block that made this case study structurally different.
+- Hero now follows the same pattern as PromptChecker: title + intro + metadata.
+- The real Monitors application screenshot was moved into Application Experience.
+- Challenge / Architecture / Experience / Decisions / Build / Outcome now share the compact PromptChecker-style section shell.
+- Arrange and Presets screenshots now use the same staggered editorial screenshot language as PromptChecker.
+- Monitor Control keeps its own Windows-blue colour identity.
+
+2. ABSOLUTE CINEMA — THINK / DESIGN / BUILD
+- Added visual-only scene details; no new explanatory paragraphs.
+- THINK: animated connected decision nodes.
+- DESIGN: quiet composition/grid frame.
+- BUILD: subtle implementation/progress stack.
+- Existing giant typography, scene copy and camera atmosphere remain.
+- Mobile uses a reduced version so the visuals do not crowd the typography.
+
+NOT TOUCHED
+===========
+- site-extras.css / current no-blur fix
+- Contact form
+- About / Services / Photography
+- Work page
+- Other case-study HTML
+- Any image files
+- Absolute Cinema JavaScript
