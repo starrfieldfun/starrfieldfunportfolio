@@ -17,6 +17,7 @@
   const timecode = $('.cinema-timecode');
   const frameCount = $('.cinema-frame-count');
   const scrollCopy = $('.cinema-scroll-copy');
+  const scrollLabel = $('.cinema-scroll-label');
 
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = (a, b, x) => {
@@ -47,7 +48,10 @@
     // The movie begins in ivory; the dark stock rolls in after the title fractures.
     const dark = smooth(.26, .40, p);
     document.body.style.setProperty('--cinema-dark', dark.toFixed(4));
-    document.body.style.setProperty('--cinema-bars', smooth(.16, .36, p).toFixed(4));
+    const mobileViewport = window.matchMedia('(max-width: 820px)').matches;
+    let bars = smooth(.16, .36, p);
+    if (mobileViewport) bars *= (1 - smooth(.88, .98, p));
+    document.body.style.setProperty('--cinema-bars', bars.toFixed(4));
     document.body.style.setProperty('--cinema-light-x', `${76 - p * 31}%`);
     document.body.style.setProperty('--cinema-light-y', `${28 + p * 21}%`);
 
@@ -86,7 +90,9 @@
     if (p >= .64) scene = 4;
     if (p >= .81) scene = 5;
     frameCount.textContent = `${String(scene).padStart(2,'0')} / 05`;
-    scrollCopy.textContent = p < .08 ? 'SCROLL TO PLAY' : p < .88 ? 'PLAYING' : 'END TITLE';
+    const waiting = p < .08;
+    scrollCopy.classList.toggle('is-awaiting-scroll', waiting);
+    if (scrollLabel) scrollLabel.textContent = waiting ? 'SCROLL TO PLAY' : p < .88 ? 'PLAYING' : 'END TITLE';
 
     ticking = false;
   };

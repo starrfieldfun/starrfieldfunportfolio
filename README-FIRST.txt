@@ -21,3 +21,6 @@ CINEMA UI FIX
 - PLAYING / SCROLL TO PLAY now rises with the animated lower letterbox.
 - Mobile gets safe-area bottom spacing and a tighter playback control.
 - No cinematic scene design or portfolio content changed.
+
+
+MOBILE CINEMA POLISH: Uses the dynamic viewport on phones so the ivory section no longer peeks below the cinematic frame. SCROLL TO PLAY now has a gentle secondary-attention animation that stops once playback begins.
