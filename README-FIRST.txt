@@ -1,4 +1,4 @@
-STARRFIELD FUN — ABSOLUTE CINEMA / MOBILE EQUAL SANS SIZE
+STARRFIELD FUN — ABSOLUTE CINEMA / MOBILE THAT MOVE SPACING POLISH
 
 MOBILE ONLY. DESKTOP/WEB IS UNCHANGED.
 
@@ -8,7 +8,7 @@ REPLACE:
 - home-cinematic.js
 
 CHANGE:
-- I DESIGN and THAT MOVE. now use the exact same mobile font-size rule.
-- THAT MOVE. uses tighter tracking so the wider phrase still fits the phone width.
-- experiences is unchanged.
+- THAT MOVE. is slightly smaller than the previous version.
+- Letter spacing is loosened so the letters and full stop no longer look compressed.
+- I DESIGN and experiences are unchanged.
 - Desktop and all later cinema scenes are unchanged.

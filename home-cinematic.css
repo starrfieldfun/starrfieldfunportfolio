@@ -574,11 +574,10 @@
   .home-page .cinema-title-move {
     max-width: calc(100vw - (var(--cinema-safe-x) * 2));
     margin-left: 0;
-    /* Match I DESIGN exactly on mobile. */
-    font-size: clamp(64px, 20.5vw, 94px);
-    /* Tighter tracking lets the wider phrase keep the same type size without clipping. */
-    letter-spacing: -.165em;
-    line-height: .78;
+    /* Slightly smaller than I DESIGN so the wider phrase can breathe naturally. */
+    font-size: clamp(58px, 18vw, 84px);
+    letter-spacing: -.105em;
+    line-height: .80;
   }
   .home-page .cinema-orb {
     width: 105vw;
