@@ -161,3 +161,272 @@
   .home-page .home-film-stage{padding-top:88px;padding-bottom:28px;}.home-page .home-film-heading h2,.home-page .home-film-chapter-head h2,.home-page .home-film-method-copy h2,.home-page .home-film-photo-copy h2,.home-page .home-film-ending-copy h2{font-size:clamp(50px,7vw,105px);}.home-page .home-film-project-frame{aspect-ratio:16/8.4;}.home-page .home-film-project-caption small{display:none;}.home-page .home-film-photo-frames{min-height:52svh;}.home-page .home-film-service-list a{min-height:68px;}.home-page .home-film-method-beats div{min-height:72px;}
 }
 @media(prefers-reduced-motion:reduce){.home-page .film-reveal{opacity:1!important;transform:none!important;transition:none!important;}.home-page .home-film-chapter::before,.home-page .home-film-chapter::after,.home-page .home-film-photo-frame{transition:none!important;transform:none!important;}.home-page .home-film-stage{position:relative;}}
+
+/* ================================================================
+   STARRFIELD FUN — CONTINUOUS MOTION FILM / V3
+   Extends the opening-title camera language through every trailer
+   chapter. Content stays unchanged; only the motion grammar changes.
+================================================================ */
+@media (min-width: 981px) and (prefers-reduced-motion: no-preference) {
+  .home-page .home-film-chapter {
+    --film-life: 1;
+    --film-stage-scale: 1;
+    --film-stage-y: 0px;
+    --film-title-x: 0px;
+    --film-title-y: 0px;
+    --film-title-scale: 1;
+    --film-title-opacity: 1;
+    --film-copy-x: 0px;
+    --film-copy-y: 0px;
+    --film-copy-opacity: 1;
+    --film-media-x: 0px;
+    --film-media-y: 0px;
+    --film-media-scale: 1;
+    --film-meta-y: 0px;
+    --film-meta-opacity: .62;
+    --film-footer-y: 0px;
+    --film-footer-opacity: 1;
+    --film-wipe-opacity: 0;
+    --film-light-x: 0px;
+    --film-light-y: 0px;
+    --film-sweep: -140%;
+    min-height: 190svh;
+  }
+
+  .home-page .home-film-intro { min-height: 180svh; }
+  .home-page .home-film-work { min-height: 225svh; }
+  .home-page .home-film-services { min-height: 205svh; }
+  .home-page .home-film-method { min-height: 195svh; }
+  .home-page .home-film-photo { min-height: 210svh; }
+  .home-page .home-film-ending { min-height: 175svh; }
+
+  .home-page .home-film-stage {
+    height: 100svh;
+    min-height: 100svh;
+    transform: translate3d(0,var(--film-stage-y),0) scale(var(--film-stage-scale));
+    transform-origin: 50% 50%;
+    will-change: transform;
+  }
+
+  /* The same film-gate / vignette language used by the opening. */
+  .home-page .home-film-stage::before,
+  .home-page .home-film-stage::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+  }
+  .home-page .home-film-stage::before {
+    z-index: 30;
+    inset: 0;
+    box-shadow: inset 0 0 150px rgba(0,0,0,.14);
+    opacity: calc(.28 + var(--film-wipe-opacity) * .72);
+  }
+  .home-page .home-film-stage::after {
+    z-index: 31;
+    inset: 18px;
+    border: 1px solid color-mix(in srgb,currentColor 11%,transparent);
+    opacity: .32;
+  }
+  .home-page .home-film-stage > :not(.home-film-grain) {
+    position: relative;
+    z-index: 2;
+  }
+  .home-page .home-film-grain {
+    opacity: .065;
+    animation: homeFilmGrain 650ms steps(2,end) infinite;
+  }
+
+  /* Make every chapter behave like a title sequence rather than a normal section. */
+  .home-page .home-film-meta {
+    opacity: var(--film-meta-opacity);
+    transform: translate3d(0,var(--film-meta-y),0);
+    will-change: transform,opacity;
+  }
+  .home-page .home-film-heading,
+  .home-page .home-film-chapter-head > div,
+  .home-page .home-film-method-copy,
+  .home-page .home-film-photo-copy,
+  .home-page .home-film-ending-copy {
+    transform: translate3d(var(--film-title-x),var(--film-title-y),0) scale(var(--film-title-scale));
+    transform-origin: left center;
+    opacity: var(--film-title-opacity);
+    will-change: transform,opacity;
+  }
+  .home-page .home-film-copy,
+  .home-page .home-film-chapter-head > p {
+    transform: translate3d(var(--film-copy-x),var(--film-copy-y),0);
+    opacity: var(--film-copy-opacity);
+    will-change: transform,opacity;
+  }
+  .home-page .home-film-cutline,
+  .home-page .home-film-section-end,
+  .home-page .home-film-ai-line,
+  .home-page .home-film-ending-actions,
+  .home-page .home-film-credits {
+    transform: translate3d(0,var(--film-footer-y),0);
+    opacity: var(--film-footer-opacity);
+    will-change: transform,opacity;
+  }
+
+  /* Existing observer reveal is replaced by continuous scroll animation on desktop. */
+  .home-film-js .home-page .home-film-chapter .film-reveal,
+  .home-film-js .home-page .home-film-chapter .film-reveal.is-visible {
+    opacity: inherit;
+    transform: none;
+    transition: none;
+  }
+
+  /* WORK: three frames behave like a moving montage strip. */
+  .home-page .home-film-projects {
+    transform: translate3d(var(--film-media-x),var(--film-media-y),0) scale(var(--film-media-scale));
+    will-change: transform;
+  }
+  .home-page .home-film-project {
+    will-change: transform,opacity;
+    transform-origin: center;
+  }
+  .home-page .home-film-project-frame img {
+    will-change: transform;
+  }
+
+  /* SERVICES: typography slides in like sequential intertitles. */
+  .home-page .home-film-service-list {
+    transform: translate3d(var(--film-media-x),var(--film-media-y),0);
+    will-change: transform;
+  }
+  .home-page .home-film-service-list a {
+    will-change: transform,opacity;
+  }
+
+  /* METHOD: beats enter one after another instead of appearing as a static list. */
+  .home-page .home-film-method-beats {
+    transform: translate3d(var(--film-media-x),var(--film-media-y),0);
+    will-change: transform;
+  }
+  .home-page .home-film-method-beats > div {
+    will-change: transform,opacity;
+  }
+
+  /* PHOTOGRAPHY: opposite drift creates depth, like two pieces of film passing camera. */
+  .home-page .home-film-photo-frames {
+    transform: translate3d(var(--film-media-x),var(--film-media-y),0) scale(var(--film-media-scale));
+    will-change: transform;
+  }
+  .home-page .home-film-photo-frame-a {
+    transform: translate3d(var(--film-photo-a-x,0px),var(--film-photo-a,0px),0) rotate(var(--film-photo-a-r,-2.2deg)) scale(var(--film-photo-a-s,1));
+  }
+  .home-page .home-film-photo-frame-b {
+    transform: translate3d(var(--film-photo-b-x,0px),var(--film-photo-b,0px),0) rotate(var(--film-photo-b-r,2.4deg)) scale(var(--film-photo-b-s,1));
+  }
+
+  /* Final title card gets the same protected oversized-type feeling as the prologue. */
+  .home-page .home-film-ending-copy {
+    max-width: 1450px;
+  }
+  .home-page .home-film-ending-copy h2 {
+    font-size: clamp(64px,9.1vw,154px);
+    line-height: .80;
+    letter-spacing: -.075em;
+  }
+  .home-page .home-film-ending-copy h2 em {
+    display: inline-block;
+  }
+}
+
+@keyframes homeFilmGrain {
+  0% { transform: translate3d(-1.5%,1%,0); }
+  25% { transform: translate3d(1%,-1.2%,0); }
+  50% { transform: translate3d(.5%,1.4%,0); }
+  75% { transform: translate3d(-1%,.2%,0); }
+  100% { transform: translate3d(1.4%,-.8%,0); }
+}
+
+/* Mobile keeps the same story and movement cues without trapping long content
+   inside a 100svh sticky frame. */
+@media (max-width: 980px) and (prefers-reduced-motion: no-preference) {
+  .home-page .home-film-chapter {
+    overflow: clip;
+  }
+  .home-page .home-film-stage {
+    perspective: 1000px;
+  }
+  .home-page .home-film-chapter.is-active .home-film-meta,
+  .home-page .home-film-chapter.is-active .home-film-heading,
+  .home-page .home-film-chapter.is-active .home-film-chapter-head,
+  .home-page .home-film-chapter.is-active .home-film-method-copy,
+  .home-page .home-film-chapter.is-active .home-film-photo-copy,
+  .home-page .home-film-chapter.is-active .home-film-ending-copy {
+    animation: homeFilmMobileTitle .85s var(--film-ease) both;
+  }
+  .home-page .home-film-chapter.is-active :is(.home-film-project,.home-film-service-list a,.home-film-method-beats>div,.home-film-photo-frame,.home-film-ending-actions>a) {
+    animation: homeFilmMobileObject .9s var(--film-ease) both;
+  }
+  .home-page .home-film-chapter.is-active :is(.home-film-project,.home-film-service-list a,.home-film-method-beats>div,.home-film-ending-actions>a):nth-child(2) { animation-delay:.08s; }
+  .home-page .home-film-chapter.is-active :is(.home-film-project,.home-film-service-list a,.home-film-method-beats>div,.home-film-ending-actions>a):nth-child(3) { animation-delay:.16s; }
+  .home-page .home-film-chapter.is-active :is(.home-film-project,.home-film-service-list a,.home-film-method-beats>div,.home-film-ending-actions>a):nth-child(4) { animation-delay:.24s; }
+}
+
+@keyframes homeFilmMobileTitle {
+  from { opacity:.15; transform:translate3d(0,42px,0) scale(1.035); }
+  to { opacity:1; transform:none; }
+}
+@keyframes homeFilmMobileObject {
+  from { opacity:.12; transform:translate3d(0,34px,0) scale(.97); }
+  to { opacity:1; transform:none; }
+}
+
+/* Cascade guard: the original intersection-reveal rules live earlier in this
+   stylesheet. V3 drives these elements continuously instead, so reset the old
+   reveal state and then re-apply the scroll-linked transforms explicitly. */
+@media (min-width: 981px) and (prefers-reduced-motion: no-preference) {
+  .home-film-js .home-page .home-film-chapter .film-reveal,
+  .home-film-js .home-page .home-film-chapter .film-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .home-film-js .home-page .home-film-chapter .home-film-meta {
+    opacity: var(--film-meta-opacity);
+    transform: translate3d(0,var(--film-meta-y),0);
+  }
+  .home-film-js .home-page .home-film-chapter .home-film-heading,
+  .home-film-js .home-page .home-film-chapter .home-film-method-copy,
+  .home-film-js .home-page .home-film-chapter .home-film-photo-copy,
+  .home-film-js .home-page .home-film-chapter .home-film-ending-copy {
+    transform: translate3d(var(--film-title-x),var(--film-title-y),0) scale(var(--film-title-scale));
+    opacity: var(--film-title-opacity);
+  }
+  .home-film-js .home-page .home-film-chapter .home-film-chapter-head {
+    opacity: 1;
+    transform: none;
+  }
+  .home-film-js .home-page .home-film-chapter .home-film-copy,
+  .home-film-js .home-page .home-film-chapter .home-film-chapter-head > p {
+    transform: translate3d(var(--film-copy-x),var(--film-copy-y),0);
+    opacity: var(--film-copy-opacity);
+  }
+  .home-film-js .home-page .home-film-chapter .home-film-service-list,
+  .home-film-js .home-page .home-film-chapter .home-film-method-beats,
+  .home-film-js .home-page .home-film-chapter .home-film-photo-frames,
+  .home-film-js .home-page .home-film-chapter .home-film-projects {
+    opacity: 1;
+    transform: translate3d(var(--film-media-x),var(--film-media-y),0) scale(var(--film-media-scale));
+  }
+  .home-film-js .home-page .home-film-chapter .home-film-cutline,
+  .home-film-js .home-page .home-film-chapter .home-film-section-end,
+  .home-film-js .home-page .home-film-chapter .home-film-ai-line,
+  .home-film-js .home-page .home-film-chapter .home-film-ending-actions,
+  .home-film-js .home-page .home-film-chapter .home-film-credits {
+    transform: translate3d(0,var(--film-footer-y),0);
+    opacity: var(--film-footer-opacity);
+  }
+}
+
+@media (max-width: 980px) and (prefers-reduced-motion: no-preference) {
+  .home-film-js .home-page .home-film-chapter .film-reveal,
+  .home-film-js .home-page .home-film-chapter .film-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
