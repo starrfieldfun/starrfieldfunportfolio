@@ -1,15 +1,14 @@
-STARRFIELD FUN — ABSOLUTE CINEMA / MOBILE HERO FULLER FIT
+STARRFIELD FUN — ABSOLUTE CINEMA / MOBILE EQUAL SANS SIZE
 
-MOBILE ONLY. DESKTOP/WEB STYLING IS UNCHANGED.
+MOBILE ONLY. DESKTOP/WEB IS UNCHANGED.
 
 REPLACE:
 - index.html
 - home-cinematic.css
 - home-cinematic.js
 
-MOBILE CHANGES:
-- I DESIGN is slightly larger.
-- experiences is slightly larger and shifted a little less to the right.
-- THAT MOVE. is noticeably larger than the previous safe fix.
-- Tracking on THAT MOVE. is tightened so the full phrase still fits inside the screen.
-- The full-screen cinema, protected typography system, and all desktop styling remain unchanged.
+CHANGE:
+- I DESIGN and THAT MOVE. now use the exact same mobile font-size rule.
+- THAT MOVE. uses tighter tracking so the wider phrase still fits the phone width.
+- experiences is unchanged.
+- Desktop and all later cinema scenes are unchanged.
