@@ -59,9 +59,10 @@
       pulse(p, .45, .51, .57, .62) * .024 +
       pulse(p, .62, .68, .74, .79) * .026 +
       smooth(.80, .93, p) * .018;
-    const cameraScale = 1 + zoomBase + zoomCuts;
-    const cameraX = (-0.45 * smooth(.18, .88, p)).toFixed(3);
-    const cameraY = (.65 * smooth(.16, .82, p)).toFixed(3);
+    const finalSettle = smooth(.80, .90, p);
+    const cameraScale = 1 + (zoomBase + zoomCuts) * (1 - finalSettle * .78);
+    const cameraX = (-0.45 * smooth(.18, .88, p) * (1 - finalSettle)).toFixed(3);
+    const cameraY = (.65 * smooth(.16, .82, p) * (1 - finalSettle)).toFixed(3);
     document.body.style.setProperty('--cinema-camera-scale', cameraScale.toFixed(4));
     document.body.style.setProperty('--cinema-camera-x', `${cameraX}vw`);
     document.body.style.setProperty('--cinema-camera-y', `${cameraY}vh`);
@@ -91,7 +92,8 @@
     setScene(think, tThink, (1 - tThink) * 26, .94 + tThink * .06, (1 - tThink) * 8);
     setScene(design, tDesign, (1 - tDesign) * -22, 1.08 - tDesign * .08, (1 - tDesign) * 8);
     setScene(build, tBuild, (1 - tBuild) * 28, .93 + tBuild * .07, (1 - tBuild) * 7);
-    setScene(finalCard, tFinal, (1 - tFinal) * 20, .97 + tFinal * .03, (1 - tFinal) * 5);
+    // Final title card: let the camera settle instead of pushing the copy beyond frame.
+    setScene(finalCard, tFinal, 0, 1, (1 - tFinal) * 4);
 
     // Film UI / pacing indicators.
     const seconds = Math.floor(p * 12);

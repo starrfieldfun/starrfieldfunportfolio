@@ -220,6 +220,8 @@
   position: absolute;
   z-index: 7;
   inset: 0;
+  width: 100%;
+  box-sizing: border-box;
   display: grid;
   align-content: center;
   padding: 0 var(--cinema-safe-x);
@@ -267,18 +269,26 @@
 }
 
 .home-page .cinema-final-card {
+  --cinema-final-safe-x: clamp(54px, 7vw, 120px);
   align-content: center;
-  max-width: 1500px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-left: var(--cinema-final-safe-x);
+  padding-right: var(--cinema-final-safe-x);
+  box-sizing: border-box;
+  overflow: visible;
 }
 .home-page .cinema-final-card h2 {
   margin: 0;
-  max-width: 1150px;
+  width: min(100%, 1180px);
+  max-width: calc(100vw - (var(--cinema-final-safe-x) * 2));
   color: var(--cinema-ivory);
-  font-size: clamp(58px,8vw,132px);
+  font-size: clamp(56px,7.25vw,118px);
   font-weight: 600;
-  line-height: .86;
-  letter-spacing: -.062em;
+  line-height: .88;
+  letter-spacing: -.058em;
+  text-wrap: balance;
 }
 .home-page .cinema-final-card h2 em {
   display: block;
@@ -288,7 +298,8 @@
   font-weight: 400;
 }
 .home-page .cinema-final-card p {
-  max-width: 650px;
+  width: min(100%, 650px);
+  max-width: calc(100vw - (var(--cinema-final-safe-x) * 2));
   margin: clamp(26px,3vw,42px) 0 0;
   color: rgba(245,242,234,.68);
   font-size: clamp(13px,1vw,16px);
@@ -553,8 +564,20 @@
     max-width: 270px;
     line-height: 1.6;
   }
-  .home-page .cinema-final-card h2 { font-size: clamp(48px,13vw,72px); }
-  .home-page .cinema-final-card p { font-size: 13px; }
+  .home-page .cinema-final-card {
+    --cinema-final-safe-x: 24px;
+  }
+
+  .home-page .cinema-final-card h2 {
+    max-width: calc(100vw - 48px);
+    font-size: clamp(46px,12vw,68px);
+    line-height: .9;
+  }
+
+  .home-page .cinema-final-card p {
+    max-width: calc(100vw - 48px);
+    font-size: 13px;
+  }
   .home-page .cinema-release {
     min-height: 68svh;
     grid-template-columns: 1fr;
