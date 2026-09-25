@@ -7,3 +7,94 @@
 .site-extra-footer { display:flex;flex-wrap:wrap;gap:14px;align-items:center; }
 .site-extra-footer a { color:inherit; text-underline-offset:4px; }
 @media(max-width:700px){.site-breadcrumbs{margin-top:82px;padding-inline:20px;font-size:10px;} }
+
+/* =========================================================
+   STARRFIELD FUN / SHARED BUTTON SYSTEM
+   Keeps action buttons consistent without flattening large editorial links.
+========================================================= */
+:root {
+  --sf-button-radius: 999px;
+  --sf-button-height: 48px;
+  --sf-button-pad-x: 21px;
+  --sf-button-gap: 28px;
+  --sf-button-focus: #D8FF68;
+}
+
+:is(
+  .landing-btn,
+  .light-button,
+  .photo-design-button,
+  .sf-services-link,
+  .sf-service-contact-link,
+  .work-project-link,
+  .contact-send-button,
+  .send-button
+) {
+  min-height: var(--sf-button-height) !important;
+  padding: 13px var(--sf-button-pad-x) !important;
+  border-radius: var(--sf-button-radius) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: var(--sf-button-gap) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .28s ease, color .28s ease, border-color .28s ease, box-shadow .28s ease, transform .28s ease !important;
+}
+
+:is(
+  .landing-btn,
+  .light-button,
+  .photo-design-button,
+  .sf-services-link,
+  .sf-service-contact-link,
+  .work-project-link,
+  .contact-send-button,
+  .send-button
+):focus-visible {
+  outline: 3px solid var(--sf-button-focus) !important;
+  outline-offset: 4px !important;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  :is(
+    .landing-btn,
+    .light-button,
+    .photo-design-button,
+    .sf-services-link,
+    .sf-service-contact-link,
+    .work-project-link,
+    .send-button
+  ):hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(21,22,25,.14);
+  }
+}
+
+/* The Contact form is intentionally stationary. */
+.contact-page .contact-send-button,
+.contact-page .contact-send-button:hover {
+  transform: none !important;
+}
+
+@media (max-width:560px) {
+  :is(
+    .landing-btn,
+    .light-button,
+    .photo-design-button,
+    .sf-services-link,
+    .sf-service-contact-link,
+    .work-project-link,
+    .contact-send-button,
+    .send-button
+  ) {
+    min-height: 46px !important;
+    padding: 12px 17px !important;
+    gap: 18px !important;
+  }
+}

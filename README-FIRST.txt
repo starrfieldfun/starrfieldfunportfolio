@@ -1,19 +1,22 @@
-STARRFIELD FUN — HOMEPAGE EDITORIAL REFRESH
+STARRFIELD FUN — OPERATION PROJECT IMPROVEMENT / CINEMATIC HOMEPAGE
 
-UPDATE ONLY THE TWO FILES BELOW IN YOUR EXISTING PORTFOLIO REPOSITORY ROOT:
-  1. index.html                 (complete replacement homepage)
-  2. home-landing-refresh.css   (new stylesheet, referenced by index.html)
+Replace these files in the root of your existing portfolio:
+1. index.html
+2. home-landing-refresh.css
+3. home-cinematic.css   (new)
+4. home-cinematic.js    (new)
+5. site-extras.css
 
-The new homepage uses your existing style.css, script.js, images, Services page and case studies.
-Do not replace contact/index.html, script.js, about/index.html, or any other existing files.
+This update changes the HOMEPAGE presentation only.
+It does not replace your Contact page, About page, certificates, Work case studies, or contact-form JavaScript.
 
-Before replacing index.html, copy your current one somewhere safe as a backup.
-
-After copying the two files:
-  git add index.html home-landing-refresh.css
-  git commit -m "Refresh portfolio landing page"
-  git push
-
-If your browser still displays the old page, refresh without the cached stylesheet.
-
-NOTE: This is a homepage STYLE/LAYOUT update using the latest Services-era homepage supplied in this conversation. Any unrelated homepage edits made locally since that version should be compared before replacing index.html.
+What changed:
+- Ivory cinematic opening; no black opening screen.
+- "I DESIGN / experiences / THAT MOVE." stays as the hero.
+- No project screenshots or photography are used in the opening.
+- Original CSS-built abstract object, subtle cursor response and scroll motion.
+- New THINK / DESIGN / BUILD cinematic chapter before the normal portfolio content.
+- Existing homepage Work, Services, Process, AI, Photography and Contact content remains further down.
+- Existing Work overlap correction retained.
+- Shared button system retained through site-extras.css.
+- Reduced-motion accessibility respected.
