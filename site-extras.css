@@ -239,3 +239,39 @@ body:not(.home-page)::after {
 
   body:not(.home-page)::after { display:none; }
 }
+
+
+/* =========================================================
+   WORK PAGE — MONITOR CONTROL COVER SCALE
+   Uses a dedicated 16:10 crop so the application preview
+   carries the same visual weight as the other Work covers.
+========================================================= */
+
+.work-page .monitor-work-visual .monitor-work-screenshot {
+    inset: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.work-page .monitor-work-visual .monitor-work-screenshot img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    transform: scale(1) !important;
+    background: #F3F5F8 !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .work-page .monitor-work-visual:hover .monitor-work-screenshot {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .work-page .monitor-work-visual:hover .monitor-work-screenshot img {
+        transform: scale(1.018) !important;
+    }
+}
