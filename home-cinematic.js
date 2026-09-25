@@ -89,9 +89,9 @@
     const tBuild = pulse(p, .64, .70, .80, .84);
     const tFinal = smooth(.81, .89, p) * (1 - smooth(.965, 1, p));
 
-    setScene(think, tThink, (1 - tThink) * 26, .94 + tThink * .06, (1 - tThink) * 8);
-    setScene(design, tDesign, (1 - tDesign) * -22, 1.08 - tDesign * .08, (1 - tDesign) * 8);
-    setScene(build, tBuild, (1 - tBuild) * 28, .93 + tBuild * .07, (1 - tBuild) * 7);
+    setScene(think, tThink, (1 - tThink) * 18, .975 + tThink * .025, (1 - tThink) * 8);
+    setScene(design, tDesign, (1 - tDesign) * -16, 1.025 - tDesign * .025, (1 - tDesign) * 8);
+    setScene(build, tBuild, (1 - tBuild) * 18, .975 + tBuild * .025, (1 - tBuild) * 7);
     // Final title card: let the camera settle instead of pushing the copy beyond frame.
     setScene(finalCard, tFinal, 0, 1, (1 - tFinal) * 4);
 
