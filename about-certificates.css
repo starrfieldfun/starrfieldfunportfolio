@@ -1,0 +1,420 @@
+/* About / Certificates — styled to match the approved About page language. */
+.about-page .sf-certifications {
+    position: relative;
+    background: #151619;
+    color: #F5F2EA;
+    padding: clamp(88px, 9vw, 148px) clamp(20px, 5.2vw, 90px);
+    overflow: hidden;
+}
+
+.about-page .sf-certifications::before {
+    content: "06";
+    position: absolute;
+    right: clamp(10px, 2vw, 24px);
+    top: clamp(16px, 2vw, 30px);
+    color: rgba(245, 242, 234, 0.04);
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(90px, 12vw, 180px);
+    line-height: 0.8;
+    pointer-events: none;
+}
+
+.about-page .sf-certifications-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1390px;
+    margin: 0 auto;
+}
+
+.about-page .sf-certifications-intro {
+    display: grid;
+    grid-template-columns: minmax(145px, 0.34fr) 1.66fr;
+    gap: 5vw;
+    align-items: start;
+    margin: 0 0 clamp(42px, 5vw, 78px);
+}
+
+.about-page .sf-certifications-kicker {
+    margin: 0;
+    padding-top: 8px;
+    color: #D8FF68;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+
+.about-page .sf-certifications-heading-group {
+    display: grid;
+    gap: 24px;
+}
+
+.about-page .sf-certifications-intro h2 {
+    margin: 0;
+    color: #F5F2EA;
+    font-size: clamp(56px, 7.5vw, 120px);
+    font-weight: 600;
+    line-height: 0.87;
+    letter-spacing: -0.06em;
+}
+
+.about-page .sf-certifications-intro h2 em {
+    display: block;
+    color: #D8FF68;
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.about-page .sf-certifications-description {
+    max-width: 640px;
+    margin: 0;
+    color: rgba(245, 242, 234, 0.74);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.about-page .sf-certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(18px, 2vw, 30px);
+}
+
+.about-page .sf-certificate-card {
+    --cert-accent: rgba(216, 255, 104, 0.92);
+    --cert-soft: rgba(216, 255, 104, 0.18);
+    --cert-glow: rgba(216, 255, 104, 0.28);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border-radius: 22px;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.about-page .sf-certificate-card:nth-child(2) {
+    --cert-accent: rgba(117, 159, 255, 0.95);
+    --cert-soft: rgba(117, 159, 255, 0.16);
+    --cert-glow: rgba(117, 159, 255, 0.24);
+}
+
+.about-page .sf-certificate-card:nth-child(3) {
+    --cert-accent: rgba(255, 188, 116, 0.95);
+    --cert-soft: rgba(255, 188, 116, 0.16);
+    --cert-glow: rgba(255, 188, 116, 0.22);
+}
+
+.about-page .sf-certificate-card::before,
+.about-page .sf-certificate-card::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.about-page .sf-certificate-card::before {
+    inset: auto -18% -28% auto;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--cert-glow) 0%, rgba(255, 255, 255, 0) 68%);
+    opacity: 0.55;
+    transform: translate3d(0, 0, 0) scale(0.94);
+    z-index: 0;
+}
+
+.about-page .sf-certificate-card::after {
+    top: 0;
+    left: 18px;
+    right: 18px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--cert-accent) 22%, rgba(255,255,255,0.85) 50%, var(--cert-accent) 78%, transparent 100%);
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.about-page .sf-certificate-card:hover,
+.about-page .sf-certificate-card:focus-within {
+    transform: translateY(-8px);
+    border-color: color-mix(in srgb, var(--cert-accent) 45%, white 10%);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+}
+
+.about-page .sf-certificate-card:hover::before,
+.about-page .sf-certificate-card:focus-within::before {
+    opacity: 0.9;
+    transform: translate3d(-12px, -12px, 0) scale(1.06);
+}
+
+.about-page .sf-certificate-card:hover::after,
+.about-page .sf-certificate-card:focus-within::after {
+    opacity: 0.8;
+}
+
+.about-page .sf-certificate-preview {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 34px 24px;
+    background:
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 18%),
+        radial-gradient(circle at 82% 84%, var(--cert-soft) 0%, rgba(255,255,255,0) 28%),
+        linear-gradient(180deg, #ECEAE4 0%, #E3E0D8 100%);
+    text-decoration: none;
+    outline-offset: -5px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Editorial lighting: one soft champagne-white beam, no decorative sparkles. */
+.about-page .sf-certificate-preview::before,
+.about-page .sf-certificate-preview::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 2; /* Above the image, below the View PDF button. */
+}
+
+.about-page .sf-certificate-preview::before {
+    top: -18%;
+    bottom: -18%;
+    left: -70%;
+    width: 58%;
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 249, 230, 0.08) 25%,
+        rgba(255, 244, 210, 0.27) 39%,
+        rgba(255, 254, 249, 0.69) 50%,
+        rgba(255, 244, 214, 0.31) 61%,
+        rgba(255, 249, 230, 0.08) 77%,
+        rgba(255, 255, 255, 0) 100%);
+    transform: translate3d(-140%, 0, 0) skewX(-17deg);
+    opacity: 0;
+    animation: sfCertificateEditorialLight 6.8s cubic-bezier(.22, .54, .38, .98) infinite;
+    will-change: transform, opacity;
+}
+
+/* Static pearly reflection: a little depth, not a second moving effect. */
+.about-page .sf-certificate-preview::after {
+    inset: 0;
+    background: linear-gradient(142deg,
+        rgba(255, 252, 241, 0.12) 0%,
+        transparent 19%,
+        transparent 77%,
+        rgba(255, 242, 207, 0.10) 100%);
+    opacity: .55;
+    transition: opacity .45s ease;
+}
+
+/* Keep all certificate shines in sync for a calmer, more premium rhythm. */
+.about-page .sf-certificate-card .sf-certificate-preview::before {
+    animation-delay: 0s;
+}
+
+.about-page .sf-certificate-card:hover .sf-certificate-preview::before,
+.about-page .sf-certificate-card:focus-within .sf-certificate-preview::before {
+    animation-duration: 3.9s;
+}
+
+.about-page .sf-certificate-card:hover .sf-certificate-preview::after,
+.about-page .sf-certificate-card:focus-within .sf-certificate-preview::after {
+    opacity: .8;
+}
+
+.about-page .sf-certificate-preview img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 390px;
+    aspect-ratio: 595 / 842;
+    object-fit: contain;
+    border: 1px solid #DAD6CC;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+    transition: transform 0.42s ease, box-shadow 0.42s ease;
+}
+
+.about-page .sf-certificate-card:hover .sf-certificate-preview img,
+.about-page .sf-certificate-card:focus-within .sf-certificate-preview img {
+    transform: scale(1.025);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.16);
+}
+
+.about-page .sf-certificate-preview-badge {
+    position: absolute;
+    right: 19px;
+    bottom: 19px;
+    z-index: 3;
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    color: #F5F2EA;
+    background: rgba(21, 22, 25, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 12px 15px;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.11em;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-page .sf-certificate-card:hover .sf-certificate-preview-badge,
+.about-page .sf-certificate-card:focus-within .sf-certificate-preview-badge {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--cert-accent) 46%, white 8%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.about-page .sf-certificate-preview-badge span {
+    font-size: 17px;
+}
+
+.about-page .sf-certificate-card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: clamp(24px, 2.2vw, 32px);
+}
+
+.about-page .sf-certificate-index {
+    color: var(--cert-accent);
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+}
+
+.about-page .sf-certificate-index span {
+    margin: 0 7px;
+    opacity: 0.6;
+}
+
+.about-page .sf-certificate-card h3 {
+    margin: 0;
+    color: #F5F2EA;
+    font-size: clamp(24px, 2.2vw, 34px);
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+}
+
+.about-page .sf-certificate-card-content p {
+    margin: 0 0 8px;
+    color: rgba(245, 242, 234, 0.72);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.about-page .sf-certificate-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-bottom: 10px;
+    color: #F5F2EA;
+    border-bottom: 1px solid color-mix(in srgb, var(--cert-accent) 82%, white 6%);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.about-page .sf-certificate-link span {
+    font-size: 18px;
+    line-height: 1;
+    color: var(--cert-accent);
+}
+
+.about-page .sf-certificate-link:hover,
+.about-page .sf-certificate-link:focus-visible {
+    color: var(--cert-accent);
+    border-color: color-mix(in srgb, var(--cert-accent) 88%, white 4%);
+}
+
+@keyframes sfCertificateEditorialLight {
+    0%, 16% {
+        transform: translate3d(-140%, 0, 0) skewX(-17deg);
+        opacity: 0;
+    }
+    22% { opacity: .9; }
+    46% { opacity: 1; }
+    59%, 100% {
+        transform: translate3d(360%, 0, 0) skewX(-17deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1050px) {
+    .about-page .sf-certifications-intro {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .about-page .sf-certifications-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about-page .sf-certificate-preview img {
+        max-height: 330px;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-page .sf-certifications {
+        padding: 76px 20px 86px;
+    }
+
+    .about-page .sf-certifications-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .about-page .sf-certificate-preview {
+        padding: 24px 34px;
+    }
+
+    .about-page .sf-certificate-preview img {
+        max-height: 340px;
+    }
+
+    .about-page .sf-certificate-card-content {
+        padding: 26px;
+    }
+
+    .about-page .sf-certifications-intro h2 {
+        font-size: clamp(44px, 11vw, 70px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-page .sf-certificate-card,
+    .about-page .sf-certificate-link,
+    .about-page .sf-certificate-preview img,
+    .about-page .sf-certificate-preview-badge {
+        transition: none;
+    }
+
+    .about-page .sf-certificate-card:hover {
+        transform: none;
+    }
+
+    .about-page .sf-certificate-preview::before,
+    .about-page .sf-certificate-preview::after {
+        animation: none;
+    }
+}

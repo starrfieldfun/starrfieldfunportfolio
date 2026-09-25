@@ -1,0 +1,45 @@
+STARRFIELD FUN — FINAL REQUEST QA REPORT
+Date: 25 September 2026
+
+REQUESTS COVERED
+================
+PASS  Contact signal visual shortened while retained.
+PASS  MyBusFinder laptop constrained and centred.
+PASS  MyBusFinder laptop display ratio set to 16:9.
+PASS  MyBusFinder screenshot uses contain (no stretch/crop).
+PASS  Canonical page opening compositions receive viewport-fit rules.
+PASS  Case studies receive a shared PromptChecker-inspired visual system.
+PASS  Case studies retain project-specific colour variables.
+PASS  Existing images were not modified.
+PASS  Contact form implementation/configuration was not changed.
+PASS  Homepage Absolute Cinema files were not changed.
+
+STATIC INTEGRITY AUDIT
+======================
+HTML/CSS local references checked: 502
+Missing local references: 0
+Image files checked: 63
+Corrupt image files: 0
+CSS parse errors: 0
+Invalid JSON-LD blocks: 0
+Malformed leading-slash JSON-LD values after repair: 0
+
+CANONICAL ROUTES VERIFIED
+=========================
+PASS  /
+PASS  /work/
+PASS  /services/
+PASS  /about/
+PASS  /photography/
+PASS  /contact/
+PASS  /work/busfinder/
+PASS  /work/monitor-control/
+PASS  /work/promptchecker/
+PASS  /work/snpc/
+PASS  /work/eternal-shutterwave/
+
+ASSET SAFETY
+============
+All six image files that were present in the user's uploaded broken ZIP were byte-for-byte preserved.
+Previously missing project and photography assets were restored from the repository's own Git history.
+No image was deleted, resized, recompressed or replaced with generated artwork.

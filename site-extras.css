@@ -7,3 +7,284 @@
 .site-extra-footer { display:flex;flex-wrap:wrap;gap:14px;align-items:center; }
 .site-extra-footer a { color:inherit; text-underline-offset:4px; }
 @media(max-width:700px){.site-breadcrumbs{margin-top:82px;padding-inline:20px;font-size:10px;} }
+
+/* =========================================================
+   STARRFIELD FUN / SHARED BUTTON SYSTEM
+   Keeps action buttons consistent without flattening large editorial links.
+========================================================= */
+:root {
+  --sf-button-radius: 999px;
+  --sf-button-height: 48px;
+  --sf-button-pad-x: 21px;
+  --sf-button-gap: 28px;
+  --sf-button-focus: #D8FF68;
+}
+
+:is(
+  .landing-btn,
+  .light-button,
+  .photo-design-button,
+  .sf-services-link,
+  .sf-service-contact-link,
+  .work-project-link,
+  .contact-send-button,
+  .send-button
+) {
+  min-height: var(--sf-button-height) !important;
+  padding: 13px var(--sf-button-pad-x) !important;
+  border-radius: var(--sf-button-radius) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: var(--sf-button-gap) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .28s ease, color .28s ease, border-color .28s ease, box-shadow .28s ease, transform .28s ease !important;
+}
+
+:is(
+  .landing-btn,
+  .light-button,
+  .photo-design-button,
+  .sf-services-link,
+  .sf-service-contact-link,
+  .work-project-link,
+  .contact-send-button,
+  .send-button
+):focus-visible {
+  outline: 3px solid var(--sf-button-focus) !important;
+  outline-offset: 4px !important;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  :is(
+    .landing-btn,
+    .light-button,
+    .photo-design-button,
+    .sf-services-link,
+    .sf-service-contact-link,
+    .work-project-link,
+    .send-button
+  ):hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(21,22,25,.14);
+  }
+}
+
+/* The Contact form is intentionally stationary. */
+.contact-page .contact-send-button,
+.contact-page .contact-send-button:hover {
+  transform: none !important;
+}
+
+@media (max-width:560px) {
+  :is(
+    .landing-btn,
+    .light-button,
+    .photo-design-button,
+    .sf-services-link,
+    .sf-service-contact-link,
+    .work-project-link,
+    .contact-send-button,
+    .send-button
+  ) {
+    min-height: 46px !important;
+    padding: 12px 17px !important;
+    gap: 18px !important;
+  }
+}
+
+/* =========================================================
+   STARRFIELD FUN / CINEMATIC CONTINUITY SYSTEM
+   A conservative site-wide layer: same content, more consistent atmosphere.
+========================================================= */
+:root {
+  --sf-cinema-ink: #151619;
+  --sf-cinema-ivory: #F5F2EA;
+  --sf-cinema-blue: #5965FF;
+  --sf-cinema-lime: #D8FF68;
+  --sf-cinema-ease: cubic-bezier(.16,1,.3,1);
+  --sf-cinema-line: rgba(21,22,25,.14);
+}
+
+/* Navigation now feels like the same object across every page. */
+.navbar {
+  border: 1px solid rgba(255,255,255,.07);
+  background: rgba(16,17,20,.96);
+  box-shadow: 0 18px 55px rgba(0,0,0,.16);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.navbar .logo {
+  letter-spacing: .105em;
+}
+
+/* Cinematic easing for the existing reveal system without changing content. */
+.js .reveal {
+  filter: blur(5px);
+  transition:
+    opacity .8s ease,
+    transform 1.05s var(--sf-cinema-ease),
+    filter .9s ease;
+}
+
+.js .reveal.visible {
+  filter: blur(0);
+}
+
+/* Shared editorial micro-language across page types. */
+:is(
+  .eyebrow,
+  .about-section-label,
+  .about-hero-top,
+  .work-hero-top,
+  .contact-kicker,
+  .living-hero-kicker,
+  .project-detail-category,
+  .preview-category
+) {
+  letter-spacing: .145em;
+}
+
+/* Consistent media behaviour: restrained camera push, not app-like bouncing. */
+:is(
+  .project-preview,
+  .work-project-visual,
+  .compact-project-screen,
+  .compact-screen-card,
+  .compact-mobile-card,
+  .about-portrait-frame,
+  .photo-shot-hero-portrait
+) img {
+  transition: transform .9s var(--sf-cinema-ease), filter .9s ease;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .project-preview:hover img,
+  .work-project:hover .work-project-visual img,
+  .compact-project-screen:hover img,
+  .compact-screen-card:hover img,
+  .compact-mobile-card:hover img,
+  .about-portrait-frame:hover img,
+  .photo-shot-hero-portrait:hover img {
+    transform: scale(1.018);
+  }
+}
+
+/* Unify card surfaces without forcing every page into the same layout. */
+:is(
+  .about-principle-editorial,
+  .about-ai-editorial-card,
+  .about-discipline-editorial-card,
+  .contact-option,
+  .project-preview
+) {
+  transition:
+    transform .45s var(--sf-cinema-ease),
+    border-color .35s ease,
+    box-shadow .45s var(--sf-cinema-ease);
+}
+
+@media (hover:hover) and (pointer:fine) {
+  :is(
+    .about-principle-editorial,
+    .about-ai-editorial-card,
+    .about-discipline-editorial-card,
+    .contact-option
+  ):hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Hairline chapter separator treatment used by breadcrumbs and page metadata. */
+.site-breadcrumbs {
+  border-bottom: 1px solid rgba(21,22,25,.10);
+  padding-bottom: 14px;
+}
+
+/* Very subtle texture outside the homepage title sequence. */
+body:not(.home-page)::after {
+  content: "";
+  position: fixed;
+  z-index: 950;
+  inset: 0;
+  pointer-events: none;
+  opacity: .018;
+  background-image:
+    repeating-radial-gradient(circle at 18% 37%, rgba(21,22,25,.45) 0 .45px, transparent .6px 3px),
+    repeating-radial-gradient(circle at 72% 63%, rgba(255,255,255,.45) 0 .4px, transparent .55px 3.5px);
+  background-size: 7px 7px, 9px 9px;
+  mix-blend-mode: multiply;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  :is(
+    .project-preview,
+    .work-project-visual,
+    .compact-project-screen,
+    .compact-screen-card,
+    .compact-mobile-card,
+    .about-portrait-frame,
+    .photo-shot-hero-portrait
+  ) img {
+    transition: none !important;
+  }
+
+  body:not(.home-page)::after { display:none; }
+}
+
+
+/* =========================================================
+   WORK PAGE — MONITOR CONTROL COVER SCALE
+   Uses a dedicated 16:10 crop so the application preview
+   carries the same visual weight as the other Work covers.
+========================================================= */
+
+.work-page .monitor-work-visual .monitor-work-screenshot {
+    inset: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.work-page .monitor-work-visual .monitor-work-screenshot img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    transform: scale(1) !important;
+    background: #F3F5F8 !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .work-page .monitor-work-visual:hover .monitor-work-screenshot {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .work-page .monitor-work-visual:hover .monitor-work-screenshot img {
+        transform: scale(1.018) !important;
+    }
+}
+
+/* Accessibility / SEO semantic heading helper — visually hidden, still readable by assistive tech. */
+.site-visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}

@@ -1,0 +1,496 @@
+/* ================================================================
+   STARRFIELD FUN — VIEWPORT FIT / FINAL
+   Purpose: every page's opening composition fits inside the first
+   screen. The homepage cinema already owns a 100svh sticky screen,
+   so these rules target the remaining page types only.
+================================================================ */
+
+:root {
+  --sf-first-screen-gap: 132px;
+  --sf-first-screen-gap-mobile: 104px;
+}
+
+/* Breadcrumbs remain visible, but stop consuming unnecessary height. */
+body:not(.home-page) .site-breadcrumbs {
+  margin-top: 82px !important;
+  padding-bottom: 10px !important;
+  line-height: 1.45 !important;
+}
+
+/* ----------------------------------------------------------------
+   WORK
+---------------------------------------------------------------- */
+.work-page .work-editorial-hero {
+  height: calc(100svh - var(--sf-first-screen-gap));
+  min-height: 590px;
+  max-height: 820px;
+  padding: clamp(22px, 3vh, 34px) 4vw clamp(22px, 3vh, 32px) !important;
+  gap: clamp(14px, 2vh, 24px);
+}
+
+.work-page .work-hero-title h1 {
+  font-size: clamp(64px, min(8.8vw, 12vh), 138px) !important;
+  line-height: .82 !important;
+}
+
+.work-page .work-hero-title h1 span { margin-left: 8vw !important; }
+.work-page .work-hero-bottom p { font-size: clamp(12px, 1vw, 14px) !important; line-height: 1.55 !important; }
+.work-page .work-index-strip { margin-top: 0 !important; }
+.work-page .work-index-strip a { min-height: 66px !important; padding-block: 11px !important; }
+
+/* ----------------------------------------------------------------
+   ABOUT
+---------------------------------------------------------------- */
+.about-page .about-hero-editorial {
+  height: calc(100svh - var(--sf-first-screen-gap));
+  min-height: 590px;
+  max-height: 820px;
+  padding: clamp(22px, 3vh, 34px) 4vw clamp(20px, 2.8vh, 30px) !important;
+  gap: clamp(12px, 1.7vh, 22px) !important;
+}
+
+.about-page .about-hero-title { margin: 0 !important; }
+.about-page .about-hero-title h1 {
+  max-width: 1320px !important;
+  font-size: clamp(62px, min(8.6vw, 11.2vh), 136px) !important;
+  line-height: .80 !important;
+}
+.about-page .about-hero-title h1 span { margin-left: 9vw !important; }
+.about-page .about-signal-band > div { min-height: 56px !important; padding-top: 10px !important; padding-bottom: 10px !important; }
+.about-page .about-hero-bottom { padding-top: 8px !important; }
+.about-page .about-hero-bottom p { font-size: 13px !important; line-height: 1.5 !important; }
+
+/* ----------------------------------------------------------------
+   SERVICES
+---------------------------------------------------------------- */
+.sf-services-page .sf-services-hero {
+  height: calc(100svh - var(--sf-first-screen-gap));
+  min-height: 560px;
+  max-height: 780px;
+  padding: clamp(22px, 3vh, 34px) clamp(20px,5vw,90px) clamp(22px, 3vh, 32px) !important;
+  display: flex;
+  align-items: stretch;
+}
+
+.sf-services-page .sf-services-hero .sf-services-container {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.sf-services-page .sf-services-hero-grid {
+  margin-top: clamp(18px, 2.6vh, 30px) !important;
+  align-self: center;
+}
+
+.sf-services-page .sf-services-hero h1 {
+  font-size: clamp(62px, min(8.7vw, 12vh), 142px) !important;
+  line-height: .88 !important;
+}
+
+.sf-services-page .sf-services-hero-sub { font-size: clamp(13px, 1.15vw, 17px) !important; line-height: 1.65 !important; }
+.sf-services-page .sf-services-hero-rail { margin-top: clamp(18px, 2.8vh, 30px) !important; padding-top: 14px !important; }
+
+/* ----------------------------------------------------------------
+   PHOTOGRAPHY
+---------------------------------------------------------------- */
+.photography-page .photography-living-hero {
+  height: calc(100svh - var(--sf-first-screen-gap));
+  min-height: 610px;
+  max-height: 820px;
+  padding: clamp(20px, 2.8vh, 30px) 4vw clamp(20px, 2.8vh, 28px) !important;
+}
+
+.photography-page .photography-living-hero::before { top: 18px !important; }
+.photography-page .photography-living-hero .living-hero-meta { margin-top: 8px !important; padding: 12px 0 !important; }
+.photography-page .photography-living-hero .living-hero-stage {
+  padding: clamp(18px, 2.6vh, 30px) 0 !important;
+  gap: clamp(34px, 5vw, 72px) !important;
+}
+
+.photography-page .photography-living-hero .living-hero-kicker { margin-bottom: 15px !important; }
+.photography-page .photography-living-hero .living-hero-title {
+  font-size: clamp(62px, min(8.2vw, 11vh), 132px) !important;
+  line-height: .84 !important;
+}
+.photography-page .photography-living-hero .living-hero-description { margin-top: 22px !important; font-size: 14px !important; line-height: 1.55 !important; }
+.photography-page .photo-viewfinder { width: min(100%, 470px) !important; padding: 12px !important; border-radius: 22px !important; }
+.photography-page .photo-viewfinder-stage { aspect-ratio: 16 / 10 !important; border-radius: 16px !important; }
+.photography-page .photo-viewfinder-top { padding-bottom: 9px !important; }
+.photography-page .photo-viewfinder-bottom { padding-top: 9px !important; }
+.photography-page .living-hero-bottom { padding-top: 12px !important; }
+.photography-page .living-scroll-signal { width: 44px !important; height: 44px !important; flex-basis: 44px !important; }
+
+/* ----------------------------------------------------------------
+   CONTACT — preserve the signal graphic, reduce its vertical footprint.
+---------------------------------------------------------------- */
+.contact-page .contact-editorial-hero {
+  height: calc(100svh - var(--sf-first-screen-gap));
+  min-height: 610px;
+  max-height: 820px;
+  padding: clamp(20px, 2.8vh, 30px) 4vw clamp(18px, 2.6vh, 28px) !important;
+}
+
+.contact-page .contact-hero-grid {
+  margin: clamp(18px, 2.6vh, 30px) 0 !important;
+  gap: clamp(38px, 5vw, 78px) !important;
+  grid-template-columns: minmax(0, .92fr) minmax(390px, 1.08fr) !important;
+}
+
+.contact-page .contact-hero-copy h1 {
+  margin-top: 15px !important;
+  font-size: clamp(60px, min(7.7vw, 10.8vh), 122px) !important;
+  line-height: .83 !important;
+}
+.contact-page .contact-hero-description { margin-top: 20px !important; font-size: 14px !important; line-height: 1.58 !important; }
+.contact-page .contact-hero-actions { margin-top: 22px !important; }
+.contact-page .contact-hero-actions a { min-height: 46px !important; padding-block: 12px !important; }
+.contact-page .contact-signal-system {
+  min-height: 0 !important;
+  height: clamp(320px, 39vh, 410px) !important;
+}
+.contact-page .contact-node { width: clamp(92px, 9.5vw, 132px) !important; }
+.contact-page .contact-system-label,
+.contact-page .contact-system-status { top: 18px !important; }
+.contact-page .contact-system-label { left: 18px !important; }
+.contact-page .contact-system-status { right: 18px !important; }
+.contact-page .contact-system-tags { bottom: 18px !important; }
+.contact-page .contact-hero-foot { padding-top: 12px !important; }
+
+/* ----------------------------------------------------------------
+   CASE STUDIES — title + intro + metadata all remain in first screen.
+---------------------------------------------------------------- */
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-main {
+  padding-top: 0 !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero {
+  height: calc(100svh - var(--sf-first-screen-gap));
+  min-height: 590px !important;
+  max-height: 800px;
+  padding: clamp(20px, 2.7vh, 30px) var(--case-gutter, 4vw) clamp(20px, 2.7vh, 30px) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-category {
+  margin-bottom: clamp(14px, 2vh, 22px) !important;
+  padding: 8px 12px !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero h1 {
+  max-width: 13.5ch !important;
+  font-size: clamp(58px, min(8.1vw, 10.8vh), 126px) !important;
+  line-height: .84 !important;
+}
+
+.project-snpc .project-detail-hero h1 { max-width: 15ch !important; font-size: clamp(54px, min(7.5vw, 9.8vh), 112px) !important; }
+
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-intro {
+  margin-top: clamp(18px, 2.5vh, 30px) !important;
+  padding-top: clamp(14px, 2vh, 20px) !important;
+  gap: clamp(30px, 4vw, 62px) !important;
+  align-items: start;
+}
+
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-intro > p {
+  font-size: clamp(13px, 1.05vw, 16px) !important;
+  line-height: 1.55 !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-meta {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-meta-item {
+  min-height: 54px !important;
+  padding: 10px 10px 10px 0 !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-meta-item strong { font-size: 12px !important; line-height: 1.3 !important; }
+
+/* ----------------------------------------------------------------
+   SHORT DESKTOPS / LAPTOPS
+---------------------------------------------------------------- */
+@media (min-width: 901px) and (max-height: 820px) {
+  body:not(.home-page) .site-breadcrumbs { margin-top: 74px !important; }
+  :root { --sf-first-screen-gap: 118px; }
+
+  .about-page .about-hero-title h1 { font-size: clamp(58px, min(8vw, 10.2vh), 118px) !important; }
+  .work-page .work-hero-title h1 { font-size: clamp(58px, min(8vw, 10.8vh), 122px) !important; }
+  .contact-page .contact-signal-system { height: clamp(285px, 36vh, 350px) !important; }
+  .photography-page .photo-viewfinder { width: min(100%, 420px) !important; }
+}
+
+/* ----------------------------------------------------------------
+   MOBILE — same rule: first screen is a complete composition.
+---------------------------------------------------------------- */
+@media (max-width: 900px) {
+  body:not(.home-page) .site-breadcrumbs {
+    margin-top: 72px !important;
+    padding-inline: 20px !important;
+    padding-bottom: 8px !important;
+    font-size: 9px !important;
+  }
+
+  .work-page .work-editorial-hero,
+  .about-page .about-hero-editorial,
+  .sf-services-page .sf-services-hero,
+  .photography-page .photography-living-hero,
+  .contact-page .contact-editorial-hero,
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-hero {
+    height: calc(100svh - var(--sf-first-screen-gap-mobile)) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  /* WORK */
+  .work-page .work-editorial-hero { padding: 18px 20px 18px !important; gap: 12px; }
+  .work-page .work-hero-title { margin: 0 !important; }
+  .work-page .work-hero-title h1 { font-size: clamp(48px, min(13vw, 10.5vh), 76px) !important; }
+  .work-page .work-hero-title h1 span { margin-left: 4vw !important; }
+  .work-page .work-hero-bottom p { font-size: 11px !important; line-height: 1.45 !important; }
+  .work-page .work-index-strip { display:flex !important; overflow-x:auto; scrollbar-width:none; }
+  .work-page .work-index-strip::-webkit-scrollbar { display:none; }
+  .work-page .work-index-strip a { flex:0 0 132px; min-height:58px !important; }
+
+  /* ABOUT */
+  .about-page .about-hero-editorial { padding: 18px 20px 18px !important; }
+  .about-page .about-hero-top { font-size: 7px !important; }
+  .about-page .about-hero-title h1 { font-size: clamp(46px, min(13vw, 10.3vh), 72px) !important; line-height:.81 !important; }
+  .about-page .about-hero-title h1 span { margin-left: 6vw !important; }
+  .about-page .about-signal-band { grid-template-columns: repeat(2,1fr) !important; }
+  .about-page .about-signal-band > div { min-height: 43px !important; padding: 6px 8px 6px 0 !important; }
+  .about-page .about-signal-band > div + div { padding-left: 8px !important; }
+  .about-page .about-signal-band strong { font-size: 8px !important; }
+  .about-page .about-signal-band span { font-size: 6px !important; }
+  .about-page .about-hero-bottom p { max-width: 85%; font-size: 10px !important; line-height:1.4 !important; }
+  .about-page .about-hero-bottom > span { width:28px !important;height:28px !important; }
+
+  /* SERVICES */
+  .sf-services-page .sf-services-hero { padding: 18px 20px 18px !important; }
+  .sf-services-page .sf-services-hero-grid { grid-template-columns:1fr !important; gap:16px !important; margin-top:15px !important; align-self:center; }
+  .sf-services-page .sf-services-hero h1 { font-size: clamp(48px, min(14vw, 11vh), 78px) !important; line-height:.9 !important; }
+  .sf-services-page .sf-services-hero-sub { font-size:11px !important;line-height:1.55 !important;max-width:100% !important;padding:0 !important; }
+  .sf-services-page .sf-services-hero-rail { margin-top:15px !important;padding-top:10px !important;font-size:8px !important; }
+
+  /* PHOTOGRAPHY */
+  .photography-page .photography-living-hero { padding: 18px 20px 16px !important; }
+  .photography-page .photography-living-hero::before { top:12px !important; left:20px !important; right:20px !important; height:4px !important; }
+  .photography-page .photography-living-hero .living-hero-meta { margin-top:4px !important;padding:8px 0 !important;flex-direction:row !important;font-size:7px !important; }
+  .photography-page .photography-living-hero .living-hero-stage { grid-template-columns:1fr !important; gap:14px !important; padding:12px 0 !important; }
+  .photography-page .photography-living-hero .living-hero-kicker { margin-bottom:8px !important;font-size:7px !important; }
+  .photography-page .photography-living-hero .living-hero-title { font-size: clamp(44px, min(13vw, 9.8vh), 70px) !important; }
+  .photography-page .photography-living-hero .living-hero-description { margin-top:10px !important;font-size:10px !important;line-height:1.4 !important;max-width:92% !important; }
+  .photography-page .photo-viewfinder { width:min(100%,330px) !important;justify-self:start !important;padding:8px !important;border-radius:15px !important; }
+  .photography-page .photo-viewfinder-stage { aspect-ratio:16/7 !important;border-radius:10px !important; }
+  .photography-page .photo-viewfinder-top,.photography-page .photo-viewfinder-bottom { font-size:6px !important; }
+  .photography-page .living-hero-bottom { flex-direction:row !important;align-items:center !important;gap:12px !important;padding-top:8px !important; }
+  .photography-page .living-hero-bottom-copy { font-size:9px !important;line-height:1.35 !important; }
+  .photography-page .living-scroll-signal { width:30px !important;height:30px !important;flex-basis:30px !important;border-radius:10px !important;font-size:16px !important; }
+
+  /* CONTACT */
+  .contact-page .contact-editorial-hero { padding: 16px 20px 16px !important; }
+  .contact-page .contact-hero-meta { font-size:7px !important; }
+  .contact-page .contact-status-pill { padding:6px 8px !important; }
+  .contact-page .contact-hero-grid { grid-template-columns:1fr !important; gap:12px !important; margin:12px 0 !important; align-content:center; }
+  .contact-page .contact-kicker { font-size:7px !important; }
+  .contact-page .contact-hero-copy h1 { margin-top:8px !important;font-size:clamp(44px,min(13vw,9.8vh),70px) !important; }
+  .contact-page .contact-hero-description { margin-top:10px !important;font-size:10px !important;line-height:1.4 !important;max-width:95% !important; }
+  .contact-page .contact-hero-actions { margin-top:12px !important;gap:7px !important; }
+  .contact-page .contact-hero-actions a { min-height:36px !important;padding:8px 12px !important;font-size:7px !important; }
+  .contact-page .contact-signal-wrap { max-width:100% !important; }
+  .contact-page .contact-signal-system { height:150px !important; }
+  .contact-page .contact-hover-cue { top:7px !important;right:7px !important;padding:5px 6px !important;font-size:5px !important; }
+  .contact-page .contact-system-label,.contact-page .contact-system-status { top:10px !important;font-size:5px !important; }
+  .contact-page .contact-system-label { left:10px !important; }
+  .contact-page .contact-system-status { right:10px !important; }
+  .contact-page .contact-node { width:62px !important; }
+  .contact-page .contact-node strong { font-size:8px !important; }
+  .contact-page .contact-node > span { font-size:4px !important; }
+  .contact-page .contact-system-message { font-size:5px !important;top:67% !important; }
+  .contact-page .contact-system-tags { display:none !important; }
+  .contact-page .contact-hero-foot { padding-top:7px !important;font-size:7px !important; }
+
+  /* CASE STUDIES */
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-hero {
+    padding: 16px 20px 16px !important;
+  }
+
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-category {
+    margin-bottom: 8px !important;
+    padding: 6px 9px !important;
+    font-size: 6px !important;
+  }
+
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-hero h1,
+  .project-snpc .project-detail-hero h1 {
+    font-size: clamp(42px, min(13vw, 8.8vh), 64px) !important;
+    line-height: .84 !important;
+  }
+
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-intro {
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+    margin-top:10px !important;
+    padding-top:9px !important;
+  }
+
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-intro > p {
+    font-size:10px !important;
+    line-height:1.4 !important;
+    max-width:96% !important;
+  }
+
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-meta-item {
+    min-height:38px !important;
+    padding:5px 6px 5px 0 !important;
+  }
+
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-meta-item span { font-size:5px !important; }
+
+  :where(
+    .busfinder-case-study,
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-meta-item strong { font-size:8px !important; }
+}
+
+@media (max-width: 560px) and (max-height: 720px) {
+  :root { --sf-first-screen-gap-mobile: 94px; }
+  body:not(.home-page) .site-breadcrumbs { margin-top:66px !important; }
+  .about-page .about-hero-title h1,
+  .work-page .work-hero-title h1,
+  .sf-services-page .sf-services-hero h1,
+  .photography-page .photography-living-hero .living-hero-title,
+  .contact-page .contact-hero-copy h1 {
+    font-size: clamp(40px, 11.5vw, 58px) !important;
+  }
+  .contact-page .contact-signal-system { height:125px !important; }
+  .photography-page .photo-viewfinder { width:min(100%,280px) !important; }
+}

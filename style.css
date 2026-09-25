@@ -15328,3 +15328,47 @@ and
 
     background: #171A20;
 }
+
+/* =========================================================
+   FINAL PAGE-INTRO POLISH — ABOUT + CONTACT
+   Raises page identity/title into the first visual beat.
+========================================================= */
+.about-page .about-hero-editorial {
+    min-height: auto;
+    padding-top: clamp(104px, 8.5vw, 126px);
+    padding-bottom: clamp(44px, 5vw, 72px);
+    justify-content: flex-start;
+    gap: clamp(34px, 4.6vw, 70px);
+}
+
+.about-page .about-hero-title {
+    margin-top: clamp(6px, 1vw, 14px);
+}
+
+.contact-page .contact-editorial-hero {
+    min-height: auto;
+    padding-top: clamp(104px, 8.5vw, 126px);
+    padding-bottom: clamp(44px, 5vw, 72px);
+    justify-content: flex-start;
+}
+
+.contact-page .contact-hero-grid {
+    margin-top: clamp(38px, 4.2vw, 60px);
+    margin-bottom: clamp(46px, 5vw, 72px);
+}
+
+@media (max-width: 900px) {
+    .about-page .about-hero-editorial,
+    .contact-page .contact-editorial-hero {
+        padding-top: 96px;
+    }
+
+    .about-page .about-hero-editorial {
+        gap: 28px;
+    }
+
+    .contact-page .contact-hero-grid {
+        margin-top: 34px;
+        margin-bottom: 44px;
+    }
+}

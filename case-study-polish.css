@@ -1,0 +1,1135 @@
+/* ================================================================
+   STARRFIELD FUN — CASE STUDY POLISH / 2026
+   Shared editorial + cinematic continuity for all five case studies.
+   Scoped to project detail pages only.
+================================================================ */
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) {
+  --case-paper: #F5F2EA;
+  --case-ink: #151619;
+  --case-blue: #5965FF;
+  --case-coral: #FF7657;
+  --case-lime: #D8FF68;
+  --case-muted: #686A70;
+  --case-line: rgba(21,22,25,.17);
+  --case-gutter: clamp(24px, 4.8vw, 92px);
+  --case-radius: clamp(20px, 2vw, 30px);
+  --case-accent: var(--case-blue);
+  --case-accent-soft: rgba(89,101,255,.11);
+  overflow-x: clip;
+  background: var(--case-paper);
+  color: var(--case-ink);
+}
+
+.portfolio-case-study:not(.monitor-control-case-study) {
+  --case-accent: var(--case-coral);
+  --case-accent-soft: rgba(255,118,87,.12);
+}
+
+.monitor-control-case-study {
+  --case-accent: var(--case-lime);
+  --case-accent-soft: rgba(216,255,104,.13);
+}
+
+.project-promptchecker {
+  --case-accent: var(--case-blue);
+  --case-accent-soft: rgba(89,101,255,.12);
+}
+
+.project-snpc {
+  --case-accent: var(--case-blue);
+  --case-accent-soft: rgba(89,101,255,.11);
+}
+
+.project-eternal {
+  --case-accent: var(--case-coral);
+  --case-accent-soft: rgba(255,118,87,.12);
+}
+
+/* ----------------------------------------------------------------
+   SHARED PAGE CHROME
+---------------------------------------------------------------- */
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-main {
+  padding-top: clamp(96px, 8vw, 122px);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .site-breadcrumbs {
+  width: min(100%, 1600px);
+  margin-inline: auto;
+  padding-inline: var(--case-gutter);
+  color: rgba(21,22,25,.54);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .site-breadcrumbs a {
+  color: inherit;
+}
+
+/* ----------------------------------------------------------------
+   HERO — same visual DNA as the new portfolio opening, quieter.
+---------------------------------------------------------------- */
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(860px, 84svh);
+  padding: clamp(96px, 10vw, 160px) var(--case-gutter) clamp(68px, 7vw, 110px);
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(21,22,25,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,22,25,.045) 1px, transparent 1px),
+    radial-gradient(circle at 78% 35%, var(--case-accent-soft) 0%, transparent 35%),
+    var(--case-paper) !important;
+  background-size: 46px 46px, 46px 46px, auto, auto !important;
+  border-bottom: 1px solid rgba(21,22,25,.10);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: min(58vw, 920px);
+  aspect-ratio: 1;
+  right: max(-12vw, -150px);
+  top: 14%;
+  border-radius: 50%;
+  border: 1px solid rgba(89,101,255,.10);
+  background:
+    radial-gradient(circle at 34% 29%, rgba(255,255,255,.80), transparent 24%),
+    radial-gradient(circle at 45% 50%, var(--case-accent-soft), rgba(89,101,255,.035) 46%, transparent 72%);
+  box-shadow: inset 0 0 110px rgba(89,101,255,.05);
+  pointer-events: none;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-category {
+  width: fit-content;
+  margin-bottom: clamp(30px, 4vw, 54px);
+  color: var(--case-ink) !important;
+  border: 1px solid rgba(21,22,25,.16);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(245,242,234,.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 9px;
+  letter-spacing: .15em;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-category::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: var(--case-accent);
+  vertical-align: 1px;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero h1 {
+  width: min(100%, 1460px);
+  max-width: 13.5ch;
+  font-size: clamp(68px, 9.4vw, 152px);
+  line-height: .84;
+  letter-spacing: -.066em;
+  text-wrap: balance;
+}
+
+.project-snpc .project-detail-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(62px, 8.6vw, 140px);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero h1 span {
+  color: var(--case-accent) !important;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-intro {
+  width: min(100%, 1480px);
+  margin-top: clamp(58px, 7vw, 88px);
+  padding-top: clamp(28px, 3vw, 40px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(350px, .92fr);
+  gap: clamp(52px, 7vw, 110px);
+  border-top: 1px solid rgba(21,22,25,.24);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-intro > p {
+  max-width: 760px;
+  color: #484A4F;
+  font-size: clamp(17px, 1.35vw, 21px);
+  line-height: 1.72;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-meta {
+  gap: 0;
+  border-top: 1px solid rgba(21,22,25,.14);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-meta-item {
+  min-height: 92px;
+  padding: 18px 18px 18px 0;
+  border-bottom: 1px solid rgba(21,22,25,.14);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-meta-item span {
+  color: var(--case-accent) !important;
+  font-size: 8px;
+  letter-spacing: .15em;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-meta-item strong {
+  font-size: 15px;
+}
+
+/* ----------------------------------------------------------------
+   SECTION RHYTHM + TYPOGRAPHY
+---------------------------------------------------------------- */
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .compact-project-section,
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study
+) :is(
+  .compact-challenge-section,
+  .compact-thinking-section,
+  .compact-experience-section,
+  .compact-decisions-section,
+  .compact-build-section,
+  .compact-outcome-section
+) {
+  position: relative;
+  padding-left: var(--case-gutter) !important;
+  padding-right: var(--case-gutter) !important;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .compact-project-section::after,
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study
+) :is(
+  .compact-challenge-section,
+  .compact-thinking-section,
+  .compact-experience-section,
+  .compact-decisions-section,
+  .compact-build-section
+)::after {
+  content: "";
+  position: absolute;
+  left: var(--case-gutter);
+  right: var(--case-gutter);
+  top: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: .08;
+  pointer-events: none;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study
+) .compact-section-head,
+:where(
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .compact-project-head {
+  grid-template-columns: minmax(120px, .3fr) minmax(0, 1.7fr);
+  gap: clamp(36px, 5vw, 84px);
+  width: min(100%, 1510px);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study
+) .compact-section-head > p,
+:where(
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .compact-project-head > p {
+  color: var(--case-accent) !important;
+  font-size: 9px;
+  letter-spacing: .17em;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study
+) .compact-section-head h2,
+:where(
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .compact-project-head h2 {
+  max-width: 1180px;
+  font-size: clamp(50px, 6.6vw, 106px);
+  line-height: .89;
+  letter-spacing: -.056em;
+  text-wrap: balance;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study
+) .compact-section-head h2 span,
+:where(
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .compact-project-head h2 span {
+  color: var(--case-accent) !important;
+}
+
+/* ----------------------------------------------------------------
+   CARDS + SYSTEM BLOCKS
+---------------------------------------------------------------- */
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-goals article,
+  .compact-flow-grid article,
+  .compact-decision-grid article,
+  .compact-build-grid article,
+  .compact-mini-grid article,
+  .compact-thinking-grid article,
+  .compact-system-grid article,
+  .prompt-mode-grid article
+) {
+  border-radius: 0;
+  transition:
+    transform .45s cubic-bezier(.16,1,.3,1),
+    background-color .35s ease,
+    border-color .35s ease;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) :is(
+    .compact-goals article,
+    .compact-flow-grid article,
+    .compact-decision-grid article,
+    .compact-build-grid article,
+    .prompt-mode-grid article
+  ):hover {
+    transform: translateY(-5px);
+  }
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-role-line, .compact-role-strip, .compact-experience-note) {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* ----------------------------------------------------------------
+   PROJECT IMAGERY — one consistent presentation language.
+---------------------------------------------------------------- */
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-screen-card,
+  .compact-project-screen,
+  .compact-mobile-card,
+  .compact-project-phone,
+  .desktop-project-card,
+  .mobile-project-card,
+  .eternal-collateral-compact figure,
+  .eternal-social-compact figure
+) {
+  min-width: 0;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-screen-card img,
+  .compact-project-screen img,
+  .desktop-project-shot,
+  .eternal-collateral-compact img,
+  .eternal-social-compact img
+) {
+  border: 1px solid rgba(21,22,25,.10);
+  border-radius: clamp(12px, 1.15vw, 20px);
+  box-shadow: 0 26px 78px rgba(21,22,25,.095);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-screen-card, .compact-project-screen) figcaption {
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(21,22,25,.18);
+  color: rgba(21,22,25,.78);
+  font-size: 12px;
+  letter-spacing: .02em;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-screen-card, .compact-project-screen) figcaption span {
+  color: var(--case-accent) !important;
+  font-size: 9px;
+  letter-spacing: .13em;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) :is(
+    .compact-screen-card img,
+    .compact-project-screen img,
+    .desktop-project-shot,
+    .eternal-collateral-compact img,
+    .eternal-social-compact img
+  ) {
+    transition: transform .75s cubic-bezier(.16,1,.3,1), box-shadow .45s ease;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) :is(
+    .compact-screen-card:hover img,
+    .compact-project-screen:hover img,
+    .desktop-project-card:hover .desktop-project-shot,
+    .eternal-collateral-compact figure:hover img,
+    .eternal-social-compact figure:hover img
+  ) {
+    transform: translateY(-5px) scale(1.006);
+    box-shadow: 0 34px 96px rgba(21,22,25,.14);
+  }
+}
+
+/* ----------------------------------------------------------------
+   OUTCOME + BACK TO WORK — cinematic callbacks without replaying hero.
+---------------------------------------------------------------- */
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-outcome-section, .compact-project-outcome) {
+  border-top: 1px solid rgba(21,22,25,.12);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-back {
+  position: relative;
+  padding: clamp(72px, 8vw, 118px) var(--case-gutter) !important;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 50%, var(--case-accent-soft), transparent 35%),
+    var(--case-ink);
+  color: var(--case-paper);
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-back::before {
+  content: "END OF CASE STUDY";
+  display: block;
+  margin-bottom: clamp(34px, 4vw, 56px);
+  color: var(--case-accent);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .17em;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-back a {
+  width: min(100%, 1480px);
+  margin: 0 auto;
+  padding: clamp(24px, 3vw, 38px) 0;
+  border-top: 1px solid rgba(245,242,234,.24);
+  border-bottom: 1px solid rgba(245,242,234,.24);
+  color: var(--case-paper);
+  font-size: clamp(28px, 4vw, 62px);
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-back a span:last-child {
+  display: grid;
+  place-items: center;
+  width: clamp(48px, 5vw, 72px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(245,242,234,.32);
+  border-radius: 50%;
+  color: var(--case-accent);
+  font-size: .58em;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-back a:hover span:last-child {
+    background: var(--case-accent);
+    color: var(--case-ink);
+    border-color: var(--case-accent);
+    transform: translateX(-5px);
+  }
+}
+
+/* ----------------------------------------------------------------
+   FOOTER NAV CONSISTENCY
+---------------------------------------------------------------- */
+
+:where(
+  .portfolio-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .site-extra-footer {
+  flex-wrap: wrap;
+}
+
+/* ----------------------------------------------------------------
+   MOBILE
+---------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) {
+    --case-gutter: 20px;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-main {
+    padding-top: 82px;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .site-breadcrumbs {
+    padding-inline: 20px;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-hero {
+    min-height: auto;
+    padding: 98px 20px 70px;
+    background-size: 34px 34px, 34px 34px, auto, auto !important;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-hero::before {
+    width: 92vw;
+    right: -38vw;
+    top: 18%;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-hero h1,
+  .project-snpc .project-detail-hero h1 {
+    max-width: 100%;
+    font-size: clamp(54px, 15.5vw, 86px);
+    line-height: .87;
+    letter-spacing: -.06em;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-detail-intro {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    margin-top: 52px;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study
+  ) .compact-section-head,
+  :where(
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .compact-project-head {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study
+  ) .compact-section-head h2,
+  :where(
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .compact-project-head h2 {
+    max-width: 100%;
+    font-size: clamp(48px, 13vw, 78px);
+    line-height: .92;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) :is(
+    .compact-screen-card img,
+    .compact-project-screen img,
+    .desktop-project-shot,
+    .eternal-collateral-compact img,
+    .eternal-social-compact img
+  ) {
+    border-radius: 12px;
+    box-shadow: 0 18px 46px rgba(21,22,25,.09);
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-back {
+    padding: 70px 20px !important;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-back a {
+    font-size: clamp(27px, 9vw, 44px);
+  }
+}
+
+@media (max-width: 560px) {
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-meta {
+    grid-template-columns: 1fr;
+  }
+
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) .project-meta-item {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(
+    .portfolio-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) * {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   MONITOR CONTROL — VISUAL DESIGN SIGNATURE
+========================================================= */
+.monitor-control-case-study .monitor-detail-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.monitor-control-case-study .monitor-detail-hero::before {
+    content: "DISPLAY / STATE / PRESET";
+    position: absolute;
+    right: -2vw;
+    top: clamp(120px, 13vw, 190px);
+    color: rgba(89, 101, 255, 0.045);
+    font-size: clamp(76px, 10vw, 170px);
+    font-weight: 800;
+    line-height: .78;
+    letter-spacing: -.075em;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.monitor-control-case-study .monitor-detail-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.monitor-control-case-study .monitor-design-signature {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(54px, 6vw, 86px) 4vw;
+    background: #151619;
+    color: #F5F2EA;
+    border-top: 1px solid rgba(245,242,234,.12);
+    border-bottom: 1px solid rgba(245,242,234,.12);
+}
+
+.monitor-control-case-study .monitor-design-signature::before {
+    content: "SYSTEM";
+    position: absolute;
+    right: -1vw;
+    bottom: -28px;
+    color: rgba(245,242,234,.035);
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(110px, 18vw, 290px);
+    line-height: .72;
+    pointer-events: none;
+}
+
+.monitor-control-case-study .monitor-design-signature-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1420px;
+    margin: 0 auto;
+}
+
+.monitor-control-case-study .monitor-design-signature-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid rgba(245,242,234,.18);
+}
+
+.monitor-control-case-study .monitor-design-signature-head span {
+    color: #D8FF68;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .15em;
+}
+
+.monitor-control-case-study .monitor-design-signature-head strong {
+    max-width: 760px;
+    font-size: clamp(25px, 3vw, 48px);
+    line-height: 1;
+    letter-spacing: -.05em;
+    text-align: right;
+}
+
+.monitor-control-case-study .monitor-design-signature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 1px;
+    margin-top: 1px;
+    background: rgba(245,242,234,.16);
+}
+
+.monitor-control-case-study .monitor-design-tile {
+    min-height: clamp(230px, 24vw, 330px);
+    padding: clamp(24px, 3vw, 42px);
+    background: #1D1F24;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background .35s ease;
+}
+
+.monitor-control-case-study .monitor-design-tile:hover {
+    background: #22252B;
+}
+
+.monitor-control-case-study .monitor-design-tile-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: #A8ABB2;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.monitor-control-case-study .monitor-design-tile:nth-child(1) .monitor-design-tile-meta span:first-child { color: #5965FF; }
+.monitor-control-case-study .monitor-design-tile:nth-child(2) .monitor-design-tile-meta span:first-child { color: #D8FF68; }
+.monitor-control-case-study .monitor-design-tile:nth-child(3) .monitor-design-tile-meta span:first-child { color: #FF7657; }
+
+.monitor-control-case-study .monitor-design-glyph {
+    position: relative;
+    min-height: 110px;
+    display: grid;
+    place-items: center;
+}
+
+.monitor-control-case-study .monitor-design-glyph--identity {
+    grid-template-columns: repeat(3, minmax(44px, 1fr));
+    gap: 9px;
+}
+
+.monitor-control-case-study .monitor-design-glyph--identity i {
+    display: block;
+    aspect-ratio: 16/10;
+    border: 1px solid rgba(245,242,234,.24);
+    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(89,101,255,.22), rgba(245,242,234,.03));
+}
+
+.monitor-control-case-study .monitor-design-glyph--identity i:nth-child(2) {
+    transform: translateY(-12px);
+    border-color: rgba(216,255,104,.55);
+}
+
+.monitor-control-case-study .monitor-design-glyph--state::before {
+    content: "ON";
+    display: grid;
+    place-items: center;
+    width: 112px;
+    height: 48px;
+    border-radius: 999px;
+    background: #D8FF68;
+    color: #151619;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    box-shadow: 0 0 0 12px rgba(216,255,104,.07);
+}
+
+.monitor-control-case-study .monitor-design-glyph--preset {
+    place-items: stretch;
+    gap: 10px;
+}
+
+.monitor-control-case-study .monitor-design-glyph--preset i {
+    display: block;
+    height: 22px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #5965FF 0 38%, rgba(245,242,234,.12) 38% 100%);
+}
+
+.monitor-control-case-study .monitor-design-glyph--preset i:nth-child(2) {
+    background: linear-gradient(90deg, #FF7657 0 62%, rgba(245,242,234,.12) 62% 100%);
+}
+
+.monitor-control-case-study .monitor-design-glyph--preset i:nth-child(3) {
+    background: linear-gradient(90deg, #D8FF68 0 48%, rgba(245,242,234,.12) 48% 100%);
+}
+
+.monitor-control-case-study .monitor-design-tile h3 {
+    margin: 18px 0 8px;
+    font-size: clamp(26px, 2.6vw, 40px);
+    line-height: 1;
+    letter-spacing: -.05em;
+}
+
+.monitor-control-case-study .monitor-design-tile p {
+    margin: 0;
+    color: #A8ABB2;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+    .monitor-control-case-study .monitor-design-signature {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .monitor-control-case-study .monitor-design-signature-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .monitor-control-case-study .monitor-design-signature-head strong {
+        text-align: left;
+    }
+
+    .monitor-control-case-study .monitor-design-signature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .monitor-control-case-study .monitor-design-tile {
+        transition: none;
+    }
+}
+
+
+/* ================================================================
+   MONITOR CONTROL — HERO SCREENSHOT RECOVERY + SIZE LOCK
+   Keeps the real application screenshot visible at a portfolio-
+   appropriate size without changing the other case studies.
+================================================================ */
+.monitor-control-case-study .monitor-real-hero {
+  width: min(100%, 1080px);
+  max-width: 1080px;
+  margin: clamp(46px, 5vw, 72px) auto 0;
+}
+
+.monitor-control-case-study .monitor-real-frame {
+  width: 100%;
+  overflow: hidden;
+  border-radius: clamp(14px, 1.35vw, 20px);
+  background: #F1F3F6;
+}
+
+.monitor-control-case-study .monitor-real-frame img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: top center !important;
+  background: #F1F3F6 !important;
+}
+
+.monitor-control-case-study .monitor-real-hero figcaption {
+  width: 100%;
+  max-width: 1080px;
+}
+
+@media (max-width: 900px) {
+  .monitor-control-case-study .monitor-real-hero {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 38px;
+  }
+}
+
+@media (max-width: 620px) {
+  .monitor-control-case-study .monitor-real-hero {
+    margin-top: 30px;
+  }
+}

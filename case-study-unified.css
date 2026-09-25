@@ -1,0 +1,382 @@
+/* ================================================================
+   STARRFIELD FUN — CASE STUDY UNIFIED SYSTEM
+   PromptChecker is the reference language: compact chapters,
+   system-like cards, editorial typography and restrained motion.
+   Every project keeps its own palette through CSS variables.
+================================================================ */
+
+.busfinder-case-study {
+  --case-accent: #397EF6;
+  --case-accent-2: #B9DEFF;
+  --case-deep: #12233A;
+  --case-accent-soft: rgba(57,126,246,.13);
+}
+
+.monitor-control-case-study {
+  --case-accent: #0A84FF;
+  --case-accent-2: #A9D9FF;
+  --case-deep: #111A28;
+  --case-accent-soft: rgba(10,132,255,.13);
+}
+
+.project-promptchecker {
+  --case-accent: #5965FF;
+  --case-accent-2: #9AB3DC;
+  --case-deep: #151A27;
+  --case-accent-soft: rgba(89,101,255,.13);
+}
+
+.project-snpc {
+  --case-accent: #3158F4;
+  --case-accent-2: #D94742;
+  --case-deep: #15182D;
+  --case-accent-soft: rgba(49,88,244,.12);
+}
+
+.project-eternal {
+  --case-accent: #C93B35;
+  --case-accent-2: #D9B293;
+  --case-deep: #0F1012;
+  --case-accent-soft: rgba(201,59,53,.14);
+}
+
+/* Shared PromptChecker-like chapter rhythm. */
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-project-section,
+  .compact-challenge-section,
+  .compact-thinking-section,
+  .compact-experience-section,
+  .compact-decisions-section,
+  .compact-build-section,
+  .compact-outcome-section,
+  .compact-project-outcome
+) {
+  position: relative;
+  padding-top: clamp(76px, 7.5vw, 118px) !important;
+  padding-bottom: clamp(76px, 7.5vw, 118px) !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-section-head, .compact-project-head) {
+  grid-template-columns: minmax(108px,.28fr) minmax(0,1.72fr) !important;
+  gap: clamp(28px, 4vw, 66px) !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-section-head, .compact-project-head) > p {
+  color: var(--case-accent) !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-section-head, .compact-project-head) h2 {
+  font-size: clamp(46px, 6vw, 94px) !important;
+  line-height: .9 !important;
+  max-width: 1120px !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-section-head, .compact-project-head) h2 span {
+  color: var(--case-accent) !important;
+}
+
+/* Repeat PromptChecker's crisp system-card language. */
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-goals article,
+  .compact-flow-grid article,
+  .compact-decision-grid article,
+  .compact-build-grid article,
+  .compact-mini-grid article,
+  .compact-thinking-grid article,
+  .compact-system-grid article,
+  .prompt-mode-grid article
+) {
+  border-radius: 0 !important;
+  border-color: rgba(21,22,25,.16) !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-goals article,
+  .compact-flow-grid article,
+  .compact-decision-grid article,
+  .compact-build-grid article,
+  .compact-mini-grid article,
+  .compact-thinking-grid article,
+  .compact-system-grid article,
+  .prompt-mode-grid article
+) > :is(span,small):first-child {
+  color: var(--case-accent) !important;
+}
+
+/* Project identity lives in the hero and important system moments. */
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero {
+  background:
+    linear-gradient(rgba(21,22,25,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,22,25,.04) 1px, transparent 1px),
+    radial-gradient(circle at 78% 35%, var(--case-accent-soft), transparent 36%),
+    #F5F2EA !important;
+  background-size: 46px 46px,46px 46px,auto,auto !important;
+  color:#151619 !important;
+}
+
+.project-eternal .project-detail-hero {
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    radial-gradient(circle at 78% 35%, var(--case-accent-soft), transparent 38%),
+    var(--case-deep) !important;
+  background-size:46px 46px,46px 46px,auto,auto !important;
+  color:#F5F2EA !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-hero h1 span,
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-meta-item span {
+  color: var(--case-accent) !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-detail-category {
+  border-color: color-mix(in srgb, var(--case-accent) 34%, transparent) !important;
+  background: color-mix(in srgb, var(--case-accent) 8%, transparent) !important;
+}
+
+/* Dark system chapters mirror PromptChecker but use the project palette. */
+.busfinder-case-study :is(.compact-thinking-section,.compact-build-section),
+.monitor-control-case-study :is(.compact-thinking-section,.compact-build-section),
+.project-promptchecker :is(.prompt-system-dark,.prompt-compact-ai),
+.project-snpc :is(.project-dark,.snpc-compact-system),
+.project-eternal :is(.eternal-dark,.eternal-compact-world) {
+  background: var(--case-deep) !important;
+  color: #F5F2EA !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-thinking-section,
+  .compact-build-section,
+  .prompt-system-dark,
+  .prompt-compact-ai,
+  .project-dark,
+  .snpc-compact-system,
+  .eternal-dark,
+  .eternal-compact-world
+) :is(.compact-section-head,.compact-project-head) > p {
+  color: var(--case-accent-2) !important;
+}
+
+/* Accent chapters: same composition, project's own colour. */
+.busfinder-case-study .compact-decisions-section,
+.monitor-control-case-study .compact-decisions-section,
+.project-promptchecker .prompt-blue,
+.project-snpc .project-blue,
+.project-eternal .eternal-coral {
+  background: var(--case-accent) !important;
+  color: white !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-decisions-section,
+  .prompt-blue,
+  .project-blue,
+  .eternal-coral
+) :is(.compact-section-head,.compact-project-head) > p,
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(
+  .compact-decisions-section,
+  .prompt-blue,
+  .project-blue,
+  .eternal-coral
+) :is(.compact-section-head,.compact-project-head) h2 span {
+  color: var(--case-accent-2) !important;
+}
+
+/* Screenshots: same restrained PromptChecker treatment. */
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-screen-card,.compact-project-screen) {
+  overflow: visible !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) :is(.compact-screen-card,.compact-project-screen) > figcaption {
+  border-top-color: color-mix(in srgb, var(--case-accent) 30%, rgba(21,22,25,.12)) !important;
+}
+
+/* ----------------------------------------------------------------
+   BUS FINDER — laptop is intentionally smaller and exactly 16:9.
+   The screenshot itself is contained rather than cropped or stretched.
+---------------------------------------------------------------- */
+.busfinder-case-study .desktop-showcase-laptop {
+  width: min(72%, 780px) !important;
+  max-width: 780px !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 auto 30px !important;
+}
+
+.busfinder-case-study .desktop-showcase-screen {
+  background: #EEF4FB !important;
+}
+
+.busfinder-case-study .desktop-showcase-laptop.is-static .desktop-showcase-screen > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.busfinder-case-study .compact-screen-card > figcaption {
+  width: min(72%, 780px) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Monitor screenshot follows the same PromptChecker restraint. */
+.monitor-control-case-study .monitor-real-hero {
+  width: min(76%, 860px) !important;
+  max-width: 860px !important;
+  margin: clamp(26px,3vw,42px) auto 0 !important;
+}
+.monitor-control-case-study .monitor-real-frame img { object-fit: contain !important; }
+
+/* Case-study back panels use the project accent. */
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-back {
+  background: radial-gradient(circle at 82% 50%, var(--case-accent-soft), transparent 36%), var(--case-deep) !important;
+}
+
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-back::before,
+:where(
+  .busfinder-case-study,
+  .monitor-control-case-study,
+  .project-promptchecker,
+  .project-snpc,
+  .project-eternal
+) .project-back a span:last-child {
+  color: var(--case-accent) !important;
+}
+
+@media (max-width:900px) {
+  :where(
+    .busfinder-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) :is(.compact-section-head,.compact-project-head) {
+    grid-template-columns:1fr !important;
+    gap:20px !important;
+  }
+
+  :where(
+    .busfinder-case-study,
+    .monitor-control-case-study,
+    .project-promptchecker,
+    .project-snpc,
+    .project-eternal
+  ) :is(.compact-section-head,.compact-project-head) h2 {
+    font-size:clamp(40px,11vw,64px) !important;
+  }
+
+  .busfinder-case-study .desktop-showcase-laptop,
+  .busfinder-case-study .compact-screen-card > figcaption,
+  .monitor-control-case-study .monitor-real-hero {
+    width:100% !important;
+    max-width:none !important;
+  }
+}
