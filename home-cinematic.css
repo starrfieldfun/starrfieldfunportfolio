@@ -557,16 +557,16 @@
     top: 47%;
   }
   .home-page .cinema-title-line {
-    font-size: clamp(61px,19vw,90px);
-    line-height: .79;
+    font-size: clamp(64px,20.5vw,94px);
+    line-height: .78;
   }
   /* Mobile opening-title safe zone:
      keep the serif word cinematic without letting its right edge leave the viewport. */
   .home-page .cinema-title-experiences {
     max-width: calc(100vw - (var(--cinema-safe-x) * 2));
-    margin-left: clamp(14px, 5vw, 22px);
-    font-size: clamp(52px, 16vw, 76px);
-    letter-spacing: -.065em;
+    margin-left: clamp(10px, 3.5vw, 16px);
+    font-size: clamp(56px, 17vw, 80px);
+    letter-spacing: -.072em;
   }
 
   /* "THAT MOVE." is materially wider than the other opening lines.
@@ -574,9 +574,9 @@
   .home-page .cinema-title-move {
     max-width: calc(100vw - (var(--cinema-safe-x) * 2));
     margin-left: 0;
-    font-size: clamp(44px, 13.2vw, 62px);
-    letter-spacing: -.095em;
-    line-height: .82;
+    font-size: clamp(50px, 15vw, 68px);
+    letter-spacing: -.112em;
+    line-height: .80;
   }
   .home-page .cinema-orb {
     width: 105vw;
