@@ -60,7 +60,7 @@
       pulse(p, .62, .68, .74, .79) * .026 +
       smooth(.80, .93, p) * .018;
     const cameraScale = 1 + zoomBase + zoomCuts;
-    const cameraX = (-1.1 * smooth(.18, .88, p)).toFixed(3);
+    const cameraX = (-0.45 * smooth(.18, .88, p)).toFixed(3);
     const cameraY = (.65 * smooth(.16, .82, p)).toFixed(3);
     document.body.style.setProperty('--cinema-camera-scale', cameraScale.toFixed(4));
     document.body.style.setProperty('--cinema-camera-x', `${cameraX}vw`);
@@ -88,10 +88,10 @@
     const tBuild = pulse(p, .64, .70, .80, .84);
     const tFinal = smooth(.81, .89, p) * (1 - smooth(.965, 1, p));
 
-    setScene(think, tThink, (1 - tThink) * 70, .94 + tThink * .06, (1 - tThink) * 8);
-    setScene(design, tDesign, (1 - tDesign) * -54, 1.08 - tDesign * .08, (1 - tDesign) * 8);
-    setScene(build, tBuild, (1 - tBuild) * 78, .93 + tBuild * .07, (1 - tBuild) * 7);
-    setScene(finalCard, tFinal, (1 - tFinal) * 42, .97 + tFinal * .03, (1 - tFinal) * 5);
+    setScene(think, tThink, (1 - tThink) * 26, .94 + tThink * .06, (1 - tThink) * 8);
+    setScene(design, tDesign, (1 - tDesign) * -22, 1.08 - tDesign * .08, (1 - tDesign) * 8);
+    setScene(build, tBuild, (1 - tBuild) * 28, .93 + tBuild * .07, (1 - tBuild) * 7);
+    setScene(finalCard, tFinal, (1 - tFinal) * 20, .97 + tFinal * .03, (1 - tFinal) * 5);
 
     // Film UI / pacing indicators.
     const seconds = Math.floor(p * 12);
