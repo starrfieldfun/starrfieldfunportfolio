@@ -1,14 +1,30 @@
-STARRFIELD FUN — HOMEPAGE IMAGE ASSET RESTORE
+STARRFIELD FUN — WORK AREA + CASE STUDY RECOVERY
 
-The current homepage HTML already points to the correct image paths.
-The live site is showing broken-image icons because these asset files are missing
-from those deployed folders.
+This recovery pack restores the Work section without touching your current Absolute Cinema homepage.
 
-COPY THESE THREE IMAGE FILES INTO YOUR EXISTING PORTFOLIO, preserving the folders:
+RESTORES:
+- /work/index.html
+- /work/busfinder/index.html
+- /work/monitor-control/index.html
+- /work/promptchecker/index.html
+- /work/snpc/index.html
+- /work/eternal-shutterwave/index.html
+- all Work cover images
+- all case-study image folders used by those pages
+- the improved Monitor Control Work cover
+- site-extras.css from the approved Work-cover/cinematic continuity baseline
 
-images/bus-finder/NearbyBus.png
-images/monitor-control/monitors.png
-images/home-covers/promptchecker-home.png
+COPY EVERYTHING IN THIS ZIP INTO YOUR EXISTING PORTFOLIO ROOT.
+ALLOW THE FOLDERS TO MERGE.
 
-NO HTML/CSS/JS REPLACEMENT IS REQUIRED FOR THIS FIX.
-This keeps your current Absolute Cinema styling exactly as it is.
+DO NOT DELETE YOUR EXISTING PORTFOLIO FIRST.
+
+This pack intentionally does NOT include:
+- root index.html
+- home-cinematic.css/js
+- About page
+- Contact page
+- Services page
+- Photography page
+
+So your current Absolute Cinema homepage and working Contact form remain untouched.
