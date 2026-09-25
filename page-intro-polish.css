@@ -1,0 +1,221 @@
+/* =========================================================
+   STARRFIELD FUN — FIRST-SCREEN PAGE INTRO FIT
+   Scoped only to About, Services, Photography and Contact.
+   Goal: the page identity and main title are fully readable
+   within the landing viewport without changing the site style.
+========================================================= */
+
+/* ABOUT */
+.about-page .about-hero-editorial {
+    min-height: auto;
+    padding-top: clamp(34px, 3vw, 48px);
+    padding-bottom: clamp(34px, 4vw, 56px);
+    justify-content: flex-start;
+    gap: clamp(18px, 2.2vw, 30px);
+}
+
+.about-page .about-hero-editorial::after {
+    top: 8%;
+}
+
+.about-page .about-hero-title {
+    margin-top: 0;
+}
+
+.about-page .about-hero-title h1 {
+    max-width: min(1180px, 92vw);
+    font-size: clamp(64px, min(8.15vw, 12.8vh), 132px);
+    line-height: .82;
+}
+
+.about-page .about-hero-title h1 span {
+    margin-left: clamp(34px, 8vw, 122px);
+}
+
+.about-page .about-signal-band,
+.about-page .about-hero-bottom {
+    margin-top: 0;
+}
+
+.about-page .about-signal-band > div {
+    min-height: 64px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+.about-page .about-hero-bottom {
+    padding-top: 8px;
+}
+
+/* SERVICES */
+.sf-services-page .sf-services-hero {
+    padding-top: clamp(34px, 3vw, 48px);
+    padding-bottom: clamp(46px, 4.5vw, 68px);
+}
+
+.sf-services-page .sf-services-hero-grid {
+    margin-top: clamp(24px, 2.5vw, 38px);
+    align-items: center;
+}
+
+.sf-services-page .sf-services-hero h1 {
+    font-size: clamp(64px, min(8.4vw, 13.2vh), 138px);
+    line-height: .90;
+}
+
+.sf-services-page .sf-services-hero-rail {
+    margin-top: clamp(32px, 3.4vw, 48px);
+}
+
+/* PHOTOGRAPHY */
+.photography-page .photography-living-hero {
+    min-height: auto;
+    padding-top: clamp(44px, 3.6vw, 58px);
+    padding-bottom: clamp(42px, 4.5vw, 66px);
+    justify-content: flex-start;
+}
+
+.photography-page .photography-living-hero::before {
+    top: 18px;
+}
+
+.photography-page .photography-living-hero .living-hero-meta {
+    margin-top: 0;
+    padding-top: 12px;
+    padding-bottom: 14px;
+}
+
+.photography-page .photography-living-hero .living-hero-stage {
+    padding-top: clamp(24px, 2.6vw, 38px);
+    padding-bottom: clamp(28px, 3vw, 44px);
+    gap: clamp(34px, 5vw, 72px);
+    align-items: center;
+}
+
+.photography-page .photography-living-hero .living-hero-kicker {
+    margin-bottom: 18px;
+}
+
+.photography-page .photography-living-hero .living-hero-title {
+    font-size: clamp(64px, min(8vw, 12.5vh), 128px);
+    line-height: .84;
+}
+
+.photography-page .photography-living-hero .living-hero-description {
+    margin-top: 24px;
+}
+
+.photography-page .photography-living-hero .living-hero-bottom {
+    padding-top: 18px;
+}
+
+/* CONTACT */
+.contact-page .contact-editorial-hero {
+    min-height: auto;
+    padding-top: clamp(34px, 3vw, 48px);
+    padding-bottom: clamp(38px, 4vw, 58px);
+    justify-content: flex-start;
+}
+
+.contact-page .contact-editorial-hero::before {
+    top: 8%;
+}
+
+.contact-page .contact-hero-grid {
+    margin-top: clamp(24px, 2.7vw, 40px);
+    margin-bottom: clamp(28px, 3.2vw, 46px);
+    align-items: center;
+}
+
+.contact-page .contact-hero-copy h1 {
+    margin-top: 18px;
+    font-size: clamp(62px, min(7.7vw, 12.2vh), 124px);
+    line-height: .84;
+}
+
+.contact-page .contact-hero-description {
+    margin-top: 24px;
+}
+
+.contact-page .contact-hero-actions {
+    margin-top: 28px;
+}
+
+/* TABLET / MOBILE */
+@media (max-width: 900px) {
+    .about-page .about-hero-editorial,
+    .contact-page .contact-editorial-hero,
+    .photography-page .photography-living-hero,
+    .sf-services-page .sf-services-hero {
+        padding-top: 28px;
+    }
+
+    .about-page .about-hero-editorial {
+        gap: 20px;
+    }
+
+    .about-page .about-hero-title h1 {
+        max-width: 100%;
+        font-size: clamp(52px, 13.5vw, 82px);
+        line-height: .84;
+    }
+
+    .about-page .about-hero-title h1 span {
+        margin-left: clamp(20px, 7vw, 54px);
+    }
+
+    .contact-page .contact-hero-grid {
+        margin-top: 26px;
+        margin-bottom: 34px;
+    }
+
+    .contact-page .contact-hero-copy h1 {
+        font-size: clamp(52px, 13vw, 82px);
+    }
+
+    .photography-page .photography-living-hero::before {
+        top: 14px;
+    }
+
+    .photography-page .photography-living-hero .living-hero-stage {
+        padding-top: 26px;
+        padding-bottom: 34px;
+        gap: 38px;
+    }
+
+    .photography-page .photography-living-hero .living-hero-title {
+        font-size: clamp(54px, 14vw, 84px);
+    }
+
+    .sf-services-page .sf-services-hero-grid {
+        margin-top: 26px;
+    }
+
+    .sf-services-page .sf-services-hero h1 {
+        font-size: clamp(54px, 14vw, 86px);
+    }
+
+    .sf-services-page .sf-services-hero-rail {
+        margin-top: 34px;
+    }
+}
+
+@media (max-width: 560px) {
+    .about-page .about-hero-editorial,
+    .contact-page .contact-editorial-hero,
+    .photography-page .photography-living-hero,
+    .sf-services-page .sf-services-hero {
+        padding-top: 22px;
+    }
+
+    .about-page .about-hero-title h1,
+    .contact-page .contact-hero-copy h1,
+    .photography-page .photography-living-hero .living-hero-title,
+    .sf-services-page .sf-services-hero h1 {
+        font-size: clamp(48px, 14.5vw, 70px);
+    }
+
+    .about-page .about-signal-band {
+        margin-top: 4px;
+    }
+}

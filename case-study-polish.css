@@ -1083,3 +1083,53 @@
         transition: none;
     }
 }
+
+
+/* ================================================================
+   MONITOR CONTROL — HERO SCREENSHOT RECOVERY + SIZE LOCK
+   Keeps the real application screenshot visible at a portfolio-
+   appropriate size without changing the other case studies.
+================================================================ */
+.monitor-control-case-study .monitor-real-hero {
+  width: min(100%, 1080px);
+  max-width: 1080px;
+  margin: clamp(46px, 5vw, 72px) auto 0;
+}
+
+.monitor-control-case-study .monitor-real-frame {
+  width: 100%;
+  overflow: hidden;
+  border-radius: clamp(14px, 1.35vw, 20px);
+  background: #F1F3F6;
+}
+
+.monitor-control-case-study .monitor-real-frame img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: top center !important;
+  background: #F1F3F6 !important;
+}
+
+.monitor-control-case-study .monitor-real-hero figcaption {
+  width: 100%;
+  max-width: 1080px;
+}
+
+@media (max-width: 900px) {
+  .monitor-control-case-study .monitor-real-hero {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 38px;
+  }
+}
+
+@media (max-width: 620px) {
+  .monitor-control-case-study .monitor-real-hero {
+    margin-top: 30px;
+  }
+}
