@@ -560,7 +560,15 @@
     font-size: clamp(61px,19vw,90px);
     line-height: .79;
   }
-  .home-page .cinema-title-experiences { margin-left: 11vw; }
+  /* Mobile opening-title safe zone:
+     keep the serif word cinematic without letting its right edge leave the viewport. */
+  .home-page .cinema-title-experiences {
+    max-width: calc(100vw - (var(--cinema-safe-x) * 2));
+    margin-left: clamp(14px, 5vw, 22px);
+    font-size: clamp(52px, 16vw, 76px);
+    letter-spacing: -.065em;
+  }
+
   .home-page .cinema-title-move { margin-left: 0; }
   .home-page .cinema-orb {
     width: 105vw;
