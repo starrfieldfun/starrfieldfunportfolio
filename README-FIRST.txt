@@ -1,21 +1,23 @@
-STARRFIELD FUN — LATEST APPROVED BASELINE REVERT
+STARRFIELD FUN — ABSOLUTE CINEMA / LANDING SIZE + SIDE PADDING POLISH
 
-This package restores the last clean approved baseline before the later Safari overlap experiments.
+Built from the latest approved baseline.
 
-BASELINE INCLUDED:
-- Absolute Cinema opening
-- Camera Zoom transition (no closing black borders)
-- Sitewide cinematic/editorial continuity styling
-- Standardized button styling
-- Clean favicon / Apple icon treatment
-- Monitor Control Work-page cover fit fix
+REPLACE ONLY:
+- index.html
+- home-cinematic.css
+- home-cinematic.js
 
-REMOVED / NOT INCLUDED:
-- Safari viewport seal experiment
-- Stacking overlap experiment
-- Safari chrome/theme-color experiment
-- Other later mobile overlap patches
+WHAT CHANGED:
+- Added proper left/right outer gutters around the cinematic landing canvas.
+- Increased internal side breathing room.
+- Slightly reduced oversized opening / THINK / DESIGN / BUILD typography.
+- Shortened the cinematic scroll length a little so the section feels less oversized.
+- Tightened the release/title-card section while keeping its content and style.
+- Kept a separate mobile gutter so the design still feels cinematic without touching the edges.
 
-REPLACE THE FILES/FOLDERS IN THIS ZIP OVER YOUR EXISTING PORTFOLIO PROJECT.
-
-The working Contact form is not included or changed by this package.
+NOT CHANGED:
+- Absolute Cinema concept
+- Camera zoom motion
+- Homepage content
+- Work page / Monitor Control cover fix
+- Other pages

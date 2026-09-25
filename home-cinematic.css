@@ -16,22 +16,28 @@
   --cinema-exit: 0;
   --cinema-light-x: 76%;
   --cinema-light-y: 28%;
+  --cinema-shell-gutter: clamp(18px, 2.9vw, 54px);
+  --cinema-inner-gutter: clamp(32px, 5.6vw, 108px);
 }
 
 .home-page .cinema-prologue {
   position: relative;
-  height: 430svh;
+  height: 390svh;
   background: var(--cinema-ivory);
 }
 
 .home-page .cinema-screen {
   position: sticky;
   top: 0;
+  width: calc(100% - var(--cinema-shell-gutter) - var(--cinema-shell-gutter));
   height: 100svh;
+  margin-inline: auto;
   overflow: hidden;
   isolation: isolate;
   background: var(--cinema-ivory);
   color: var(--cinema-ink);
+  border-left: 1px solid rgba(21,22,25,.08);
+  border-right: 1px solid rgba(21,22,25,.08);
 }
 
 .home-page .cinema-screen::before,
@@ -158,8 +164,8 @@
 .home-page .cinema-meta {
   position: absolute;
   z-index: 16;
-  left: clamp(24px,4.5vw,88px);
-  right: clamp(24px,4.5vw,88px);
+  left: var(--cinema-inner-gutter);
+  right: var(--cinema-inner-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -180,8 +186,8 @@
 .home-page .cinema-opening-title {
   position: absolute;
   z-index: 7;
-  left: clamp(24px,4.5vw,88px);
-  right: clamp(24px,4.5vw,88px);
+  left: var(--cinema-inner-gutter);
+  right: var(--cinema-inner-gutter);
   top: 50%;
   transform: translateY(-48%);
   display: grid;
@@ -193,7 +199,7 @@
   display: block;
   width: fit-content;
   white-space: nowrap;
-  font-size: clamp(74px,10.4vw,190px);
+  font-size: clamp(72px,9.3vw,172px);
   font-weight: 800;
   line-height: .76;
   letter-spacing: -.085em;
@@ -218,7 +224,7 @@
   inset: 0;
   display: grid;
   align-content: center;
-  padding: 0 clamp(24px,4.5vw,88px);
+  padding: 0 var(--cinema-inner-gutter);
   opacity: 0;
   pointer-events: none;
 }
@@ -235,7 +241,7 @@
 .home-page .cinema-scene h2 {
   margin: 0;
   color: var(--cinema-ivory);
-  font-size: clamp(110px,19vw,340px);
+  font-size: clamp(104px,16.5vw,300px);
   font-weight: 800;
   line-height: .69;
   letter-spacing: -.095em;
@@ -268,7 +274,7 @@
   margin: 0;
   max-width: 1150px;
   color: var(--cinema-ivory);
-  font-size: clamp(58px,8vw,132px);
+  font-size: clamp(56px,7vw,118px);
   font-weight: 600;
   line-height: .86;
   letter-spacing: -.062em;
@@ -406,7 +412,7 @@
   grid-template-columns: minmax(150px,.34fr) 1.66fr;
   align-content: center;
   gap: 5vw;
-  padding: clamp(110px,12vw,190px) clamp(24px,4.5vw,92px);
+  padding: clamp(100px,10vw,165px) clamp(32px,6vw,120px);
   background: var(--cinema-ivory);
   color: var(--cinema-ink);
   overflow: hidden;
@@ -422,8 +428,8 @@
 }
 .home-page .cinema-release-rule {
   position: absolute;
-  left: clamp(24px,4.5vw,92px);
-  right: clamp(24px,4.5vw,92px);
+  left: clamp(32px,6vw,120px);
+  right: clamp(32px,6vw,120px);
   top: 0;
   height: 1px;
   background: rgba(21,22,25,.2);
@@ -438,7 +444,7 @@
 .home-page .cinema-release h2 {
   margin: 0;
   max-width: 1180px;
-  font-size: clamp(58px,8vw,132px);
+  font-size: clamp(56px,7vw,118px);
   font-weight: 600;
   line-height: .86;
   letter-spacing: -.062em;
@@ -467,7 +473,11 @@
   .home-page .cinema-camera {
     transform-origin: 54% 49%;
   }
-  .home-page .cinema-prologue { height: 360svh; }
+  .home-page {
+    --cinema-shell-gutter: 12px;
+    --cinema-inner-gutter: 24px;
+  }
+  .home-page .cinema-prologue { height: 335svh; }
   /* iOS Safari can expose more visible height than 100svh after browser chrome moves.
      Fill the live viewport so the next ivory section cannot peek through under the film. */
   .home-page .cinema-screen {
@@ -475,8 +485,8 @@
     min-height: 100svh;
   }
   .home-page .cinema-meta {
-    left: 20px;
-    right: 20px;
+    left: var(--cinema-inner-gutter);
+    right: var(--cinema-inner-gutter);
     font-size: 7px;
     letter-spacing: .12em;
   }
@@ -499,12 +509,12 @@
     height: 19px;
   }
   .home-page .cinema-opening-title {
-    left: 20px;
-    right: 20px;
+    left: var(--cinema-inner-gutter);
+    right: var(--cinema-inner-gutter);
     top: 47%;
   }
   .home-page .cinema-title-line {
-    font-size: clamp(61px,19vw,90px);
+    font-size: clamp(56px,17.5vw,82px);
     line-height: .79;
   }
   .home-page .cinema-title-experiences { margin-left: 11vw; }
@@ -521,9 +531,9 @@
   }
   .home-page .cinema-gate { inset: 10px; }
   .home-page .cinema-scene,
-  .home-page .cinema-final-card { padding: 0 20px; }
+  .home-page .cinema-final-card { padding: 0 var(--cinema-inner-gutter); }
   .home-page .cinema-scene h2 {
-    font-size: clamp(82px,29vw,142px);
+    font-size: clamp(76px,25vw,126px);
     line-height: .72;
   }
   .home-page .cinema-scene p {
@@ -538,7 +548,7 @@
     min-height: 68svh;
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 90px 20px;
+    padding: 84px 24px;
   }
   .home-page .cinema-release h2 { font-size: clamp(46px,13vw,72px); }
   .home-page .cinema-frame-count { display: none; }
