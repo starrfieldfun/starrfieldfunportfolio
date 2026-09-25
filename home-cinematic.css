@@ -33,6 +33,7 @@
 .home-page .cinema-screen {
   position: sticky;
   top: 0;
+  z-index: 20;
   height: 100svh;
   overflow: hidden;
   isolation: isolate;
@@ -407,6 +408,7 @@
 
 .home-page .cinema-release {
   position: relative;
+  z-index: auto;
   min-height: 78svh;
   display: grid;
   grid-template-columns: minmax(150px,.34fr) 1.66fr;
@@ -555,10 +557,11 @@
   .home-page .cinema-release h2 { font-size: clamp(46px,13vw,72px); }
   .home-page .cinema-frame-count { display: none; }
 
-  /* Keep the following ivory content visually sealed until the sticky film releases. */
+  /* The release must stay BELOW the sticky film while the prologue is still active.
+     Safari otherwise paints the ivory section over the bottom edge of the movie. */
   .home-page .cinema-release {
     position: relative;
-    z-index: 3;
+    z-index: auto;
   }
 }
 

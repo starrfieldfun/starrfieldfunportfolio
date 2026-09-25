@@ -1,15 +1,11 @@
-STARRFIELD FUN — ABSOLUTE CINEMA VIEWPORT SEAL FIX
+STARRFIELD FUN — ABSOLUTE CINEMA STACKING FIX
 
-This patch stays on the current approved Camera Zoom / Absolute Cinema baseline.
-
-REPLACE:
+REPLACE ONLY:
 1. index.html
 2. home-cinematic.css
-3. home-cinematic.js
 
-FIX:
-- Removes the occasional ivory/white strip that peeks up from the bottom on iPhone Safari while scrolling.
-- Uses the live Safari visual viewport instead of relying only on svh/dvh.
-- Adds a 4px overscan to the sticky film frame.
-- Matches any temporarily exposed prologue pixels to the current dark/ivory film state.
-- Does not change the approved camera-zoom sequence, page content, or Work-page Monitor Control fix.
+ROOT CAUSE FIXED:
+- The ivory cinema-release section was being painted above the sticky movie on Safari because it had its own z-index.
+- The cinema-screen now explicitly stays above following page content while sticky.
+- cinema-release no longer overlays the film.
+- Existing camera zoom, Scroll To Play motion, Safari viewport sizing, and all page content remain unchanged.
