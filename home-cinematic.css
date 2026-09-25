@@ -653,133 +653,46 @@
   .home-page .cinema-final-card { display: none; }
 }
 
+
 /* ================================================================
-   CINEMA CHAPTER ENRICHMENT — VISUAL ONLY
-   THINK / DESIGN / BUILD gain quiet motion and graphic cues without
-   adding explanatory copy or changing the protected typography layer.
+   CINEMA CHAPTER TEXT — minimal copy, no decorative widgets
 ================================================================ */
-.home-page .cinema-scene-visual {
+.home-page .cinema-scene-thought {
+  position: relative;
+  z-index: 2;
+  max-width: 720px !important;
+  margin: clamp(20px,2.2vw,32px) 0 0 !important;
+  color: rgba(245,242,234,.88) !important;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(22px,2.25vw,38px) !important;
+  font-style: italic;
+  font-weight: 400 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.025em !important;
+  text-transform: none !important;
+}
+.home-page .cinema-scene-tags {
   position: absolute;
-  right: clamp(38px, 7vw, 132px);
-  top: 50%;
-  width: clamp(170px, 20vw, 340px);
-  height: clamp(120px, 17vw, 260px);
-  transform: translateY(-42%);
-  opacity: .72;
-  pointer-events: none;
+  left: var(--cinema-safe-x);
+  bottom: clamp(76px,10vh,118px);
+  color: rgba(245,242,234,.52);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .16em;
 }
-
-/* THINK — connected decisions / information structure */
-.home-page .cinema-think-map::before,
-.home-page .cinema-think-map::after {
-  content: "";
-  position: absolute;
-  inset: 22% 12%;
-  border-top: 1px solid rgba(245,242,234,.24);
-  border-bottom: 1px solid rgba(245,242,234,.14);
-  transform: skewY(-16deg);
-}
-.home-page .cinema-think-map::after {
-  inset: 35% 4% 34%;
-  border: 0;
-  border-top: 1px solid rgba(216,255,104,.38);
-  transform: rotate(22deg);
-}
-.home-page .cinema-think-map i {
-  position: absolute;
-  width: clamp(8px, .8vw, 13px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 1px solid rgba(245,242,234,.5);
-  background: rgba(21,22,25,.8);
-  box-shadow: 0 0 0 7px rgba(245,242,234,.035);
-  animation: cinemaNodePulse 3.2s ease-in-out infinite;
-}
-.home-page .cinema-think-map i:nth-child(1){left:8%;top:20%}
-.home-page .cinema-think-map i:nth-child(2){left:52%;top:8%;animation-delay:.4s}
-.home-page .cinema-think-map i:nth-child(3){right:8%;top:54%;animation-delay:.8s;border-color:rgba(216,255,104,.75)}
-.home-page .cinema-think-map i:nth-child(4){left:30%;bottom:7%;animation-delay:1.2s}
-
-/* DESIGN — framing, alignment and composition */
-.home-page .cinema-design-frame {
-  border: 1px solid rgba(89,101,255,.38);
-  background:
-    linear-gradient(rgba(89,101,255,.12) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(89,101,255,.12) 1px,transparent 1px);
-  background-size: 25% 25%;
-  box-shadow: inset 0 0 50px rgba(89,101,255,.05);
-  animation: cinemaFrameDrift 5s ease-in-out infinite;
-}
-.home-page .cinema-design-frame::before,
-.home-page .cinema-design-frame::after {
-  content:"";
-  position:absolute;
-  background:rgba(89,101,255,.55);
-}
-.home-page .cinema-design-frame::before{left:50%;top:-8%;bottom:-8%;width:1px}
-.home-page .cinema-design-frame::after{top:50%;left:-6%;right:-6%;height:1px}
-.home-page .cinema-design-frame i {
-  position:absolute;
-  border:1px solid rgba(245,242,234,.22);
-}
-.home-page .cinema-design-frame i:nth-child(1){inset:10% 14% 42% 8%}
-.home-page .cinema-design-frame i:nth-child(2){inset:56% 8% 10% 42%}
-.home-page .cinema-design-frame i:nth-child(3){width:8px;height:8px;right:-4px;top:-4px;background:var(--cinema-blue);border:0}
-
-/* BUILD — stacked implementation / progress states */
-.home-page .cinema-build-stack {
-  display:grid;
-  align-content:center;
-  gap:clamp(10px,1.2vw,17px);
-}
-.home-page .cinema-build-stack::before {
-  content:"";
-  position:absolute;
-  left:0;right:0;top:10%;bottom:10%;
-  border-left:1px solid rgba(216,255,104,.32);
-  border-right:1px solid rgba(216,255,104,.08);
-}
-.home-page .cinema-build-stack i {
-  display:block;
-  height:clamp(9px,1vw,14px);
-  border:1px solid rgba(245,242,234,.16);
-  background:linear-gradient(90deg,var(--cinema-lime) 0 var(--build-fill,45%),rgba(245,242,234,.06) var(--build-fill,45%) 100%);
-  animation:cinemaBuildLoad 3.7s ease-in-out infinite;
-}
-.home-page .cinema-build-stack i:nth-child(1){--build-fill:72%;width:88%}
-.home-page .cinema-build-stack i:nth-child(2){--build-fill:48%;width:72%;animation-delay:.25s}
-.home-page .cinema-build-stack i:nth-child(3){--build-fill:86%;width:96%;animation-delay:.5s}
-.home-page .cinema-build-stack i:nth-child(4){--build-fill:36%;width:58%;animation-delay:.75s}
-
-@keyframes cinemaNodePulse {
-  0%,100%{transform:scale(1);opacity:.55}
-  50%{transform:scale(1.28);opacity:1}
-}
-@keyframes cinemaFrameDrift {
-  0%,100%{transform:translateY(-42%) rotate(-1.2deg)}
-  50%{transform:translateY(-46%) rotate(.8deg)}
-}
-@keyframes cinemaBuildLoad {
-  0%,100%{filter:brightness(.8);transform:translateX(0)}
-  50%{filter:brightness(1.18);transform:translateX(6px)}
-}
-
-@media (max-width: 820px) {
-  .home-page .cinema-scene-visual {
-    width: 34vw;
-    height: 24vw;
-    min-width: 118px;
-    min-height: 82px;
-    right: 22px;
-    top: 31%;
-    opacity: .48;
+.home-page .cinema-scene-design .cinema-scene-tags { color: rgba(89,101,255,.72); }
+.home-page .cinema-scene-build .cinema-scene-tags { color: rgba(216,255,104,.72); }
+@media (max-width:820px){
+  .home-page .cinema-scene-thought{
+    max-width: 300px !important;
+    font-size: clamp(20px,6vw,28px) !important;
+    line-height:1.05 !important;
   }
-  .home-page .cinema-design-frame { top:30%; }
-  .home-page .cinema-scene p { position:relative; z-index:2; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-page .cinema-think-map i,
-  .home-page .cinema-design-frame,
-  .home-page .cinema-build-stack i { animation:none !important; }
+  .home-page .cinema-scene-tags{
+    left: var(--cinema-safe-x);
+    bottom: 76px;
+    max-width: calc(100vw - 44px);
+    font-size: 8px;
+    line-height:1.5;
+  }
 }

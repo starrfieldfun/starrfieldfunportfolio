@@ -1,35 +1,50 @@
-STARRFIELD FUN — MONITOR STANDARDISATION + CINEMA ENRICHMENT
+STARRFIELD FUN — FULL HOMEPAGE CINEMA
 
-REPLACE ONLY:
+HOMEPAGE ONLY.
+No Work, case-study, About, Services, Photography or Contact files are included.
+
+REPLACE / ADD:
 - index.html
 - home-cinematic.css
-- case-study-unified.css
-- work/monitor-control/index.html
+- home-cinematic.js
+- home-full-cinema.css
+- home-full-cinema.js
 
 WHAT CHANGED
 ============
-1. MONITOR CONTROL
-- Removed the one-off Control Language block that made this case study structurally different.
-- Hero now follows the same pattern as PromptChecker: title + intro + metadata.
-- The real Monitors application screenshot was moved into Application Experience.
-- Challenge / Architecture / Experience / Decisions / Build / Outcome now share the compact PromptChecker-style section shell.
-- Arrange and Presets screenshots now use the same staggered editorial screenshot language as PromptChecker.
-- Monitor Control keeps its own Windows-blue colour identity.
+1. THINK / DESIGN / BUILD
+- Removed the newer decorative micro-diagrams.
+- Added short cinematic lines instead:
+  THINK: I start with the problem, not the pixels.
+  DESIGN: Turning complexity into something clear, useful and human.
+  BUILD: Taking the idea beyond Figma into something that works.
 
-2. ABSOLUTE CINEMA — THINK / DESIGN / BUILD
-- Added visual-only scene details; no new explanatory paragraphs.
-- THINK: animated connected decision nodes.
-- DESIGN: quiet composition/grid frame.
-- BUILD: subtle implementation/progress stack.
-- Existing giant typography, scene copy and camera atmosphere remain.
-- Mobile uses a reduced version so the visuals do not crowd the typography.
+2. FULL HOMEPAGE CINEMA
+The homepage now continues as film chapters after the opening:
+- Scene 05 / Starr
+- Scene 06 / Work
+- Scene 07 / Services
+- Scene 08 / Process
+- Scene 09 / Photography
+- Scene 10 / Final
 
-NOT TOUCHED
-===========
-- site-extras.css / current no-blur fix
-- Contact form
-- About / Services / Photography
-- Work page
-- Other case-study HTML
-- Any image files
-- Absolute Cinema JavaScript
+3. INFORMATION IS STILL PRESENT
+- Who Starr is / AI-powered positioning
+- 3 featured projects + link to full archive
+- 3 main service paths
+- Think / Shape / Build / Refine process
+- AI-assisted, human-led principle
+- Photography positioning
+- Contact / Work / About calls to action
+
+4. BEHAVIOUR
+- Normal scrolling. No scroll-jacking.
+- Chapters use large typography, short copy and visual pacing.
+- Subtle reveal motion only; no blur.
+- Mobile collapses to a clear linear sequence.
+- Reduced-motion users get static content immediately.
+
+IMPORTANT
+=========
+Only copy these homepage files into your existing repaired portfolio.
+Do not replace any other page or asset folder.
