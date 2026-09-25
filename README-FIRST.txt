@@ -12,3 +12,6 @@ No About / certificates files are included or changed.
 
 This version keeps your existing homepage content after the opening title sequence.
 The new opening is a scroll-driven cinematic prologue: ivory hero → title fracture → THINK → DESIGN → BUILD → final title card → portfolio.
+
+
+UPDATE: SCROLL TO PLAY has been made more prominent while preserving the approved Absolute Cinema design.

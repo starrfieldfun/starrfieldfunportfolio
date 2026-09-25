@@ -300,13 +300,65 @@
 .home-page .cinema-timecode {
   font-variant-numeric: tabular-nums;
 }
+.home-page .cinema-scroll-copy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-width: 176px;
+  padding: 14px 19px;
+  border: 1px solid rgba(21,22,25,.30);
+  border-radius: 999px;
+  background: rgba(245,242,234,.88);
+  color: var(--cinema-ink);
+  box-shadow: 0 14px 44px rgba(21,22,25,.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  letter-spacing: .18em;
+  font-size: clamp(9px,.68vw,11px);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease, background .35s ease;
+}
+
 .home-page .cinema-scroll-copy::before {
   content: "";
-  display: inline-block;
-  width: 34px;
-  height: 1px;
-  margin: 0 12px 3px 0;
-  background: currentColor;
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--cinema-blue);
+  box-shadow: 0 0 0 0 rgba(89,101,255,.35);
+  animation: cinemaScrollPulse 1.8s ease-out infinite;
+}
+
+.home-page .cinema-scroll-copy::after {
+  content: "↓";
+  display: inline-grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border: 1px solid rgba(21,22,25,.22);
+  border-radius: 50%;
+  font-size: 12px;
+  letter-spacing: 0;
+  animation: cinemaScrollArrow 1.45s ease-in-out infinite;
+}
+
+.home-page .cinema-scroll-copy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 52px rgba(21,22,25,.15);
+}
+
+@keyframes cinemaScrollPulse {
+  0% { box-shadow: 0 0 0 0 rgba(89,101,255,.32); }
+  70% { box-shadow: 0 0 0 9px rgba(89,101,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(89,101,255,0); }
+}
+
+@keyframes cinemaScrollArrow {
+  0%, 100% { transform: translateY(-1px); }
+  50% { transform: translateY(3px); }
 }
 
 .home-page .cinema-release {
@@ -427,6 +479,10 @@
   }
   .home-page .cinema-release h2 { font-size: clamp(46px,13vw,72px); }
   .home-page .cinema-frame-count { display: none; }
+}
+
+.home-page .cinema-scroll-copy {
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
