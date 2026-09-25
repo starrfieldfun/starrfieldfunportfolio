@@ -288,3 +288,40 @@ body:not(.home-page)::after {
     white-space: nowrap !important;
     border: 0 !important;
 }
+
+/* =========================================================
+   FINAL MICRO-FIX — NO SCROLL BLUR + MONITOR HEADER VISIBILITY
+   Keeps existing reveal opacity/translate motion, but removes
+   the blur pass entirely. Monitor Control's opening navigation
+   and hero identity are forced visible immediately.
+========================================================= */
+
+/* Remove the blur-on-scroll effect sitewide. */
+.js .reveal,
+.js .reveal.visible {
+  filter: none !important;
+}
+
+/* Monitor Control: keep the page header/nav and opening identity visible. */
+.monitor-control-case-study .navbar {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.monitor-control-case-study .monitor-detail-hero > .project-detail-category,
+.monitor-control-case-study .monitor-detail-hero > h1,
+.monitor-control-case-study .monitor-detail-hero > .project-detail-intro {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Keep the title safely above decorative layers. */
+.monitor-control-case-study .monitor-detail-hero > .project-detail-category,
+.monitor-control-case-study .monitor-detail-hero > h1,
+.monitor-control-case-study .monitor-detail-hero > .project-detail-intro {
+  position: relative;
+  z-index: 4;
+}
