@@ -2,6 +2,19 @@
    STARRFIELD FUN / ABSOLUTE CINEMA HOMEPAGE
    Scroll-driven title sequence. Homepage only.
 ========================================================= */
+:root {
+  --cinema-browser-chrome: #F5F2EA;
+  --cinema-browser-bottom: 0px;
+}
+
+html {
+  background: var(--cinema-browser-chrome);
+}
+
+body.home-page {
+  background: var(--cinema-browser-chrome);
+}
+
 .home-page {
   --cinema-ivory: #F5F2EA;
   --cinema-ink: #151619;
@@ -21,19 +34,12 @@
 .home-page .cinema-prologue {
   position: relative;
   height: 430svh;
-  /* If mobile Safari briefly exposes the prologue behind the sticky frame,
-     keep those pixels matched to the current film stock instead of flashing ivory. */
-  background: color-mix(
-    in srgb,
-    #0B0C0E calc(var(--cinema-dark) * 100%),
-    var(--cinema-ivory)
-  );
+  background: var(--cinema-ivory);
 }
 
 .home-page .cinema-screen {
   position: sticky;
   top: 0;
-  z-index: 20;
   height: 100svh;
   overflow: hidden;
   isolation: isolate;
@@ -408,7 +414,6 @@
 
 .home-page .cinema-release {
   position: relative;
-  z-index: auto;
   min-height: 78svh;
   display: grid;
   grid-template-columns: minmax(150px,.34fr) 1.66fr;
@@ -475,18 +480,10 @@
   .home-page .cinema-camera {
     transform-origin: 54% 49%;
   }
-  .home-page .cinema-prologue {
-    height: var(--cinema-mobile-prologue-h, 360dvh);
-    min-height: calc(var(--cinema-live-vh, 100dvh) * 3);
-  }
-
-  /* Safari changes its visible viewport while the address bar collapses/returns.
-     Use the measured live viewport and add a tiny overscan so the next section
-     can never peek through at the bottom during the film. */
+  .home-page .cinema-prologue { height: 360svh; }
   .home-page .cinema-screen {
-    height: calc(var(--cinema-live-vh, 100dvh) + 4px);
-    min-height: calc(var(--cinema-live-vh, 100dvh) + 4px);
-    margin-bottom: -4px;
+    height: 100dvh;
+    min-height: 100dvh;
   }
   .home-page .cinema-meta {
     left: 20px;
@@ -499,8 +496,9 @@
   .home-page .cinema-meta-bottom {
     left: 16px;
     right: 16px;
-    bottom: calc(18px + env(safe-area-inset-bottom));
+    bottom: calc(18px + env(safe-area-inset-bottom) + var(--cinema-browser-bottom, 0px));
     gap: 10px;
+    transition: bottom .22s ease, color .35s ease;
   }
   .home-page .cinema-scroll-copy {
     min-width: 150px;
@@ -556,15 +554,7 @@
   }
   .home-page .cinema-release h2 { font-size: clamp(46px,13vw,72px); }
   .home-page .cinema-frame-count { display: none; }
-
-  /* The release must stay BELOW the sticky film while the prologue is still active.
-     Safari otherwise paints the ivory section over the bottom edge of the movie. */
-  .home-page .cinema-release {
-    position: relative;
-    z-index: auto;
-  }
 }
-
 
 .home-page .cinema-scroll-copy {
   will-change: transform;

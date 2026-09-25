@@ -18,6 +18,45 @@
   const frameCount = $('.cinema-frame-count');
   const scrollCopy = $('.cinema-scroll-copy');
   const scrollLabel = $('.cinema-scroll-label');
+  const themeColorMeta = document.querySelector('#sf-theme-color, meta[name="theme-color"]');
+  const root = document.documentElement;
+
+  let browserTheme = '';
+
+  const setBrowserTheme = (color) => {
+    if (browserTheme === color) return;
+    browserTheme = color;
+    root.style.setProperty('--cinema-browser-chrome', color);
+    root.style.backgroundColor = color;
+    document.body.style.backgroundColor = color;
+    if (themeColorMeta) themeColorMeta.setAttribute('content', color);
+  };
+
+  const syncBrowserInset = () => {
+    if (window.innerWidth > 820 || !window.visualViewport) {
+      root.style.setProperty('--cinema-browser-bottom', '0px');
+      return;
+    }
+
+    const vv = window.visualViewport;
+    const layoutH = Math.max(
+      document.documentElement.clientHeight || 0,
+      window.innerHeight || 0
+    );
+
+    const exposedBottom = Math.max(
+      0,
+      Math.round(layoutH - (vv.height + vv.offsetTop))
+    );
+
+    root.style.setProperty(
+      '--cinema-browser-bottom',
+      `${Math.min(exposedBottom, 120)}px`
+    );
+  };
+
+  setBrowserTheme('#F5F2EA');
+  syncBrowserInset();
 
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = (a, b, x) => {
@@ -39,35 +78,6 @@
 
   let ticking = false;
 
-  let cinemaViewportH = 0;
-
-  const syncCinemaViewport = () => {
-    if (window.innerWidth > 820) return;
-
-    const liveH = Math.ceil(
-      Math.max(
-        window.visualViewport ? window.visualViewport.height : 0,
-        window.innerHeight || 0
-      )
-    );
-
-    /* Keep the largest visible height we have seen during this page visit.
-       This avoids a shorter sticky frame when Safari's browser chrome moves. */
-    cinemaViewportH = Math.max(cinemaViewportH, liveH);
-
-    document.documentElement.style.setProperty(
-      '--cinema-live-vh',
-      `${cinemaViewportH + 2}px`
-    );
-
-    document.documentElement.style.setProperty(
-      '--cinema-mobile-prologue-h',
-      `${Math.ceil((cinemaViewportH + 2) * 3.6)}px`
-    );
-  };
-
-  syncCinemaViewport();
-
   const render = () => {
     const rect = prologue.getBoundingClientRect();
     const scrollable = Math.max(prologue.offsetHeight - window.innerHeight, 1);
@@ -80,6 +90,12 @@
     const dark = smooth(.26, .40, p) * (1 - exit);
     document.body.style.setProperty('--cinema-dark', dark.toFixed(4));
     document.body.style.setProperty('--cinema-exit', exit.toFixed(4));
+
+    if (dark > 0.52 && exit < 0.35) {
+      setBrowserTheme('#0B0C0E');
+    } else {
+      setBrowserTheme('#F5F2EA');
+    }
 
     // Camera push: progressive zoom plus small pushes at each chapter cut.
     const zoomBase = smooth(.06, .90, p) * .095;
@@ -148,17 +164,22 @@
 
   window.addEventListener('scroll', requestRender, { passive: true });
   window.addEventListener('resize', () => {
-    syncCinemaViewport();
+    syncBrowserInset();
     requestRender();
   }, { passive: true });
 
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', () => {
-      syncCinemaViewport();
+      syncBrowserInset();
+      requestRender();
+    }, { passive: true });
+
+    window.visualViewport.addEventListener('scroll', () => {
+      syncBrowserInset();
       requestRender();
     }, { passive: true });
   }
 
-  syncCinemaViewport();
+  syncBrowserInset();
   render();
 })();
