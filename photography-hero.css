@@ -2497,3 +2497,33 @@ div > p {
         max-height: min(75svh, 620px) !important;
     }
 }
+
+/* =========================================================
+   FINAL PAGE-INTRO POLISH — PHOTOGRAPHY
+========================================================= */
+.photography-page .photography-living-hero {
+    min-height: auto;
+    padding-top: clamp(104px, 8.5vw, 126px);
+    padding-bottom: clamp(58px, 6vw, 92px);
+    justify-content: flex-start;
+}
+
+.photography-page .photography-living-hero .living-hero-meta {
+    margin-top: 0;
+}
+
+.photography-page .photography-living-hero .living-hero-stage {
+    padding-top: clamp(36px, 3.8vw, 54px);
+    padding-bottom: clamp(44px, 5vw, 70px);
+}
+
+@media (max-width: 900px) {
+    .photography-page .photography-living-hero {
+        padding-top: 96px;
+    }
+
+    .photography-page .photography-living-hero .living-hero-stage {
+        padding-top: 34px;
+        gap: 50px;
+    }
+}

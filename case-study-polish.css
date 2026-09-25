@@ -865,3 +865,221 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================
+   MONITOR CONTROL — VISUAL DESIGN SIGNATURE
+========================================================= */
+.monitor-control-case-study .monitor-detail-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.monitor-control-case-study .monitor-detail-hero::before {
+    content: "DISPLAY / STATE / PRESET";
+    position: absolute;
+    right: -2vw;
+    top: clamp(120px, 13vw, 190px);
+    color: rgba(89, 101, 255, 0.045);
+    font-size: clamp(76px, 10vw, 170px);
+    font-weight: 800;
+    line-height: .78;
+    letter-spacing: -.075em;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.monitor-control-case-study .monitor-detail-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.monitor-control-case-study .monitor-design-signature {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(54px, 6vw, 86px) 4vw;
+    background: #151619;
+    color: #F5F2EA;
+    border-top: 1px solid rgba(245,242,234,.12);
+    border-bottom: 1px solid rgba(245,242,234,.12);
+}
+
+.monitor-control-case-study .monitor-design-signature::before {
+    content: "SYSTEM";
+    position: absolute;
+    right: -1vw;
+    bottom: -28px;
+    color: rgba(245,242,234,.035);
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(110px, 18vw, 290px);
+    line-height: .72;
+    pointer-events: none;
+}
+
+.monitor-control-case-study .monitor-design-signature-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1420px;
+    margin: 0 auto;
+}
+
+.monitor-control-case-study .monitor-design-signature-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid rgba(245,242,234,.18);
+}
+
+.monitor-control-case-study .monitor-design-signature-head span {
+    color: #D8FF68;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .15em;
+}
+
+.monitor-control-case-study .monitor-design-signature-head strong {
+    max-width: 760px;
+    font-size: clamp(25px, 3vw, 48px);
+    line-height: 1;
+    letter-spacing: -.05em;
+    text-align: right;
+}
+
+.monitor-control-case-study .monitor-design-signature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 1px;
+    margin-top: 1px;
+    background: rgba(245,242,234,.16);
+}
+
+.monitor-control-case-study .monitor-design-tile {
+    min-height: clamp(230px, 24vw, 330px);
+    padding: clamp(24px, 3vw, 42px);
+    background: #1D1F24;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background .35s ease;
+}
+
+.monitor-control-case-study .monitor-design-tile:hover {
+    background: #22252B;
+}
+
+.monitor-control-case-study .monitor-design-tile-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: #A8ABB2;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.monitor-control-case-study .monitor-design-tile:nth-child(1) .monitor-design-tile-meta span:first-child { color: #5965FF; }
+.monitor-control-case-study .monitor-design-tile:nth-child(2) .monitor-design-tile-meta span:first-child { color: #D8FF68; }
+.monitor-control-case-study .monitor-design-tile:nth-child(3) .monitor-design-tile-meta span:first-child { color: #FF7657; }
+
+.monitor-control-case-study .monitor-design-glyph {
+    position: relative;
+    min-height: 110px;
+    display: grid;
+    place-items: center;
+}
+
+.monitor-control-case-study .monitor-design-glyph--identity {
+    grid-template-columns: repeat(3, minmax(44px, 1fr));
+    gap: 9px;
+}
+
+.monitor-control-case-study .monitor-design-glyph--identity i {
+    display: block;
+    aspect-ratio: 16/10;
+    border: 1px solid rgba(245,242,234,.24);
+    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(89,101,255,.22), rgba(245,242,234,.03));
+}
+
+.monitor-control-case-study .monitor-design-glyph--identity i:nth-child(2) {
+    transform: translateY(-12px);
+    border-color: rgba(216,255,104,.55);
+}
+
+.monitor-control-case-study .monitor-design-glyph--state::before {
+    content: "ON";
+    display: grid;
+    place-items: center;
+    width: 112px;
+    height: 48px;
+    border-radius: 999px;
+    background: #D8FF68;
+    color: #151619;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    box-shadow: 0 0 0 12px rgba(216,255,104,.07);
+}
+
+.monitor-control-case-study .monitor-design-glyph--preset {
+    place-items: stretch;
+    gap: 10px;
+}
+
+.monitor-control-case-study .monitor-design-glyph--preset i {
+    display: block;
+    height: 22px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #5965FF 0 38%, rgba(245,242,234,.12) 38% 100%);
+}
+
+.monitor-control-case-study .monitor-design-glyph--preset i:nth-child(2) {
+    background: linear-gradient(90deg, #FF7657 0 62%, rgba(245,242,234,.12) 62% 100%);
+}
+
+.monitor-control-case-study .monitor-design-glyph--preset i:nth-child(3) {
+    background: linear-gradient(90deg, #D8FF68 0 48%, rgba(245,242,234,.12) 48% 100%);
+}
+
+.monitor-control-case-study .monitor-design-tile h3 {
+    margin: 18px 0 8px;
+    font-size: clamp(26px, 2.6vw, 40px);
+    line-height: 1;
+    letter-spacing: -.05em;
+}
+
+.monitor-control-case-study .monitor-design-tile p {
+    margin: 0;
+    color: #A8ABB2;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+    .monitor-control-case-study .monitor-design-signature {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .monitor-control-case-study .monitor-design-signature-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .monitor-control-case-study .monitor-design-signature-head strong {
+        text-align: left;
+    }
+
+    .monitor-control-case-study .monitor-design-signature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .monitor-control-case-study .monitor-design-tile {
+        transition: none;
+    }
+}
