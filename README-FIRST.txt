@@ -1,16 +1,15 @@
-STARRFIELD FUN — WORK PAGE MONITOR CONTROL COVER FIX
+STARRFIELD FUN — ABSOLUTE CINEMA VIEWPORT SEAL FIX
 
-This is a small update on top of the approved Absolute Cinema baseline.
+This patch stays on the current approved Camera Zoom / Absolute Cinema baseline.
 
 REPLACE:
-1. work/index.html
-2. site-extras.css
+1. index.html
+2. home-cinematic.css
+3. home-cinematic.js
 
-ADD:
-3. images/work-covers/monitor-control.png
-
-WHAT CHANGED:
-- Monitor Control now uses a dedicated 16:10 Work-page cover.
-- The app interface fills the visual card much more like the other Work projects.
-- The full original Monitor Control screenshot used inside the case study is NOT changed.
-- Existing sitewide cinematic styling is preserved.
+FIX:
+- Removes the occasional ivory/white strip that peeks up from the bottom on iPhone Safari while scrolling.
+- Uses the live Safari visual viewport instead of relying only on svh/dvh.
+- Adds a 4px overscan to the sticky film frame.
+- Matches any temporarily exposed prologue pixels to the current dark/ivory film state.
+- Does not change the approved camera-zoom sequence, page content, or Work-page Monitor Control fix.

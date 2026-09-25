@@ -21,7 +21,13 @@
 .home-page .cinema-prologue {
   position: relative;
   height: 430svh;
-  background: var(--cinema-ivory);
+  /* If mobile Safari briefly exposes the prologue behind the sticky frame,
+     keep those pixels matched to the current film stock instead of flashing ivory. */
+  background: color-mix(
+    in srgb,
+    #0B0C0E calc(var(--cinema-dark) * 100%),
+    var(--cinema-ivory)
+  );
 }
 
 .home-page .cinema-screen {
@@ -467,12 +473,18 @@
   .home-page .cinema-camera {
     transform-origin: 54% 49%;
   }
-  .home-page .cinema-prologue { height: 360svh; }
-  /* iOS Safari can expose more visible height than 100svh after browser chrome moves.
-     Fill the live viewport so the next ivory section cannot peek through under the film. */
+  .home-page .cinema-prologue {
+    height: var(--cinema-mobile-prologue-h, 360dvh);
+    min-height: calc(var(--cinema-live-vh, 100dvh) * 3);
+  }
+
+  /* Safari changes its visible viewport while the address bar collapses/returns.
+     Use the measured live viewport and add a tiny overscan so the next section
+     can never peek through at the bottom during the film. */
   .home-page .cinema-screen {
-    height: 100dvh;
-    min-height: 100svh;
+    height: calc(var(--cinema-live-vh, 100dvh) + 4px);
+    min-height: calc(var(--cinema-live-vh, 100dvh) + 4px);
+    margin-bottom: -4px;
   }
   .home-page .cinema-meta {
     left: 20px;
@@ -542,7 +554,14 @@
   }
   .home-page .cinema-release h2 { font-size: clamp(46px,13vw,72px); }
   .home-page .cinema-frame-count { display: none; }
+
+  /* Keep the following ivory content visually sealed until the sticky film releases. */
+  .home-page .cinema-release {
+    position: relative;
+    z-index: 3;
+  }
 }
+
 
 .home-page .cinema-scroll-copy {
   will-change: transform;

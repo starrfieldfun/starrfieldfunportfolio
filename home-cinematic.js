@@ -39,6 +39,35 @@
 
   let ticking = false;
 
+  let cinemaViewportH = 0;
+
+  const syncCinemaViewport = () => {
+    if (window.innerWidth > 820) return;
+
+    const liveH = Math.ceil(
+      Math.max(
+        window.visualViewport ? window.visualViewport.height : 0,
+        window.innerHeight || 0
+      )
+    );
+
+    /* Keep the largest visible height we have seen during this page visit.
+       This avoids a shorter sticky frame when Safari's browser chrome moves. */
+    cinemaViewportH = Math.max(cinemaViewportH, liveH);
+
+    document.documentElement.style.setProperty(
+      '--cinema-live-vh',
+      `${cinemaViewportH + 2}px`
+    );
+
+    document.documentElement.style.setProperty(
+      '--cinema-mobile-prologue-h',
+      `${Math.ceil((cinemaViewportH + 2) * 3.6)}px`
+    );
+  };
+
+  syncCinemaViewport();
+
   const render = () => {
     const rect = prologue.getBoundingClientRect();
     const scrollable = Math.max(prologue.offsetHeight - window.innerHeight, 1);
@@ -118,6 +147,18 @@
   };
 
   window.addEventListener('scroll', requestRender, { passive: true });
-  window.addEventListener('resize', requestRender, { passive: true });
+  window.addEventListener('resize', () => {
+    syncCinemaViewport();
+    requestRender();
+  }, { passive: true });
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+      syncCinemaViewport();
+      requestRender();
+    }, { passive: true });
+  }
+
+  syncCinemaViewport();
   render();
 })();
