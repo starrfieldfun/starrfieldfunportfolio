@@ -1,14 +1,14 @@
-STARRFIELD FUN — ABSOLUTE CINEMA / MOBILE THAT MOVE SPACING POLISH
+STARRFIELD FUN — HOMEPAGE IMAGE ASSET RESTORE
 
-MOBILE ONLY. DESKTOP/WEB IS UNCHANGED.
+The current homepage HTML already points to the correct image paths.
+The live site is showing broken-image icons because these asset files are missing
+from those deployed folders.
 
-REPLACE:
-- index.html
-- home-cinematic.css
-- home-cinematic.js
+COPY THESE THREE IMAGE FILES INTO YOUR EXISTING PORTFOLIO, preserving the folders:
 
-CHANGE:
-- THAT MOVE. is slightly smaller than the previous version.
-- Letter spacing is loosened so the letters and full stop no longer look compressed.
-- I DESIGN and experiences are unchanged.
-- Desktop and all later cinema scenes are unchanged.
+images/bus-finder/NearbyBus.png
+images/monitor-control/monitors.png
+images/home-covers/promptchecker-home.png
+
+NO HTML/CSS/JS REPLACEMENT IS REQUIRED FOR THIS FIX.
+This keeps your current Absolute Cinema styling exactly as it is.
