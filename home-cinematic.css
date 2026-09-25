@@ -569,7 +569,15 @@
     letter-spacing: -.065em;
   }
 
-  .home-page .cinema-title-move { margin-left: 0; }
+  /* "THAT MOVE." is materially wider than the other opening lines.
+     Give it its own mobile scale so the full phrase stays inside the viewport. */
+  .home-page .cinema-title-move {
+    max-width: calc(100vw - (var(--cinema-safe-x) * 2));
+    margin-left: 0;
+    font-size: clamp(44px, 13.2vw, 62px);
+    letter-spacing: -.095em;
+    line-height: .82;
+  }
   .home-page .cinema-orb {
     width: 105vw;
     right: -51vw;

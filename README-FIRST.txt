@@ -1,6 +1,6 @@
-STARRFIELD FUN — ABSOLUTE CINEMA / MOBILE OPENING TEXT SAFE FIX
+STARRFIELD FUN — ABSOLUTE CINEMA / MOBILE "THAT MOVE." SAFE FIX
 
-Built directly on the Protected Typography Layer baseline.
+Built on the current Protected Typography + Mobile Opening baseline.
 
 REPLACE:
 - index.html
@@ -8,8 +8,9 @@ REPLACE:
 - home-cinematic.js
 
 FIX:
-- On mobile only, the serif word "experiences" is slightly smaller.
-- Its left offset is reduced.
-- It gets an explicit viewport-safe maximum width.
-- I DESIGN and THAT MOVE keep their cinematic scale.
-- Desktop and the THINK / DESIGN / BUILD / end-title scenes are unchanged.
+- Only the mobile "THAT MOVE." line is adjusted.
+- It now has its own smaller responsive font size.
+- Tighter letter spacing keeps the full phrase inside the phone viewport.
+- I DESIGN and experiences stay unchanged.
+- Desktop stays unchanged.
+- THINK / DESIGN / BUILD / final title stay unchanged.
