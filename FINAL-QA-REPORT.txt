@@ -1,0 +1,80 @@
+STARRFIELD FUN — FINAL STATIC QA REPORT
+Date: 25 Sep 2026
+
+SCOPE CHECKED
+-------------
+Primary pages scanned: 11
+- Home
+- Work
+- MyBusFinder
+- Monitor Control
+- PromptChecker
+- SNPC
+- Eternal Shutterwave
+- About
+- Services
+- Photography
+- Contact
+
+CASE STUDY ROUTES
+-----------------
+PASS  /work/busfinder/
+PASS  /work/monitor-control/
+PASS  /work/promptchecker/
+PASS  /work/snpc/
+PASS  /work/eternal-shutterwave/
+
+CASE STUDY CONSISTENCY
+----------------------
+PASS  Services link present in desktop navigation on all five case studies
+PASS  Services link present in mobile navigation on all five case studies
+PASS  Mobile navigation shows 06 DESTINATIONS on all five case studies
+PASS  Footer navigation includes Services on all five case studies
+PASS  Shared case-study polish stylesheet linked on all five case studies
+PASS  CreativeWork JSON-LD parses correctly on all five case studies
+PASS  Clean /work/.../ routes retained (no legacy .html case-study links found)
+PASS  One H1 per case-study page
+PASS  Case-study images include alt text
+
+FILE / ASSET CHECK
+------------------
+PASS  No missing local CSS/JS/image references across the 11 primary pages in the assembled current build
+PASS  No missing internal primary routes found
+PASS  No missing certificate PDFs/previews after safety restore
+PASS  Case-study social-share images present
+PASS  Case-study project image folders present
+PASS  Work cover image folder present
+PASS  Photography asset folder present in assembled audit build
+PASS  Key image files opened successfully during integrity checks
+
+CSS CHECK
+---------
+PASS  Top-level CSS files parsed with no CSS syntax errors in the assembled audit build
+PASS  project-detail.css available
+PASS  case-study-polish.css available
+PASS  site-extras.css available
+
+SEO / SEMANTIC CHECK
+--------------------
+PASS  Primary pages have titles
+PASS  Primary page local references resolve in assembled audit build
+PASS  Homepage now has one semantic H1 via a visually-hidden heading (no visible design change)
+PASS  Case-study structured data corrected
+
+PROTECTED AREAS
+---------------
+NOT MODIFIED  Working Contact form HTML / access key
+NOT MODIFIED  Absolute Cinema animation CSS/JS
+NOT MODIFIED  About page layout
+NOT MODIFIED  Services page layout
+NOT MODIFIED  Photography page layout
+
+RESULT
+------
+0 blocking missing-file/reference issues found after the final assembled scan.
+0 CSS parse errors found in the scanned top-level stylesheets.
+0 H1-count warnings remain on the 11 primary pages after the semantic homepage fix.
+
+NOTE
+----
+This is a static file/code QA pass. Final device/browser rendering should still be checked after GitHub Pages deploy because Safari/iOS browser chrome and cache behaviour are controlled by the browser.
