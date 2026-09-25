@@ -2,19 +2,6 @@
    STARRFIELD FUN / ABSOLUTE CINEMA HOMEPAGE
    Scroll-driven title sequence. Homepage only.
 ========================================================= */
-:root {
-  --cinema-browser-chrome: #F5F2EA;
-  --cinema-browser-bottom: 0px;
-}
-
-html {
-  background: var(--cinema-browser-chrome);
-}
-
-body.home-page {
-  background: var(--cinema-browser-chrome);
-}
-
 .home-page {
   --cinema-ivory: #F5F2EA;
   --cinema-ink: #151619;
@@ -481,9 +468,11 @@ body.home-page {
     transform-origin: 54% 49%;
   }
   .home-page .cinema-prologue { height: 360svh; }
+  /* iOS Safari can expose more visible height than 100svh after browser chrome moves.
+     Fill the live viewport so the next ivory section cannot peek through under the film. */
   .home-page .cinema-screen {
     height: 100dvh;
-    min-height: 100dvh;
+    min-height: 100svh;
   }
   .home-page .cinema-meta {
     left: 20px;
@@ -496,9 +485,8 @@ body.home-page {
   .home-page .cinema-meta-bottom {
     left: 16px;
     right: 16px;
-    bottom: calc(18px + env(safe-area-inset-bottom) + var(--cinema-browser-bottom, 0px));
+    bottom: calc(18px + env(safe-area-inset-bottom));
     gap: 10px;
-    transition: bottom .22s ease, color .35s ease;
   }
   .home-page .cinema-scroll-copy {
     min-width: 150px;

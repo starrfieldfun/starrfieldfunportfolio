@@ -18,45 +18,6 @@
   const frameCount = $('.cinema-frame-count');
   const scrollCopy = $('.cinema-scroll-copy');
   const scrollLabel = $('.cinema-scroll-label');
-  const themeColorMeta = document.querySelector('#sf-theme-color, meta[name="theme-color"]');
-  const root = document.documentElement;
-
-  let browserTheme = '';
-
-  const setBrowserTheme = (color) => {
-    if (browserTheme === color) return;
-    browserTheme = color;
-    root.style.setProperty('--cinema-browser-chrome', color);
-    root.style.backgroundColor = color;
-    document.body.style.backgroundColor = color;
-    if (themeColorMeta) themeColorMeta.setAttribute('content', color);
-  };
-
-  const syncBrowserInset = () => {
-    if (window.innerWidth > 820 || !window.visualViewport) {
-      root.style.setProperty('--cinema-browser-bottom', '0px');
-      return;
-    }
-
-    const vv = window.visualViewport;
-    const layoutH = Math.max(
-      document.documentElement.clientHeight || 0,
-      window.innerHeight || 0
-    );
-
-    const exposedBottom = Math.max(
-      0,
-      Math.round(layoutH - (vv.height + vv.offsetTop))
-    );
-
-    root.style.setProperty(
-      '--cinema-browser-bottom',
-      `${Math.min(exposedBottom, 120)}px`
-    );
-  };
-
-  setBrowserTheme('#F5F2EA');
-  syncBrowserInset();
 
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = (a, b, x) => {
@@ -90,12 +51,6 @@
     const dark = smooth(.26, .40, p) * (1 - exit);
     document.body.style.setProperty('--cinema-dark', dark.toFixed(4));
     document.body.style.setProperty('--cinema-exit', exit.toFixed(4));
-
-    if (dark > 0.52 && exit < 0.35) {
-      setBrowserTheme('#0B0C0E');
-    } else {
-      setBrowserTheme('#F5F2EA');
-    }
 
     // Camera push: progressive zoom plus small pushes at each chapter cut.
     const zoomBase = smooth(.06, .90, p) * .095;
@@ -163,23 +118,6 @@
   };
 
   window.addEventListener('scroll', requestRender, { passive: true });
-  window.addEventListener('resize', () => {
-    syncBrowserInset();
-    requestRender();
-  }, { passive: true });
-
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', () => {
-      syncBrowserInset();
-      requestRender();
-    }, { passive: true });
-
-    window.visualViewport.addEventListener('scroll', () => {
-      syncBrowserInset();
-      requestRender();
-    }, { passive: true });
-  }
-
-  syncBrowserInset();
+  window.addEventListener('resize', requestRender, { passive: true });
   render();
 })();
