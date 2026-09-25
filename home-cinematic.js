@@ -46,12 +46,25 @@
     document.body.style.setProperty('--cinema-p', p.toFixed(4));
 
     // The movie begins in ivory; the dark stock rolls in after the title fractures.
-    const dark = smooth(.26, .40, p);
+    // Near the end, the stock dissolves back into ivory so the portfolio release feels continuous.
+    const exit = smooth(.955, 1, p);
+    const dark = smooth(.26, .40, p) * (1 - exit);
     document.body.style.setProperty('--cinema-dark', dark.toFixed(4));
-    const mobileViewport = window.matchMedia('(max-width: 820px)').matches;
-    let bars = smooth(.16, .36, p);
-    if (mobileViewport) bars *= (1 - smooth(.88, .98, p));
-    document.body.style.setProperty('--cinema-bars', bars.toFixed(4));
+    document.body.style.setProperty('--cinema-exit', exit.toFixed(4));
+
+    // Camera push: progressive zoom plus small pushes at each chapter cut.
+    const zoomBase = smooth(.06, .90, p) * .095;
+    const zoomCuts =
+      pulse(p, .27, .33, .39, .44) * .020 +
+      pulse(p, .45, .51, .57, .62) * .024 +
+      pulse(p, .62, .68, .74, .79) * .026 +
+      smooth(.80, .93, p) * .018;
+    const cameraScale = 1 + zoomBase + zoomCuts;
+    const cameraX = (-1.1 * smooth(.18, .88, p)).toFixed(3);
+    const cameraY = (.65 * smooth(.16, .82, p)).toFixed(3);
+    document.body.style.setProperty('--cinema-camera-scale', cameraScale.toFixed(4));
+    document.body.style.setProperty('--cinema-camera-x', `${cameraX}vw`);
+    document.body.style.setProperty('--cinema-camera-y', `${cameraY}vh`);
     document.body.style.setProperty('--cinema-light-x', `${76 - p * 31}%`);
     document.body.style.setProperty('--cinema-light-y', `${28 + p * 21}%`);
 
@@ -73,7 +86,7 @@
     const tThink = pulse(p, .30, .36, .46, .50);
     const tDesign = pulse(p, .47, .53, .63, .67);
     const tBuild = pulse(p, .64, .70, .80, .84);
-    const tFinal = smooth(.81, .89, p);
+    const tFinal = smooth(.81, .89, p) * (1 - smooth(.965, 1, p));
 
     setScene(think, tThink, (1 - tThink) * 70, .94 + tThink * .06, (1 - tThink) * 8);
     setScene(design, tDesign, (1 - tDesign) * -54, 1.08 - tDesign * .08, (1 - tDesign) * 8);

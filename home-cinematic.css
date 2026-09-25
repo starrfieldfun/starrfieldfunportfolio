@@ -10,7 +10,10 @@
   --cinema-lime: #D8FF68;
   --cinema-p: 0;
   --cinema-dark: 0;
-  --cinema-bars: 0;
+  --cinema-camera-scale: 1;
+  --cinema-camera-x: 0px;
+  --cinema-camera-y: 0px;
+  --cinema-exit: 0;
   --cinema-light-x: 76%;
   --cinema-light-y: 28%;
 }
@@ -60,6 +63,27 @@
   background-size: 92px 92px, 92px 92px, auto, auto, auto;
 }
 
+/* Camera layer: the title sequence now pushes inward instead of closing with black bars. */
+.home-page .cinema-camera {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  transform-origin: 50% 50%;
+  transform: translate3d(var(--cinema-camera-x), var(--cinema-camera-y), 0) scale(var(--cinema-camera-scale));
+  will-change: transform;
+}
+
+.home-page .cinema-camera::after {
+  content: "";
+  position: absolute;
+  z-index: 13;
+  inset: 0;
+  pointer-events: none;
+  opacity: calc(var(--cinema-exit) * .92);
+  background: var(--cinema-ivory);
+}
+
 .home-page .cinema-film-grain {
   position: absolute;
   z-index: 12;
@@ -84,29 +108,17 @@
 
 .home-page .cinema-gate {
   position: absolute;
-  z-index: 9;
+  z-index: 8;
   inset: 18px;
   pointer-events: none;
   border: 1px solid rgba(21,22,25,calc(.06 + var(--cinema-dark) * .13));
   opacity: calc(.25 + var(--cinema-dark) * .75);
 }
 
-.home-page .cinema-letterbox {
-  position: absolute;
-  z-index: 20;
-  left: 0;
-  width: 100%;
-  height: calc(var(--cinema-bars) * 8.5svh);
-  background: #050506;
-  pointer-events: none;
-  box-shadow: 0 0 50px rgba(0,0,0,.22);
-}
-.home-page .cinema-letterbox-top { top: 0; }
-.home-page .cinema-letterbox-bottom { bottom: 0; }
 
 .home-page .cinema-light-cone {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   width: 78vw;
   height: 78vw;
   left: var(--cinema-light-x);
@@ -128,7 +140,7 @@
 
 .home-page .cinema-orb {
   position: absolute;
-  z-index: -2;
+  z-index: 0;
   right: -9vw;
   top: 9vh;
   width: min(58vw, 920px);
@@ -161,9 +173,8 @@
 }
 .home-page .cinema-meta-top { top: clamp(92px,8.3vw,126px); }
 .home-page .cinema-meta-bottom {
-  /* Stay above the animated lower letterbox instead of being covered by it. */
-  bottom: calc(clamp(26px,3vw,48px) + (var(--cinema-bars) * 8.5svh));
-  transition: bottom .12s linear, color .35s ease;
+  bottom: clamp(26px,3vw,48px);
+  transition: color .35s ease;
 }
 
 .home-page .cinema-opening-title {
@@ -453,15 +464,15 @@
 }
 
 @media (max-width: 820px) {
+  .home-page .cinema-camera {
+    transform-origin: 54% 49%;
+  }
   .home-page .cinema-prologue { height: 360svh; }
   /* iOS Safari can expose more visible height than 100svh after browser chrome moves.
      Fill the live viewport so the next ivory section cannot peek through under the film. */
   .home-page .cinema-screen {
     height: 100dvh;
     min-height: 100svh;
-  }
-  .home-page .cinema-letterbox {
-    height: calc(var(--cinema-bars) * 8.5dvh);
   }
   .home-page .cinema-meta {
     left: 20px;
@@ -474,7 +485,7 @@
   .home-page .cinema-meta-bottom {
     left: 16px;
     right: 16px;
-    bottom: calc(18px + env(safe-area-inset-bottom) + (var(--cinema-bars) * 8.5dvh));
+    bottom: calc(18px + env(safe-area-inset-bottom));
     gap: 10px;
   }
   .home-page .cinema-scroll-copy {
@@ -538,6 +549,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-page .cinema-camera { transform: none !important; }
   .home-page .cinema-prologue { height: auto; }
   .home-page .cinema-screen { position: relative; min-height: 100svh; }
   .home-page .cinema-film-grain,
@@ -545,7 +557,6 @@
   .home-page .cinema-scroll-label,
   .home-page .cinema-scroll-copy::before,
   .home-page .cinema-scroll-copy::after { animation: none !important; }
-  .home-page .cinema-letterbox { height: 0; }
   .home-page .cinema-scene,
   .home-page .cinema-final-card { display: none; }
 }
