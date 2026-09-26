@@ -1,4 +1,38 @@
-STARRFIELD FUN — HOMEPAGE CINEMA PERSPECTIVE V8 / HIERARCHY
+STARRFIELD FUN — HOMEPAGE V9 / STORY UNBOXING BASELINE
+
+THIS IS THE NEW STORY BASELINE.
+
+VISUAL / MOTION BASELINE
+- V8 premium dark art direction
+- V8 one-frame scroll-controlled motion
+- V8 pacing
+- V8 spotlight
+- V8 scene-number accents
+- V8 clear CTA system
+- no flashes
+- smaller project imagery
+- PromptChecker full-fit treatment
+
+WHAT V9 CHANGES
+The visual system is intentionally preserved.
+The content now works like an unboxing journey:
+1. Hook the visitor.
+2. Reveal how Starr approaches a problem.
+3. Reveal how complexity is simplified.
+4. Reveal that the experience is also built.
+5. Summarise the system.
+6. Ask for proof.
+7. Unpack one real design decision per project.
+8. Reveal the repeatable method.
+9. Explain how a client can enter the journey.
+10. Explain why photography belongs in the portfolio.
+11. Hand off into deeper pages.
+
+WORK SECTION
+The text beside the project reel now changes with the active project:
+- MyBusFinder: the transport question being solved.
+- Monitor Control: the hardware-state problem being solved.
+- PromptChecker: the AI-guidance problem being solved.
 
 SCOPE
 Homepage only.
@@ -8,34 +42,4 @@ REPLACE ONLY
 - home-one-frame.css
 - home-one-frame.js
 
-CHANGES
-
-1. Scene number clipping
-- All scene numbers are pulled slightly inward so the large accent is not
-  accidentally chopped by the viewport edge.
-
-2. Proof, not promises / Scene 06
-- Scene number 06 is moved onto the typography side of the composition.
-- The project display cage can no longer cover the number.
-
-3. Photography / Scene 09
-- Scene number 09 is moved into the copy-side negative space.
-- The second photograph can no longer cover the number.
-
-4. CTA clarity
-- All calls to action now share one obvious button language.
-- Primary actions are warm-ivory filled buttons.
-- Secondary actions are dark glass / outlined buttons.
-- Work CTA was moved directly under "Proof, not promises."
-- The project-card VIEW labels are now visible button pills.
-- Final-page actions are button tiles instead of text with hairlines.
-- Hover and keyboard focus states are clearer.
-
-PRESERVED
-- V7 pacing
-- premium dark background
-- spotlight
-- project-image sizing
-- PromptChecker full-fit treatment
-- no scene flashes
-- all other pages and assets
+NO OTHER PAGES OR ASSETS ARE CHANGED.

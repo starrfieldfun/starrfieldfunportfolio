@@ -8,6 +8,7 @@
 
   const shots = [...stage.querySelectorAll('.sf-shot')];
   const projectFrames = [...stage.querySelectorAll('.sf-project-frame')];
+  const projectStories = [...stage.querySelectorAll('.sf-work-story')];
   const serviceWords = [...stage.querySelectorAll('.sf-service-word')];
   const photoFigures = [...stage.querySelectorAll('.sf-photo-stack figure')];
   const perspective = stage.querySelector('.sf-shot-perspective');
@@ -82,6 +83,7 @@
       el.style.opacity=eased.toFixed(3);
       el.style.visibility=eased>.015?'visible':'hidden';
       el.style.pointerEvents=eased>.62?'auto':'none';
+      el.classList.toggle('is-current', eased > .62);
       el.style.transform=`translate3d(0,${(1-eased)*34}px,${(eased-1)*90}px) rotateX(${(1-eased)*2.4}deg) scale(${(.94+eased*.06).toFixed(3)})`;
       el.style.clipPath=`inset(0 ${(1-wipe)*48}% 0 ${(1-wipe)*48}% round 12px)`;
       el.style.setProperty('--project-image-scale',(.945+eased*.010).toFixed(3));
@@ -89,6 +91,14 @@
         el.style.setProperty('--prompt-image-scale',(.915+eased*.010).toFixed(3));
       }
       el.style.zIndex=String(20+i);
+
+      const story = projectStories[i];
+      if (story) {
+        story.style.opacity = eased.toFixed(3);
+        story.style.visibility = eased > .08 ? 'visible' : 'hidden';
+        story.style.transform = `translate3d(0,${((1-eased)*14).toFixed(2)}px,0)`;
+        story.classList.toggle('is-current', eased > .52);
+      }
     });
   }
 
@@ -225,12 +235,12 @@
     photoMotion(p);
     exposureCuts(p);
 
-    const labels=['OPENING','THINK','DESIGN','BUILD','TITLE CARD','PERSPECTIVE','WORK','SERVICES','METHOD','PHOTOGRAPHY','FINAL'];
+    const labels=['OPENING','QUESTION','SIMPLIFY','BUILD','THE SYSTEM','THE PROOF','WORK','THE METHOD','WORK WITH ME','THE EYE','GO DEEPER'];
     chapter.textContent=`${labels[dominant]} / ${String(dominant+1).padStart(2,'0')}`;
     progressLabel.textContent=`${String(dominant+1).padStart(2,'0')} / 11`;
     const sec=Math.floor(p*34), fr=Math.floor((p*34-sec)*24);
     time.textContent=`00:00:${String(sec).padStart(2,'0')}:${String(fr).padStart(2,'0')}`;
-    instruction.textContent=p<.025?'SCROLL TO DIRECT':p>.955?'CHOOSE YOUR NEXT SCENE':'DIRECTING';
+    instruction.textContent=p<.025?'SCROLL TO UNPACK':p>.955?'CHOOSE WHERE TO GO DEEPER':'UNPACKING';
 
     if (Math.abs(target-current)>.00005) raf=requestAnimationFrame(render);
     else raf=0;
