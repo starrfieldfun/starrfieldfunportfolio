@@ -84,7 +84,10 @@
       el.style.pointerEvents=eased>.62?'auto':'none';
       el.style.transform=`translate3d(0,${(1-eased)*34}px,${(eased-1)*90}px) rotateX(${(1-eased)*2.4}deg) scale(${(.94+eased*.06).toFixed(3)})`;
       el.style.clipPath=`inset(0 ${(1-wipe)*48}% 0 ${(1-wipe)*48}% round 12px)`;
-      el.style.setProperty('--project-image-scale',(1.035-eased*.035).toFixed(3));
+      el.style.setProperty('--project-image-scale',(.945+eased*.010).toFixed(3));
+      if (el.classList.contains('sf-project-prompt')) {
+        el.style.setProperty('--prompt-image-scale',(.915+eased*.010).toFixed(3));
+      }
       el.style.zIndex=String(20+i);
     });
   }
@@ -127,13 +130,8 @@
   }
 
   function exposureCuts(p){
-    const cuts=[.112,.194,.279,.364,.449,.544,.718,.808,.881,.949];
-    let flash=0;
-    cuts.forEach(c=>{
-      const d=Math.abs(p-c);
-      flash=Math.max(flash, clamp(1-d/.006));
-    });
-    stage.style.setProperty('--flash-opacity',(flash*.16).toFixed(3));
+    // V7: no bright exposure flashes between scenes.
+    stage.style.setProperty('--flash-opacity','0');
 
     const bars = pulse(p,.49,.54,.70,.73)*2.5 + pulse(p,.835,.87,.942,.958)*3.2;
     stage.style.setProperty('--bar-h',`${bars.toFixed(2)}vh`);

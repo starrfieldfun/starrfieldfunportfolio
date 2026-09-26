@@ -908,3 +908,51 @@ body.sf-film-page.is-dark .sf-scene-credits span:last-child {
     color: var(--sf-ivory) !important;
   }
 }
+
+
+/* ================================================================
+   V7 — CLEAN CUTS / REFINED PROJECT DISPLAY
+   - No exposure flashes between scenes.
+   - Project imagery is slightly smaller inside the display cage.
+   - PromptChecker receives a dedicated full-fit treatment.
+================================================================ */
+
+/* Remove the bright scene-change flash completely. */
+.sf-film-flash {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* Give the imagery a little breathing room inside the premium cage. */
+.sf-project-frame img {
+  transform: scale(var(--project-image-scale,.955));
+  transform-origin: 50% 50%;
+  border-radius: 8px;
+}
+
+/* PromptChecker is a taller 16:10 capture.
+   Keep the entire interface visible rather than cropping it. */
+.sf-project-prompt img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  transform: scale(var(--prompt-image-scale,.925)) !important;
+}
+
+/* On smaller screens keep the insets restrained. */
+@media (max-width: 900px) {
+  .sf-project-frame img {
+    transform: scale(var(--project-image-scale,.97));
+  }
+  .sf-project-prompt img {
+    transform: scale(var(--prompt-image-scale,.95)) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .sf-project-frame img {
+    transform: scale(var(--project-image-scale,.985));
+  }
+  .sf-project-prompt img {
+    transform: scale(var(--prompt-image-scale,.97)) !important;
+  }
+}
