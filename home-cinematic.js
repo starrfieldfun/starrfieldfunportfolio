@@ -33,7 +33,7 @@
     if (!el) return;
     el.style.opacity = opacity.toFixed(3);
     el.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
-    el.style.filter = `blur(${blur}px)`;
+    el.style.filter = 'none';
     el.style.pointerEvents = opacity > .55 ? 'auto' : 'none';
   };
 
@@ -79,9 +79,9 @@
     setTransform(titleExperiences, fracture * 155, -fracture * 4, 1 + p * .035, fracture * .7);
     setTransform(titleMove, -fracture * 84, fracture * 70, 1 + p * .02, fracture * -.6);
     const blur = titleOut * 10;
-    titleDesign.style.filter = `blur(${blur}px)`;
-    titleExperiences.style.filter = `blur(${blur * .55}px)`;
-    titleMove.style.filter = `blur(${blur}px)`;
+    titleDesign.style.filter = 'none';
+    titleExperiences.style.filter = 'none';
+    titleMove.style.filter = 'none';
 
     // Full-frame chapter cuts. Each gets a strong entrance and a hard exit.
     const tThink = pulse(p, .30, .36, .46, .50);
