@@ -55,6 +55,20 @@
     el.style.transform = `translate3d(0,${y.toFixed(2)}px,${z.toFixed(2)}px) rotateX(${tilt.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
     el.classList.toggle('is-visible', alpha > .015);
     el.classList.toggle('is-active', alpha > .58);
+
+    // Secondary information follows the same arrive / settle / release grammar.
+    const credits = el.querySelector('.sf-scene-credits');
+    const index = el.querySelector('.sf-scene-index');
+    if (credits) {
+      const secondary = clamp((alpha - .16) / .84);
+      credits.style.opacity = (secondary * .92).toFixed(3);
+      credits.style.filter = `blur(${((1-secondary)*1.6).toFixed(2)}px)`;
+    }
+    if (index) {
+      const secondary = clamp((alpha - .08) / .92);
+      index.style.opacity = secondary.toFixed(3);
+      index.style.transform = `translate3d(0,${((1-secondary)*18).toFixed(2)}px,0)`;
+    }
   }
 
   function projectReel(p){

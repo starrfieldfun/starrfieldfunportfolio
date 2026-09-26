@@ -58,7 +58,7 @@ body.sf-film-page .navbar { z-index: 5000; }
 }
 .sf-film-vignette {
   z-index: 2;
-  box-shadow: inset 0 0 12vw rgba(21,22,25,.10);
+  box-shadow: inset 0 0 12vw rgba(21,22,25,.10), inset 0 0 0 1px rgba(21,22,25,.055);
   background: linear-gradient(to bottom, rgba(21,22,25,.025), transparent 16%, transparent 84%, rgba(21,22,25,.035));
 }
 .sf-film-spotlight {
@@ -431,4 +431,182 @@ body.sf-film-page.is-dark .sf-film-progress i::after {
   color: var(--sf-lime);
   background: var(--sf-lime);
   box-shadow: 0 0 0 4px rgba(216,255,104,.08);
+}
+
+
+/* ================================================================
+   V5 — SECONDARY CINEMATIC INFORMATION LAYER
+   Purposeful context fills negative space without introducing
+   new animation styles or decorative objects.
+================================================================ */
+
+.sf-scene-index {
+  position: absolute;
+  z-index: -1;
+  right: -0.025em;
+  bottom: -0.14em;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(180px, min(27vw, 38vh), 430px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: .72;
+  letter-spacing: -.08em;
+  color: rgba(21,22,25,.045);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.sf-scene-credits {
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  top: 50%;
+  width: min(270px, 22vw);
+  transform: translateY(-50%);
+  display: grid;
+  gap: 10px;
+  text-align: right;
+  pointer-events: none;
+}
+
+.sf-scene-credits::before {
+  content: "";
+  width: 72px;
+  height: 1px;
+  margin-left: auto;
+  margin-bottom: 4px;
+  background: currentColor;
+  opacity: .22;
+}
+
+.sf-scene-credits span {
+  display: block;
+  font-size: clamp(8px, .66vw, 10px);
+  font-weight: 750;
+  line-height: 1.5;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(21,22,25,.46);
+}
+
+.sf-scene-credits span:last-child {
+  color: rgba(21,22,25,.28);
+}
+
+/* Keep the secondary layer out of the primary content's way. */
+.sf-shot-opening .sf-scene-credits,
+.sf-shot-title .sf-scene-credits,
+.sf-shot-perspective .sf-scene-credits,
+.sf-shot-final .sf-scene-credits {
+  top: auto;
+  bottom: clamp(10px, 2vh, 22px);
+  transform: none;
+}
+
+.sf-shot-work .sf-scene-credits,
+.sf-shot-photo .sf-scene-credits {
+  top: auto;
+  right: auto;
+  left: 0;
+  bottom: clamp(22px, 3vh, 38px);
+  width: min(290px, 24vw);
+  transform: none;
+  text-align: left;
+}
+
+.sf-shot-work .sf-scene-credits::before,
+.sf-shot-photo .sf-scene-credits::before {
+  margin-left: 0;
+}
+
+.sf-shot-services .sf-scene-credits {
+  top: auto;
+  bottom: clamp(10px, 2vh, 22px);
+  transform: none;
+}
+
+.sf-shot-method .sf-scene-credits {
+  top: 30%;
+}
+
+/* The main typography remains dominant. */
+.sf-shot-word .sf-word-copy,
+.sf-shot-method .sf-method-copy {
+  position: relative;
+  z-index: 2;
+  padding-right: min(28vw, 360px);
+}
+
+.sf-shot-work .sf-work-heading,
+.sf-shot-work .sf-project-stage,
+.sf-shot-services .sf-services-copy,
+.sf-shot-photo .sf-photo-copy,
+.sf-shot-photo .sf-photo-stack,
+.sf-final-copy,
+.sf-title-copy,
+.sf-perspective-copy {
+  position: relative;
+  z-index: 2;
+}
+
+body.sf-film-page.is-dark .sf-scene-index {
+  color: rgba(245,242,234,.045);
+}
+
+body.sf-film-page.is-dark .sf-scene-credits span {
+  color: rgba(245,242,234,.48);
+}
+
+body.sf-film-page.is-dark .sf-scene-credits span:last-child {
+  color: rgba(245,242,234,.28);
+}
+
+@media (max-width: 900px) {
+  .sf-scene-index {
+    right: -.02em;
+    bottom: .01em;
+    font-size: clamp(120px, 38vw, 220px);
+    opacity: .9;
+  }
+
+  .sf-scene-credits {
+    top: auto !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: clamp(6px, 1.4vh, 14px) !important;
+    width: min(250px, 68vw);
+    transform: none !important;
+    text-align: right !important;
+    gap: 6px;
+  }
+
+  .sf-scene-credits::before {
+    width: 48px;
+    margin-left: auto !important;
+  }
+
+  .sf-scene-credits span {
+    font-size: 7px;
+    line-height: 1.45;
+  }
+
+  .sf-shot-word .sf-word-copy,
+  .sf-shot-method .sf-method-copy {
+    padding-right: 0;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 901px) {
+  .sf-scene-credits {
+    width: min(240px, 20vw);
+  }
+
+  .sf-scene-credits span {
+    font-size: 8px;
+  }
+
+  .sf-scene-index {
+    font-size: clamp(150px, min(22vw, 34vh), 320px);
+  }
 }

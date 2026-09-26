@@ -1,4 +1,4 @@
-STARRFIELD FUN — HOMEPAGE CINEMA PERSPECTIVE V4
+STARRFIELD FUN — HOMEPAGE CINEMA PERSPECTIVE V5 — RICHER COMPOSITION
 
 SCOPE
 Homepage only.
@@ -9,20 +9,19 @@ REPLACE ONLY
 - home-one-frame.js
 
 WHAT CHANGED
-1. The overall scroll runway is ~29% longer.
-   Desktop: 1150svh -> 1480svh
-   Tablet: 900svh -> 1160svh
-   Small mobile: 820svh -> 1040svh
+- Kept the V4 pacing and cinematographer spotlight exactly as the base.
+- Added a consistent secondary information layer to every shot:
+  * small film-credit style context
+  * one very faint oversized scene number
+- No new animation language was introduced.
+- The secondary layer follows the same arrive / settle / release motion grammar.
+- Added a subtle 1px inner film-frame edge so the full-screen composition feels intentional.
+- No portrait, moving crosshair, random shapes, extra cards or new page sections.
+- Main content remains the dominant focus.
+- Mobile gets a simplified version of the same layer.
 
-2. The spotlight is now a narrative/directing element.
-   It smoothly moves toward the focal area of each scene instead of
-   drifting generically across the page.
+WHY
+The page felt empty because each scene had only a hero layer.
+This fills the negative space with useful context instead of decorative clutter.
 
-3. The film progress line now has a very small playhead dot.
-   This is intentionally subtle: it gives the experience continuity
-   without adding another decorative graphic.
-
-4. The on-screen film timer now runs to roughly 34 seconds instead
-   of 26 seconds to match the slower pacing.
-
-NO OTHER PAGES ARE CHANGED.
+NO OTHER WEBSITE PAGES ARE CHANGED.
