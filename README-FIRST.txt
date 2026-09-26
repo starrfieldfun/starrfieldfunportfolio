@@ -1,50 +1,39 @@
-STARRFIELD FUN — FULL HOMEPAGE CINEMA
+STARRFIELD FUN — ONE FRAME / ONE CAMERA HOMEPAGE RETHINK
+26 September 2026
 
-HOMEPAGE ONLY.
-No Work, case-study, About, Services, Photography or Contact files are included.
+SCOPE
+-----
+Homepage only.
+No Work, case-study, Services, About, Photography or Contact files are changed.
 
-REPLACE / ADD:
-- index.html
-- home-cinematic.css
-- home-cinematic.js
-- home-full-cinema.css
-- home-full-cinema.js
+REPLACE / ADD ONLY
+------------------
+index.html
+home-one-frame.css
+home-one-frame.js
 
-WHAT CHANGED
-============
-1. THINK / DESIGN / BUILD
-- Removed the newer decorative micro-diagrams.
-- Added short cinematic lines instead:
-  THINK: I start with the problem, not the pixels.
-  DESIGN: Turning complexity into something clear, useful and human.
-  BUILD: Taking the idea beyond Figma into something that works.
+You do NOT need to delete previous homepage CSS/JS files. The new index.html simply does not load them.
 
-2. FULL HOMEPAGE CINEMA
-The homepage now continues as film chapters after the opening:
-- Scene 05 / Starr
-- Scene 06 / Work
-- Scene 07 / Services
-- Scene 08 / Process
-- Scene 09 / Photography
-- Scene 10 / Final
+CORE IDEA
+---------
+The homepage is one pinned 100svh stage. The browser does not visually travel down a series of website sections.
+Scroll only drives a hidden timeline and transforms the composition inside the fixed frame.
 
-3. INFORMATION IS STILL PRESENT
-- Who Starr is / AI-powered positioning
-- 3 featured projects + link to full archive
-- 3 main service paths
-- Think / Shape / Build / Refine process
-- AI-assisted, human-led principle
-- Photography positioning
-- Contact / Work / About calls to action
+FLOW
+----
+I DESIGN → THINK → DESIGN → BUILD → title card → Starr → selected work → services → method → photography → final CTA
 
-4. BEHAVIOUR
-- Normal scrolling. No scroll-jacking.
-- Chapters use large typography, short copy and visual pacing.
-- Subtle reveal motion only; no blur.
-- Mobile collapses to a clear linear sequence.
-- Reduced-motion users get static content immediately.
-
-IMPORTANT
-=========
-Only copy these homepage files into your existing repaired portfolio.
-Do not replace any other page or asset folder.
+SAFETY / QA
+-----------
+- Opening title is visible at frame zero, even before JS runs.
+- All shots are absolutely contained in one safe viewport canvas.
+- Inactive shots are visibility:hidden and pointer-events:none to prevent accidental overlap/clicks.
+- One controlled transition overlap is used between shots.
+- One persistent spotlight and one morphing focus frame provide continuity.
+- Scroll motion is interpolated for smoother trackpad/wheel response.
+- Mobile uses the same pinned-film concept with reduced typography/spacing.
+- Reduced-motion users get a readable normal-flow fallback.
+- 39 local homepage references checked: 0 missing.
+- CSS parser errors: 0.
+- JavaScript syntax: passed.
+- Semantic H1 count: 1.
