@@ -1347,3 +1347,327 @@ body.sf-film-page.is-dark .sf-scene-index {
     margin: 0 0 18px;
   }
 }
+
+
+/* ================================================================
+   V10 — ATMOSPHERE + MOBILE SAFE PASS
+   - Background stays in one premium world, but the lighting evolves.
+   - Case studies introduce subtle accents into that world.
+   - Mobile safe-area / text-fit fixes for the first "QUESTION" scene
+     and the rest of the homepage copy compositions.
+   - Work scene number becomes intentionally visible again.
+================================================================ */
+
+/* ---------- SAME WORLD / DIFFERENT LIGHTING ---------- */
+
+:root {
+  --sf-bg-top: #101219;
+  --sf-bg-mid: #0B0C10;
+  --sf-bg-bottom: #08090C;
+  --sf-bg-left: rgba(255,130,107,.045);
+  --sf-bg-right: rgba(110,120,255,.078);
+  --sf-bg-bottom-glow: rgba(110,120,255,.090);
+  --sf-bg-project: rgba(110,120,255,0);
+  --sf-vignette-top: rgba(0,0,0,.14);
+  --sf-vignette-bottom: rgba(0,0,0,.24);
+}
+
+.sf-film-stage,
+body.sf-film-page.is-dark .sf-film-stage {
+  background:
+    radial-gradient(circle at 16% 22%, var(--sf-bg-left) 0, transparent 31%),
+    radial-gradient(circle at 82% 18%, var(--sf-bg-right) 0, transparent 34%),
+    radial-gradient(circle at 72% 78%, var(--sf-bg-bottom-glow) 0, transparent 38%),
+    radial-gradient(circle at 74% 56%, var(--sf-bg-project) 0, transparent 27%),
+    linear-gradient(180deg, var(--sf-bg-top) 0%, var(--sf-bg-mid) 58%, var(--sf-bg-bottom) 100%);
+  transition: background .42s linear;
+}
+
+.sf-film-vignette {
+  background:
+    linear-gradient(to bottom, var(--sf-vignette-top), transparent 17%, transparent 77%, var(--sf-vignette-bottom));
+}
+
+/* Keep the spotlight elegant, but let the atmosphere do more of the work. */
+.sf-film-spotlight {
+  background:
+    radial-gradient(circle at 50% 45%,
+      rgba(255,250,238,.28) 0 5%,
+      rgba(110,120,255,.15) 16%,
+      rgba(110,120,255,.060) 31%,
+      rgba(255,130,107,.030) 43%,
+      transparent 66%);
+}
+
+/* ---------- WORK SCENE NUMBER VISIBILITY ---------- */
+
+.sf-shot-work .sf-scene-index {
+  z-index: 1;
+  left: clamp(4px, .55vw, 16px);
+  right: auto;
+  bottom: clamp(6px, 1vh, 12px);
+  color: rgba(243,239,230,.105);
+  text-shadow:
+    0 0 34px rgba(110,120,255,.10),
+    0 0 68px rgba(255,255,255,.02);
+}
+
+.sf-shot-work .sf-work-heading,
+.sf-shot-work .sf-project-stage {
+  z-index: 3;
+}
+
+/* ---------- MOBILE SAFE LAYOUT / COPY FIT ---------- */
+
+@media (max-width: 900px) {
+  .sf-shot {
+    inset:
+      max(88px, calc(82px + env(safe-area-inset-top, 0px)))
+      clamp(18px, 4.7vw, 24px)
+      max(52px, calc(40px + env(safe-area-inset-bottom, 0px)));
+  }
+
+  .sf-film-topline,
+  .sf-film-bottomline,
+  .sf-film-progress {
+    left: clamp(18px, 4.7vw, 24px);
+    right: clamp(18px, 4.7vw, 24px);
+  }
+
+  .sf-opening-copy,
+  .sf-word-copy,
+  .sf-title-copy,
+  .sf-perspective-copy,
+  .sf-work-heading,
+  .sf-services-copy,
+  .sf-method-copy,
+  .sf-photo-copy,
+  .sf-final-copy {
+    width: min(100%, 560px);
+    max-width: 100%;
+  }
+
+  /* Scene 01 / QUESTION:
+     reduce the risk of right-edge clipping and keep the composition readable. */
+  .sf-shot-word {
+    align-content: center;
+  }
+
+  .sf-word-copy h2 {
+    max-width: 100%;
+    font-size: clamp(70px, 16.5vw, 124px);
+    line-height: .78;
+    letter-spacing: -.068em;
+    text-wrap: balance;
+  }
+
+  .sf-shot-word p {
+    width: min(100%, 350px);
+    margin-top: 20px;
+    font-size: clamp(13px, 2.05vw, 16px);
+    line-height: 1.55;
+  }
+
+  .sf-shot-kicker {
+    margin-bottom: 16px;
+  }
+
+  .sf-scene-credits {
+    width: min(220px, 66vw) !important;
+  }
+
+  .sf-title-copy p,
+  .sf-photo-copy p,
+  .sf-final-copy p,
+  .sf-method-copy p,
+  .sf-perspective-copy p {
+    max-width: min(100%, 380px);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .sf-shot-work {
+    align-content: center;
+    gap: 20px;
+  }
+
+  .sf-work-heading h2 {
+    max-width: 11ch;
+  }
+
+  .sf-work-stories {
+    min-height: 104px;
+    width: min(100%, 420px);
+  }
+
+  .sf-project-stage {
+    aspect-ratio: 16 / 10.8;
+  }
+
+  .sf-service-links,
+  .sf-method-actions {
+    width: min(100%, 420px);
+  }
+
+  .sf-shot-photo {
+    gap: 16px;
+  }
+
+  .sf-photo-stack {
+    height: min(45vh, 420px);
+  }
+
+  .sf-final-actions {
+    width: min(100%, 420px);
+  }
+}
+
+@media (max-width: 620px) {
+  .sf-film-track {
+    height: 1080svh;
+  }
+
+  .sf-shot {
+    inset:
+      max(86px, calc(80px + env(safe-area-inset-top, 0px)))
+      18px
+      max(56px, calc(44px + env(safe-area-inset-bottom, 0px)));
+  }
+
+  .sf-film-topline,
+  .sf-film-bottomline,
+  .sf-film-progress {
+    left: 18px;
+    right: 18px;
+  }
+
+  .sf-film-bottomline {
+    bottom: max(18px, calc(14px + env(safe-area-inset-bottom, 0px)));
+  }
+
+  .sf-opening-line {
+    font-size: clamp(50px, 14.2vw, 86px);
+    line-height: .82;
+  }
+
+  .sf-opening-serif {
+    padding-left: 4vw;
+  }
+
+  .sf-word-copy h2 {
+    font-size: clamp(62px, 18vw, 96px);
+    line-height: .80;
+    letter-spacing: -.062em;
+  }
+
+  .sf-shot-word p {
+    width: min(100%, 310px);
+    margin-top: 16px;
+    font-size: 12.5px;
+  }
+
+  .sf-scene-credits {
+    width: min(196px, 64vw) !important;
+    gap: 5px;
+  }
+
+  .sf-scene-credits span {
+    font-size: 6.5px;
+    letter-spacing: .14em;
+  }
+
+  .sf-title-copy h2,
+  .sf-perspective-copy h2,
+  .sf-final-copy h2 {
+    text-wrap: balance;
+  }
+
+  .sf-title-copy p,
+  .sf-photo-copy p,
+  .sf-final-copy p,
+  .sf-method-copy p,
+  .sf-perspective-copy p {
+    max-width: 300px;
+    font-size: 12.5px;
+  }
+
+  .sf-work-heading h2 {
+    font-size: clamp(38px, 10.2vw, 54px);
+    max-width: 10ch;
+  }
+
+  .sf-work-stories {
+    min-height: 110px;
+    margin-top: 14px;
+    width: min(100%, 300px);
+  }
+
+  .sf-work-story strong {
+    font-size: clamp(17px, 5.1vw, 21px);
+    line-height: 1.10;
+  }
+
+  .sf-work-story p {
+    margin-top: 7px;
+    font-size: 11.5px;
+    line-height: 1.5;
+    max-width: 290px;
+  }
+
+  .sf-project-stage {
+    aspect-ratio: 16 / 11.3;
+  }
+
+  .sf-shot-work .sf-scene-index {
+    left: 6px;
+    bottom: 16px;
+    font-size: clamp(116px, 33vw, 170px);
+    color: rgba(243,239,230,.115);
+  }
+
+  .sf-shot-photo .sf-scene-index {
+    left: 6px;
+    bottom: 14px;
+  }
+
+  .sf-service-word strong {
+    font-size: clamp(40px, 12vw, 58px);
+  }
+
+  .sf-method-copy h2 {
+    font-size: clamp(54px, 15vw, 88px);
+  }
+
+  .sf-photo-copy h2 {
+    font-size: clamp(34px, 9vw, 54px);
+  }
+
+  .sf-photo-stack {
+    height: min(35vh, 270px);
+  }
+
+  .sf-final-actions a {
+    min-height: 50px;
+  }
+}
+
+/* Very small devices: give QUESTION even more safety. */
+@media (max-width: 390px) {
+  .sf-word-copy h2 {
+    font-size: clamp(58px, 17.5vw, 84px);
+    letter-spacing: -.055em;
+  }
+
+  .sf-shot-word p {
+    width: min(100%, 284px);
+  }
+
+  .sf-work-stories {
+    min-height: 118px;
+  }
+
+  .sf-film-contact {
+    right: 16px;
+    bottom: max(18px, calc(16px + env(safe-area-inset-bottom, 0px)));
+  }
+}

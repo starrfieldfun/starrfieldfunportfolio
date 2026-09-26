@@ -25,6 +25,77 @@
   };
   const pulse = (x,a,b,c,d) => smooth(a,b,x) * (1-smooth(c,d,x));
 
+  const lerpColor = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
+  const rgba = (arr) => `rgba(${arr[0].toFixed(0)}, ${arr[1].toFixed(0)}, ${arr[2].toFixed(0)}, ${arr[3].toFixed(3)})`;
+
+  function interpolateLook(progress, keys){
+    let left = keys[0], right = keys[keys.length - 1];
+    for (let i = 0; i < keys.length - 1; i++) {
+      if (progress >= keys[i].p && progress <= keys[i+1].p) {
+        left = keys[i];
+        right = keys[i+1];
+        break;
+      }
+    }
+    const t = smooth(left.p, right.p, progress);
+    return {
+      top: lerpColor(left.top, right.top, t),
+      mid: lerpColor(left.mid, right.mid, t),
+      bottom: lerpColor(left.bottom, right.bottom, t),
+      leftGlow: lerpColor(left.leftGlow, right.leftGlow, t),
+      rightGlow: lerpColor(left.rightGlow, right.rightGlow, t),
+      bottomGlow: lerpColor(left.bottomGlow, right.bottomGlow, t),
+      vignetteTop: lerpColor(left.vignetteTop, right.vignetteTop, t),
+      vignetteBottom: lerpColor(left.vignetteBottom, right.vignetteBottom, t)
+    };
+  }
+
+  function backgroundAtmosphere(progress){
+    const lookKeys = [
+      { p: 0.00, top:[16,18,25,1], mid:[11,12,16,1], bottom:[8,9,12,1], leftGlow:[255,130,107,.040], rightGlow:[110,120,255,.070], bottomGlow:[110,120,255,.085], vignetteTop:[0,0,0,.13], vignetteBottom:[0,0,0,.23] },
+      { p: 0.12, top:[17,18,25,1], mid:[11,12,17,1], bottom:[8,9,12,1], leftGlow:[255,130,107,.034], rightGlow:[108,128,255,.065], bottomGlow:[88,104,255,.050], vignetteTop:[0,0,0,.12], vignetteBottom:[0,0,0,.22] },
+      { p: 0.24, top:[14,17,24,1], mid:[10,12,17,1], bottom:[8,10,14,1], leftGlow:[255,130,107,.024], rightGlow:[118,136,255,.090], bottomGlow:[86,104,255,.095], vignetteTop:[0,0,0,.12], vignetteBottom:[0,0,0,.22] },
+      { p: 0.34, top:[13,16,25,1], mid:[9,11,18,1], bottom:[7,9,14,1], leftGlow:[255,130,107,.020], rightGlow:[110,120,255,.095], bottomGlow:[96,124,255,.120], vignetteTop:[0,0,0,.12], vignetteBottom:[0,0,0,.24] },
+      { p: 0.44, top:[15,17,23,1], mid:[10,12,16,1], bottom:[8,9,12,1], leftGlow:[255,130,107,.026], rightGlow:[110,120,255,.072], bottomGlow:[96,110,255,.080], vignetteTop:[0,0,0,.13], vignetteBottom:[0,0,0,.24] },
+      { p: 0.54, top:[10,11,15,1], mid:[7,8,11,1], bottom:[6,7,9,1], leftGlow:[255,130,107,.014], rightGlow:[110,120,255,.048], bottomGlow:[86,104,255,.060], vignetteTop:[0,0,0,.15], vignetteBottom:[0,0,0,.27] },
+      { p: 0.72, top:[13,14,18,1], mid:[9,10,13,1], bottom:[7,8,10,1], leftGlow:[208,160,112,.034], rightGlow:[120,124,170,.040], bottomGlow:[100,100,120,.040], vignetteTop:[0,0,0,.14], vignetteBottom:[0,0,0,.25] },
+      { p: 0.82, top:[16,16,18,1], mid:[10,11,12,1], bottom:[7,8,9,1], leftGlow:[180,150,118,.038], rightGlow:[98,102,124,.028], bottomGlow:[96,96,110,.024], vignetteTop:[0,0,0,.14], vignetteBottom:[0,0,0,.24] },
+      { p: 0.90, top:[10,11,13,1], mid:[8,8,10,1], bottom:[6,7,8,1], leftGlow:[132,146,105,.045], rightGlow:[84,110,120,.028], bottomGlow:[125,168,90,.040], vignetteTop:[0,0,0,.15], vignetteBottom:[0,0,0,.27] },
+      { p: 1.00, top:[14,15,18,1], mid:[9,10,13,1], bottom:[7,8,10,1], leftGlow:[255,130,107,.030], rightGlow:[110,120,255,.060], bottomGlow:[110,120,255,.070], vignetteTop:[0,0,0,.13], vignetteBottom:[0,0,0,.24] }
+    ];
+
+    const look = interpolateLook(progress, lookKeys);
+
+    // Case-study accents: the base world stays the same, but the active project
+    // gently colours the environment while the reel is in focus.
+    const local = clamp((progress - .54) / (.69 - .54));
+    const weights = [.15, .50, .84].map(center => clamp(1 - Math.abs(local - center) / .26));
+    const total = Math.max(weights[0] + weights[1] + weights[2], .0001);
+    const normalized = weights.map(w => w / total);
+    const caseAlpha = smooth(.535, .57, progress) * (1 - smooth(.682, .712, progress));
+
+    const bus = [102, 148, 255, .155];
+    const monitor = [102, 214, 255, .135];
+    const prompt = [148, 112, 255, .150];
+    const projectMix = [
+      bus[0]*normalized[0] + monitor[0]*normalized[1] + prompt[0]*normalized[2],
+      bus[1]*normalized[0] + monitor[1]*normalized[1] + prompt[1]*normalized[2],
+      bus[2]*normalized[0] + monitor[2]*normalized[1] + prompt[2]*normalized[2],
+      (bus[3]*normalized[0] + monitor[3]*normalized[1] + prompt[3]*normalized[2]) * caseAlpha
+    ];
+
+    stage.style.setProperty('--sf-bg-top', rgba(look.top));
+    stage.style.setProperty('--sf-bg-mid', rgba(look.mid));
+    stage.style.setProperty('--sf-bg-bottom', rgba(look.bottom));
+    stage.style.setProperty('--sf-bg-left', rgba(look.leftGlow));
+    stage.style.setProperty('--sf-bg-right', rgba(look.rightGlow));
+    stage.style.setProperty('--sf-bg-bottom-glow', rgba(look.bottomGlow));
+    stage.style.setProperty('--sf-bg-project', rgba(projectMix));
+    stage.style.setProperty('--sf-vignette-top', rgba(look.vignetteTop));
+    stage.style.setProperty('--sf-vignette-bottom', rgba(look.vignetteBottom));
+  }
+
+
   const ranges = [
     ['opening',     0.000, 0.000, 0.080, 0.115],
     ['think',       0.078, 0.105, 0.165, 0.195],
@@ -234,6 +305,7 @@
     serviceMotion(p);
     photoMotion(p);
     exposureCuts(p);
+    backgroundAtmosphere(p);
 
     const labels=['OPENING','QUESTION','SIMPLIFY','BUILD','THE SYSTEM','THE PROOF','WORK','THE METHOD','WORK WITH ME','THE EYE','GO DEEPER'];
     chapter.textContent=`${labels[dominant]} / ${String(dominant+1).padStart(2,'0')}`;

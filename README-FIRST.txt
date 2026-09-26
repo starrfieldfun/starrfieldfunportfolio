@@ -1,45 +1,60 @@
-STARRFIELD FUN — HOMEPAGE V9 / STORY UNBOXING BASELINE
+STARRFIELD FUN — HOMEPAGE V10 / ATMOSPHERE + MOBILE SAFE PASS
 
-THIS IS THE NEW STORY BASELINE.
-
-VISUAL / MOTION BASELINE
-- V8 premium dark art direction
-- V8 one-frame scroll-controlled motion
-- V8 pacing
-- V8 spotlight
-- V8 scene-number accents
-- V8 clear CTA system
+BASELINE PRESERVED
+- V9 story / unboxing structure
+- V8 one-frame motion system
+- premium dark world
+- pacing
+- spotlight
+- scene numbers
+- clear CTA styling
 - no flashes
-- smaller project imagery
-- PromptChecker full-fit treatment
+- project image sizing / PromptChecker fit
 
-WHAT V9 CHANGES
-The visual system is intentionally preserved.
-The content now works like an unboxing journey:
-1. Hook the visitor.
-2. Reveal how Starr approaches a problem.
-3. Reveal how complexity is simplified.
-4. Reveal that the experience is also built.
-5. Summarise the system.
-6. Ask for proof.
-7. Unpack one real design decision per project.
-8. Reveal the repeatable method.
-9. Explain how a client can enter the journey.
-10. Explain why photography belongs in the portfolio.
-11. Hand off into deeper pages.
+WHAT V10 CHANGES
 
-WORK SECTION
-The text beside the project reel now changes with the active project:
-- MyBusFinder: the transport question being solved.
-- Monitor Control: the hardware-state problem being solved.
-- PromptChecker: the AI-guidance problem being solved.
+1) BACKGROUND ATMOSPHERE
+The homepage no longer sits on one perfectly static background.
+It remains one premium dark world, but the lighting slowly evolves
+through the journey.
 
-SCOPE
-Homepage only.
+- opening / question = deep charcoal
+- simplify / build = slightly cooler midnight energy
+- proof / work = darker stage
+- case studies = project-specific accent glows
+- services / method = slightly warmer charcoal
+- photography = richer darkroom tone
+- final CTA = resolves back toward the opening family
 
-REPLACE ONLY
+2) CASE-STUDY ACCENTS
+The work section now subtly changes the environment depending on which
+project is active:
+- MyBusFinder = cool transit blue
+- Monitor Control = crisp monitor/cyan blue
+- PromptChecker = subtle violet
+
+The base background stays consistent. Only the atmospheric glow changes.
+
+3) MOBILE SAFE PASS
+A thorough mobile fit pass was applied:
+- first QUESTION scene no longer risks right-edge clipping
+- headline sizes were reduced and balanced where needed
+- copy containers now use safer widths
+- scene credits use narrower widths on mobile
+- safe-area insets are respected
+- project, services, method, photo and final sections were rebalanced
+  for smaller screens too
+
+4) WORK SCENE NUMBER
+The case-study scene number is now intentionally visible again:
+- brought above the background layer
+- slightly increased contrast / glow
+- kept behind the work content so it still feels editorial
+
+FILES TO REPLACE
 - index.html
 - home-one-frame.css
 - home-one-frame.js
 
-NO OTHER PAGES OR ASSETS ARE CHANGED.
+SCOPE
+Homepage only.
