@@ -610,3 +610,301 @@ body.sf-film-page.is-dark .sf-scene-credits span:last-child {
     font-size: clamp(150px, min(22vw, 34vh), 320px);
   }
 }
+
+
+/* ================================================================
+   V6 — PREMIUM DARK CINEMA
+   Same motion/pacing. Darker visual world with richer depth.
+================================================================ */
+
+:root {
+  --sf-ink: #0B0C10;
+  --sf-ink-2: #11131A;
+  --sf-ink-3: #181B24;
+  --sf-ivory: #F3EFE6;
+  --sf-ivory-soft: #D8D3C8;
+  --sf-blue: #6E78FF;
+  --sf-coral: #FF826B;
+  --sf-lime: #DDFB96;
+}
+
+html {
+  background: var(--sf-ink);
+  color-scheme: dark;
+}
+
+body.sf-film-page,
+body.sf-film-page.is-dark {
+  background: var(--sf-ink);
+  color: var(--sf-ivory);
+}
+
+/* Keep the homepage navigation inside the same premium visual world. */
+body.sf-film-page .navbar {
+  color: var(--sf-ivory);
+  background: linear-gradient(180deg, rgba(11,12,16,.86), rgba(11,12,16,.30) 72%, transparent);
+  border-bottom-color: rgba(255,255,255,.055);
+  backdrop-filter: blur(12px);
+}
+body.sf-film-page .navbar .logo,
+body.sf-film-page .navbar .desktop-nav a,
+body.sf-film-page .navbar .menu-button {
+  color: var(--sf-ivory);
+}
+body.sf-film-page .navbar .desktop-nav a {
+  opacity: .76;
+}
+body.sf-film-page .navbar .desktop-nav a:hover {
+  opacity: 1;
+}
+
+/* The stage is no longer flat black: it feels like a lit screening room. */
+.sf-film-stage,
+body.sf-film-page.is-dark .sf-film-stage {
+  color: var(--sf-ivory);
+  background:
+    radial-gradient(circle at 50% 118%, rgba(89,101,255,.095), transparent 36%),
+    radial-gradient(circle at 90% 12%, rgba(255,255,255,.026), transparent 28%),
+    linear-gradient(180deg, #101219 0%, #0B0C10 58%, #08090C 100%);
+}
+
+/* A very quiet inner edge makes the viewport feel like a composed film frame. */
+.sf-film-stage::before {
+  content: "";
+  position: absolute;
+  z-index: 86;
+  inset: 10px;
+  border: 1px solid rgba(255,255,255,.045);
+  border-radius: 2px;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 80px rgba(0,0,0,.16),
+    0 0 0 1px rgba(0,0,0,.28);
+}
+
+/* Film grain is lighter on dark stock. */
+.sf-film-stock {
+  opacity: .095;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(circle at 18% 31%, rgba(255,255,255,.62) 0 .5px, transparent .8px),
+    radial-gradient(circle at 72% 66%, rgba(255,255,255,.42) 0 .5px, transparent .8px);
+}
+
+.sf-film-vignette {
+  box-shadow:
+    inset 0 0 15vw rgba(0,0,0,.42),
+    inset 0 0 0 1px rgba(255,255,255,.035);
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.14), transparent 17%, transparent 77%, rgba(0,0,0,.24));
+}
+
+/* The existing spotlight now actually reads like cinema against dark stock. */
+.sf-film-spotlight {
+  opacity: var(--spot-opacity,.78);
+  background:
+    radial-gradient(circle at 50% 45%,
+      rgba(255,250,238,.34) 0 5%,
+      rgba(110,120,255,.19) 16%,
+      rgba(110,120,255,.075) 31%,
+      rgba(255,130,107,.035) 43%,
+      transparent 66%);
+  filter: saturate(.92);
+}
+.sf-film-spotlight i {
+  width: 30vw;
+  background:
+    linear-gradient(180deg,
+      rgba(255,248,231,.115),
+      rgba(110,120,255,.045) 58%,
+      rgba(255,255,255,0));
+  filter: blur(30px);
+  opacity: .62;
+}
+
+/* Exposure flashes stay editorial instead of turning the screen white. */
+.sf-film-flash {
+  background: rgba(242,238,228,.72);
+  mix-blend-mode: screen;
+}
+
+/* Global film metadata */
+.sf-film-topline,
+.sf-film-bottomline,
+body.sf-film-page.is-dark .sf-film-topline,
+body.sf-film-page.is-dark .sf-film-bottomline {
+  color: rgba(243,239,230,.54);
+}
+
+.sf-film-progress,
+body.sf-film-page.is-dark .sf-film-progress {
+  background: rgba(243,239,230,.12);
+}
+.sf-film-progress i {
+  background: linear-gradient(90deg, var(--sf-blue), #98A0FF);
+}
+.sf-film-progress i::after,
+body.sf-film-page.is-dark .sf-film-progress i::after {
+  color: #A6ADFF;
+  background: #A6ADFF;
+  box-shadow:
+    0 0 0 4px rgba(110,120,255,.09),
+    0 0 18px rgba(110,120,255,.38);
+}
+
+/* Premium glass contact capsule. */
+.sf-film-contact,
+body.sf-film-page.is-dark .sf-film-contact {
+  color: var(--sf-ivory);
+  border: 1px solid rgba(243,239,230,.15);
+  background: rgba(18,20,27,.66);
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.26),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  backdrop-filter: blur(18px);
+}
+.sf-film-contact:hover {
+  color: var(--sf-ink);
+  background: var(--sf-ivory);
+  border-color: var(--sf-ivory);
+}
+
+/* Opening + editorial typography */
+.sf-shot-kicker {
+  color: rgba(243,239,230,.58);
+}
+.sf-opening-serif,
+.sf-title-copy em,
+.sf-perspective-copy h2 em,
+.sf-work-heading em,
+.sf-method-copy h2 em,
+.sf-final-copy h2 em {
+  color: #8992FF;
+}
+.sf-shot[data-shot="design"] h2,
+.sf-service-word:nth-child(3) strong,
+.sf-method-copy h2 span {
+  color: #FF8B75;
+}
+.sf-shot[data-shot="build"] h2,
+.sf-service-word:nth-child(4) strong {
+  color: #7C86FF;
+}
+
+/* Project frames become illuminated artefacts instead of grey cards. */
+.sf-project-frame {
+  background: #0E1016;
+  border: 1px solid rgba(243,239,230,.12);
+  box-shadow:
+    0 48px 120px rgba(0,0,0,.52),
+    0 0 0 1px rgba(255,255,255,.025),
+    inset 0 1px 0 rgba(255,255,255,.035);
+}
+.sf-project-frame img {
+  background: #E9EAEF;
+}
+.sf-project-frame > div {
+  color: var(--sf-ivory);
+  background:
+    linear-gradient(180deg, rgba(26,28,37,.98), rgba(14,16,22,.98));
+  border-top: 1px solid rgba(243,239,230,.08);
+}
+.sf-project-frame span,
+.sf-project-frame b {
+  color: rgba(243,239,230,.56);
+}
+.sf-project-frame strong {
+  color: var(--sf-ivory);
+}
+
+/* Hairlines and links now work on dark stock. */
+.sf-service-word {
+  border-bottom-color: rgba(243,239,230,.15);
+}
+.sf-service-word span,
+.sf-service-word small {
+  color: rgba(243,239,230,.58);
+}
+.sf-service-links a,
+.sf-work-all,
+.sf-photo-copy a,
+.sf-final-actions a {
+  color: var(--sf-ivory);
+}
+.sf-final-actions a {
+  border-top-color: rgba(243,239,230,.16);
+}
+.sf-final-primary {
+  border-bottom-color: rgba(243,239,230,.34);
+}
+
+/* Photography stays dark, but now belongs to the same world rather than switching worlds. */
+.sf-shot-photo {
+  color: var(--sf-ivory);
+}
+.sf-photo-stack figure {
+  border: 1px solid rgba(243,239,230,.10);
+  box-shadow:
+    0 32px 90px rgba(0,0,0,.56),
+    0 0 0 1px rgba(255,255,255,.02);
+}
+.sf-photo-copy h2 em {
+  color: var(--sf-lime);
+}
+
+/* The secondary information layer is a little more present on dark stock. */
+.sf-scene-index,
+body.sf-film-page.is-dark .sf-scene-index {
+  color: rgba(243,239,230,.060);
+  text-shadow: 0 0 70px rgba(110,120,255,.025);
+}
+.sf-scene-credits span,
+body.sf-film-page.is-dark .sf-scene-credits span {
+  color: rgba(243,239,230,.52);
+}
+.sf-scene-credits span:last-child,
+body.sf-film-page.is-dark .sf-scene-credits span:last-child {
+  color: rgba(243,239,230,.30);
+}
+.sf-scene-credits::before {
+  opacity: .30;
+}
+
+/* Links feel like restrained editorial controls rather than default anchors. */
+.sf-service-links a,
+.sf-work-all,
+.sf-photo-copy a,
+.sf-final-actions a {
+  text-decoration: none;
+  transition: opacity .25s ease, color .25s ease, transform .25s var(--sf-ease);
+}
+.sf-service-links a:hover,
+.sf-work-all:hover,
+.sf-photo-copy a:hover,
+.sf-final-actions a:hover {
+  opacity: .72;
+}
+
+/* Keep the light sweep elegant on dark stock. */
+.sf-film-stage::after {
+  background:
+    linear-gradient(100deg,
+      transparent 0 43%,
+      rgba(243,239,230,.085) 49%,
+      transparent 55%);
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 900px) {
+  .sf-film-stage::before {
+    inset: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.sf-film-page,
+  .sf-film-stage {
+    background: #0B0C10 !important;
+    color: var(--sf-ivory) !important;
+  }
+}

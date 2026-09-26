@@ -220,7 +220,6 @@
       if(lines[2]) lines[2].style.transform=`translate3d(${-fracture*5}vw,${fracture*5}vh,0) rotate(${-fracture*.3}deg)`;
     }
 
-    document.body.classList.toggle('is-dark', p>.852 && p<.948);
 
     perspectiveMotion(p);
     projectReel(p);
