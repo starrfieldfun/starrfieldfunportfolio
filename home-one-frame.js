@@ -8,6 +8,9 @@
 
   const shots = [...stage.querySelectorAll('.sf-shot')];
   const projectFrames = [...stage.querySelectorAll('.sf-project-frame')];
+  const serviceWords = [...stage.querySelectorAll('.sf-service-word')];
+  const photoFigures = [...stage.querySelectorAll('.sf-photo-stack figure')];
+  const perspective = stage.querySelector('.sf-shot-perspective');
   const chapter = stage.querySelector('.sf-film-chapter');
   const progressLabel = stage.querySelector('.sf-film-progress-label');
   const time = stage.querySelector('.sf-film-time');
@@ -21,19 +24,18 @@
   };
   const pulse = (x,a,b,c,d) => smooth(a,b,x) * (1-smooth(c,d,x));
 
-  // Deliberate overlaps only: old shot releases while new shot arrives.
   const ranges = [
-    ['opening', 0.000, 0.000, 0.080, 0.115],
-    ['think',   0.078, 0.105, 0.165, 0.195],
-    ['design',  0.160, 0.190, 0.250, 0.280],
-    ['build',   0.245, 0.275, 0.335, 0.365],
-    ['title',   0.330, 0.360, 0.420, 0.450],
-    ['starr',   0.415, 0.445, 0.515, 0.545],
-    ['work',    0.510, 0.540, 0.690, 0.720],
-    ['services',0.685, 0.715, 0.780, 0.810],
-    ['method',  0.775, 0.805, 0.855, 0.882],
-    ['photo',   0.850, 0.878, 0.925, 0.950],
-    ['final',   0.920, 0.948, 1.000, 1.000]
+    ['opening',     0.000, 0.000, 0.080, 0.115],
+    ['think',       0.078, 0.105, 0.165, 0.195],
+    ['design',      0.160, 0.190, 0.250, 0.280],
+    ['build',       0.245, 0.275, 0.335, 0.365],
+    ['title',       0.330, 0.360, 0.420, 0.450],
+    ['perspective', 0.415, 0.445, 0.515, 0.545],
+    ['work',        0.510, 0.540, 0.690, 0.720],
+    ['services',    0.685, 0.715, 0.780, 0.810],
+    ['method',      0.775, 0.805, 0.855, 0.882],
+    ['photo',       0.850, 0.878, 0.925, 0.950],
+    ['final',       0.920, 0.948, 1.000, 1.000]
   ];
 
   const shotMap = Object.fromEntries(shots.map(el => [el.dataset.shot, el]));
@@ -47,75 +49,101 @@
     target = clamp(-r.top / total);
   }
 
-  function setShot(el, alpha, y, scale=1){
+  function setShot(el, alpha, y, scale=1, z=0, tilt=0){
     if (!el) return;
     el.style.opacity = alpha.toFixed(4);
-    el.style.transform = `translate3d(0,${y.toFixed(2)}px,0) scale(${scale.toFixed(4)})`;
+    el.style.transform = `translate3d(0,${y.toFixed(2)}px,${z.toFixed(2)}px) rotateX(${tilt.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
     el.classList.toggle('is-visible', alpha > .015);
     el.classList.toggle('is-active', alpha > .58);
   }
 
-  function morphFrame(p){
-    // One visual object that quietly changes purpose through the film.
-    let w=1,h=1,x=50,y=50,r=0,radius=0,alpha=0,opacity=0,corners=0,shadow=0;
-    if (p < .16) {
-      opacity = smooth(.05,.13,p) * (1-smooth(.14,.17,p));
-      w=mix(1,22,smooth(.06,.13,p)); h=mix(1,22,smooth(.06,.13,p)); radius=999;
-      x=77; y=43; alpha=.15; corners=0;
-    } else if (p < .36) {
-      const t=smooth(.16,.30,p); opacity=.55; w=mix(22,48,t); h=mix(22,36,t); x=mix(77,65,t); y=mix(43,50,t); radius=mix(999,2,t); alpha=.18; corners=t;
-    } else if (p < .53) {
-      const t=smooth(.36,.48,p); opacity=.65; w=mix(48,30,t); h=mix(36,58,t); x=mix(65,29,t); y=51; radius=mix(2,2,t); alpha=.16; corners=.7; shadow=.10*t;
-    } else if (p < .72) {
-      const t=smooth(.53,.58,p); opacity=.75; w=mix(30,52,t); h=mix(58,55,t); x=mix(29,72,t); y=52; radius=mix(2,18,t); alpha=.16; corners=.85; shadow=.13;
-    } else if (p < .86) {
-      const t=smooth(.72,.80,p); opacity=.42*(1-t); w=mix(52,75,t); h=mix(55,1,t); x=50; y=50; radius=0; alpha=.12; corners=.25*(1-t);
-    } else {
-      opacity=0;
-    }
-    stage.style.setProperty('--frame-w', `${w}vw`);
-    stage.style.setProperty('--frame-h', `${h}vh`);
-    stage.style.setProperty('--frame-x', `${x}%`);
-    stage.style.setProperty('--frame-y', `${y}%`);
-    stage.style.setProperty('--frame-r', `${r}deg`);
-    stage.style.setProperty('--frame-radius', `${radius}px`);
-    stage.style.setProperty('--frame-alpha', alpha.toFixed(3));
-    stage.style.setProperty('--frame-opacity', opacity.toFixed(3));
-    stage.style.setProperty('--frame-corners', corners.toFixed(3));
-    stage.style.setProperty('--frame-shadow', shadow.toFixed(3));
-  }
-
-  function workReel(p){
+  function projectReel(p){
     const local = clamp((p-.54)/(.69-.54));
     const centers=[.15,.5,.84];
     projectFrames.forEach((el,i)=>{
       const d=Math.abs(local-centers[i]);
       const a=clamp(1-d/.26);
       const eased=a*a*(3-2*a);
+      const wipe=clamp(eased*1.35);
       el.style.opacity=eased.toFixed(3);
-      el.style.transform=`translate3d(0,${(1-eased)*28}px,0) scale(${(.965+eased*.035).toFixed(3)})`;
-      el.classList.toggle('is-current', eased>.04);
-      el.style.zIndex=String(10+i);
+      el.style.visibility=eased>.015?'visible':'hidden';
+      el.style.pointerEvents=eased>.62?'auto':'none';
+      el.style.transform=`translate3d(0,${(1-eased)*34}px,${(eased-1)*90}px) rotateX(${(1-eased)*2.4}deg) scale(${(.94+eased*.06).toFixed(3)})`;
+      el.style.clipPath=`inset(0 ${(1-wipe)*48}% 0 ${(1-wipe)*48}% round 12px)`;
+      el.style.setProperty('--project-image-scale',(1.035-eased*.035).toFixed(3));
+      el.style.zIndex=String(20+i);
     });
   }
 
+  function serviceMotion(p){
+    const local=clamp((p-.705)/(.79-.705));
+    serviceWords.forEach((el,i)=>{
+      const t=smooth(i*.16, i*.16+.34, local);
+      el.style.opacity=t.toFixed(3);
+      el.style.transform=`translate3d(0,${(1-t)*32}px,${(1-t)*-45}px) scale(${(.97+t*.03).toFixed(3)})`;
+    });
+  }
+
+  function perspectiveMotion(p){
+    if(!perspective) return;
+    const local=clamp((p-.435)/(.535-.435));
+    const top=perspective.querySelector('h2 span');
+    const bottom=perspective.querySelector('h2 em');
+    if(top){
+      const t=smooth(0,.55,local);
+      top.style.opacity=t.toFixed(3);
+      top.style.transform=`perspective(900px) rotateX(${mix(72,0,t)}deg) translateY(${mix(42,0,t)}px)`;
+    }
+    if(bottom){
+      const t=smooth(.18,.80,local);
+      bottom.style.opacity=t.toFixed(3);
+      bottom.style.transform=`perspective(900px) rotateX(${mix(-66,0,t)}deg) translateY(${mix(-34,0,t)}px)`;
+    }
+  }
+
+  function photoMotion(p){
+    const local=clamp((p-.865)/(.94-.865));
+    photoFigures.forEach((el,i)=>{
+      const t=smooth(i*.14, i*.14+.68, local);
+      const dir=i===0?-1:1;
+      el.style.opacity=t.toFixed(3);
+      el.style.clipPath=`inset(${(1-t)*48}% 0 ${(1-t)*48}% 0)`;
+      el.style.transform=`translate3d(${dir*(1-t)*5}vw,${(1-t)*18}px,${(1-t)*-80}px) rotate(${dir*(3-t*1.3)}deg) scale(${(.94+t*.06).toFixed(3)})`;
+    });
+  }
+
+  function exposureCuts(p){
+    const cuts=[.112,.194,.279,.364,.449,.544,.718,.808,.881,.949];
+    let flash=0;
+    cuts.forEach(c=>{
+      const d=Math.abs(p-c);
+      flash=Math.max(flash, clamp(1-d/.006));
+    });
+    stage.style.setProperty('--flash-opacity',(flash*.16).toFixed(3));
+
+    const bars = pulse(p,.49,.54,.70,.73)*2.5 + pulse(p,.835,.87,.942,.958)*3.2;
+    stage.style.setProperty('--bar-h',`${bars.toFixed(2)}vh`);
+
+    const sweepPhase = smooth(.405,.55,p) + smooth(.83,.93,p);
+    stage.style.setProperty('--sweep-x',`${mix(-125,125,clamp(sweepPhase%1)).toFixed(1)}%`);
+    stage.style.setProperty('--sweep-opacity',`${(pulse(p,.405,.445,.515,.55)*.34 + pulse(p,.83,.865,.925,.95)*.28).toFixed(3)}`);
+  }
+
   function render(){
-    // Lerp gives the camera inertia without making the input feel disconnected.
     const delta = target-current;
-    current += delta * (Math.abs(delta) > .08 ? .105 : .145);
+    current += delta * (Math.abs(delta) > .08 ? .10 : .14);
     if (Math.abs(delta) < .00006) current = target;
     const p=current;
 
     stage.style.setProperty('--film-p', p.toFixed(4));
-    stage.style.setProperty('--grain-x', `${Math.sin(p*90)*1.4}px`);
-    stage.style.setProperty('--grain-y', `${Math.cos(p*73)*1.1}px`);
+    stage.style.setProperty('--grain-x', `${Math.sin(p*90)*1.35}px`);
+    stage.style.setProperty('--grain-y', `${Math.cos(p*73)*1.05}px`);
 
-    // Continuous projector / spotlight — one slow sweep, not one effect per scene.
-    stage.style.setProperty('--spot-x', `${mix(22,-18,p).toFixed(2)}vw`);
-    stage.style.setProperty('--spot-y', `${mix(-16,16,smooth(0,1,p)).toFixed(2)}vh`);
-    stage.style.setProperty('--spot-r', `${mix(-14,12,p).toFixed(2)}deg`);
-    stage.style.setProperty('--spot-opacity', `${(.70 + Math.sin(p*Math.PI)*.18).toFixed(3)}`);
-    stage.style.setProperty('--guide-opacity', `${mix(.36,.16,smooth(.72,.92,p)).toFixed(3)}`);
+    // Projector light is atmosphere, not a standalone graphic.
+    stage.style.setProperty('--spot-x', `${mix(20,-16,p).toFixed(2)}vw`);
+    stage.style.setProperty('--spot-y', `${mix(-14,15,smooth(0,1,p)).toFixed(2)}vh`);
+    stage.style.setProperty('--spot-r', `${mix(-12,9,p).toFixed(2)}deg`);
+    stage.style.setProperty('--spot-opacity', `${(.64 + Math.sin(p*Math.PI)*.18).toFixed(3)}`);
 
     let dominant=0;
     let best=-1;
@@ -125,14 +153,16 @@
       else if (name==='final') alpha=smooth(a,b,p);
       else alpha=pulse(p,a,b,c,d);
       if (alpha>best){best=alpha;dominant=i;}
-      const enter = smooth(a,b,p);
-      const exit = name==='final' ? 0 : smooth(c,d,p);
-      const y = mix(34,0,enter) - exit*22;
-      const scale = .985 + enter*.015 + exit*.008;
-      setShot(shotMap[name],alpha,y,scale);
+      const enter=smooth(a,b,p);
+      const exit=name==='final'?0:smooth(c,d,p);
+      const y=mix(30,0,enter)-exit*18;
+      const z=mix(-95,0,enter)+exit*58;
+      const scale=.975+enter*.025+exit*.006;
+      const tilt=mix(2.2,0,enter)-exit*.8;
+      setShot(shotMap[name],alpha,y,scale,z,tilt);
     });
 
-    // Opening typography fractures into the first thought.
+    // Opening fractures into the first thought.
     const fracture=smooth(.055,.112,p);
     const op=shotMap.opening;
     if(op){
@@ -142,13 +172,15 @@
       if(lines[2]) lines[2].style.transform=`translate3d(${-fracture*5}vw,${fracture*5}vh,0) rotate(${-fracture*.3}deg)`;
     }
 
-    // Photography changes the film stock, then finale returns to ivory.
     document.body.classList.toggle('is-dark', p>.852 && p<.948);
 
-    workReel(p);
-    morphFrame(p);
+    perspectiveMotion(p);
+    projectReel(p);
+    serviceMotion(p);
+    photoMotion(p);
+    exposureCuts(p);
 
-    const labels=['OPENING','THINK','DESIGN','BUILD','TITLE CARD','STARR','WORK','SERVICES','METHOD','PHOTOGRAPHY','FINAL'];
+    const labels=['OPENING','THINK','DESIGN','BUILD','TITLE CARD','PERSPECTIVE','WORK','SERVICES','METHOD','PHOTOGRAPHY','FINAL'];
     chapter.textContent=`${labels[dominant]} / ${String(dominant+1).padStart(2,'0')}`;
     progressLabel.textContent=`${String(dominant+1).padStart(2,'0')} / 11`;
     const sec=Math.floor(p*26), fr=Math.floor((p*26-sec)*24);
