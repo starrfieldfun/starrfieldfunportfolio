@@ -1,27 +1,28 @@
-STARRFIELD FUN — HOMEPAGE CINEMA PERSPECTIVE
+STARRFIELD FUN — HOMEPAGE CINEMA PERSPECTIVE V4
 
-Scope:
+SCOPE
 Homepage only.
 
-Replace/add:
+REPLACE ONLY
 - index.html
 - home-one-frame.css
 - home-one-frame.js
 
-What changed:
-- Removed the moving focus-frame/crosshair decoration.
-- Removed the portrait scene entirely.
-- Kept the one-frame / one-camera scroll-controlled architecture.
-- Replaced the portrait beat with: THE SCREEN / IS THE STAGE.
-- Added restrained cinematic perspective motion, exposure cuts, letterbox breathing,
-  centre-wipe project reveals, timed service titles and developing photography reveals.
-- Kept the persistent START A PROJECT shortcut.
-- No other website pages or assets are changed.
+WHAT CHANGED
+1. The overall scroll runway is ~29% longer.
+   Desktop: 1150svh -> 1480svh
+   Tablet: 900svh -> 1160svh
+   Small mobile: 820svh -> 1040svh
 
-Static QA:
-- 38 local homepage references checked
-- 0 missing local references
-- 0 CSS parse errors
-- JavaScript syntax passed
-- 1 semantic H1
-- 0 duplicate IDs
+2. The spotlight is now a narrative/directing element.
+   It smoothly moves toward the focal area of each scene instead of
+   drifting generically across the page.
+
+3. The film progress line now has a very small playhead dot.
+   This is intentionally subtle: it gives the experience continuity
+   without adding another decorative graphic.
+
+4. The on-screen film timer now runs to roughly 34 seconds instead
+   of 26 seconds to match the slower pacing.
+
+NO OTHER PAGES ARE CHANGED.

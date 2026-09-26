@@ -139,11 +139,45 @@
     stage.style.setProperty('--grain-x', `${Math.sin(p*90)*1.35}px`);
     stage.style.setProperty('--grain-y', `${Math.cos(p*73)*1.05}px`);
 
-    // Projector light is atmosphere, not a standalone graphic.
-    stage.style.setProperty('--spot-x', `${mix(20,-16,p).toFixed(2)}vw`);
-    stage.style.setProperty('--spot-y', `${mix(-14,15,smooth(0,1,p)).toFixed(2)}vh`);
-    stage.style.setProperty('--spot-r', `${mix(-12,9,p).toFixed(2)}deg`);
-    stage.style.setProperty('--spot-opacity', `${(.64 + Math.sin(p*Math.PI)*.18).toFixed(3)}`);
+    // The projector light now acts like a cinematographer:
+    // it follows the current focal point instead of wandering generically.
+    const lightKeys = [
+      [0.00,  18, -13, -12, .66], // opening
+      [0.11, -18,  -6,  -7, .73], // think / left typography
+      [0.20,  -2,  -3,  -2, .75], // design
+      [0.29,  15,   2,   4, .76], // build
+      [0.39,   0,  -4,   0, .78], // title card
+      [0.48,   0,  -1,   0, .82], // perspective thesis
+      [0.61,  20,   4,   7, .76], // work / project screen
+      [0.75,  -8,   1,  -3, .72], // services
+      [0.83,   8,   4,   3, .70], // method
+      [0.90,  18,   5,   6, .67], // photography / imagery
+      [1.00,   0,  -2,   0, .74]  // final
+    ];
+
+    function lightAt(progress){
+      let left = lightKeys[0], right = lightKeys[lightKeys.length - 1];
+      for (let i = 0; i < lightKeys.length - 1; i++) {
+        if (progress >= lightKeys[i][0] && progress <= lightKeys[i+1][0]) {
+          left = lightKeys[i];
+          right = lightKeys[i+1];
+          break;
+        }
+      }
+      const t = smooth(left[0], right[0], progress);
+      return [
+        mix(left[1], right[1], t),
+        mix(left[2], right[2], t),
+        mix(left[3], right[3], t),
+        mix(left[4], right[4], t)
+      ];
+    }
+
+    const [lx,ly,lr,lo] = lightAt(p);
+    stage.style.setProperty('--spot-x', `${lx.toFixed(2)}vw`);
+    stage.style.setProperty('--spot-y', `${ly.toFixed(2)}vh`);
+    stage.style.setProperty('--spot-r', `${lr.toFixed(2)}deg`);
+    stage.style.setProperty('--spot-opacity', `${lo.toFixed(3)}`);
 
     let dominant=0;
     let best=-1;
@@ -183,7 +217,7 @@
     const labels=['OPENING','THINK','DESIGN','BUILD','TITLE CARD','PERSPECTIVE','WORK','SERVICES','METHOD','PHOTOGRAPHY','FINAL'];
     chapter.textContent=`${labels[dominant]} / ${String(dominant+1).padStart(2,'0')}`;
     progressLabel.textContent=`${String(dominant+1).padStart(2,'0')} / 11`;
-    const sec=Math.floor(p*26), fr=Math.floor((p*26-sec)*24);
+    const sec=Math.floor(p*34), fr=Math.floor((p*34-sec)*24);
     time.textContent=`00:00:${String(sec).padStart(2,'0')}:${String(fr).padStart(2,'0')}`;
     instruction.textContent=p<.025?'SCROLL TO DIRECT':p>.955?'CHOOSE YOUR NEXT SCENE':'DIRECTING';
 
