@@ -62,8 +62,11 @@
   const renderLayer = (layer, p) => {
     const key = layer.dataset.shot;
     const s = shots[key]; if (!s) return 0;
-    const alpha = key === 'final' ? range(p,s[0],s[1]) : pulse(p,...s);
-    const enter = range(p,s[0],s[1]);
+    // Opening is the literal first frame: visible at scroll position 0, then released into THINK.
+    const alpha = key === 'opening'
+      ? (1 - range(p,s[2],s[3]))
+      : (key === 'final' ? range(p,s[0],s[1]) : pulse(p,...s));
+    const enter = key === 'opening' ? 1 : range(p,s[0],s[1]);
     const exit = key === 'final' ? 0 : range(p,s[2],s[3]);
     const local = clamp((p-s[0]) / Math.max(s[3]-s[0],.0001));
 
@@ -127,8 +130,17 @@
     // One continuous stock / lighting transition across the entire film.
     const dark = pulse(p,.075,.12,.36,.43);
     document.documentElement.style.setProperty('--ot-dark',(.93*dark).toFixed(4));
-    document.documentElement.style.setProperty('--ot-light-x',`${mix(76,30,p).toFixed(2)}%`);
-    document.documentElement.style.setProperty('--ot-light-y',`${mix(24,62,p).toFixed(2)}%`);
+    // One continuous projector spotlight. The path bends gently rather than travelling in a straight line.
+    const lightX = mix(78,28,p) + Math.sin(p*Math.PI*2.15)*7.5;
+    const lightY = mix(20,66,p) + Math.sin(p*Math.PI*3.0 + .45)*8.0;
+    const lightRot = mix(-20,10,p) + Math.sin(p*Math.PI*1.7)*5;
+    const lightScale = 1 + Math.sin(p*Math.PI*2.0)*.055;
+    const lightStrength = .56 + .18*Math.sin(p*Math.PI*2.35 + .25) + dark*.10;
+    document.documentElement.style.setProperty('--ot-light-x',`${lightX.toFixed(2)}%`);
+    document.documentElement.style.setProperty('--ot-light-y',`${lightY.toFixed(2)}%`);
+    document.documentElement.style.setProperty('--ot-light-rot',`${lightRot.toFixed(2)}deg`);
+    document.documentElement.style.setProperty('--ot-light-scale',lightScale.toFixed(4));
+    document.documentElement.style.setProperty('--ot-light-strength',clamp(lightStrength,.38,.86).toFixed(4));
     document.body.classList.toggle('ot-dark', dark>.45);
 
     let bestKey='OPENING', bestAlpha=-1;

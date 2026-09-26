@@ -15,6 +15,9 @@
   --ot-camera-y:0px;
   --ot-light-x:72%;
   --ot-light-y:26%;
+  --ot-light-rot:-17deg;
+  --ot-light-scale:1;
+  --ot-light-strength:.62;
   --ot-dark:0;
 }
 .one-take-home{background:var(--ot-ivory);color:var(--ot-ink);}
@@ -24,7 +27,9 @@
 .one-take-screen{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ot-ivory);color:var(--ot-ink);isolation:isolate;}
 .one-take-screen::before{content:"";position:absolute;inset:0;z-index:-5;background:linear-gradient(180deg,rgba(21,22,25,var(--ot-dark)),rgba(21,22,25,var(--ot-dark)));pointer-events:none;}
 .one-take-stock{position:absolute;inset:0;z-index:50;pointer-events:none;opacity:.10;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");mix-blend-mode:multiply;}
-.one-take-light{position:absolute;z-index:-3;width:55vw;aspect-ratio:1;border-radius:50%;left:var(--ot-light-x);top:var(--ot-light-y);transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(89,101,255,.20),rgba(255,118,87,.10) 35%,transparent 70%);filter:none;pointer-events:none;will-change:left,top;}
+.one-take-light{position:absolute;z-index:-3;width:78vw;height:78vw;left:var(--ot-light-x);top:var(--ot-light-y);transform:translate3d(-50%,-50%,0) rotate(var(--ot-light-rot)) scale(var(--ot-light-scale));border-radius:50%;pointer-events:none;background:conic-gradient(from 188deg,transparent 0 31%,rgba(255,255,255,.025) 36%,rgba(255,255,255,calc(var(--ot-light-strength)*.72)) 43%,rgba(255,248,225,calc(var(--ot-light-strength)*.20)) 49%,transparent 57% 100%);filter:blur(18px);opacity:calc(.30 + var(--ot-light-strength)*.70);mix-blend-mode:screen;will-change:transform,left,top,opacity;}
+.one-take-light::before{content:"";position:absolute;inset:20%;border-radius:50%;background:radial-gradient(circle at 50% 48%,rgba(255,255,255,calc(var(--ot-light-strength)*.34)) 0,rgba(89,101,255,calc(var(--ot-light-strength)*.16)) 28%,rgba(255,118,87,calc(var(--ot-light-strength)*.07)) 48%,transparent 72%);filter:blur(12px);opacity:.92;}
+.one-take-light::after{content:"";position:absolute;inset:31%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,calc(var(--ot-light-strength)*.22)),transparent 68%);filter:blur(28px);}
 .one-take-orb{position:absolute;z-index:-2;width:clamp(280px,42vw,720px);aspect-ratio:1;border-radius:50%;right:-16vw;top:12vh;background:linear-gradient(145deg,var(--ot-blue),var(--ot-coral));opacity:.08;transform:translate3d(calc(var(--ot-p)*-5vw),calc(var(--ot-p)*6vh),0) scale(calc(1 + var(--ot-p)*.12));will-change:transform;}
 .one-take-frame{position:absolute;inset:18px;z-index:45;border:1px solid rgba(21,22,25,.10);pointer-events:none;}
 .one-take-hud{position:absolute;inset:0;z-index:60;pointer-events:none;font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(21,22,25,.55);}
@@ -49,7 +54,9 @@
 .one-take-secondary a,.one-take-text-link{display:inline-flex;border-bottom:1px solid currentColor;padding-bottom:5px;}
 
 /* Opening / THINK / DESIGN / BUILD share one typographic anchor. */
-.one-take-opening{align-items:center;}
+.one-take-opening{align-items:center;opacity:1;pointer-events:auto;transform:translate3d(0,0,0) scale(1);}
+/* Frame zero is intentional: the identity is visible before any scroll or JS interpolation. */
+.one-take-js .one-take-opening{opacity:1;}
 .one-take-opening-title{width:100%;}
 .one-take-opening h1{font-size:clamp(72px,11.3vw,190px);line-height:.77;letter-spacing:-.075em;font-weight:700;text-transform:uppercase;}
 .one-take-opening h1 span,.one-take-opening h1 em{display:block;}
@@ -125,6 +132,7 @@
   :root{--ot-safe:22px;}
   .one-take-film{height:980svh;}
   .one-take-frame{inset:10px;}
+  .one-take-light{width:145vw;height:145vw;filter:blur(16px);}
   .one-take-hud>div:first-child{top:86px}.one-take-hud>div:first-child span:first-child{display:none;}
   .one-take-layer{padding:116px var(--ot-safe) 82px;align-items:center;}
   .one-take-grid{grid-template-columns:1fr;gap:30px;align-items:center;}
