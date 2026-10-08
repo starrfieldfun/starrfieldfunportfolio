@@ -418,3 +418,58 @@
         animation: none;
     }
 }
+
+
+/* =========================================================
+   OCT 2026 / FIVE-CREDENTIAL LAYOUT
+   Three cards on row one, two centred cards on row two.
+   Existing visual language is preserved.
+========================================================= */
+
+@media (min-width: 1051px) {
+    .about-page .sf-certifications-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .about-page .sf-certificate-card {
+        grid-column: span 2;
+    }
+
+    .about-page .sf-certificate-card:nth-child(4) {
+        grid-column: 2 / span 2;
+    }
+
+    .about-page .sf-certificate-card:nth-child(5) {
+        grid-column: 4 / span 2;
+    }
+}
+
+/* New credential accents stay within the approved palette. */
+.about-page .sf-certificate-card:nth-child(4) {
+    --cert-accent: rgba(228, 196, 103, 0.96);
+    --cert-soft: rgba(228, 196, 103, 0.15);
+    --cert-glow: rgba(228, 196, 103, 0.22);
+}
+
+.about-page .sf-certificate-card:nth-child(5) {
+    --cert-accent: rgba(100, 203, 174, 0.96);
+    --cert-soft: rgba(100, 203, 174, 0.15);
+    --cert-glow: rgba(100, 203, 174, 0.22);
+}
+
+/* At tablet width the last card spans both columns so the composition
+   remains balanced rather than leaving an accidental empty cell. */
+@media (min-width: 641px) and (max-width: 1050px) {
+    .about-page .sf-certificate-card:nth-child(5) {
+        grid-column: 1 / -1;
+        width: calc(50% - 10px);
+        justify-self: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-page .sf-certificate-card:nth-child(5) {
+        width: auto;
+        justify-self: stretch;
+    }
+}
