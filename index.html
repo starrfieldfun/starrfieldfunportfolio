@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/style.css?v=20260914-promptcoverfinal1"/>
   <link rel="stylesheet" href="/site-extras.css?v=20260925-finalqa1"/>
   <link rel="stylesheet" href="/home-one-frame.css?v=20260927-atmosphere-mobilefix1"/>
+  <link rel="stylesheet" href="/home-fieldnotes.css?v=20261020-experiment1"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Starrfield Fun"/>
   <meta property="og:title" content="Starrfield Fun | UI/UX Designer &amp; Developer"/>
@@ -22,6 +23,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Starrfield Fun","url":"https://starrfieldfun.com/"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Starr","url":"https://starrfieldfun.com/about/","jobTitle":"UI/UX Designer and Developer","knowsAbout":["User interface design","User experience design","Front-end development","Photography"]}</script>
   <script src="/home-one-frame.js?v=20260927-atmosphere-mobilefix1" defer></script>
+  <script src="/home-fieldnotes.js?v=20261020-experiment1" defer></script>
 </head>
 <body class="sf-film-page is-dark">
   <header class="navbar">
@@ -102,6 +104,7 @@
             <span class="sf-shot-kicker">01 / BEFORE THE SCREEN</span>
             <h2>QUESTION.</h2>
             <p>Before I design the interface,<br/>I find what is getting in the way.</p>
+            <div class="sf-fieldnote"><span>FIELD NOTE / OBSERVE</span><strong>Someone just wants to find the next bus.</strong><small>What should the interface answer first?</small></div>
           </div>
         </article>
 
@@ -116,6 +119,7 @@
             <span class="sf-shot-kicker">02 / ONCE THE PROBLEM IS CLEAR</span>
             <h2>SIMPLIFY.</h2>
             <p>Then I turn complexity into a path<br/>people can understand naturally.</p>
+            <div class="sf-fieldnote"><span>FIELD NOTE / EDIT</span><strong>Nearby stops. Relevant routes. Clear arrivals.</strong><small>Keep the decision in focus.</small></div>
           </div>
         </article>
 
@@ -130,6 +134,7 @@
             <span class="sf-shot-kicker">03 / THEN MAKE IT REAL</span>
             <h2>BUILD.</h2>
             <p>I do not stop at the mock-up.<br/>I take the experience into a working product.</p>
+            <div class="sf-fieldnote"><span>FIELD NOTE / MAKE</span><strong>Leaflet map + live LTA DataMall arrivals.</strong><small>Turn the idea into a working experience.</small></div>
           </div>
         </article>
 
@@ -157,7 +162,7 @@
           <div class="sf-perspective-copy">
             <span class="sf-shot-kicker">ENOUGH THEORY</span>
             <h2><span>SHOW ME</span><br/><em>THE PROOF.</em></h2>
-            <p>Three different problems. Three different products. Same way of thinking.</p>
+            <p>Three real products. Watch the questions turn into working screens.</p>
           </div>
         </article>
 
@@ -169,8 +174,8 @@
             <span>DECISIONS BEFORE DECORATION</span>
           </div>
           <div class="sf-work-heading">
-            <span class="sf-shot-kicker">SELECTED WORK / UNPACK THE DECISION</span>
-            <h2>Three problems.<br/><em>Three answers.</em></h2>
+            <span class="sf-shot-kicker">REAL PROJECTS / THE DECISION BEFORE THE SCREEN</span>
+            <h2>Watch the problem<br/><em>become the product.</em></h2>
 
             <div class="sf-work-stories" aria-live="polite">
               <div class="sf-work-story is-current" data-project-story="0">
@@ -195,14 +200,39 @@
           <div class="sf-project-stage">
             <a class="sf-project-frame sf-project-bus" href="/work/busfinder/">
               <img src="/images/bus-finder/NearbyBus.png" alt="MyBusFinder nearby buses desktop interface"/>
+              <section class="sf-demo sf-demo--bus" aria-hidden="true">
+                <div class="sf-demo__header"><span>01 / MYBUSFINDER</span><span>FROM INFORMATION TO ANSWER</span></div>
+                <div class="sf-demo__bus-tokens"><span>BUS STOP</span><span>ROUTE</span><span>LIVE ETA</span><span>MAP</span><span>DISTANCE</span><span>SERVICE</span><span>NEARBY</span><span>UPDATES</span></div>
+                <div class="sf-demo__focus"><small>THE QUESTION BEHIND THE DESIGN</small><strong>When is my bus coming?</strong><span>PRIORITISE THE ANSWER</span></div>
+                <div class="sf-demo__bottom"><span>01 / DEFINE</span><b>→ 02 / CLARIFY</b></div>
+              </section>
               <div><span>01 / PRODUCT</span><strong>MyBusFinder</strong><b>VIEW ↗</b></div>
             </a>
             <a class="sf-project-frame sf-project-monitor" href="/work/monitor-control/">
               <img src="/images/monitor-control/monitors.png" alt="Monitor Control desktop application interface"/>
+              <section class="sf-demo sf-demo--monitor" aria-hidden="true">
+                <div class="sf-demo__header"><span>02 / MONITOR CONTROL</span><span>MAKE STATE VISIBLE</span></div>
+                <div class="sf-demo__monitor-scene">
+                  <div class="sf-demo__display sf-demo__display--one"><span>DISPLAY 01</span><b>MAIN</b></div>
+                  <div class="sf-demo__display sf-demo__display--two"><span>DISPLAY 02</span><b>SIDE</b></div>
+                  <div class="sf-demo__display sf-demo__display--three"><span>DISPLAY 03</span><b>THIRD</b></div>
+                </div>
+                <div class="sf-demo__monitor-caption"><strong>Know what is connected.</strong><span>ARRANGE → SAVE → RESTORE</span></div>
+                <div class="sf-demo__bottom"><span>01 / MAKE IT LEGIBLE</span><b>→ 02 / MAKE IT USABLE</b></div>
+              </section>
               <div><span>02 / APPLICATION</span><strong>Monitor Control</strong><b>VIEW ↗</b></div>
             </a>
             <a class="sf-project-frame sf-project-prompt" href="/work/promptchecker/">
               <img src="/images/home-covers/promptchecker-home.png" alt="PromptChecker AI prompt evaluation interface"/>
+              <section class="sf-demo sf-demo--prompt" aria-hidden="true">
+                <div class="sf-demo__header"><span>03 / PROMPTCHECKER</span><span>MAKE FEEDBACK ACTIONABLE</span></div>
+                <div class="sf-demo__prompt-flow">
+                  <div class="sf-demo__prompt-in"><span>UNCLEAR INPUT</span><strong>“Make this better.”</strong></div>
+                  <div class="sf-demo__prompt-arrow">↓</div>
+                  <div class="sf-demo__prompt-out"><span>WHAT A USEFUL PROMPT NEEDS</span><div><b>GOAL</b><b>AUDIENCE</b><b>CONSTRAINTS</b><b>FORMAT</b></div></div>
+                </div>
+                <div class="sf-demo__bottom"><span>01 / DIAGNOSE</span><b>→ 02 / IMPROVE</b></div>
+              </section>
               <div><span>03 / AI PRODUCT</span><strong>PromptChecker</strong><b>VIEW ↗</b></div>
             </a>
           </div>
@@ -271,7 +301,7 @@
           <div class="sf-final-copy">
             <span class="sf-shot-kicker">YOU HAVE UNPACKED THE TRAILER.</span>
             <h2>The rest lives<br/><em>in the details.</em></h2>
-            <p>You have seen the thinking, the work and the eye. Now choose where you want to go deeper.</p>
+            <p>You saw what each screen needed to solve. The full decisions are inside the case studies.</p>
             <div class="sf-final-actions">
               <a class="sf-final-primary" href="/work/">EXPLORE THE CASE STUDIES <span>→</span></a>
               <a href="/contact/">START A PROJECT ↗</a>
