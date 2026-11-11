@@ -1,0 +1,56 @@
+/* Safe, additive accessibility changes — 2026-11-11. */
+.sf-audit-skip {
+  position: fixed;
+  z-index: 99999;
+  top: max(12px, env(safe-area-inset-top, 0px));
+  left: 12px;
+  transform: translateY(-180%);
+  opacity: 0;
+  pointer-events: none;
+  max-width: calc(100vw - 24px);
+  padding: 13px 18px;
+  background: #f3efe6;
+  color: #0b0c10;
+  border: 2px solid #6e78ff;
+  border-radius: 7px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  font: 700 14px/1.3 system-ui, sans-serif;
+  text-decoration: none;
+}
+.sf-audit-skip:focus,
+.sf-audit-skip:focus-visible {
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+  outline: 3px solid #6e78ff;
+  outline-offset: 2px;
+}
+.sf-audit-skip + .sf-audit-skip:focus,
+.sf-audit-skip + .sf-audit-skip:focus-visible { top: max(68px, calc(56px + env(safe-area-inset-top, 0px))); }
+.sf-film-page a:focus-visible,
+.contact-page a:focus-visible,
+.contact-page button:focus-visible,
+.contact-page input:focus-visible,
+.contact-page select:focus-visible,
+.contact-page textarea:focus-visible,
+.sf-film-page button:focus-visible {
+  outline: 3px solid #a8b0ff;
+  outline-offset: 4px;
+}
+.contact-page .sf-contact-data-notice {
+  margin: 12px 0 18px;
+  max-width: 64ch;
+  color: inherit;
+  opacity: .84;
+  font: 400 13px/1.65 system-ui, sans-serif;
+}
+.contact-page .sf-contact-data-notice a {
+  color: inherit;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+#contact-name { scroll-margin-top: 118px; }
+@media (max-width: 620px) {
+  .sf-audit-skip { font-size: 13px; padding: 11px 13px; }
+  .contact-page .sf-contact-data-notice { font-size: 12px; }
+}

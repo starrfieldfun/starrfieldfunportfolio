@@ -144,3 +144,59 @@
   .sf-demo__header{font-size:6px;}
   .sf-work-story p{font-size:10.5px;}
 }
+
+
+/* V11.1 — Field Note collision fix (2026-11-11).
+   The cinematic word headings keep their original type, colour and movement.
+   Notes now occupy a real layout row BELOW the heading, not an absolute slot
+   whose bottom anchor overlapped the heading on desktop-height viewports. */
+.sf-shot-word .sf-word-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  column-gap: clamp(22px, 4vw, 70px);
+  align-items: start;
+}
+.sf-shot-word .sf-word-copy > .sf-shot-kicker,
+.sf-shot-word .sf-word-copy > h2 {
+  grid-column: 1 / -1;
+}
+.sf-shot-word .sf-word-copy > h2 {
+  min-width: 0;
+}
+.sf-shot-word .sf-word-copy > p {
+  grid-column: 2;
+  grid-row: 3;
+  width: 100%;
+  margin: clamp(42px, 5vh, 60px) 0 0;
+}
+.sf-shot-word .sf-word-copy > .sf-fieldnote {
+  position: static;
+  grid-column: 1;
+  grid-row: 3;
+  align-self: start;
+  left: auto;
+  bottom: auto;
+  width: min(410px, 100%);
+  margin: clamp(42px, 5vh, 60px) 0 0;
+}
+@media (max-width: 620px) {
+  .sf-shot-word .sf-word-copy {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .sf-shot-word .sf-word-copy > p {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: clamp(26px, 4vh, 36px);
+  }
+  .sf-shot-word .sf-word-copy > .sf-fieldnote {
+    grid-column: 1;
+    grid-row: 4;
+    width: min(300px, 100%);
+    margin-top: clamp(18px, 3vh, 28px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sf-shot-word .sf-word-copy > .sf-fieldnote {
+    position: static;
+  }
+}
