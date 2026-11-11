@@ -37,44 +37,58 @@ const mobileMenu =
 
 if (menuButton && mobileMenu) {
 
-    menuButton.addEventListener(
-        "click",
-        function () {
+    // The menu is visually hidden while closed; keep its links out of
+    // the keyboard order too. This never changes navigation destinations.
+    if (!mobileMenu.id) mobileMenu.id = "site-mobile-menu";
+    menuButton.setAttribute("aria-controls", mobileMenu.id);
+    mobileMenu.inert = !mobileMenu.classList.contains("open");
 
-            const menuIsOpen =
-                mobileMenu.classList.toggle("open");
-
-
-            document.body.classList.toggle(
-                "menu-open",
-                menuIsOpen
-            );
-
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                menuIsOpen
-            );
-
-
-            if (menuIsOpen) {
-
-                menuButton.textContent =
-                    "Close ×";
-
-            } else {
-
-                menuButton.textContent =
-                    "Menu";
-
-            }
-
+    function setMobileMenu(open, returnFocus) {
+        mobileMenu.classList.toggle("open", open);
+        mobileMenu.inert = !open;
+        document.body.classList.toggle("menu-open", open);
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        menuButton.textContent = open ? "Close ×" : "Menu";
+        if (open) {
+            const firstLink = mobileMenu.querySelector("a[href]");
+            if (firstLink) firstLink.focus();
+        } else if (returnFocus) {
+            menuButton.focus();
         }
-    );
+    }
 
+    menuButton.addEventListener("click", function () {
+        setMobileMenu(!mobileMenu.classList.contains("open"), false);
+    });
+
+    mobileMenu.addEventListener("click", function (event) {
+        if (event.target.closest("a[href]")) setMobileMenu(false, false);
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (!mobileMenu.classList.contains("open")) return;
+        if (event.key === "Escape") {
+            event.preventDefault();
+            setMobileMenu(false, true);
+            return;
+        }
+        if (event.key !== "Tab") return;
+        const links = Array.from(mobileMenu.querySelectorAll("a[href]"))
+            .filter(link => !link.hasAttribute("disabled"));
+        if (!links.length) return;
+        if (event.shiftKey && document.activeElement === links[0]) {
+            event.preventDefault();
+            links[links.length - 1].focus();
+        } else if (!event.shiftKey && document.activeElement === links[links.length - 1]) {
+            event.preventDefault();
+            links[0].focus();
+        }
+    });
 }
 
 
+// ========================================
 // ========================================
 // SCROLL REVEAL
 // ========================================
