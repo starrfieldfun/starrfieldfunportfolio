@@ -91,3 +91,39 @@ body.starrstash.lightbox-open{overflow:hidden}
 .starrstash .ss-deck .ss-photo-meta .ss-category-tag,.starrstash .ss-lightbox-caption .ss-category-tag{background:#292b30;border-color:#55575e;color:#f5f2ea}
 .starrstash .ss-photo-sub{margin-top:8px;padding-top:8px}
 .starrstash .ss-lightbox-caption .ss-category-tag{margin-bottom:5px}
+
+/* Preserve the shared dark pill navbar's foreground in all render contexts. */
+.starrstash .navbar .logo,.starrstash .navbar .desktop-nav a,.starrstash .navbar .menu-button{color:#f5f2ea}
+.starrstash .navbar .desktop-nav a[aria-current="page"]{color:#a9adff}
+
+/* V13 — abstract, flat optical illustration. No photographic hero assets. */
+.starrstash .ss-aperture-hero .ss-hero-composition{display:grid;grid-template-columns:minmax(0,1.56fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;margin-bottom:36px}
+.starrstash .ss-aperture-hero .ss-hero-title{min-width:0}
+.starrstash .ss-aperture-hero h1{font-size:clamp(46px,6.2vw,104px);margin:22px 0 0;overflow-wrap:normal}
+.starrstash .ss-aperture{min-width:0;margin:0;padding:16px;border:1px solid #36373a;border-radius:20px;background:#151619;color:#f5f2ea;box-shadow:0 18px 46px #15161916}
+.starrstash .ss-aperture-top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:1px 0 12px;font-size:9px;font-weight:700;letter-spacing:.09em;line-height:1.5;color:#dedbd4}
+.starrstash .ss-aperture-top>span:first-child{display:flex;align-items:center;gap:6px}
+.starrstash .ss-aperture-top i{display:block;flex:none;width:6px;height:6px;border-radius:50%;background:#a9adff}
+.starrstash .ss-aperture-stage{position:relative;isolation:isolate;border-radius:10px;border:1px solid #363945;background:radial-gradient(ellipse at 50% 50%,#242737 0%,#1c1e26 55%,#191a1f 100%);overflow:hidden}
+.starrstash .ss-optics{display:block;width:100%;height:auto;max-height:290px;aspect-ratio:320/250}
+.starrstash .ss-iris-blades,.starrstash .ss-iris-opening,.starrstash .ss-iris-pulse{transform-origin:160px 125px;transform-box:view-box}
+.starrstash .ss-iris-opening{transform:scale(1)}
+.starrstash .ss-aperture-stage.is-exposing .ss-iris-opening{animation:ss-iris-expose 1.65s cubic-bezier(.45,0,.25,1) both}
+.starrstash .ss-aperture-stage.is-exposing .ss-iris-blades{animation:ss-iris-turn 1.65s cubic-bezier(.45,0,.25,1) both}
+.starrstash .ss-aperture-stage.is-exposing .ss-iris-pulse{animation:ss-iris-signal 1.65s ease both}
+@keyframes ss-iris-expose{0%{transform:scale(.68) rotate(-12deg)}30%{transform:scale(1.35) rotate(15deg)}53%,62%{transform:scale(.035) rotate(-23deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes ss-iris-turn{0%{transform:rotate(-10deg)}30%{transform:rotate(18deg)}53%,62%{transform:rotate(-25deg)}100%{transform:rotate(0)}}
+@keyframes ss-iris-signal{0%,45%,80%,100%{opacity:0}58%,68%{opacity:.7}}
+.starrstash .ss-aperture-mark{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;line-height:1.5;letter-spacing:.09em;color:#c9cbd7;text-align:center;display:grid;gap:4px;pointer-events:none}
+.starrstash .ss-aperture-mark span{color:#9da4ff;font-size:11px;font-weight:700}
+.starrstash .ss-mark-left{left:5%}.starrstash .ss-mark-right{right:5%}
+.starrstash .ss-aperture-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 0;flex-wrap:wrap}
+.starrstash .ss-aperture-bottom>div{display:grid;gap:3px;min-width:0;font-size:11px;line-height:1.5;color:#dedbd4}
+.starrstash .ss-aperture-label{font-size:9px;letter-spacing:.09em;font-weight:800;color:#a9adff}
+.starrstash .ss-aperture-trigger{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:8px 12px;border-color:#777981;color:#f5f2ea;font-size:10px;letter-spacing:.04em;white-space:nowrap}
+.starrstash .ss-aperture-trigger svg{display:block;flex:none}
+.starrstash .ss-aperture-trigger:hover{color:#fff;border-color:#a9adff;background:#2c2d3a}
+.starrstash .ss-aperture-trigger:focus-visible{outline:2px solid #a9adff;outline-offset:3px}
+@media(max-width:1050px){.starrstash .ss-aperture-hero .ss-hero-composition{grid-template-columns:1fr;gap:24px}.starrstash .ss-aperture-hero h1{font-size:clamp(48px,8.7vw,100px)}.starrstash .ss-aperture{width:min(100%,440px);justify-self:start}}
+@media(max-width:480px){.starrstash .ss-aperture-hero h1{font-size:clamp(36px,9.8vw,48px)}.starrstash .ss-aperture-hero .ss-hero-composition{margin-bottom:26px}.starrstash .ss-aperture{padding:10px}.starrstash .ss-aperture-top{font-size:8px;letter-spacing:.05em}.starrstash .ss-aperture-mark{font-size:7px}.starrstash .ss-aperture-mark span{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.starrstash .ss-aperture-stage.is-exposing :is(.ss-iris-opening,.ss-iris-blades,.ss-iris-pulse){animation:none!important}}
